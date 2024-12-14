@@ -14,7 +14,6 @@ import {
   StatusBar,
   Text,
   ToastAndroid,
-  TouchableOpacity,
   useColorScheme,
   View,
 } from 'react-native';
@@ -32,6 +31,7 @@ function App(): React.JSX.Element {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
+
       <View className="relative flex aspect-square flex-col items-center">
         <Image
           className="h-full w-full"
@@ -41,18 +41,30 @@ function App(): React.JSX.Element {
           {'00님,\n오늘은 어디로 떠날까요?'}
         </Text>
         <Pressable
-          className="bg-primary-green absolute bottom-6 left-4 right-4 flex h-12 flex-col justify-center rounded-lg active:bg-teal-200"
+          className="bg-primary-green ios:active:bg-primary-green-ripple absolute bottom-6 left-4 right-4 flex h-12 flex-col justify-center rounded-lg"
+          android_ripple={{color: '#069868'}}
           onPress={() =>
             ToastAndroid.showWithGravity(
-              'TEST',
+              'TODO',
               ToastAndroid.SHORT,
-              ToastAndroid.CENTER,
+              ToastAndroid.BOTTOM,
             )
           }>
           <Text className="text-center text-lg font-semibold text-white">
             AI 여행 코스 추천
           </Text>
         </Pressable>
+      </View>
+      <Text
+        className="border text-lg font-semibold"
+        style={{backgroundColor: '#069868'}}>
+        00님의 이전 여행
+      </Text>
+      <View>
+        <Text className="border bg-teal-500 text-lg font-semibold">
+          00님의 이전 여행
+        </Text>
+        <Text className="text-lg font-semibold">요즘 유행하는 테마 여행</Text>
       </View>
     </ScrollView>
   );
