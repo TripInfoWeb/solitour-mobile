@@ -1,4 +1,4 @@
-export const COLORS = {
+export const COLOR = {
   PRIMARY_GREEN: '#26B888',
   PRIMARY_GREEN_RIPPLE: '#069868',
   PRIMARY_RED: '#DA1E28',
