@@ -5,6 +5,7 @@
  * @format
  */
 
+import './styles/globals.css';
 import React from 'react';
 import type {PropsWithChildren} from 'react';
 import {
@@ -64,6 +65,7 @@ function App(): React.JSX.Element {
 
   return (
     <SafeAreaView style={backgroundStyle}>
+      <Text>12314</Text>
       <StatusBar
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
