@@ -5,7 +5,6 @@
  * @format
  */
 
-import './styles/globals.css';
 import React from 'react';
 import {
   Image,
@@ -18,6 +17,7 @@ import {
   View,
 } from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {COLORS} from './styles/colors';
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -31,17 +31,42 @@ function App(): React.JSX.Element {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-
-      <View className="relative flex aspect-square flex-col items-center">
+      <View
+        style={{
+          position: 'relative',
+          display: 'flex',
+          aspectRatio: 1,
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}>
         <Image
-          className="h-full w-full"
+          style={{width: '100%', height: '100%'}}
           source={require('./assets/image.png')}
         />
-        <Text className="absolute top-20 text-center text-2xl font-bold">
+        <Text
+          style={{
+            position: 'absolute',
+            top: 80,
+            textAlign: 'center',
+            fontSize: 24,
+            lineHeight: 33.6,
+            fontWeight: 700,
+          }}>
           {'00님,\n오늘은 어디로 떠날까요?'}
         </Text>
         <Pressable
-          className="bg-primary-green ios:active:bg-primary-green-ripple absolute bottom-6 left-4 right-4 flex h-12 flex-col justify-center rounded-lg"
+          style={{
+            backgroundColor: COLORS.PRIMARY_GREEN,
+            position: 'absolute',
+            height: 48,
+            bottom: 24,
+            left: 16,
+            right: 16,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderRadius: 8,
+          }}
           android_ripple={{color: '#069868'}}
           onPress={() =>
             ToastAndroid.showWithGravity(
@@ -50,21 +75,10 @@ function App(): React.JSX.Element {
               ToastAndroid.BOTTOM,
             )
           }>
-          <Text className="text-center text-lg font-semibold text-white">
+          <Text style={{fontSize: 18, color: 'white', fontWeight: '600'}}>
             AI 여행 코스 추천
           </Text>
         </Pressable>
-      </View>
-      <Text
-        className="border text-lg font-semibold"
-        style={{backgroundColor: '#069868'}}>
-        00님의 이전 여행
-      </Text>
-      <View>
-        <Text className="border bg-teal-500 text-lg font-semibold">
-          00님의 이전 여행
-        </Text>
-        <Text className="text-lg font-semibold">요즘 유행하는 테마 여행</Text>
       </View>
     </ScrollView>
   );
