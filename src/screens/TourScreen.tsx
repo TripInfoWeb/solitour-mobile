@@ -1,10 +1,10 @@
 import React from 'react';
 import {Text, View} from 'react-native';
 
-export const DiaryScreen = () => {
+export const TourScreen = () => {
   return (
     <View>
-      <Text>Diary</Text>
+      <Text>Tour</Text>
     </View>
   );
 };

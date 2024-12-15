@@ -1,34 +1,27 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import HomeScreen from './screens/HomeScreen';
-import DiaryScreen from './screens/DiaryScreen';
 import {NavigationList} from './types/navigation';
-import MypageScreen from './screens/MypageScreen';
-import BottomTabs from './components/common/BottomTabs';
+import {BottomTabs} from './components/common/BottomTabs';
+import {SurveyScreen} from './screens/SurveyScreen';
 
 const Stack = createNativeStackNavigator<NavigationList>();
 
-const App = () => {
+export const App = () => {
   return (
     <NavigationContainer>
-      <BottomTabs />
+      <Stack.Navigator initialRouteName="BottomTabs">
+        <Stack.Screen
+          name="BottomTabs"
+          component={BottomTabs}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Survey"
+          component={SurveyScreen}
+          options={{title: '여행 설문조사'}}
+        />
+      </Stack.Navigator>
     </NavigationContainer>
   );
-
-  // return (
-  //   <NavigationContainer>
-  //     <Stack.Navigator initialRouteName="Home">
-  //       <Stack.Screen
-  //         name="Home"
-  //         component={HomeScreen}
-  //         options={{headerShown: false}}
-  //       />
-  //       <Stack.Screen name="Diary" component={DiaryScreen} />
-  //       <Stack.Screen name="Mypage" component={MypageScreen} />
-  //     </Stack.Navigator>
-  //   </NavigationContainer>
-  // );
 };
-
-export default App;

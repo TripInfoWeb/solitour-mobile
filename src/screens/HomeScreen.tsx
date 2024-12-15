@@ -13,10 +13,10 @@ import {
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {useNavigation} from '@react-navigation/native';
 import {NavigationProps} from '../types/navigation';
-import tw from '../libs/tailwind';
+import {tw} from '../libs/tailwind';
 import {COLOR} from '../constants/color';
 
-const HomeScreen = () => {
+export const HomeScreen = () => {
   const isDarkMode = useColorScheme() === 'dark';
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
@@ -30,7 +30,6 @@ const HomeScreen = () => {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-
       <View style={tw`relative flex aspect-square flex-col items-center`}>
         <Image
           style={tw`h-full w-full`}
@@ -53,13 +52,7 @@ const HomeScreen = () => {
             ]);
           }}
           android_ripple={{color: COLOR.PRIMARY_GREEN_RIPPLE}}
-          onPress={() =>
-            ToastAndroid.showWithGravity(
-              'TODO',
-              ToastAndroid.SHORT,
-              ToastAndroid.BOTTOM,
-            )
-          }>
+          onPress={() => navigation.navigate('Survey')}>
           <Text style={tw`text-lg font-semibold text-white`}>
             AI 여행 코스 추천
           </Text>
@@ -97,7 +90,14 @@ const HomeScreen = () => {
                   pressed ? 'bg-gray-100' : 'bg-white',
                   'rounded-full border border-gray-200 px-5 py-3',
                 ]);
-              }}>
+              }}
+              onPress={() =>
+                ToastAndroid.showWithGravity(
+                  'TODO',
+                  ToastAndroid.SHORT,
+                  ToastAndroid.BOTTOM,
+                )
+              }>
               <Text style={tw`font-semibold`}>#촌캉스</Text>
             </Pressable>
             <Pressable
@@ -119,5 +119,3 @@ const HomeScreen = () => {
     </ScrollView>
   );
 };
-
-export default HomeScreen;
