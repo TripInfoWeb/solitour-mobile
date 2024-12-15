@@ -44,7 +44,7 @@ export const DiaryScreen = () => {
           onPress={() => dispatch({type: 'PREV'})}>
           <Image
             style={tw`h-6 w-6`}
-            source={require('../assets/diary/chevronLeft.png')}
+            source={require('../assets/common/chevronLeft.png')}
           />
         </Pressable>
         <Text
@@ -56,7 +56,7 @@ export const DiaryScreen = () => {
           onPress={() => dispatch({type: 'NEXT'})}>
           <Image
             style={tw`h-6 w-6`}
-            source={require('../assets/diary/chevronRight.png')}
+            source={require('../assets/common/chevronRight.png')}
           />
         </Pressable>
       </View>
