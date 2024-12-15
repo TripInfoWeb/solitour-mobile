@@ -9,8 +9,11 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-import tw from '../libs/tailwind';
+
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {useNavigation} from '@react-navigation/native';
+import {NavigationProps} from '../types/navigation';
+import tw from '../libs/tailwind';
 import {COLOR} from '../constants/color';
 
 const HomeScreen = () => {
@@ -18,6 +21,8 @@ const HomeScreen = () => {
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
+
+  const navigation = useNavigation<NavigationProps>();
 
   return (
     <ScrollView style={tw`bg-white`}>
@@ -29,11 +34,11 @@ const HomeScreen = () => {
       <View style={tw`relative flex aspect-square flex-col items-center`}>
         <Image
           style={tw`h-full w-full`}
-          source={require('./assets/main.png')}
+          source={require('../assets/main.png')}
         />
         <Image
           style={tw`absolute top-0 h-1/2 w-full`}
-          source={require('./assets/filter.png')}
+          source={require('../assets/filter.png')}
         />
         <Text style={tw`absolute top-20 text-center text-2xl font-bold`}>
           {'OO님,\n오늘은 어디로 떠날까요?'}
@@ -77,6 +82,7 @@ const HomeScreen = () => {
             contentContainerStyle={tw`flex gap-1.5`}
             horizontal={true}>
             <Pressable
+              onPress={() => navigation.navigate('Diary')}
               style={({pressed}) => {
                 return tw.style([
                   pressed ? 'bg-primary-green-ripple' : 'bg-primary-green',
@@ -106,7 +112,7 @@ const HomeScreen = () => {
           </ScrollView>
           <Image
             style={tw`h-64 w-full rounded-xl`}
-            source={require('./assets/main.png')}
+            source={require('../assets/main.png')}
           />
         </View>
       </View>
