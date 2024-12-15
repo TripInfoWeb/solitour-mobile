@@ -5,23 +5,30 @@ import HomeScreen from './screens/HomeScreen';
 import DiaryScreen from './screens/DiaryScreen';
 import {NavigationList} from './types/navigation';
 import MypageScreen from './screens/MypageScreen';
+import BottomTabs from './components/common/BottomTabs';
 
 const Stack = createNativeStackNavigator<NavigationList>();
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen name="Diary" component={DiaryScreen} />
-        <Stack.Screen name="Mypage" component={MypageScreen} />
-      </Stack.Navigator>
+      <BottomTabs />
     </NavigationContainer>
   );
+
+  // return (
+  //   <NavigationContainer>
+  //     <Stack.Navigator initialRouteName="Home">
+  //       <Stack.Screen
+  //         name="Home"
+  //         component={HomeScreen}
+  //         options={{headerShown: false}}
+  //       />
+  //       <Stack.Screen name="Diary" component={DiaryScreen} />
+  //       <Stack.Screen name="Mypage" component={MypageScreen} />
+  //     </Stack.Navigator>
+  //   </NavigationContainer>
+  // );
 };
 
 export default App;
