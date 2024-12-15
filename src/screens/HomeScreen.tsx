@@ -39,7 +39,7 @@ export const HomeScreen = () => {
           style={tw`absolute top-0 h-1/2 w-full`}
           source={require('../assets/filter.png')}
         />
-        <Text style={tw`absolute top-20 text-center text-2xl font-bold`}>
+        <Text style={tw`absolute top-[23%] text-center text-2xl font-bold`}>
           {'OO님,\n오늘은 어디로 떠날까요?'}
         </Text>
         <Pressable

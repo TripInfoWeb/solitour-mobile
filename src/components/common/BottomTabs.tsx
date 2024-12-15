@@ -5,7 +5,7 @@ import {Image, Pressable} from 'react-native';
 import {tw} from '../../libs/tailwind';
 import {COLOR} from '../../constants/color';
 import {HomeScreen} from '../../screens/HomeScreen';
-import {DiaryScreen} from '../../screens/DiaryScreen';
+import {DiaryScreen} from '../../screens/diary/DiaryScreen';
 import {MypageScreen} from '../../screens/MypageScreen';
 import {TourScreen} from '../../screens/TourScreen';
 

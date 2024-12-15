@@ -1,6 +1,6 @@
 import React, {Reducer, useReducer} from 'react';
 import {Image, Pressable, Text, View} from 'react-native';
-import {tw} from '../libs/tailwind';
+import {tw} from '../../libs/tailwind';
 
 type State = {
   year: number;
@@ -44,7 +44,7 @@ export const DiaryScreen = () => {
           onPress={() => dispatch({type: 'PREV'})}>
           <Image
             style={tw`h-6 w-6`}
-            source={require('../assets/common/chevronLeft.png')}
+            source={require('../../assets/common/chevronLeft.png')}
           />
         </Pressable>
         <Text
@@ -56,7 +56,7 @@ export const DiaryScreen = () => {
           onPress={() => dispatch({type: 'NEXT'})}>
           <Image
             style={tw`h-6 w-6`}
-            source={require('../assets/common/chevronRight.png')}
+            source={require('../../assets/common/chevronRight.png')}
           />
         </Pressable>
       </View>
