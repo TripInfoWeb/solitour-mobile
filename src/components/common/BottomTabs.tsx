@@ -1,7 +1,7 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import React from 'react';
 import {NavigationList} from '../../types/navigation';
-import {Image} from 'react-native';
+import {Image, Pressable} from 'react-native';
 import {tw} from '../../libs/tailwind';
 import {COLOR} from '../../constants/color';
 import {HomeScreen} from '../../screens/HomeScreen';
@@ -85,6 +85,20 @@ const ProfileIcon = ({focused}: IconProps) => {
   );
 };
 
+const WriteButton = () => {
+  return (
+    <Pressable
+      style={({pressed}) => {
+        return tw.style([pressed ? 'bg-slate-100' : '', 'rounded-2xl p-4']);
+      }}>
+      <Image
+        style={tw`h-5 w-5`}
+        source={require('../../assets/diary/pencil.png')}
+      />
+    </Pressable>
+  );
+};
+
 const Tab = createBottomTabNavigator<NavigationList>();
 
 export const BottomTabs = () => {
@@ -92,6 +106,7 @@ export const BottomTabs = () => {
     <Tab.Navigator
       initialRouteName="Home"
       screenOptions={{
+        headerTitleStyle: {fontSize: 20, fontWeight: 600},
         tabBarActiveTintColor: COLOR.PRIMARY_GREEN,
         tabBarStyle: {height: 56},
         tabBarLabelStyle: {fontSize: 12, fontWeight: 500},
@@ -116,7 +131,11 @@ export const BottomTabs = () => {
       <Tab.Screen
         name="Diary"
         component={DiaryScreen}
-        options={{title: '여행 일기', tabBarIcon: DiaryIcon}}
+        options={{
+          title: '여행 일기',
+          headerRight: WriteButton,
+          tabBarIcon: DiaryIcon,
+        }}
       />
       <Tab.Screen
         name="Mypage"
