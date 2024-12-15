@@ -1,6 +1,6 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import React from 'react';
-import {NavigationList} from '../../types/navigation';
+import {NavigationList, NavigationProps} from '../../types/navigation';
 import {Image, Pressable} from 'react-native';
 import {tw} from '../../libs/tailwind';
 import {COLOR} from '../../constants/color';
@@ -8,6 +8,7 @@ import {HomeScreen} from '../../screens/HomeScreen';
 import {DiaryScreen} from '../../screens/diary/DiaryScreen';
 import {MypageScreen} from '../../screens/MypageScreen';
 import {TourScreen} from '../../screens/TourScreen';
+import {useNavigation} from '@react-navigation/native';
 
 interface IconProps {
   focused: boolean;
@@ -86,11 +87,14 @@ const ProfileIcon = ({focused}: IconProps) => {
 };
 
 const WriteButton = () => {
+  const navigation = useNavigation<NavigationProps>();
+
   return (
     <Pressable
       style={({pressed}) => {
         return tw.style([pressed ? 'bg-slate-100' : '', 'rounded-2xl p-4']);
-      }}>
+      }}
+      onPress={() => navigation.navigate('DiaryEditor')}>
       <Image
         style={tw`h-5 w-5`}
         source={require('../../assets/diary/pencil.png')}

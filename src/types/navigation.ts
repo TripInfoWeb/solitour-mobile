@@ -7,6 +7,7 @@ export type NavigationList = {
   Diary: undefined;
   Mypage: undefined;
   Survey: undefined;
+  DiaryEditor: undefined;
 };
 
 export type NavigationProps = NativeStackNavigationProp<NavigationList>;
