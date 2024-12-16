@@ -7,6 +7,7 @@ import {SurveyScreen} from './screens/SurveyScreen';
 import {DiaryEditorScreen} from './screens/diary/DiaryEditorScreen';
 import {Pressable, Text} from 'react-native';
 import {tw} from './libs/tailwind';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
 const DiaryRegisterButton = () => {
   return (
@@ -23,24 +24,26 @@ const Stack = createNativeStackNavigator<NavigationList>();
 
 export const App = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="BottomTabs">
-        <Stack.Screen
-          name="BottomTabs"
-          component={BottomTabs}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="Survey"
-          component={SurveyScreen}
-          options={{title: '여행 설문조사'}}
-        />
-        <Stack.Screen
-          name="DiaryEditor"
-          component={DiaryEditorScreen}
-          options={{title: '여행일기', headerRight: DiaryRegisterButton}}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <GestureHandlerRootView>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="BottomTabs">
+          <Stack.Screen
+            name="BottomTabs"
+            component={BottomTabs}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Survey"
+            component={SurveyScreen}
+            options={{title: '여행 설문조사'}}
+          />
+          <Stack.Screen
+            name="DiaryEditor"
+            component={DiaryEditorScreen}
+            options={{title: '여행일기', headerRight: DiaryRegisterButton}}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </GestureHandlerRootView>
   );
 };

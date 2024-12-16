@@ -1,11 +1,22 @@
-import React, {useState} from 'react';
+import React, {useCallback, useRef, useState} from 'react';
 import {Image, Pressable, ScrollView, Text, TextInput} from 'react-native';
 import {tw} from '../../libs/tailwind';
 import {COLOR} from '../../constants/color';
+import {
+  BottomSheetModal,
+  BottomSheetModalProvider,
+  BottomSheetView,
+} from '@gorhom/bottom-sheet';
 
 export const DiaryEditorScreen = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+
+  const bottomSheetModalRef = useRef<BottomSheetModal>(null);
+
+  const handlePresentModalPress = useCallback(() => {
+    bottomSheetModalRef.current?.present();
+  }, []);
 
   return (
     <ScrollView style={tw`bg-white px-4 pt-6`}>
@@ -15,48 +26,56 @@ export const DiaryEditorScreen = () => {
         value={title}
         onChangeText={setTitle}
       />
-      <Pressable
-        style={({pressed}) =>
-          tw.style([
-            pressed ? 'ios:bg-slate-100' : '',
-            'flex h-12 flex-row items-center gap-[1.125rem] border-b border-gray-200',
-          ])
-        }
-        android_ripple={{color: COLOR.GRAY_RIPPLE}}>
-        <Image
-          style={tw`h-4 w-4`}
-          source={require('../../assets/diary/date.png')}
-        />
-        <Text style={tw`text-gray-500`}>날짜</Text>
-      </Pressable>
-      <Pressable
-        style={({pressed}) =>
-          tw.style([
-            pressed ? 'ios:bg-slate-100' : '',
-            'flex h-12 flex-row items-center gap-[1.125rem] border-b border-gray-200',
-          ])
-        }
-        android_ripple={{color: COLOR.GRAY_RIPPLE}}>
-        <Image
-          style={tw`h-[1.15625rem] w-4`}
-          source={require('../../assets/diary/location.png')}
-        />
-        <Text style={tw`text-gray-500`}>장소</Text>
-      </Pressable>
-      <Pressable
-        style={({pressed}) =>
-          tw.style([
-            pressed ? 'ios:bg-slate-100' : '',
-            'flex h-12 flex-row items-center gap-[1.125rem] border-b border-gray-200',
-          ])
-        }
-        android_ripple={{color: COLOR.GRAY_RIPPLE}}>
-        <Image
-          style={tw`h-4 w-4`}
-          source={require('../../assets/diary/feeling.png')}
-        />
-        <Text style={tw`text-gray-500`}>기분</Text>
-      </Pressable>
+      <BottomSheetModalProvider>
+        <Pressable
+          style={({pressed}) =>
+            tw.style([
+              pressed ? 'ios:bg-slate-100' : '',
+              'flex h-12 flex-row items-center gap-[1.125rem] border-b border-gray-200',
+            ])
+          }
+          android_ripple={{color: COLOR.GRAY_RIPPLE}}
+          onPress={handlePresentModalPress}>
+          <Image
+            style={tw`h-4 w-4`}
+            source={require('../../assets/diary/date.png')}
+          />
+          <Text style={tw`text-gray-500`}>날짜</Text>
+        </Pressable>
+        <BottomSheetModal ref={bottomSheetModalRef}>
+          <BottomSheetView>
+            <Text>TEST</Text>
+          </BottomSheetView>
+        </BottomSheetModal>
+        <Pressable
+          style={({pressed}) =>
+            tw.style([
+              pressed ? 'ios:bg-slate-100' : '',
+              'flex h-12 flex-row items-center gap-[1.125rem] border-b border-gray-200',
+            ])
+          }
+          android_ripple={{color: COLOR.GRAY_RIPPLE}}>
+          <Image
+            style={tw`h-[1.15625rem] w-4`}
+            source={require('../../assets/diary/location.png')}
+          />
+          <Text style={tw`text-gray-500`}>장소</Text>
+        </Pressable>
+        <Pressable
+          style={({pressed}) =>
+            tw.style([
+              pressed ? 'ios:bg-slate-100' : '',
+              'flex h-12 flex-row items-center gap-[1.125rem] border-b border-gray-200',
+            ])
+          }
+          android_ripple={{color: COLOR.GRAY_RIPPLE}}>
+          <Image
+            style={tw`h-4 w-4`}
+            source={require('../../assets/diary/feeling.png')}
+          />
+          <Text style={tw`text-gray-500`}>기분</Text>
+        </Pressable>
+      </BottomSheetModalProvider>
       <TextInput
         style={tw`my-11`}
         multiline={true}
