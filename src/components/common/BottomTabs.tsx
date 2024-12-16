@@ -92,7 +92,10 @@ const WriteButton = () => {
   return (
     <Pressable
       style={({pressed}) => {
-        return tw.style([pressed ? 'bg-slate-100' : '', 'rounded-2xl p-4']);
+        return tw.style([
+          pressed ? 'bg-slate-100' : '',
+          'mr-4 rounded-2xl p-2',
+        ]);
       }}
       onPress={() => navigation.navigate('DiaryEditor')}>
       <Image
@@ -136,7 +139,7 @@ export const BottomTabs = () => {
         name="Diary"
         component={DiaryScreen}
         options={{
-          title: '여행 일기',
+          title: '여행일기',
           headerRight: WriteButton,
           tabBarIcon: DiaryIcon,
         }}
