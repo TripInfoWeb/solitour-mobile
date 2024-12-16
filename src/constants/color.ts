@@ -5,6 +5,7 @@ export const COLOR = {
   GRAY: '#F5F5F5',
   GRAY_RIPPLE: '#f1f5f9',
   GREEN: '#ECF4E2',
+  GREEN_RIPPLE: '#dcfce7',
   LIGHTGREEN: '#F2F6EC',
   LIGHTGRAY: '#F8F8F8',
 } as const;
