@@ -10,6 +10,7 @@ import {
 import {tw} from '../../libs/tailwind';
 import {COLOR} from '../../constants/color';
 import {
+  BottomSheetBackdrop,
   BottomSheetModal,
   BottomSheetModalProvider,
   BottomSheetView,
@@ -24,6 +25,18 @@ export const DiaryEditorScreen = () => {
   const handlePresentModalPress = useCallback(() => {
     bottomSheetModalRef.current?.present();
   }, []);
+
+  const renderBackdrop = useCallback(
+    (props: any) => (
+      <BottomSheetBackdrop
+        {...props}
+        pressBehavior="none"
+        appearsOnIndex={0}
+        disappearsOnIndex={-1}
+      />
+    ),
+    [],
+  );
 
   return (
     <BottomSheetModalProvider>
@@ -87,9 +100,10 @@ export const DiaryEditorScreen = () => {
         />
       </ScrollView>
       <BottomSheetModal
-        ref={bottomSheetModalRef}
         style={tw`rounded-2xl shadow-2xl`}
-        snapPoints={[340]}>
+        ref={bottomSheetModalRef}
+        snapPoints={[340]}
+        backdropComponent={renderBackdrop}>
         <BottomSheetView style={tw`h-80 px-5`}>
           <View style={tw`flex flex-row items-center justify-between`}>
             <Text style={tw`text-[1.375rem] font-semibold`}>기분</Text>
@@ -97,7 +111,10 @@ export const DiaryEditorScreen = () => {
               style={({pressed}) =>
                 tw.style([pressed ? 'ios:bg-slate-100' : '', 'rounded-2xl p-2'])
               }
-              android_ripple={{color: COLOR.GRAY_RIPPLE}}>
+              android_ripple={{color: COLOR.GRAY_RIPPLE}}
+              onPress={() =>
+                bottomSheetModalRef.current?.close({duration: 300})
+              }>
               <Image
                 style={tw`h-4 w-4`}
                 source={require('../../assets/common/close.png')}
