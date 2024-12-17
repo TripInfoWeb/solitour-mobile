@@ -50,7 +50,6 @@ export const DiaryDateBottomSheetModal = forwardRef<
             />
           </Pressable>
         </View>
-
         <PrimaryButton
           title="선택하기"
           onPress={() => closeBottomSheetModal()}
