@@ -9,24 +9,34 @@ import {FlatList, Image, Pressable, Text, View} from 'react-native';
 import {COLOR} from '../../constants/color';
 import {PrimaryButton} from '../common/PrimaryButton';
 
-const FEELINGLIST = [
-  {source: require('../../assets/diary/feeling1.png'), label: '최고'},
-  {source: require('../../assets/diary/feeling2.png'), label: '좋아'},
-  {source: require('../../assets/diary/feeling3.png'), label: '무난'},
-  {source: require('../../assets/diary/feeling4.png'), label: '슬퍼'},
-  {source: require('../../assets/diary/feeling5.png'), label: '화나'},
+const LOCATIONLIST = [
+  '서울',
+  '경기',
+  '제주',
+  '인천',
+  '부산',
+  '강원',
+  '울산',
+  '대구',
+  '광주',
+  '대전',
+  '경남',
+  '경북',
+  '세종',
+  '충청',
+  '전라',
 ];
 
-interface DiaryFeelingBottomSheetModalProps {
-  feeling: string | null;
-  setFeeling: (value: string) => void;
+interface DiaryLocationBottomSheetModalProps {
+  location: string | null;
+  setLocation: (value: string) => void;
   closeBottomSheetModal: () => void;
 }
 
-export const DiaryFeelingBottomSheetModal = forwardRef<
+export const DiaryLocationBottomSheetModal = forwardRef<
   BottomSheetModal,
-  DiaryFeelingBottomSheetModalProps
->(({feeling, setFeeling, closeBottomSheetModal}, bottomSheetModalRef) => {
+  DiaryLocationBottomSheetModalProps
+>(({location, setLocation, closeBottomSheetModal}, bottomSheetModalRef) => {
   const renderBackdrop = useCallback(
     (props: any) => (
       <BottomSheetBackdrop
@@ -47,7 +57,7 @@ export const DiaryFeelingBottomSheetModal = forwardRef<
       backdropComponent={renderBackdrop}>
       <BottomSheetView style={tw`h-80 px-5`}>
         <View style={tw`flex flex-row items-center justify-between`}>
-          <Text style={tw`text-[1.375rem] font-semibold`}>기분</Text>
+          <Text style={tw`text-[1.375rem] font-semibold`}>장소</Text>
           <Pressable
             style={({pressed}) =>
               tw.style([pressed ? 'ios:bg-slate-100' : '', 'rounded-2xl p-2'])
@@ -62,30 +72,31 @@ export const DiaryFeelingBottomSheetModal = forwardRef<
         </View>
         <FlatList
           style={tw`pt-3`}
-          data={FEELINGLIST}
+          contentContainerStyle={tw`flex flex-col items-start gap-2.5`}
+          data={LOCATIONLIST}
           renderItem={({item}) => (
             <Pressable
               style={({pressed}) =>
                 tw.style([
-                  pressed ? 'ios:bg-green-100' : '',
-                  'flex w-[6.5rem] flex-col items-center gap-1 py-3',
+                  pressed ? 'bg-primary-green' : '',
+                  location === item
+                    ? 'border-primary-green bg-primary-green'
+                    : 'border-gray-200',
+                  'mr-1.5 flex h-10 w-[3.75rem] items-center justify-center rounded-full border',
                 ])
               }
-              android_ripple={{color: COLOR.GREEN_RIPPLE}}
-              onPress={() => setFeeling(item.label)}>
-              <Image style={tw`h-10 w-8`} source={item.source} />
+              onPress={() => setLocation(item)}>
               <Text
                 style={tw.style(
-                  feeling === item.label
-                    ? 'text-primary-green'
-                    : 'text-gray-500',
+                  location === item ? 'text-white' : 'text-black',
+                  'font-semibold',
                 )}>
-                {item.label}
+                {item}
               </Text>
             </Pressable>
           )}
-          keyExtractor={item => item.label}
-          numColumns={3}
+          keyExtractor={item => item}
+          numColumns={5}
         />
         <PrimaryButton
           title="선택하기"
