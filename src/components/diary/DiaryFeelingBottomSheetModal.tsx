@@ -18,13 +18,15 @@ const FEELINGLIST = [
 ];
 
 interface DiaryFeelingBottomSheetModalProps {
+  feeling?: string;
+  setFeeling: (value: string) => void;
   closeBottomSheetModal: () => void;
 }
 
 export const DiaryFeelingBottomSheetModal = forwardRef<
   BottomSheetModal,
   DiaryFeelingBottomSheetModalProps
->(({closeBottomSheetModal}, bottomSheetModalRef) => {
+>(({feeling, setFeeling, closeBottomSheetModal}, bottomSheetModalRef) => {
   const renderBackdrop = useCallback(
     (props: any) => (
       <BottomSheetBackdrop
@@ -69,15 +71,26 @@ export const DiaryFeelingBottomSheetModal = forwardRef<
                   'flex w-[6.5rem] flex-col items-center gap-1 py-3',
                 ])
               }
-              android_ripple={{color: COLOR.GREEN_RIPPLE}}>
+              android_ripple={{color: COLOR.GREEN_RIPPLE}}
+              onPress={() => setFeeling(item.label)}>
               <Image style={tw`h-10 w-8`} source={item.source} />
-              <Text style={tw`text-gray-500`}>{item.label}</Text>
+              <Text
+                style={tw.style(
+                  feeling === item.label
+                    ? 'text-primary-green'
+                    : 'text-gray-500',
+                )}>
+                {item.label}
+              </Text>
             </Pressable>
           )}
           keyExtractor={item => item.label}
           numColumns={3}
         />
-        <PrimaryButton title="선택하기" />
+        <PrimaryButton
+          title="선택하기"
+          onPress={() => closeBottomSheetModal()}
+        />
       </BottomSheetView>
     </BottomSheetModal>
   );

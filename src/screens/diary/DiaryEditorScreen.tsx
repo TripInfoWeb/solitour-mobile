@@ -8,6 +8,7 @@ import {DiaryFeelingBottomSheetModal} from '../../components/diary/DiaryFeelingB
 export const DiaryEditorScreen = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  const [feeling, setFeeling] = useState<string>();
 
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
 
@@ -65,7 +66,10 @@ export const DiaryEditorScreen = () => {
             style={tw`h-4 w-4`}
             source={require('../../assets/diary/feeling.png')}
           />
-          <Text style={tw`text-gray-500`}>기분</Text>
+          <Text
+            style={tw.style(feeling ? 'text-primary-green' : 'text-gray-500')}>
+            {feeling ?? '기분'}
+          </Text>
         </Pressable>
         <TextInput
           style={tw`my-11`}
@@ -78,6 +82,8 @@ export const DiaryEditorScreen = () => {
       </ScrollView>
       <DiaryFeelingBottomSheetModal
         ref={bottomSheetModalRef}
+        feeling={feeling}
+        setFeeling={(value: string) => setFeeling(value)}
         closeBottomSheetModal={() =>
           bottomSheetModalRef.current?.close({duration: 300})
         }

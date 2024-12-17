@@ -6,7 +6,6 @@ import {
   StatusBar,
   Text,
   ToastAndroid,
-  useColorScheme,
   View,
 } from 'react-native';
 
@@ -17,19 +16,11 @@ import {tw} from '../libs/tailwind';
 import {PrimaryButton} from '../components/common/PrimaryButton';
 
 export const HomeScreen = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
   const navigation = useNavigation<NavigationProps>();
 
   return (
     <ScrollView style={tw`bg-white`}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
+      <StatusBar barStyle="dark-content" backgroundColor={Colors.lighter} />
       <View style={tw`relative flex aspect-square flex-col items-center`}>
         <Image
           style={tw`h-full w-full`}
