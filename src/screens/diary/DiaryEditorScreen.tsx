@@ -10,6 +10,8 @@ import {DiaryDateBottomSheetModal} from '../../components/diary/DiaryDateBottomS
 export const DiaryEditorScreen = () => {
   const [title, setTitle] = useState('');
   const [location, setLocation] = useState<string | null>(null);
+  const [startDate, setStateDate] = useState<Date | null>(null);
+  const [endDate, setEndDate] = useState<Date | null>(null);
   const [feeling, setFeeling] = useState<string | null>(null);
   const [content, setContent] = useState('');
   const dateBottomSheetModalRef = useRef<BottomSheetModal>(null);
@@ -50,7 +52,12 @@ export const DiaryEditorScreen = () => {
             style={tw`h-4 w-4`}
             source={require('../../assets/diary/date.png')}
           />
-          <Text style={tw`text-gray-500`}>날짜</Text>
+          <Text
+            style={tw.style(endDate ? 'text-primary-green' : 'text-gray-500')}>
+            {endDate !== null
+              ? `${startDate?.toLocaleDateString('ko-KR')}  -  ${endDate?.toLocaleDateString('ko-KR')}`
+              : '날짜'}
+          </Text>
         </Pressable>
         <Pressable
           style={({pressed}) =>
@@ -99,6 +106,9 @@ export const DiaryEditorScreen = () => {
       </ScrollView>
       <DiaryDateBottomSheetModal
         ref={dateBottomSheetModalRef}
+        endDate={endDate}
+        setStateDate={(date: Date | null) => setStateDate(date)}
+        setEndDate={(date: Date | null) => setEndDate(date)}
         closeBottomSheetModal={() =>
           dateBottomSheetModalRef.current?.close({duration: 300})
         }
