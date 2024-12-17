@@ -1,14 +1,14 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import React from 'react';
-import {NavigationList, NavigationProps} from '../../types/navigation';
 import {Image, Pressable} from 'react-native';
-import {tw} from '../../libs/tailwind';
-import {COLOR} from '../../constants/color';
-import {HomeScreen} from '../../screens/HomeScreen';
-import {DiaryScreen} from '../../screens/diary/DiaryScreen';
-import {MypageScreen} from '../../screens/MypageScreen';
-import {TourScreen} from '../../screens/TourScreen';
 import {useNavigation} from '@react-navigation/native';
+import {tw} from '@src/libs/tailwind';
+import {NavigationList, NavigationProps} from '@src/types/navigation';
+import {COLOR} from '@src/constants/color';
+import {HomeScreen} from '@src/screens/HomeScreen';
+import {TourScreen} from '@src/screens/TourScreen';
+import {DiaryScreen} from '@src/screens/diary/DiaryScreen';
+import {MypageScreen} from '@src/screens/MypageScreen';
 
 interface IconProps {
   focused: boolean;
@@ -19,7 +19,7 @@ const HomeIcon = ({focused}: IconProps) => {
     return (
       <Image
         style={tw`h-6 w-6`}
-        source={require('../../assets/common/home-active.png')}
+        source={require('@src/assets/common/home-active.png')}
       />
     );
   }
@@ -27,7 +27,7 @@ const HomeIcon = ({focused}: IconProps) => {
   return (
     <Image
       style={tw`h-6 w-6`}
-      source={require('../../assets/common/home.png')}
+      source={require('@src/assets/common/home.png')}
     />
   );
 };
@@ -37,7 +37,7 @@ const TourIcon = ({focused}: IconProps) => {
     return (
       <Image
         style={tw`h-6 w-6`}
-        source={require('../../assets/common/tour-active.png')}
+        source={require('@src/assets/common/tour-active.png')}
       />
     );
   }
@@ -45,7 +45,7 @@ const TourIcon = ({focused}: IconProps) => {
   return (
     <Image
       style={tw`h-6 w-6`}
-      source={require('../../assets/common/tour.png')}
+      source={require('@src/assets/common/tour.png')}
     />
   );
 };
@@ -55,7 +55,7 @@ const DiaryIcon = ({focused}: IconProps) => {
     return (
       <Image
         style={tw`h-6 w-6`}
-        source={require('../../assets/common/diary-active.png')}
+        source={require('@src/assets/common/diary-active.png')}
       />
     );
   }
@@ -63,7 +63,7 @@ const DiaryIcon = ({focused}: IconProps) => {
   return (
     <Image
       style={tw`h-6 w-6`}
-      source={require('../../assets/common/diary.png')}
+      source={require('@src/assets/common/diary.png')}
     />
   );
 };
@@ -73,7 +73,7 @@ const ProfileIcon = ({focused}: IconProps) => {
     return (
       <Image
         style={tw`h-6 w-6`}
-        source={require('../../assets/common/profile-active.png')}
+        source={require('@src/assets/common/profile-active.png')}
       />
     );
   }
@@ -81,7 +81,7 @@ const ProfileIcon = ({focused}: IconProps) => {
   return (
     <Image
       style={tw`h-6 w-6`}
-      source={require('../../assets/common/profile.png')}
+      source={require('@src/assets/common/profile.png')}
     />
   );
 };
@@ -100,7 +100,7 @@ const WriteButton = () => {
       onPress={() => navigation.navigate('DiaryEditor')}>
       <Image
         style={tw`h-5 w-5`}
-        source={require('../../assets/diary/pencil.png')}
+        source={require('@src/assets/diary/pencil.png')}
       />
     </Pressable>
   );

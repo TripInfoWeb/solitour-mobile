@@ -5,9 +5,9 @@ import {
 } from '@gorhom/bottom-sheet';
 import React, {forwardRef, useCallback} from 'react';
 import {FlatList, Image, Pressable, Text, View} from 'react-native';
-import {tw} from '../../../../libs/tailwind';
-import {COLOR} from '../../../../constants/color';
-import {PrimaryButton} from '../../../common/PrimaryButton';
+import {tw} from '@src/libs/tailwind';
+import {COLOR} from '@src/constants/color';
+import {PrimaryButton} from '@src/components/common/PrimaryButton';
 
 const LOCATIONLIST = [
   '서울',
@@ -66,7 +66,7 @@ export const DiaryLocationBottomSheetModal = forwardRef<
             onPress={() => closeBottomSheetModal()}>
             <Image
               style={tw`h-4 w-4`}
-              source={require('../../../../assets/common/close.png')}
+              source={require('@src/assets/common/close.png')}
             />
           </Pressable>
         </View>

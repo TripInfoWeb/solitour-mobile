@@ -1,7 +1,7 @@
 import React from 'react';
 import {GestureResponderEvent, Pressable, Text} from 'react-native';
-import {tw} from '../../libs/tailwind';
-import {COLOR} from '../../constants/color';
+import {tw} from '@src/libs/tailwind';
+import {COLOR} from '@src/constants/color';
 
 interface PrimaryButtonProps {
   title: string;

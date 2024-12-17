@@ -4,11 +4,11 @@ import {
   BottomSheetView,
 } from '@gorhom/bottom-sheet';
 import React, {forwardRef, useCallback} from 'react';
-import {tw} from '../../../../libs/tailwind';
+import {tw} from '@src/libs/tailwind';
 import {Image, Pressable, Text, View} from 'react-native';
-import {COLOR} from '../../../../constants/color';
-import {PrimaryButton} from '../../../common/PrimaryButton';
+import {COLOR} from '@src/constants/color';
 import CalendarPicker from 'react-native-calendar-picker';
+import {PrimaryButton} from '@src/components/common/PrimaryButton';
 
 const currentDate = new Date();
 
@@ -56,7 +56,7 @@ export const DiaryDateBottomSheetModal = forwardRef<
               onPress={() => closeBottomSheetModal()}>
               <Image
                 style={tw`h-4 w-4`}
-                source={require('../../../../assets/common/close.png')}
+                source={require('@src/assets/common/close.png')}
               />
             </Pressable>
           </View>
@@ -87,13 +87,13 @@ export const DiaryDateBottomSheetModal = forwardRef<
               previousComponent={
                 <Image
                   style={tw`h-6 w-6`}
-                  source={require('../../../../assets/common/chevronLeft.png')}
+                  source={require('@src/assets/common/chevronLeft.png')}
                 />
               }
               nextComponent={
                 <Image
                   style={tw`h-6 w-6`}
-                  source={require('../../../../assets/common/chevronRight.png')}
+                  source={require('@src/assets/common/chevronRight.png')}
                 />
               }
               onDateChange={(date, type) => {

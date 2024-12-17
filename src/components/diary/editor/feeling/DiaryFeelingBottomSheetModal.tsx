@@ -4,18 +4,17 @@ import {
   BottomSheetView,
 } from '@gorhom/bottom-sheet';
 import React, {forwardRef, useCallback} from 'react';
-
 import {FlatList, Image, Pressable, Text, View} from 'react-native';
-import {tw} from '../../../../libs/tailwind';
-import {COLOR} from '../../../../constants/color';
-import {PrimaryButton} from '../../../common/PrimaryButton';
+import {tw} from '@src/libs/tailwind';
+import {COLOR} from '@src/constants/color';
+import {PrimaryButton} from '@src/components/common/PrimaryButton';
 
 const FEELINGLIST = [
-  {source: require('../../../../assets/diary/feeling1.png'), label: '최고'},
-  {source: require('../../../../assets/diary/feeling2.png'), label: '좋아'},
-  {source: require('../../../../assets/diary/feeling3.png'), label: '무난'},
-  {source: require('../../../../assets/diary/feeling4.png'), label: '슬퍼'},
-  {source: require('../../../../assets/diary/feeling5.png'), label: '화나'},
+  {source: require('@src/assets/diary/feeling1.png'), label: '최고'},
+  {source: require('@src/assets/diary/feeling2.png'), label: '좋아'},
+  {source: require('@src/assets/diary/feeling3.png'), label: '무난'},
+  {source: require('@src/assets/diary/feeling4.png'), label: '슬퍼'},
+  {source: require('@src/assets/diary/feeling5.png'), label: '화나'},
 ] as const;
 
 interface DiaryFeelingBottomSheetModalProps {
@@ -57,7 +56,7 @@ export const DiaryFeelingBottomSheetModal = forwardRef<
             onPress={() => closeBottomSheetModal()}>
             <Image
               style={tw`h-4 w-4`}
-              source={require('../../../../assets/common/close.png')}
+              source={require('@src/assets/common/close.png')}
             />
           </Pressable>
         </View>

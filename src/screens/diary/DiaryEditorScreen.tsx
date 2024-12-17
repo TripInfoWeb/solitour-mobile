@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import {ScrollView, TextInput} from 'react-native';
-import {tw} from '../../libs/tailwind';
-import {DiaryDatePicker} from '../../components/diary/editor/date/DiaryDatePicker';
-import {DiaryLocationPicker} from '../../components/diary/editor/location/DiaryLocationPicker';
-import {DiaryFeelingPicker} from '../../components/diary/editor/feeling/DiaryFeelingPicker';
+import {tw} from '@src/libs/tailwind';
+import {DiaryDatePicker} from '@src/components/diary/editor/date/DiaryDatePicker';
+import {DiaryLocationPicker} from '@src/components/diary/editor/location/DiaryLocationPicker';
+import {DiaryFeelingPicker} from '@src/components/diary/editor/feeling/DiaryFeelingPicker';
 import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 
 export const DiaryEditorScreen = () => {

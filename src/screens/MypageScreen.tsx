@@ -1,8 +1,8 @@
 import React from 'react';
 import {Image, Text, View} from 'react-native';
-import {tw} from '../libs/tailwind';
-import {MypageItem} from '../components/mypage/MypageItem';
-import {MypageProfile} from '../components/mypage/MypageProfile';
+import {tw} from '@src/libs/tailwind';
+import {MypageItem} from '@src/components/mypage/MypageItem';
+import {MypageProfile} from '@src/components/mypage/MypageProfile';
 
 export const MypageScreen = () => {
   return (
@@ -12,19 +12,19 @@ export const MypageScreen = () => {
         <MypageItem title="알림">
           <Image
             style={tw`h-6 w-6`}
-            source={require('../assets/common/chevronRight.png')}
+            source={require('@src/assets/common/chevronRight.png')}
           />
         </MypageItem>
         <MypageItem title="연동 계정">
           <Image
             style={tw`h-6 w-6`}
-            source={require('../assets/common/chevronRight.png')}
+            source={require('@src/assets/common/chevronRight.png')}
           />
         </MypageItem>
         <MypageItem title="로그아웃">
           <Image
             style={tw`h-6 w-6`}
-            source={require('../assets/common/chevronRight.png')}
+            source={require('@src/assets/common/chevronRight.png')}
           />
         </MypageItem>
         <MypageItem title="앱 버전">

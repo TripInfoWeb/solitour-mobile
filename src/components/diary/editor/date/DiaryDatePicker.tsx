@@ -1,7 +1,7 @@
 import React, {useCallback, useRef, useState} from 'react';
 import {Image, Pressable, Text, View} from 'react-native';
-import {tw} from '../../../../libs/tailwind';
-import {COLOR} from '../../../../constants/color';
+import {tw} from '@src/libs/tailwind';
+import {COLOR} from '@src/constants/color';
 import {BottomSheetModal} from '@gorhom/bottom-sheet';
 import {DiaryDateBottomSheetModal} from './DiaryDateBottomSheetModal';
 
@@ -29,7 +29,7 @@ export const DiaryDatePicker = () => {
         onPress={handlePresentModalPress}>
         <Image
           style={tw`h-4 w-4`}
-          source={require('../../../../assets/diary/date.png')}
+          source={require('@src/assets/diary/date.png')}
         />
         <Text
           style={tw.style(endDate ? 'text-primary-green' : 'text-gray-500')}>
