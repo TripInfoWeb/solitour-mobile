@@ -5,14 +5,20 @@ import {COLOR} from '../../constants/color';
 import {BottomSheetModal, BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 import {DiaryFeelingBottomSheetModal} from '../../components/diary/DiaryFeelingBottomSheetModal';
 import {DiaryLocationBottomSheetModal} from '../../components/diary/DiaryLocationBottomSheetModal';
+import {DiaryDateBottomSheetModal} from '../../components/diary/DiaryDateBottomSheetModal';
 
 export const DiaryEditorScreen = () => {
   const [title, setTitle] = useState('');
   const [location, setLocation] = useState<string | null>(null);
   const [feeling, setFeeling] = useState<string | null>(null);
   const [content, setContent] = useState('');
+  const dateBottomSheetModalRef = useRef<BottomSheetModal>(null);
   const locationBottomSheetModalRef = useRef<BottomSheetModal>(null);
   const feelingBottomSheetModalRef = useRef<BottomSheetModal>(null);
+
+  const handlePresentDateModalPress = useCallback(() => {
+    dateBottomSheetModalRef.current?.present();
+  }, []);
 
   const handlePresentLocationModalPress = useCallback(() => {
     locationBottomSheetModalRef.current?.present();
@@ -38,7 +44,8 @@ export const DiaryEditorScreen = () => {
               'flex h-12 flex-row items-center gap-[1.125rem] border-b border-b-gray-200 text-gray-200',
             ])
           }
-          android_ripple={{color: COLOR.GRAY_RIPPLE}}>
+          android_ripple={{color: COLOR.GRAY_RIPPLE}}
+          onPress={handlePresentDateModalPress}>
           <Image
             style={tw`h-4 w-4`}
             source={require('../../assets/diary/date.png')}
@@ -90,6 +97,12 @@ export const DiaryEditorScreen = () => {
           onChangeText={setContent}
         />
       </ScrollView>
+      <DiaryDateBottomSheetModal
+        ref={dateBottomSheetModalRef}
+        closeBottomSheetModal={() =>
+          dateBottomSheetModalRef.current?.close({duration: 300})
+        }
+      />
       <DiaryLocationBottomSheetModal
         ref={locationBottomSheetModalRef}
         location={location}
