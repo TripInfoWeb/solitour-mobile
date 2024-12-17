@@ -4,10 +4,10 @@ import {
   BottomSheetView,
 } from '@gorhom/bottom-sheet';
 import React, {forwardRef, useCallback} from 'react';
-import {tw} from '../../libs/tailwind';
+import {tw} from '../../../../libs/tailwind';
 import {Image, Pressable, Text, View} from 'react-native';
-import {COLOR} from '../../constants/color';
-import {PrimaryButton} from '../common/PrimaryButton';
+import {COLOR} from '../../../../constants/color';
+import {PrimaryButton} from '../../../common/PrimaryButton';
 import CalendarPicker from 'react-native-calendar-picker';
 
 const currentDate = new Date();
@@ -56,54 +56,56 @@ export const DiaryDateBottomSheetModal = forwardRef<
               onPress={() => closeBottomSheetModal()}>
               <Image
                 style={tw`h-4 w-4`}
-                source={require('../../assets/common/close.png')}
+                source={require('../../../../assets/common/close.png')}
               />
             </Pressable>
           </View>
-          <CalendarPicker
-            weekdays={['일', '월', '화', '수', '목', '금', '토']}
-            months={[
-              'Jan',
-              'Feb',
-              'Mar',
-              'Apr',
-              'May',
-              'Jun',
-              'Jul',
-              'Aug',
-              'Sep',
-              'Oct',
-              'Nov',
-              'Dec',
-            ]}
-            allowRangeSelection={true}
-            allowBackwardRangeSelect={true}
-            selectedDayColor={COLOR.PRIMARY_GREEN}
-            selectedDayTextColor="white"
-            todayBackgroundColor="white"
-            todayTextStyle={{color: COLOR.PRIMARY_GREEN}}
-            maxDate={currentDate}
-            previousComponent={
-              <Image
-                style={tw`h-6 w-6`}
-                source={require('../../assets/common/chevronLeft.png')}
-              />
-            }
-            nextComponent={
-              <Image
-                style={tw`h-6 w-6`}
-                source={require('../../assets/common/chevronRight.png')}
-              />
-            }
-            onDateChange={(date, type) => {
-              if (type === 'END_DATE') {
-                setEndDate(date);
-              } else {
-                setStateDate(date);
-                setEndDate(null);
+          <View style={tw`pt-6`}>
+            <CalendarPicker
+              weekdays={['일', '월', '화', '수', '목', '금', '토']}
+              months={[
+                'Jan',
+                'Feb',
+                'Mar',
+                'Apr',
+                'May',
+                'Jun',
+                'Jul',
+                'Aug',
+                'Sep',
+                'Oct',
+                'Nov',
+                'Dec',
+              ]}
+              allowRangeSelection={true}
+              allowBackwardRangeSelect={true}
+              selectedDayColor={COLOR.PRIMARY_GREEN}
+              selectedDayTextColor="white"
+              todayBackgroundColor="white"
+              todayTextStyle={{color: COLOR.PRIMARY_GREEN}}
+              maxDate={currentDate}
+              previousComponent={
+                <Image
+                  style={tw`h-6 w-6`}
+                  source={require('../../assets/common/chevronLeft.png')}
+                />
               }
-            }}
-          />
+              nextComponent={
+                <Image
+                  style={tw`h-6 w-6`}
+                  source={require('../../assets/common/chevronRight.png')}
+                />
+              }
+              onDateChange={(date, type) => {
+                if (type === 'END_DATE') {
+                  setEndDate(date);
+                } else {
+                  setStateDate(date);
+                  setEndDate(null);
+                }
+              }}
+            />
+          </View>
           <PrimaryButton
             title="선택하기"
             disabled={endDate === null}

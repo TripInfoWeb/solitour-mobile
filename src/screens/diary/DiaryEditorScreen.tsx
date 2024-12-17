@@ -1,134 +1,34 @@
-import React, {useCallback, useRef, useState} from 'react';
-import {Image, Pressable, ScrollView, Text, TextInput} from 'react-native';
+import React, {useState} from 'react';
+import {ScrollView, TextInput} from 'react-native';
 import {tw} from '../../libs/tailwind';
-import {COLOR} from '../../constants/color';
-import {BottomSheetModal, BottomSheetModalProvider} from '@gorhom/bottom-sheet';
-import {DiaryFeelingBottomSheetModal} from '../../components/diary/DiaryFeelingBottomSheetModal';
-import {DiaryLocationBottomSheetModal} from '../../components/diary/DiaryLocationBottomSheetModal';
-import {DiaryDateBottomSheetModal} from '../../components/diary/DiaryDateBottomSheetModal';
+import {DiaryDatePicker} from '../../components/diary/editor/date/DiaryDatePicker';
+import {DiaryLocationPicker} from '../../components/diary/editor/location/DiaryLocationPicker';
+import {DiaryFeelingPicker} from '../../components/diary/editor/feeling/DiaryFeelingPicker';
 
 export const DiaryEditorScreen = () => {
   const [title, setTitle] = useState('');
-  const [location, setLocation] = useState<string | null>(null);
-  const [startDate, setStateDate] = useState<Date | null>(null);
-  const [endDate, setEndDate] = useState<Date | null>(null);
-  const [feeling, setFeeling] = useState<string | null>(null);
+
   const [content, setContent] = useState('');
-  const dateBottomSheetModalRef = useRef<BottomSheetModal>(null);
-  const locationBottomSheetModalRef = useRef<BottomSheetModal>(null);
-  const feelingBottomSheetModalRef = useRef<BottomSheetModal>(null);
-
-  const handlePresentDateModalPress = useCallback(() => {
-    dateBottomSheetModalRef.current?.present();
-  }, []);
-
-  const handlePresentLocationModalPress = useCallback(() => {
-    locationBottomSheetModalRef.current?.present();
-  }, []);
-
-  const handlePresentFeelingModalPress = useCallback(() => {
-    feelingBottomSheetModalRef.current?.present();
-  }, []);
 
   return (
-    <BottomSheetModalProvider>
-      <ScrollView style={tw`bg-white px-4 pt-6`}>
-        <TextInput
-          style={tw`text-lg font-semibold`}
-          placeholder="제목을 입력해 주세요."
-          value={title}
-          onChangeText={setTitle}
-        />
-        <Pressable
-          style={({pressed}) =>
-            tw.style([
-              pressed ? 'ios:bg-slate-100' : '',
-              'flex h-12 flex-row items-center gap-[1.125rem] border-b border-b-gray-200 text-gray-200',
-            ])
-          }
-          android_ripple={{color: COLOR.GRAY_RIPPLE}}
-          onPress={handlePresentDateModalPress}>
-          <Image
-            style={tw`h-4 w-4`}
-            source={require('../../assets/diary/date.png')}
-          />
-          <Text
-            style={tw.style(endDate ? 'text-primary-green' : 'text-gray-500')}>
-            {endDate !== null
-              ? `${startDate?.toLocaleDateString('ko-KR')}  -  ${endDate?.toLocaleDateString('ko-KR')}`
-              : '날짜'}
-          </Text>
-        </Pressable>
-        <Pressable
-          style={({pressed}) =>
-            tw.style([
-              pressed ? 'ios:bg-slate-100' : '',
-              'flex h-12 flex-row items-center gap-[1.125rem] border-b border-gray-200 text-gray-200',
-            ])
-          }
-          android_ripple={{color: COLOR.GRAY_RIPPLE}}
-          onPress={handlePresentLocationModalPress}>
-          <Image
-            style={tw`h-[1.15625rem] w-4`}
-            source={require('../../assets/diary/location.png')}
-          />
-          <Text
-            style={tw.style(location ? 'text-primary-green' : 'text-gray-500')}>
-            {location ?? '장소'}
-          </Text>
-        </Pressable>
-        <Pressable
-          style={({pressed}) =>
-            tw.style([
-              pressed ? 'ios:bg-slate-100' : '',
-              'flex h-12 flex-row items-center gap-[1.125rem] border-b border-gray-200 text-gray-200',
-            ])
-          }
-          android_ripple={{color: COLOR.GRAY_RIPPLE}}
-          onPress={handlePresentFeelingModalPress}>
-          <Image
-            style={tw`h-4 w-4`}
-            source={require('../../assets/diary/feeling.png')}
-          />
-          <Text
-            style={tw.style(feeling ? 'text-primary-green' : 'text-gray-500')}>
-            {feeling ?? '기분'}
-          </Text>
-        </Pressable>
-        <TextInput
-          style={tw`my-11`}
-          multiline={true}
-          textAlignVertical="top"
-          placeholder="여행은 어땠나요? 자유롭게 기록하고 싶은 것들을 작성해보세요."
-          value={content}
-          onChangeText={setContent}
-        />
-      </ScrollView>
-      <DiaryDateBottomSheetModal
-        ref={dateBottomSheetModalRef}
-        endDate={endDate}
-        setStateDate={(date: Date | null) => setStateDate(date)}
-        setEndDate={(date: Date | null) => setEndDate(date)}
-        closeBottomSheetModal={() =>
-          dateBottomSheetModalRef.current?.close({duration: 300})
-        }
+    <ScrollView style={tw`bg-white px-4 pt-6`}>
+      <TextInput
+        style={tw`text-lg font-semibold`}
+        placeholder="제목을 입력해 주세요."
+        value={title}
+        onChangeText={setTitle}
       />
-      <DiaryLocationBottomSheetModal
-        ref={locationBottomSheetModalRef}
-        location={location}
-        setLocation={(value: string) => setLocation(value)}
-        closeBottomSheetModal={() =>
-          locationBottomSheetModalRef.current?.close({duration: 300})
-        }
+      <DiaryDatePicker />
+      <DiaryLocationPicker />
+      <DiaryFeelingPicker />
+      <TextInput
+        style={tw`my-11`}
+        multiline={true}
+        textAlignVertical="top"
+        placeholder="여행은 어땠나요? 자유롭게 기록하고 싶은 것들을 작성해보세요."
+        value={content}
+        onChangeText={setContent}
       />
-      <DiaryFeelingBottomSheetModal
-        ref={feelingBottomSheetModalRef}
-        feeling={feeling}
-        setFeeling={(value: string) => setFeeling(value)}
-        closeBottomSheetModal={() =>
-          feelingBottomSheetModalRef.current?.close({duration: 300})
-        }
-      />
-    </BottomSheetModalProvider>
+    </ScrollView>
   );
 };

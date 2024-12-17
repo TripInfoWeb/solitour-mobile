@@ -4,10 +4,10 @@ import {
   BottomSheetView,
 } from '@gorhom/bottom-sheet';
 import React, {forwardRef, useCallback} from 'react';
-import {tw} from '../../libs/tailwind';
 import {FlatList, Image, Pressable, Text, View} from 'react-native';
-import {COLOR} from '../../constants/color';
-import {PrimaryButton} from '../common/PrimaryButton';
+import {tw} from '../../../../libs/tailwind';
+import {COLOR} from '../../../../constants/color';
+import {PrimaryButton} from '../../../common/PrimaryButton';
 
 const LOCATIONLIST = [
   '서울',
@@ -25,7 +25,7 @@ const LOCATIONLIST = [
   '세종',
   '충청',
   '전라',
-];
+] as const;
 
 interface DiaryLocationBottomSheetModalProps {
   location: string | null;
