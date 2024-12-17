@@ -14,7 +14,7 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {useNavigation} from '@react-navigation/native';
 import {NavigationProps} from '../types/navigation';
 import {tw} from '../libs/tailwind';
-import {COLOR} from '../constants/color';
+import {PrimaryButton} from '../components/common/PrimaryButton';
 
 export const HomeScreen = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -42,21 +42,10 @@ export const HomeScreen = () => {
         <Text style={tw`absolute top-[23%] text-center text-2xl font-bold`}>
           {'OO님,\n오늘은 어디로 떠날까요?'}
         </Text>
-        <Pressable
-          style={({pressed}) => {
-            return tw.style([
-              pressed
-                ? 'android:bg-primary-green ios:bg-primary-green-ripple'
-                : 'bg-primary-green',
-              'absolute bottom-6 left-4 right-4 flex h-12 items-center justify-center rounded-lg',
-            ]);
-          }}
-          android_ripple={{color: COLOR.PRIMARY_GREEN_RIPPLE}}
-          onPress={() => navigation.navigate('Survey')}>
-          <Text style={tw`text-lg font-semibold text-white`}>
-            AI 여행 코스 추천
-          </Text>
-        </Pressable>
+        <PrimaryButton
+          title="AI 여행 코스 추천"
+          onPress={() => navigation.navigate('Survey')}
+        />
       </View>
       <View style={tw`flex flex-col gap-14 px-4 py-14`}>
         <View style={tw`flex flex-col gap-3.5`}>
