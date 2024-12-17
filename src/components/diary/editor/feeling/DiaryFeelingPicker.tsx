@@ -1,6 +1,6 @@
-import {BottomSheetModal, BottomSheetModalProvider} from '@gorhom/bottom-sheet';
+import {BottomSheetModal} from '@gorhom/bottom-sheet';
 import React, {useCallback, useRef, useState} from 'react';
-import {Image, Pressable, Text} from 'react-native';
+import {Image, Pressable, Text, View} from 'react-native';
 import {COLOR} from '../../../../constants/color';
 import {tw} from '../../../../libs/tailwind';
 import {DiaryFeelingBottomSheetModal} from './DiaryFeelingBottomSheetModal';
@@ -14,7 +14,7 @@ export const DiaryFeelingPicker = () => {
   }, []);
 
   return (
-    <BottomSheetModalProvider>
+    <View>
       <Pressable
         style={({pressed}) =>
           tw.style([
@@ -26,7 +26,7 @@ export const DiaryFeelingPicker = () => {
         onPress={handlePresentModalPress}>
         <Image
           style={tw`h-4 w-4`}
-          source={require('../../assets/diary/feeling.png')}
+          source={require('../../../../assets/diary/feeling.png')}
         />
         <Text
           style={tw.style(feeling ? 'text-primary-green' : 'text-gray-500')}>
@@ -41,6 +41,6 @@ export const DiaryFeelingPicker = () => {
           bottomSheetModalRef.current?.close({duration: 300})
         }
       />
-    </BottomSheetModalProvider>
+    </View>
   );
 };

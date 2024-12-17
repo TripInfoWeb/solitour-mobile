@@ -1,6 +1,6 @@
 import React, {useCallback, useRef, useState} from 'react';
-import {BottomSheetModal, BottomSheetModalProvider} from '@gorhom/bottom-sheet';
-import {Image, Pressable, Text} from 'react-native';
+import {BottomSheetModal} from '@gorhom/bottom-sheet';
+import {Image, Pressable, Text, View} from 'react-native';
 import {tw} from '../../../../libs/tailwind';
 import {COLOR} from '../../../../constants/color';
 import {DiaryLocationBottomSheetModal} from './DiaryLocationBottomSheetModal';
@@ -14,7 +14,7 @@ export const DiaryLocationPicker = () => {
   }, []);
 
   return (
-    <BottomSheetModalProvider>
+    <View>
       <Pressable
         style={({pressed}) =>
           tw.style([
@@ -26,7 +26,7 @@ export const DiaryLocationPicker = () => {
         onPress={handlePresentModalPress}>
         <Image
           style={tw`h-[1.15625rem] w-4`}
-          source={require('../../assets/diary/location.png')}
+          source={require('../../../../assets/diary/location.png')}
         />
         <Text
           style={tw.style(location ? 'text-primary-green' : 'text-gray-500')}>
@@ -41,6 +41,6 @@ export const DiaryLocationPicker = () => {
           bottomSheetModalRef.current?.close({duration: 300})
         }
       />
-    </BottomSheetModalProvider>
+    </View>
   );
 };

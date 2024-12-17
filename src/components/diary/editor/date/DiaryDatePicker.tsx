@@ -1,8 +1,8 @@
 import React, {useCallback, useRef, useState} from 'react';
-import {Image, Pressable, Text} from 'react-native';
+import {Image, Pressable, Text, View} from 'react-native';
 import {tw} from '../../../../libs/tailwind';
 import {COLOR} from '../../../../constants/color';
-import {BottomSheetModal, BottomSheetModalProvider} from '@gorhom/bottom-sheet';
+import {BottomSheetModal} from '@gorhom/bottom-sheet';
 import {DiaryDateBottomSheetModal} from './DiaryDateBottomSheetModal';
 
 export const DiaryDatePicker = () => {
@@ -17,7 +17,7 @@ export const DiaryDatePicker = () => {
   }, []);
 
   return (
-    <BottomSheetModalProvider>
+    <View>
       <Pressable
         style={({pressed}) =>
           tw.style([
@@ -29,7 +29,7 @@ export const DiaryDatePicker = () => {
         onPress={handlePresentModalPress}>
         <Image
           style={tw`h-4 w-4`}
-          source={require('../../assets/diary/date.png')}
+          source={require('../../../../assets/diary/date.png')}
         />
         <Text
           style={tw.style(endDate ? 'text-primary-green' : 'text-gray-500')}>
@@ -47,6 +47,6 @@ export const DiaryDatePicker = () => {
           bottomSheetModalRef.current?.close({duration: 300})
         }
       />
-    </BottomSheetModalProvider>
+    </View>
   );
 };

@@ -66,7 +66,7 @@ export const DiaryLocationBottomSheetModal = forwardRef<
             onPress={() => closeBottomSheetModal()}>
             <Image
               style={tw`h-4 w-4`}
-              source={require('../../assets/common/close.png')}
+              source={require('../../../../assets/common/close.png')}
             />
           </Pressable>
         </View>

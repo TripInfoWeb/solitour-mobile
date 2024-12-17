@@ -87,13 +87,13 @@ export const DiaryDateBottomSheetModal = forwardRef<
               previousComponent={
                 <Image
                   style={tw`h-6 w-6`}
-                  source={require('../../assets/common/chevronLeft.png')}
+                  source={require('../../../../assets/common/chevronLeft.png')}
                 />
               }
               nextComponent={
                 <Image
                   style={tw`h-6 w-6`}
-                  source={require('../../assets/common/chevronRight.png')}
+                  source={require('../../../../assets/common/chevronRight.png')}
                 />
               }
               onDateChange={(date, type) => {
