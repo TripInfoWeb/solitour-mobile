@@ -100,6 +100,7 @@ export const DiaryLocationBottomSheetModal = forwardRef<
         />
         <PrimaryButton
           title="선택하기"
+          disabled={location === null}
           onPress={() => closeBottomSheetModal()}
         />
       </BottomSheetView>

@@ -89,6 +89,7 @@ export const DiaryFeelingBottomSheetModal = forwardRef<
         />
         <PrimaryButton
           title="선택하기"
+          disabled={feeling === null}
           onPress={() => closeBottomSheetModal()}
         />
       </BottomSheetView>

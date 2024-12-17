@@ -5,21 +5,29 @@ import {COLOR} from '../../constants/color';
 
 interface PrimaryButtonProps {
   title: string;
+  disabled?: boolean;
   onPress?: ((event: GestureResponderEvent) => void) | null | undefined;
 }
 
-export const PrimaryButton = ({title, onPress}: PrimaryButtonProps) => {
+export const PrimaryButton = ({
+  title,
+  disabled,
+  onPress,
+}: PrimaryButtonProps) => {
   return (
     <Pressable
       style={({pressed}) => {
         return tw.style([
           pressed
             ? 'android:bg-primary-green ios:bg-primary-green-ripple'
-            : 'bg-primary-green',
+            : disabled
+              ? 'bg-custom-disabled'
+              : 'bg-primary-green',
           'absolute bottom-6 left-4 right-4 flex h-12 items-center justify-center rounded-lg',
         ]);
       }}
       android_ripple={{color: COLOR.PRIMARY_GREEN_RIPPLE}}
+      disabled={disabled}
       onPress={onPress}>
       <Text style={tw`text-lg font-semibold text-white`}>{title}</Text>
     </Pressable>
