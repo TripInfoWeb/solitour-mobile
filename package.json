@@ -10,6 +10,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@10play/tentap-editor": "^0.5.29",
     "@gorhom/bottom-sheet": "^5.0.6",
     "@react-navigation/bottom-tabs": "^7.2.0",
     "@react-navigation/elements": "^2.2.5",
@@ -24,6 +25,7 @@
     "react-native-reanimated": "^3.16.5",
     "react-native-safe-area-context": "^5.0.0",
     "react-native-screens": "^4.3.0",
+    "react-native-webview": "^13.12.5",
     "twrnc": "^4.6.0"
   },
   "devDependencies": {

@@ -8,7 +8,6 @@ import {DiaryFeelingBottomSheetModal} from './DiaryFeelingBottomSheetModal';
 export const DiaryFeelingPicker = () => {
   const [feeling, setFeeling] = useState<string | null>(null);
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
-
   const handlePresentModalPress = useCallback(() => {
     bottomSheetModalRef.current?.present();
   }, []);

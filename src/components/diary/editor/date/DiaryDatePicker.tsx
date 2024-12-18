@@ -9,7 +9,6 @@ export const DiaryDatePicker = () => {
   const [startDate, setStateDate] = useState<Date | null>(null);
   const [endDate, setEndDate] = useState<Date | null>(null);
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
-
   const handlePresentModalPress = useCallback(() => {
     setStateDate(null);
     setEndDate(null);

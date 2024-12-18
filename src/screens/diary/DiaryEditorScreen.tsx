@@ -8,14 +8,13 @@ import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 
 export const DiaryEditorScreen = () => {
   const [title, setTitle] = useState('');
-
   const [content, setContent] = useState('');
 
   return (
     <BottomSheetModalProvider>
       <ScrollView style={tw`bg-white px-4 pt-6`}>
         <TextInput
-          style={tw`text-lg font-semibold`}
+          style={tw`h-14 text-lg font-semibold`}
           placeholder="제목을 입력해 주세요."
           value={title}
           onChangeText={setTitle}

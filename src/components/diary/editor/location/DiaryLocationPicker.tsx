@@ -8,7 +8,6 @@ import {DiaryLocationBottomSheetModal} from './DiaryLocationBottomSheetModal';
 export const DiaryLocationPicker = () => {
   const [location, setLocation] = useState<string | null>(null);
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
-
   const handlePresentModalPress = useCallback(() => {
     bottomSheetModalRef.current?.present();
   }, []);
