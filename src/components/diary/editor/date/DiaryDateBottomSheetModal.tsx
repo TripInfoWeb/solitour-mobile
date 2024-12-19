@@ -9,6 +9,7 @@ import {Image, Pressable, Text, View} from 'react-native';
 import {COLOR} from '@src/constants/color';
 import CalendarPicker from 'react-native-calendar-picker';
 import {PrimaryButton} from '@src/components/common/PrimaryButton';
+import {useBackHandler} from '@src/hooks/useBackHandler';
 
 const currentDate = new Date();
 
@@ -27,16 +28,21 @@ export const DiaryDateBottomSheetModal = forwardRef<
     {endDate, setStateDate, setEndDate, closeBottomSheetModal},
     bottomSheetModalRef,
   ) => {
+    const {addBackPressEventListener, removeBackPressEventListener} =
+      useBackHandler(closeBottomSheetModal);
     const renderBackdrop = useCallback(
-      (props: any) => (
-        <BottomSheetBackdrop
-          {...props}
-          pressBehavior="none"
-          appearsOnIndex={0}
-          disappearsOnIndex={-1}
-        />
-      ),
-      [],
+      (props: any) => {
+        addBackPressEventListener();
+        return (
+          <BottomSheetBackdrop
+            {...props}
+            pressBehavior="none"
+            appearsOnIndex={0}
+            disappearsOnIndex={-1}
+          />
+        );
+      },
+      [addBackPressEventListener],
     );
 
     return (
@@ -44,7 +50,8 @@ export const DiaryDateBottomSheetModal = forwardRef<
         style={tw`rounded-2xl`}
         ref={bottomSheetModalRef}
         snapPoints={[500]}
-        backdropComponent={renderBackdrop}>
+        backdropComponent={renderBackdrop}
+        onDismiss={removeBackPressEventListener}>
         <BottomSheetView style={tw`h-[30rem] px-5`}>
           <View style={tw`flex flex-row items-center justify-between`}>
             <Text style={tw`text-[1.375rem] font-semibold`}>날짜</Text>

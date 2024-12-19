@@ -8,6 +8,7 @@ import {FlatList, Image, Pressable, Text, View} from 'react-native';
 import {tw} from '@src/libs/tailwind';
 import {COLOR} from '@src/constants/color';
 import {PrimaryButton} from '@src/components/common/PrimaryButton';
+import {useBackHandler} from '@src/hooks/useBackHandler';
 
 const FEELINGLIST = [
   {source: require('@src/assets/diary/feeling1.png'), label: '최고'},
@@ -27,16 +28,21 @@ export const DiaryFeelingBottomSheetModal = forwardRef<
   BottomSheetModal,
   DiaryFeelingBottomSheetModalProps
 >(({feeling, setFeeling, closeBottomSheetModal}, bottomSheetModalRef) => {
+  const {addBackPressEventListener, removeBackPressEventListener} =
+    useBackHandler(closeBottomSheetModal);
   const renderBackdrop = useCallback(
-    (props: any) => (
-      <BottomSheetBackdrop
-        {...props}
-        pressBehavior="none"
-        appearsOnIndex={0}
-        disappearsOnIndex={-1}
-      />
-    ),
-    [],
+    (props: any) => {
+      addBackPressEventListener();
+      return (
+        <BottomSheetBackdrop
+          {...props}
+          pressBehavior="none"
+          appearsOnIndex={0}
+          disappearsOnIndex={-1}
+        />
+      );
+    },
+    [addBackPressEventListener],
   );
 
   return (
@@ -44,7 +50,8 @@ export const DiaryFeelingBottomSheetModal = forwardRef<
       style={tw`rounded-2xl`}
       ref={bottomSheetModalRef}
       snapPoints={[340]}
-      backdropComponent={renderBackdrop}>
+      backdropComponent={renderBackdrop}
+      onDismiss={removeBackPressEventListener}>
       <BottomSheetView style={tw`h-80 px-5`}>
         <View style={tw`flex flex-row items-center justify-between`}>
           <Text style={tw`text-[1.375rem] font-semibold`}>기분</Text>
