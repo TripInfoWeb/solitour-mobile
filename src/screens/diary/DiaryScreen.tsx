@@ -73,7 +73,7 @@ export const DiaryScreen = () => {
 
   return (
     <View style={tw`flex h-full flex-col items-center bg-white`}>
-      <View style={tw`flex flex-row items-center gap-2 pt-[2.625rem]`}>
+      <View style={tw.style('flex flex-row items-center gap-2 pt-[2.625rem]')}>
         <Pressable
           style={({pressed}) => {
             return tw.style([pressed ? 'bg-slate-100' : '', 'rounded-2xl p-2']);
