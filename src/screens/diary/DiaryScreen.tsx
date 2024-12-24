@@ -1,6 +1,14 @@
 import React, {Reducer, useReducer} from 'react';
-import {Image, Pressable, Text, View} from 'react-native';
+import {
+  FlatList,
+  Image,
+  Pressable,
+  Text,
+  useWindowDimensions,
+  View,
+} from 'react-native';
 import {tw} from '@src/libs/tailwind';
+import {DiaryCard} from '@src/components/diary/list/DiaryCard';
 
 type State = {
   year: number;
@@ -28,7 +36,36 @@ const reducer = (state: State, action: Action): State => {
 
 const date = new Date();
 
+// TODO: 삭제 필요
+const examples = [
+  {
+    diaryId: 1,
+    title: '나 홀로 제주여행',
+    period: '2024. 12. 3 - 2024. 12. 12.',
+    image: require('@src/assets/test/diary-example.png'),
+  },
+  {
+    diaryId: 2,
+    title: '나 홀로 제주여행',
+    period: '2024. 12. 3 - 2024. 12. 12.',
+    image: require('@src/assets/test/diary-example.png'),
+  },
+  {
+    diaryId: 3,
+    title: '나 홀로 제주여행',
+    period: '2024. 12. 3 - 2024. 12. 12.',
+    image: require('@src/assets/test/diary-example.png'),
+  },
+  // {
+  //   diaryId: 4,
+  //   title: '나 홀로 제주여행',
+  //   period: '2024. 12. 3 - 2024. 12. 12.',
+  //   image: require('@src/assets/test/diary-example.png'),
+  // },
+];
+
 export const DiaryScreen = () => {
+  const {width} = useWindowDimensions();
   const [state, dispatch] = useReducer<Reducer<State, Action>>(reducer, {
     year: date.getFullYear(),
     month: date.getMonth() + 1,
@@ -60,13 +97,34 @@ export const DiaryScreen = () => {
           />
         </Pressable>
       </View>
-      <View style={tw`flex flex-col items-center gap-[1.125rem] pt-[8.375rem]`}>
-        <Image
-          style={tw`ml-[0.3125rem] h-16 w-16`}
-          source={require('@src/assets/diary/diary-empty.png')}
+      {state.year === 2025 && state.month === 1 ? (
+        <FlatList
+          style={tw`flex-grow-0 pt-7`}
+          horizontal={true}
+          contentOffset={{
+            x: (308 * examples.length - width) / 2,
+            y: 0,
+          }}
+          data={examples}
+          renderItem={({item}) => (
+            <DiaryCard
+              title={item.title}
+              period={item.period}
+              image={item.image}
+            />
+          )}
+          keyExtractor={item => item.diaryId.toString()}
         />
-        <Text>아직 저장된 일기가 없어요</Text>
-      </View>
+      ) : (
+        <View
+          style={tw`flex flex-col items-center gap-[1.125rem] pt-[8.375rem]`}>
+          <Image
+            style={tw`ml-[0.3125rem] h-16 w-16`}
+            source={require('@src/assets/diary/diary-empty.png')}
+          />
+          <Text>아직 저장된 일기가 없어요</Text>
+        </View>
+      )}
     </View>
   );
 };
