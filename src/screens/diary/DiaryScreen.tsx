@@ -36,7 +36,7 @@ export const DiaryScreen = () => {
 
   return (
     <View style={tw`flex h-full flex-col items-center bg-white`}>
-      <View style={tw`flex flex-row items-center gap-2 pt-10`}>
+      <View style={tw`flex flex-row items-center gap-2 pt-[2.625rem]`}>
         <Pressable
           style={({pressed}) => {
             return tw.style([pressed ? 'bg-slate-100' : '', 'rounded-2xl p-2']);
@@ -60,8 +60,11 @@ export const DiaryScreen = () => {
           />
         </Pressable>
       </View>
-      <View style={tw`flex flex-col gap-[1.125rem] pt-[4.25rem]`}>
-        <View style={tw`h-[7.5rem] rounded-lg bg-gray-100`} />
+      <View style={tw`flex flex-col items-center gap-[1.125rem] pt-[8.375rem]`}>
+        <Image
+          style={tw`ml-[0.3125rem] h-16 w-16`}
+          source={require('@src/assets/diary/diary-empty.png')}
+        />
         <Text>아직 저장된 일기가 없어요</Text>
       </View>
     </View>
