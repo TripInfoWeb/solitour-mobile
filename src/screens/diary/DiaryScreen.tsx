@@ -56,12 +56,12 @@ const examples = [
     period: '2024. 12. 3 - 2024. 12. 12.',
     image: require('@src/assets/test/diary-example.png'),
   },
-  // {
-  //   diaryId: 4,
-  //   title: '나 홀로 제주여행',
-  //   period: '2024. 12. 3 - 2024. 12. 12.',
-  //   image: require('@src/assets/test/diary-example.png'),
-  // },
+  {
+    diaryId: 4,
+    title: '나 홀로 제주여행',
+    period: '2024. 12. 3 - 2024. 12. 12.',
+    image: require('@src/assets/test/diary-example.png'),
+  },
 ];
 
 export const DiaryScreen = () => {
@@ -97,12 +97,17 @@ export const DiaryScreen = () => {
           />
         </Pressable>
       </View>
+      {/* TODO: 수정 필요 */}
       {state.year === 2025 && state.month === 1 ? (
         <FlatList
           style={tw`flex-grow-0 pt-7`}
           horizontal={true}
+          showsHorizontalScrollIndicator={false}
           contentOffset={{
-            x: (308 * examples.length - width) / 2,
+            x:
+              examples.length % 2 === 0
+                ? (308 * (examples.length - 1) - width) / 2
+                : (308 * examples.length - width) / 2,
             y: 0,
           }}
           data={examples}
