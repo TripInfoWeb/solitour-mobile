@@ -1,6 +1,7 @@
+import {useCardFlipAnimation} from '@src/hooks/diary/useCardFlipAnimation';
 import {tw} from '@src/libs/tailwind';
-import React, {useEffect, useState} from 'react';
-import {Animated, Image, Text, useAnimatedValue, View} from 'react-native';
+import React from 'react';
+import {Animated, Image, Text, View} from 'react-native';
 
 interface DiaryCardProps {
   title: string;
@@ -8,37 +9,8 @@ interface DiaryCardProps {
   image: any;
 }
 
-// TODO: 코드 리팩토링
 export const DiaryCard = ({title, period, image}: DiaryCardProps) => {
-  const degree = useAnimatedValue(-90);
-  const [isTail, setIsTail] = useState(false);
-  const [canRotate, setCanRotate] = useState(false);
-
-  const rotateTo0deg = () => {
-    Animated.timing(degree, {
-      toValue: 0,
-      duration: 500,
-      useNativeDriver: true,
-    }).start(() => setCanRotate(true));
-  };
-
-  const flipCard = () => {
-    setCanRotate(false);
-    Animated.timing(degree, {
-      toValue: 90,
-      duration: 500,
-      useNativeDriver: true,
-    }).start(() => {
-      setIsTail(!isTail);
-      degree.setValue(-90);
-      rotateTo0deg();
-    });
-  };
-
-  useEffect(() => {
-    rotateTo0deg();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const {interpolate, isTail, flipCard} = useCardFlipAnimation();
 
   // 뒷면
   if (isTail) {
@@ -48,22 +20,10 @@ export const DiaryCard = ({title, period, image}: DiaryCardProps) => {
           style={tw.style(
             'h-[26rem] w-[17.75rem] rounded-xl border border-gray-200 p-6',
             {
-              transform: [
-                {
-                  rotateY: degree.interpolate({
-                    inputRange: [-90, 0, 90],
-                    outputRange: ['-90deg', '0deg', '90deg'],
-                  }),
-                },
-                {perspective: 1000},
-              ],
+              transform: [{rotateY: interpolate}, {perspective: 1000}],
             },
           )}
-          onTouchEndCapture={() => {
-            if (canRotate) {
-              flipCard();
-            }
-          }}>
+          onTouchEndCapture={() => flipCard()}>
           <View style={tw`flex flex-row items-center gap-2`}>
             <Image
               style={tw`h-[1.1875rem] w-4`}
@@ -93,21 +53,9 @@ export const DiaryCard = ({title, period, image}: DiaryCardProps) => {
     <View style={tw`px-3`}>
       <Animated.View
         style={tw.style('relative h-[26rem] w-[17.75rem] rounded-xl', {
-          transform: [
-            {
-              rotateY: degree.interpolate({
-                inputRange: [-90, 0, 90],
-                outputRange: ['-90deg', '0deg', '90deg'],
-              }),
-            },
-            {perspective: 1000},
-          ],
+          transform: [{rotateY: interpolate}, {perspective: 1000}],
         })}
-        onTouchEndCapture={() => {
-          if (canRotate) {
-            flipCard();
-          }
-        }}>
+        onTouchEndCapture={() => flipCard()}>
         <Image style={tw`h-full w-full rounded-xl`} source={image} />
         <View style={tw`absolute bottom-[1.875rem] flex flex-col gap-1 px-8`}>
           <Text style={tw`text-xl font-semibold text-white`}>{title}</Text>
