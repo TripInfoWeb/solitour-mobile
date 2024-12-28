@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationList} from './types/navigation';
@@ -8,6 +8,7 @@ import {DiaryEditorScreen} from './screens/diary/DiaryEditorScreen';
 import {Pressable, Text} from 'react-native';
 import {tw} from './libs/tailwind';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import SplashScreen from 'react-native-splash-screen';
 
 const DiaryRegisterButton = () => {
   return (
@@ -23,6 +24,10 @@ const DiaryRegisterButton = () => {
 const Stack = createNativeStackNavigator<NavigationList>();
 
 export const App = () => {
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
+
   return (
     <GestureHandlerRootView>
       <NavigationContainer>
