@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import {
+  FlatList,
+  Image,
   KeyboardAvoidingView,
   Platform,
   SafeAreaView,
@@ -18,7 +20,9 @@ import {
   Toolbar,
   useEditorBridge,
   DEFAULT_TOOLBAR_ITEMS,
+  useEditorContent,
 } from '@10play/tentap-editor';
+import {launchImageLibrary} from 'react-native-image-picker';
 
 export const DiaryEditorScreen = () => {
   const [title, setTitle] = useState('');
@@ -31,10 +35,18 @@ export const DiaryEditorScreen = () => {
         placeholder:
           '여행은 어땠나요? 자유롭게 기록하고 싶은 것들을 작성해보세요.',
       }),
-      // ImageBridge.configureExtension({inline: true, allowBase64: true}),
     ],
   });
-  // const content = useEditorContent(editor, {type: 'html'});
+  const content = useEditorContent(editor, {type: 'html'});
+  const [images, setImages] = useState<string[]>([]);
+
+  const handleImageUpload = () => {
+    launchImageLibrary({mediaType: 'photo'}, response => {
+      if (response.assets) {
+        setImages(value => [...value, response.assets![0].uri!]);
+      }
+    });
+  };
 
   return (
     <BottomSheetModalProvider>
@@ -48,19 +60,28 @@ export const DiaryEditorScreen = () => {
         <DiaryDatePicker />
         <DiaryLocationPicker />
         <DiaryFeelingPicker />
-        <SafeAreaView style={tw`h-96 flex-1 py-7`}>
+        <SafeAreaView style={tw`h-80 flex-1 py-7`}>
           <RichText editor={editor} />
         </SafeAreaView>
       </ScrollView>
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        style={tw`absolute bottom-0 w-full`}>
+        style={tw`absolute bottom-0 flex w-full flex-col gap-4`}>
+        <FlatList
+          contentContainerStyle={tw`gap-2`}
+          horizontal={true}
+          data={images}
+          renderItem={({item}) => (
+            <Image style={tw`h-20 w-20 rounded-lg`} source={{uri: item}} />
+          )}
+          keyExtractor={(_, index) => index.toString()}
+        />
         <Toolbar
           editor={editor}
           hidden={false}
           items={[
             {
-              onPress: () => () => {},
+              onPress: () => () => handleImageUpload(),
               active: () => false,
               disabled: () => false,
               image: () => require('@src/assets/common/image-icon.png'),
