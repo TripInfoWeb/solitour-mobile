@@ -40,7 +40,7 @@ export const App = () => {
           <Stack.Screen
             name="Survey"
             component={SurveyScreen}
-            options={{title: '여행 설문조사'}}
+            options={{title: 'AI 콘텐츠 여행 추천'}}
           />
           <Stack.Screen
             name="DiaryEditor"
