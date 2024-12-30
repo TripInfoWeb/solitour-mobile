@@ -1,4 +1,5 @@
 import {SurveyButton} from '@src/components/survey/SurveyButton';
+import {SurveyNextButton} from '@src/components/survey/SurveyNextButton';
 import {tw} from '@src/libs/tailwind';
 import React from 'react';
 import {Text, View} from 'react-native';
@@ -27,6 +28,7 @@ export const SurveyScreen = () => {
           <SurveyButton title="예능" />
         </View>
       </View>
+      <SurveyNextButton />
     </View>
   );
 };

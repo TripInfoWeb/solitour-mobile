@@ -6,7 +6,7 @@ import {COLOR} from '@src/constants/color';
 interface PrimaryButtonProps {
   title: string;
   disabled?: boolean;
-  onPress?: ((event: GestureResponderEvent) => void) | null | undefined;
+  onPress?: ((event: GestureResponderEvent) => void) | null;
 }
 
 export const PrimaryButton = ({
