@@ -3,7 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationList} from './types/navigation';
 import {BottomTabs} from './components/common/BottomTabs';
-import {SurveyScreen} from './screens/SurveyScreen';
+import {SurveyThemeScreen} from './screens/survey/SurveyThemeScreen';
 import {DiaryEditorScreen} from './screens/diary/DiaryEditorScreen';
 import {Pressable, Text} from 'react-native';
 import {tw} from './libs/tailwind';
@@ -38,8 +38,8 @@ export const App = () => {
             options={{headerShown: false}}
           />
           <Stack.Screen
-            name="Survey"
-            component={SurveyScreen}
+            name="SurveyTheme"
+            component={SurveyThemeScreen}
             options={{title: 'AI 콘텐츠 여행 추천'}}
           />
           <Stack.Screen

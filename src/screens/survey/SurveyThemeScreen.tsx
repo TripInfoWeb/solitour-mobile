@@ -4,7 +4,7 @@ import {tw} from '@src/libs/tailwind';
 import React from 'react';
 import {Text, View} from 'react-native';
 
-export const SurveyScreen = () => {
+export const SurveyThemeScreen = () => {
   return (
     <View style={tw`h-full w-full bg-white px-4 pt-10`}>
       <View style={tw`flex flex-row items-center gap-1.5`}>
