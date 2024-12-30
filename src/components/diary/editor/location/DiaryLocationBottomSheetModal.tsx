@@ -92,15 +92,17 @@ export const DiaryLocationBottomSheetModal = forwardRef<
                   'mr-1.5 flex h-10 w-[3.75rem] items-center justify-center rounded-full border',
                 ])
               }
-              onPress={() => setLocation(item)}>
-              <Text
-                style={tw.style(
-                  location === item ? 'text-white' : 'text-black',
-                  'font-semibold',
-                )}>
-                {item}
-              </Text>
-            </Pressable>
+              onPress={() => setLocation(item)}
+              children={({pressed}) => (
+                <Text
+                  style={tw.style(
+                    pressed || location === item ? 'text-white' : 'text-black',
+                    'font-semibold',
+                  )}>
+                  {item}
+                </Text>
+              )}
+            />
           )}
           keyExtractor={item => item}
           numColumns={5}
