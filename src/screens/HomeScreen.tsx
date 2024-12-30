@@ -35,7 +35,7 @@ export const HomeScreen = () => {
         </Text>
         <PrimaryButton
           title="AI 콘텐츠 여행 추천"
-          onPress={() => navigation.navigate('Survey')}
+          onPress={() => navigation.navigate('SurveyTheme')}
         />
       </View>
       <View style={tw`flex flex-col gap-14 px-4 py-14`}>

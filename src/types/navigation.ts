@@ -8,6 +8,7 @@ export type NavigationList = {
   Diary: undefined;
   Mypage: undefined;
   SurveyTheme: undefined;
+  SurveyContent: undefined;
   DiaryEditor: undefined;
 };
 
