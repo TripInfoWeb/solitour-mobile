@@ -1,6 +1,7 @@
 import {useNavigation} from '@react-navigation/native';
-import {SurveyButton} from '@src/components/survey/SurveyButton';
-import {SurveyNextButton} from '@src/components/survey/SurveyNextButton';
+import {SurveyButton} from '@src/components/survey/common/SurveyButton';
+import {SurveyNextButton} from '@src/components/survey/common/SurveyNextButton';
+import {SurveyProgressBar} from '@src/components/survey/common/SurveyProgressBar';
 import {tw} from '@src/libs/tailwind';
 import {NavigationProps} from '@src/types/navigation';
 import React, {useState} from 'react';
@@ -14,11 +15,7 @@ export const SurveyThemeScreen = () => {
 
   return (
     <View style={tw`h-full w-full bg-white px-4 pt-10`}>
-      <View style={tw`flex flex-row items-center gap-1.5`}>
-        <View style={tw`h-2.5 flex-1 rounded-lg bg-primary-green`} />
-        <View style={tw`h-2.5 flex-1 rounded-lg bg-custom-gray`} />
-        <View style={tw`h-2.5 flex-1 rounded-lg bg-custom-gray`} />
-      </View>
+      <SurveyProgressBar totalProgress={3} currentProgress={1} />
       <Text style={tw`pt-8 text-2xl font-bold text-custom-01`}>
         어떤 테마의
       </Text>

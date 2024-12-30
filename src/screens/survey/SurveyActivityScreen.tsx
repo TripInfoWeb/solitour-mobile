@@ -1,5 +1,6 @@
-import {SurveyButton} from '@src/components/survey/SurveyButton';
-import {SurveyNextButton} from '@src/components/survey/SurveyNextButton';
+import {SurveyButton} from '@src/components/survey/common/SurveyButton';
+import {SurveyNextButton} from '@src/components/survey/common/SurveyNextButton';
+import {SurveyProgressBar} from '@src/components/survey/common/SurveyProgressBar';
 import {tw} from '@src/libs/tailwind';
 import React, {useState} from 'react';
 import {Text, View} from 'react-native';
@@ -16,11 +17,7 @@ export const SurveyActivityScreen = () => {
 
   return (
     <View style={tw`h-full w-full bg-white px-4 pt-10`}>
-      <View style={tw`flex flex-row items-center gap-1.5`}>
-        <View style={tw`h-2.5 flex-1 rounded-lg bg-primary-green`} />
-        <View style={tw`h-2.5 flex-1 rounded-lg bg-primary-green`} />
-        <View style={tw`h-2.5 flex-1 rounded-lg bg-primary-green`} />
-      </View>
+      <SurveyProgressBar totalProgress={3} currentProgress={3} />
       <Text style={tw`pt-8 text-2xl font-bold text-custom-01`}>여행에서</Text>
       <Text style={tw`text-2xl font-bold text-custom-01`}>
         무엇을 하고 싶나요?
