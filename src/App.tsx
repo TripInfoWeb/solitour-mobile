@@ -3,12 +3,14 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationList} from './types/navigation';
 import {BottomTabs} from './components/common/BottomTabs';
-import {SurveyScreen} from './screens/SurveyScreen';
+import {SurveyThemeScreen} from './screens/survey/SurveyThemeScreen';
 import {DiaryEditorScreen} from './screens/diary/DiaryEditorScreen';
 import {Pressable, Text} from 'react-native';
 import {tw} from './libs/tailwind';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import SplashScreen from 'react-native-splash-screen';
+import {SurveyContentScreen} from './screens/survey/SurveyContentScreen';
+import {SurveyActivityScreen} from './screens/survey/SurveyActivityScreen';
 
 const DiaryRegisterButton = () => {
   return (
@@ -38,9 +40,19 @@ export const App = () => {
             options={{headerShown: false}}
           />
           <Stack.Screen
-            name="Survey"
-            component={SurveyScreen}
-            options={{title: '여행 설문조사'}}
+            name="SurveyTheme"
+            component={SurveyThemeScreen}
+            options={{title: 'AI 콘텐츠 여행 추천'}}
+          />
+          <Stack.Screen
+            name="SurveyContent"
+            component={SurveyContentScreen}
+            options={{title: 'AI 콘텐츠 여행 추천'}}
+          />
+          <Stack.Screen
+            name="SurveyActivity"
+            component={SurveyActivityScreen}
+            options={{title: 'AI 콘텐츠 여행 추천'}}
           />
           <Stack.Screen
             name="DiaryEditor"

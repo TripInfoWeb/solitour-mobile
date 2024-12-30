@@ -34,8 +34,8 @@ export const HomeScreen = () => {
           {'OO님,\n오늘은 어디로 떠날까요?'}
         </Text>
         <PrimaryButton
-          title="AI 여행 코스 추천"
-          onPress={() => navigation.navigate('Survey')}
+          title="AI 콘텐츠 여행 추천"
+          onPress={() => navigation.navigate('SurveyTheme')}
         />
       </View>
       <View style={tw`flex flex-col gap-14 px-4 py-14`}>
