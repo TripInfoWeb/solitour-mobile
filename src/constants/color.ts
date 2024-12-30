@@ -2,7 +2,7 @@ export const COLOR = {
   PRIMARY_GREEN: '#26B888',
   PRIMARY_GREEN_RIPPLE: '#069868',
   PRIMARY_RED: '#DA1E28',
-  GRAY: '#F5F5F5',
+  GRAY: '#F0F0F0',
   GRAY_RIPPLE: '#f1f5f9',
   GREEN: '#ECF4E2',
   GREEN_RIPPLE: '#dcfce7',

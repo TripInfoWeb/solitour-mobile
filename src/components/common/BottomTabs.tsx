@@ -9,28 +9,11 @@ import {HomeScreen} from '@src/screens/HomeScreen';
 import {TourScreen} from '@src/screens/TourScreen';
 import {DiaryScreen} from '@src/screens/diary/DiaryScreen';
 import {MypageScreen} from '@src/screens/MypageScreen';
+import {DiscoveryScreen} from '@src/screens/DiscoveryScreen';
 
 interface IconProps {
   focused: boolean;
 }
-
-const HomeIcon = ({focused}: IconProps) => {
-  if (focused) {
-    return (
-      <Image
-        style={tw`h-6 w-6`}
-        source={require('@src/assets/common/home-active.png')}
-      />
-    );
-  }
-
-  return (
-    <Image
-      style={tw`h-6 w-6`}
-      source={require('@src/assets/common/home.png')}
-    />
-  );
-};
 
 const TourIcon = ({focused}: IconProps) => {
   if (focused) {
@@ -46,6 +29,42 @@ const TourIcon = ({focused}: IconProps) => {
     <Image
       style={tw`h-6 w-6`}
       source={require('@src/assets/common/tour.png')}
+    />
+  );
+};
+
+const DiscoveryIcon = ({focused}: IconProps) => {
+  if (focused) {
+    return (
+      <Image
+        style={tw`h-6 w-6`}
+        source={require('@src/assets/common/discovery-active.png')}
+      />
+    );
+  }
+
+  return (
+    <Image
+      style={tw`h-6 w-6`}
+      source={require('@src/assets/common/discovery.png')}
+    />
+  );
+};
+
+const HomeIcon = ({focused}: IconProps) => {
+  if (focused) {
+    return (
+      <Image
+        style={tw`h-6 w-6`}
+        source={require('@src/assets/common/home-active.png')}
+      />
+    );
+  }
+
+  return (
+    <Image
+      style={tw`h-6 w-6`}
+      source={require('@src/assets/common/home.png')}
     />
   );
 };
@@ -117,7 +136,24 @@ export const BottomTabs = () => {
         tabBarActiveTintColor: COLOR.PRIMARY_GREEN,
         tabBarStyle: {height: 56},
         tabBarLabelStyle: {fontSize: 12, fontWeight: 500},
-      }}>
+      }}
+      backBehavior="initialRoute">
+      <Tab.Screen
+        name="Tour"
+        component={TourScreen}
+        options={{
+          title: '내 여행',
+          tabBarIcon: TourIcon,
+        }}
+      />
+      <Tab.Screen
+        name="Discovery"
+        component={DiscoveryScreen}
+        options={{
+          title: '발견',
+          tabBarIcon: DiscoveryIcon,
+        }}
+      />
       <Tab.Screen
         name="Home"
         component={HomeScreen}
@@ -125,14 +161,6 @@ export const BottomTabs = () => {
           headerShown: false,
           title: '홈',
           tabBarIcon: HomeIcon,
-        }}
-      />
-      <Tab.Screen
-        name="Tour"
-        component={TourScreen}
-        options={{
-          title: '내 여행',
-          tabBarIcon: TourIcon,
         }}
       />
       <Tab.Screen

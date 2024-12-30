@@ -15,7 +15,7 @@ export const DiaryCard = ({title, period, image}: DiaryCardProps) => {
   // 뒷면
   if (isTail) {
     return (
-      <View style={tw`px-3`}>
+      <View style={tw`px-3 pb-5`}>
         <Animated.View
           style={tw.style(
             'h-[26rem] w-[17.75rem] rounded-xl border border-gray-200 p-6',
@@ -50,7 +50,7 @@ export const DiaryCard = ({title, period, image}: DiaryCardProps) => {
 
   // 앞면
   return (
-    <View style={tw`px-3`}>
+    <View style={tw`px-3 pb-5`}>
       <Animated.View
         style={tw.style('relative h-[26rem] w-[17.75rem] rounded-xl', {
           transform: [{rotateY: interpolate}, {perspective: 1000}],
