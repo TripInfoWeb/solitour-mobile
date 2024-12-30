@@ -10,6 +10,7 @@ import {tw} from './libs/tailwind';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import SplashScreen from 'react-native-splash-screen';
 import {SurveyContentScreen} from './screens/survey/SurveyContentScreen';
+import {SurveyActivityScreen} from './screens/survey/SurveyActivityScreen';
 
 const DiaryRegisterButton = () => {
   return (
@@ -46,6 +47,11 @@ export const App = () => {
           <Stack.Screen
             name="SurveyContent"
             component={SurveyContentScreen}
+            options={{title: 'AI 콘텐츠 여행 추천'}}
+          />
+          <Stack.Screen
+            name="SurveyActivity"
+            component={SurveyActivityScreen}
             options={{title: 'AI 콘텐츠 여행 추천'}}
           />
           <Stack.Screen

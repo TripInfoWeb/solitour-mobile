@@ -1,10 +1,13 @@
+import {useNavigation} from '@react-navigation/native';
 import {SurveyContentItem} from '@src/components/survey/SurveyContentItem';
 import {SurveyNextButton} from '@src/components/survey/SurveyNextButton';
 import {tw} from '@src/libs/tailwind';
+import {NavigationProps} from '@src/types/navigation';
 import React, {useState} from 'react';
 import {FlatList, Text, View} from 'react-native';
 
 export const SurveyContentScreen = () => {
+  const navigation = useNavigation<NavigationProps>();
   const [content, setContent] = useState<string | null>(null);
 
   return (
@@ -43,7 +46,10 @@ export const SurveyContentScreen = () => {
         keyExtractor={(_, index) => index.toString()}
         numColumns={2}
       />
-      <SurveyNextButton disabled={content === null} />
+      <SurveyNextButton
+        disabled={content === null}
+        onPress={() => navigation.navigate('SurveyActivity')}
+      />
     </View>
   );
 };
