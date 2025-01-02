@@ -136,6 +136,7 @@ export const BottomTabs = () => {
         tabBarActiveTintColor: COLOR.PRIMARY_GREEN,
         tabBarStyle: {height: 56},
         tabBarLabelStyle: {fontSize: 12, fontWeight: 500},
+        headerShadowVisible: false,
       }}
       backBehavior="initialRoute">
       <Tab.Screen

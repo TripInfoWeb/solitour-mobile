@@ -34,7 +34,9 @@ export const App = () => {
   return (
     <GestureHandlerRootView>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="BottomTabs">
+        <Stack.Navigator
+          initialRouteName="BottomTabs"
+          screenOptions={{headerShadowVisible: false}}>
           <Stack.Screen
             name="BottomTabs"
             component={BottomTabs}
@@ -58,10 +60,7 @@ export const App = () => {
           <Stack.Screen
             name="SurveyLoading"
             component={SurveyLoadingScreen}
-            options={{
-              title: 'AI 콘텐츠 여행 추천',
-              headerTransparent: true,
-            }}
+            options={{title: 'AI 콘텐츠 여행 추천'}}
           />
           <Stack.Screen
             name="DiaryEditor"
