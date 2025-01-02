@@ -11,6 +11,7 @@ import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import SplashScreen from 'react-native-splash-screen';
 import {SurveyContentScreen} from './screens/survey/SurveyContentScreen';
 import {SurveyActivityScreen} from './screens/survey/SurveyActivityScreen';
+import {SurveyLoadingScreen} from './screens/survey/SurveyLoadingScreen';
 
 const DiaryRegisterButton = () => {
   return (
@@ -53,6 +54,14 @@ export const App = () => {
             name="SurveyActivity"
             component={SurveyActivityScreen}
             options={{title: 'AI 콘텐츠 여행 추천'}}
+          />
+          <Stack.Screen
+            name="SurveyLoading"
+            component={SurveyLoadingScreen}
+            options={{
+              title: 'AI 콘텐츠 여행 추천',
+              headerTransparent: true,
+            }}
           />
           <Stack.Screen
             name="DiaryEditor"
