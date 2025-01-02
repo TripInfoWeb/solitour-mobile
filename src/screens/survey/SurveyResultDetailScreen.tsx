@@ -1,4 +1,5 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {SurveyKakaoMap} from '@src/components/survey/result/SurveyKakaoMap';
 import {tw} from '@src/libs/tailwind';
 import {NavigationList} from '@src/types/navigation';
 import React from 'react';
@@ -11,13 +12,16 @@ export const SurveyResultDetailScreen = ({
 
   return (
     <View style={tw`h-full bg-[#F3F3F3]`}>
-      <View style={tw`flex h-48 w-full justify-center bg-teal-100`}>
-        <Text style={tw`text-center`}>지도</Text>
+      <View style={tw`h-48`}>
+        <SurveyKakaoMap
+          initialLatitude={plan.days[0][0].latitude}
+          initialLongitude={plan.days[0][0].longitude}
+        />
       </View>
       <ScrollView style={tw`px-4 pt-4`}>
         <View style={tw`flex flex-row items-center gap-2 pb-6`}>
           <Text
-            style={tw`border-custom-blue text-custom-blue h-6 w-6 rounded-full border text-center font-semibold`}>
+            style={tw`h-6 w-6 rounded-full border border-custom-blue text-center font-semibold text-custom-blue`}>
             {index}
           </Text>
           <Text style={tw`text-xl font-semibold text-custom-01`}>
