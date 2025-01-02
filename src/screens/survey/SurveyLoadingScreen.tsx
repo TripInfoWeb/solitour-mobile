@@ -1,10 +1,26 @@
+import {useNavigation} from '@react-navigation/native';
 import {tw} from '@src/libs/tailwind';
+import {NavigationProps} from '@src/types/navigation';
 import LottieView from 'lottie-react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Text} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 export const SurveyLoadingScreen = () => {
+  const navigation = useNavigation<NavigationProps>();
+
+  // TODO: 수정 필요
+  useEffect(() => {
+    setTimeout(
+      () =>
+        navigation.reset({
+          index: 1,
+          routes: [{name: 'BottomTabs'}, {name: 'SurveyResultList'}],
+        }),
+      1000,
+    );
+  }, [navigation]);
+
   return (
     <LinearGradient
       colors={['#FDFFFE', '#E5F5EE']}

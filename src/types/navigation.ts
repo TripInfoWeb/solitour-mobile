@@ -11,6 +11,7 @@ export type NavigationList = {
   SurveyContent: undefined;
   SurveyActivity: undefined;
   SurveyLoading: undefined;
+  SurveyResultList: undefined;
   DiaryEditor: undefined;
 };
 
