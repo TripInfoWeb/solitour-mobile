@@ -13,6 +13,7 @@ import {SurveyContentScreen} from './screens/survey/SurveyContentScreen';
 import {SurveyActivityScreen} from './screens/survey/SurveyActivityScreen';
 import {SurveyLoadingScreen} from './screens/survey/SurveyLoadingScreen';
 import {SurveyResultListScreen} from './screens/survey/SurveyResultListScreen';
+import {SurveyResultDetailScreen} from './screens/survey/SurveyResultDetailScreen';
 
 const DiaryRegisterButton = () => {
   return (
@@ -66,6 +67,11 @@ export const App = () => {
           <Stack.Screen
             name="SurveyResultList"
             component={SurveyResultListScreen}
+            options={{title: 'AI 콘텐츠 여행 추천'}}
+          />
+          <Stack.Screen
+            name="SurveyResultDetail"
+            component={SurveyResultDetailScreen}
             options={{title: 'AI 콘텐츠 여행 추천'}}
           />
           <Stack.Screen

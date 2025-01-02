@@ -146,9 +146,8 @@ const temp = {
 
 export const SurveyResultListScreen = () => {
   return (
-    <View style={tw`flex h-full flex-col gap-6 bg-[#F3F3F3] px-4 pt-4`}>
+    <View style={tw`flex h-full flex-col gap-6 bg-[#F3F3F3] px-4`}>
       <FlatList
-        contentContainerStyle={tw`gap-4`}
         data={temp.plans}
         renderItem={({item, index}) => (
           <SurveyResultItem index={index + 1} plan={item} />

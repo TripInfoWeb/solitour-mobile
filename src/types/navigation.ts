@@ -1,4 +1,5 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {Plan} from './plan';
 
 export type NavigationList = {
   BottomTabs: undefined;
@@ -12,6 +13,7 @@ export type NavigationList = {
   SurveyActivity: undefined;
   SurveyLoading: undefined;
   SurveyResultList: undefined;
+  SurveyResultDetail: {index: number; plan: Plan};
   DiaryEditor: undefined;
 };
 

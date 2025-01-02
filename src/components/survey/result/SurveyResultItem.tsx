@@ -1,26 +1,22 @@
+import {useNavigation} from '@react-navigation/native';
 import {tw} from '@src/libs/tailwind';
+import {NavigationProps} from '@src/types/navigation';
+import {Plan} from '@src/types/plan';
 import React from 'react';
 import {FlatList, Pressable, Text, View} from 'react-native';
 
 interface SurveyResultItemProps {
   index: number;
-  plan: {
-    id: number;
-    title: string;
-    createdDate: string;
-    days: {
-      id: number;
-      placeName: string;
-      latitude: number;
-      longitude: number;
-    }[][];
-  };
+  plan: Plan;
 }
 
 export const SurveyResultItem = ({index, plan}: SurveyResultItemProps) => {
+  const navigation = useNavigation<NavigationProps>();
+
   return (
-    <View style={tw`flex w-full flex-col gap-5 rounded-lg bg-white px-6 py-5`}>
-      <View style={tw`-ml-2 flex flex-row items-center gap-2 pb-2`}>
+    <View
+      style={tw`mt-4 flex w-full flex-col gap-5 rounded-lg bg-white px-6 py-5`}>
+      <View style={tw`-ml-2 flex flex-row items-center gap-2`}>
         <Text
           style={tw`border-custom-blue text-custom-blue h-6 w-6 rounded-full border text-center font-semibold`}>
           {index}
@@ -30,6 +26,7 @@ export const SurveyResultItem = ({index, plan}: SurveyResultItemProps) => {
         </Text>
       </View>
       <FlatList
+        style={tw`pt-2`}
         data={plan.days[0]}
         renderItem={({item}) => (
           <View style={tw`flex flex-row items-start gap-3.5`}>
@@ -39,7 +36,7 @@ export const SurveyResultItem = ({index, plan}: SurveyResultItemProps) => {
                 style={tw`h-10 w-px border border-dashed border-[#D2D2D2]`}
               />
             </View>
-            <Text style={tw`-mt-1.5 font-semibold text-custom-01`}>
+            <Text style={tw`-mt-[0.4375rem] font-semibold text-custom-01`}>
               {item.placeName}
             </Text>
           </View>
@@ -53,7 +50,10 @@ export const SurveyResultItem = ({index, plan}: SurveyResultItemProps) => {
             'flex h-[2.625rem] items-center justify-center rounded-lg',
           ])
         }
-        android_ripple={{color: '#bfdbfe'}}>
+        android_ripple={{color: '#bfdbfe'}}
+        onPress={() =>
+          navigation.navigate('SurveyResultDetail', {index, plan})
+        }>
         <Text style={tw`text-custom-blue text-center`}>자세히 보기</Text>
       </Pressable>
     </View>
