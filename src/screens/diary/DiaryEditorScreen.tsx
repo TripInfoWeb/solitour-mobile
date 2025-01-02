@@ -50,7 +50,7 @@ export const DiaryEditorScreen = () => {
 
   return (
     <BottomSheetModalProvider>
-      <ScrollView style={tw`h-full bg-white px-4 py-6`}>
+      <ScrollView style={tw`h-full bg-white px-4 pb-6`}>
         <TextInput
           style={tw`h-14 text-lg font-semibold`}
           placeholder="제목을 입력해 주세요."

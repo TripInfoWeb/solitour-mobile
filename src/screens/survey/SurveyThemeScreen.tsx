@@ -14,7 +14,7 @@ export const SurveyThemeScreen = () => {
   >(null);
 
   return (
-    <View style={tw`h-full w-full bg-white px-4 pt-10`}>
+    <View style={tw`h-full w-full bg-white px-4 pt-2`}>
       <SurveyProgressBar totalProgress={3} currentProgress={1} />
       <Text style={tw`pt-8 text-2xl font-bold text-custom-01`}>
         어떤 테마의
