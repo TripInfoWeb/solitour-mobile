@@ -3,14 +3,10 @@ import React from 'react';
 import WebView from 'react-native-webview';
 
 interface SurveyKakaoMapProps {
-  initialLatitude: number;
-  initialLongitude: number;
+  positionList: {latitude: number; longitude: number}[];
 }
 
-export const SurveyKakaoMap = ({
-  initialLatitude,
-  initialLongitude,
-}: SurveyKakaoMapProps) => {
+export const SurveyKakaoMap = ({positionList}: SurveyKakaoMapProps) => {
   const html = `
   <html>
     <head>
@@ -25,19 +21,23 @@ export const SurveyKakaoMap = ({
           const container = document.getElementById('map');
           const options = { 
             // 지도 좌표값 설정
-            center: new kakao.maps.LatLng(${initialLatitude}, ${initialLongitude}),
+            center: new kakao.maps.LatLng(${positionList[0].latitude}, ${positionList[0].longitude}),
 
             // 줌 레벨을 3으로 설정
             level: 3
           };                
             
           const map = new kakao.maps.Map(container, options);
-          const marker = new kakao.maps.Marker({
-            // 마커가 표시될 지도
-            map: map,
 
-            // 마커가 표시될 위치
-            position: new kakao.maps.LatLng(${initialLatitude}, ${initialLongitude}),
+          const positions = ${JSON.stringify(positionList)};
+          positions.forEach((position) => {
+            new kakao.maps.Marker({
+              // 마커가 표시될 지도
+              map: map,
+
+              // 마커가 표시될 위치
+              position: new kakao.maps.LatLng(position.latitude, position.longitude),
+            });
           });
         })();
       </script>       

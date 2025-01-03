@@ -13,10 +13,7 @@ export const SurveyResultDetailScreen = ({
   return (
     <View style={tw`h-full bg-[#F3F3F3]`}>
       <View style={tw`h-48`}>
-        <SurveyKakaoMap
-          initialLatitude={plan.days[0][0].latitude}
-          initialLongitude={plan.days[0][0].longitude}
-        />
+        <SurveyKakaoMap positionList={plan.days[0]} />
       </View>
       <ScrollView style={tw`px-4 pt-4`}>
         <View style={tw`flex flex-row items-center gap-2 pb-6`}>
