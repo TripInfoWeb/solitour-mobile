@@ -18,7 +18,7 @@ export const SurveyResultItem = ({index, plan}: SurveyResultItemProps) => {
       style={tw`mt-4 flex w-full flex-col gap-5 rounded-lg bg-white px-6 py-5`}>
       <View style={tw`-ml-2 flex flex-row items-center gap-2`}>
         <Text
-          style={tw`border-custom-blue text-custom-blue h-6 w-6 rounded-full border text-center font-semibold`}>
+          style={tw`h-6 w-6 rounded-full border border-custom-blue text-center font-semibold text-custom-blue`}>
           {index}
         </Text>
         <Text style={tw`text-xl font-semibold text-custom-01`}>
@@ -54,7 +54,7 @@ export const SurveyResultItem = ({index, plan}: SurveyResultItemProps) => {
         onPress={() =>
           navigation.navigate('SurveyResultDetail', {index, plan})
         }>
-        <Text style={tw`text-custom-blue text-center`}>자세히 보기</Text>
+        <Text style={tw`text-center text-custom-blue`}>자세히 보기</Text>
       </Pressable>
     </View>
   );
