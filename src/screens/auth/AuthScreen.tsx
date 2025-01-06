@@ -1,5 +1,7 @@
+import {BACKEND_URL} from '@env';
 import {useNavigation} from '@react-navigation/native';
 import {tw} from '@src/libs/tailwind';
+import {useAuthStore} from '@src/stores/authStore';
 import {NavigationProps} from '@src/types/navigation';
 import LottieView from 'lottie-react-native';
 import React, {useEffect} from 'react';
@@ -8,13 +10,30 @@ import EncryptedStorage from 'react-native-encrypted-storage';
 
 export const AuthScreen = () => {
   const navigation = useNavigation<NavigationProps>();
+  const authStore = useAuthStore();
 
   useEffect(() => {
     (async () => {
       const accessToken = await EncryptedStorage.getItem('access_token');
-      console.log(accessToken);
+      const userInfoResponse = await fetch(`${BACKEND_URL}/api/users/info`, {
+        method: 'GET',
+        headers: {
+          Cookie: `access_token=${accessToken}`,
+          'Access-Control-Allow-Origin': '*',
+        },
+      });
+
+      if (!userInfoResponse.ok) {
+        await EncryptedStorage.clear();
+        navigation.popToTop();
+        return;
+      }
+
+      const userData = await userInfoResponse.json();
+      authStore.setAuthState(userData);
+      navigation.reset({index: 0, routes: [{name: 'BottomTabs'}]});
     })();
-  }, []);
+  }, [authStore, navigation]);
 
   return (
     <View
