@@ -14,6 +14,7 @@ import {SurveyActivityScreen} from './screens/survey/SurveyActivityScreen';
 import {SurveyLoadingScreen} from './screens/survey/SurveyLoadingScreen';
 import {SurveyResultListScreen} from './screens/survey/SurveyResultListScreen';
 import {SurveyResultDetailScreen} from './screens/survey/SurveyResultDetailScreen';
+import {AuthScreen} from './screens/auth/AuthScreen';
 
 const DiaryRegisterButton = () => {
   return (
@@ -37,11 +38,16 @@ export const App = () => {
     <GestureHandlerRootView>
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="BottomTabs"
+          initialRouteName="Auth"
           screenOptions={{headerShadowVisible: false}}>
           <Stack.Screen
             name="BottomTabs"
             component={BottomTabs}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Auth"
+            component={AuthScreen}
             options={{headerShown: false}}
           />
           <Stack.Screen
