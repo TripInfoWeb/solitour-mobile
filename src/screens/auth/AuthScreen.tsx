@@ -2,11 +2,19 @@ import {useNavigation} from '@react-navigation/native';
 import {tw} from '@src/libs/tailwind';
 import {NavigationProps} from '@src/types/navigation';
 import LottieView from 'lottie-react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Image, Pressable, Text, View} from 'react-native';
+import EncryptedStorage from 'react-native-encrypted-storage';
 
 export const AuthScreen = () => {
   const navigation = useNavigation<NavigationProps>();
+
+  useEffect(() => {
+    (async () => {
+      const accessToken = await EncryptedStorage.getItem('access_token');
+      console.log(accessToken);
+    })();
+  }, []);
 
   return (
     <View

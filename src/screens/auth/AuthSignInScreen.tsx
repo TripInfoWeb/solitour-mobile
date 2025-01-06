@@ -30,8 +30,20 @@ export const AuthSignInScreen = () => {
           onLoadEnd={() => setLoading(false)}
           onError={() => setWebViewVisible(false)}
           onNavigationStateChange={e => {
-            const code = e.url.split('?')[1].slice(5);
-            navigation.replace('AuthLoading', {code});
+            const url = new URL(e.url);
+            const params = url.searchParams;
+
+            if (params.get('continue')) {
+              return;
+            }
+
+            const code = params.get('code');
+
+            if (code) {
+              navigation.replace('AuthLoading', {code: code});
+            } else {
+              navigation.goBack();
+            }
           }}
         />
       )}
