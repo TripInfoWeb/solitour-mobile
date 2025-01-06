@@ -15,6 +15,8 @@ import {SurveyLoadingScreen} from './screens/survey/SurveyLoadingScreen';
 import {SurveyResultListScreen} from './screens/survey/SurveyResultListScreen';
 import {SurveyResultDetailScreen} from './screens/survey/SurveyResultDetailScreen';
 import {AuthScreen} from './screens/auth/AuthScreen';
+import {AuthSignInScreen} from './screens/auth/AuthSignInScreen';
+import {AuthLoadingScreen} from './screens/auth/AuthLoadingScreen';
 
 const DiaryRegisterButton = () => {
   return (
@@ -48,6 +50,16 @@ export const App = () => {
           <Stack.Screen
             name="Auth"
             component={AuthScreen}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="AuthSignIn"
+            component={AuthSignInScreen}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="AuthLoading"
+            component={AuthLoadingScreen}
             options={{headerShown: false}}
           />
           <Stack.Screen
