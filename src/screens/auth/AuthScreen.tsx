@@ -25,7 +25,6 @@ export const AuthScreen = () => {
 
       if (!userInfoResponse.ok) {
         await EncryptedStorage.clear();
-        navigation.popToTop();
         return;
       }
 

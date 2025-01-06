@@ -3,8 +3,21 @@ import {Image, Text, View} from 'react-native';
 import {tw} from '@src/libs/tailwind';
 import {MypageItem} from '@src/components/mypage/MypageItem';
 import {MypageProfile} from '@src/components/mypage/MypageProfile';
+import {useAuthStore} from '@src/stores/authStore';
+import EncryptedStorage from 'react-native-encrypted-storage';
+import {useNavigation} from '@react-navigation/native';
+import {NavigationProps} from '@src/types/navigation';
 
 export const MypageScreen = () => {
+  const navigation = useNavigation<NavigationProps>();
+  const {initialize} = useAuthStore();
+
+  const handleSignOut = async () => {
+    await EncryptedStorage.clear();
+    navigation.reset({index: 0, routes: [{name: 'Auth'}]});
+    initialize();
+  };
+
   return (
     <View style={tw`flex h-full flex-col items-center bg-white px-4`}>
       <MypageProfile />
@@ -21,7 +34,7 @@ export const MypageScreen = () => {
             source={require('@src/assets/common/chevronRight.png')}
           />
         </MypageItem>
-        <MypageItem title="로그아웃">
+        <MypageItem title="로그아웃" onPress={() => handleSignOut()}>
           <Image
             style={tw`h-6 w-6`}
             source={require('@src/assets/common/chevronRight.png')}

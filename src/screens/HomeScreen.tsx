@@ -14,9 +14,11 @@ import {useNavigation} from '@react-navigation/native';
 import {NavigationProps} from '@src/types/navigation';
 import {tw} from '@src/libs/tailwind';
 import {PrimaryButton} from '@src/components/common/PrimaryButton';
+import {useAuthStore} from '@src/stores/authStore';
 
 export const HomeScreen = () => {
   const navigation = useNavigation<NavigationProps>();
+  const {nickname} = useAuthStore();
 
   return (
     <ScrollView style={tw`bg-white`}>
@@ -31,7 +33,7 @@ export const HomeScreen = () => {
           source={require('@src/assets/home/filter.png')}
         />
         <Text style={tw`absolute top-[23%] text-center text-2xl font-bold`}>
-          {'OO님,\n오늘은 어디로 떠날까요?'}
+          {`${nickname}님,\n오늘은 어디로 떠날까요?`}
         </Text>
         <PrimaryButton
           title="AI 콘텐츠 여행 추천"
@@ -40,7 +42,8 @@ export const HomeScreen = () => {
       </View>
       <View style={tw`flex flex-col gap-14 px-4 py-14`}>
         <View style={tw`flex flex-col gap-3.5`}>
-          <Text style={tw`text-lg font-semibold`}>OO님의 이전 여행</Text>
+          <Text
+            style={tw`text-lg font-semibold`}>{`${nickname}님의 이전 여행`}</Text>
           <ScrollView
             contentContainerStyle={tw`flex gap-2.5`}
             horizontal={true}>
