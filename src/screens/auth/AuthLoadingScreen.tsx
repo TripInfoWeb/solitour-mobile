@@ -3,7 +3,7 @@ import {tw} from '@src/libs/tailwind';
 import {NavigationList} from '@src/types/navigation';
 import LottieView from 'lottie-react-native';
 import React from 'react';
-import {Text, View} from 'react-native';
+import {View} from 'react-native';
 
 export const AuthLoadingScreen = ({
   route,
