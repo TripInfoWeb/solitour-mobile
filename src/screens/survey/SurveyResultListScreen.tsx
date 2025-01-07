@@ -1,4 +1,4 @@
-import {SurveyResultItem} from '@src/components/survey/result/SurveyResultItem';
+import {SurveyResultItem} from '@src/components/survey/result/list/SurveyResultItem';
 import {tw} from '@src/libs/tailwind';
 import React from 'react';
 import {FlatList, View} from 'react-native';
