@@ -1,38 +1,37 @@
-import {BACKEND_URL} from '@env';
 import {useNavigation} from '@react-navigation/native';
+import {COLOR} from '@src/constants/color';
+import {useUserInfo} from '@src/hooks/auth/useUserInfo';
 import {tw} from '@src/libs/tailwind';
-import {useAuthStore} from '@src/stores/authStore';
 import {NavigationProps} from '@src/types/navigation';
 import LottieView from 'lottie-react-native';
 import React, {useEffect} from 'react';
-import {Image, Pressable, Text, View} from 'react-native';
+import {ActivityIndicator, Image, Pressable, Text, View} from 'react-native';
 import EncryptedStorage from 'react-native-encrypted-storage';
 
 export const AuthScreen = () => {
   const navigation = useNavigation<NavigationProps>();
-  const authStore = useAuthStore();
+  const {data, isLoading, isError} = useUserInfo();
 
   useEffect(() => {
-    (async () => {
-      const accessToken = await EncryptedStorage.getItem('access_token');
-      const userInfoResponse = await fetch(`${BACKEND_URL}/api/users/info`, {
-        method: 'GET',
-        headers: {
-          Cookie: `access_token=${accessToken}`,
-          'Access-Control-Allow-Origin': '*',
-        },
-      });
+    if (isError) {
+      EncryptedStorage.clear();
+      return;
+    }
 
-      if (!userInfoResponse.ok) {
-        await EncryptedStorage.clear();
-        return;
-      }
-
-      const userData = await userInfoResponse.json();
-      authStore.setAuthState(userData);
+    if (data) {
       navigation.reset({index: 0, routes: [{name: 'BottomTabs'}]});
-    })();
-  }, [authStore, navigation]);
+    }
+  }, [data, isError, navigation]);
+
+  if (!isError && (data || isLoading)) {
+    return (
+      <ActivityIndicator
+        style={tw`h-full`}
+        size={50}
+        color={COLOR.PRIMARY_GREEN}
+      />
+    );
+  }
 
   return (
     <View
