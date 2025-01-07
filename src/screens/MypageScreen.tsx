@@ -3,19 +3,19 @@ import {Image, Text, View} from 'react-native';
 import {tw} from '@src/libs/tailwind';
 import {MypageItem} from '@src/components/mypage/MypageItem';
 import {MypageProfile} from '@src/components/mypage/MypageProfile';
-import {useAuthStore} from '@src/stores/authStore';
 import EncryptedStorage from 'react-native-encrypted-storage';
 import {useNavigation} from '@react-navigation/native';
 import {NavigationProps} from '@src/types/navigation';
+import {useQueryClient} from '@tanstack/react-query';
 
 export const MypageScreen = () => {
   const navigation = useNavigation<NavigationProps>();
-  const {initialize} = useAuthStore();
+  const queryClient = useQueryClient();
 
   const handleSignOut = async () => {
     await EncryptedStorage.clear();
+    await queryClient.invalidateQueries({queryKey: ['userInfo']});
     navigation.reset({index: 0, routes: [{name: 'Auth'}]});
-    initialize();
   };
 
   return (

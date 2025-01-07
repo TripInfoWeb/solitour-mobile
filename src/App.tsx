@@ -17,6 +17,7 @@ import {SurveyResultDetailScreen} from './screens/survey/SurveyResultDetailScree
 import {AuthScreen} from './screens/auth/AuthScreen';
 import {AuthSignInScreen} from './screens/auth/AuthSignInScreen';
 import {AuthLoadingScreen} from './screens/auth/AuthLoadingScreen';
+import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
 
 const DiaryRegisterButton = () => {
   return (
@@ -29,6 +30,7 @@ const DiaryRegisterButton = () => {
   );
 };
 
+const queryClient = new QueryClient();
 const Stack = createNativeStackNavigator<NavigationList>();
 
 export const App = () => {
@@ -37,68 +39,70 @@ export const App = () => {
   }, []);
 
   return (
-    <GestureHandlerRootView>
-      <NavigationContainer>
-        <Stack.Navigator
-          initialRouteName="Auth"
-          screenOptions={{headerShadowVisible: false}}>
-          <Stack.Screen
-            name="BottomTabs"
-            component={BottomTabs}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="Auth"
-            component={AuthScreen}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="AuthSignIn"
-            component={AuthSignInScreen}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="AuthLoading"
-            component={AuthLoadingScreen}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="SurveyTheme"
-            component={SurveyThemeScreen}
-            options={{title: 'AI 콘텐츠 여행 추천'}}
-          />
-          <Stack.Screen
-            name="SurveyContent"
-            component={SurveyContentScreen}
-            options={{title: 'AI 콘텐츠 여행 추천'}}
-          />
-          <Stack.Screen
-            name="SurveyActivity"
-            component={SurveyActivityScreen}
-            options={{title: 'AI 콘텐츠 여행 추천'}}
-          />
-          <Stack.Screen
-            name="SurveyLoading"
-            component={SurveyLoadingScreen}
-            options={{title: 'AI 콘텐츠 여행 추천'}}
-          />
-          <Stack.Screen
-            name="SurveyResultList"
-            component={SurveyResultListScreen}
-            options={{title: 'AI 콘텐츠 여행 추천'}}
-          />
-          <Stack.Screen
-            name="SurveyResultDetail"
-            component={SurveyResultDetailScreen}
-            options={{title: 'AI 콘텐츠 여행 추천'}}
-          />
-          <Stack.Screen
-            name="DiaryEditor"
-            component={DiaryEditorScreen}
-            options={{title: '여행일기', headerRight: DiaryRegisterButton}}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </GestureHandlerRootView>
+    <QueryClientProvider client={queryClient}>
+      <GestureHandlerRootView>
+        <NavigationContainer>
+          <Stack.Navigator
+            initialRouteName="Auth"
+            screenOptions={{headerShadowVisible: false}}>
+            <Stack.Screen
+              name="BottomTabs"
+              component={BottomTabs}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="Auth"
+              component={AuthScreen}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="AuthSignIn"
+              component={AuthSignInScreen}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="AuthLoading"
+              component={AuthLoadingScreen}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="SurveyTheme"
+              component={SurveyThemeScreen}
+              options={{title: 'AI 콘텐츠 여행 추천'}}
+            />
+            <Stack.Screen
+              name="SurveyContent"
+              component={SurveyContentScreen}
+              options={{title: 'AI 콘텐츠 여행 추천'}}
+            />
+            <Stack.Screen
+              name="SurveyActivity"
+              component={SurveyActivityScreen}
+              options={{title: 'AI 콘텐츠 여행 추천'}}
+            />
+            <Stack.Screen
+              name="SurveyLoading"
+              component={SurveyLoadingScreen}
+              options={{title: 'AI 콘텐츠 여행 추천'}}
+            />
+            <Stack.Screen
+              name="SurveyResultList"
+              component={SurveyResultListScreen}
+              options={{title: 'AI 콘텐츠 여행 추천'}}
+            />
+            <Stack.Screen
+              name="SurveyResultDetail"
+              component={SurveyResultDetailScreen}
+              options={{title: 'AI 콘텐츠 여행 추천'}}
+            />
+            <Stack.Screen
+              name="DiaryEditor"
+              component={DiaryEditorScreen}
+              options={{title: '여행일기', headerRight: DiaryRegisterButton}}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </GestureHandlerRootView>
+    </QueryClientProvider>
   );
 };
