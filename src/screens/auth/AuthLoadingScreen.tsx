@@ -12,14 +12,19 @@ export const AuthLoadingScreen = ({
   route,
 }: NativeStackScreenProps<NavigationList, 'AuthLoading'>) => {
   const navigation = useNavigation<NavigationProps>();
-  const {isLoading, isError} = useSignIn(route.params.code);
-  const {data} = useUserInfo(!isLoading && !isError);
+  const {isSuccess} = useSignIn(route.params.code);
+  const {data, isError} = useUserInfo(isSuccess);
 
   useEffect(() => {
+    if (isSuccess && isError) {
+      navigation.popToTop();
+      return;
+    }
+
     if (data) {
       navigation.reset({index: 0, routes: [{name: 'BottomTabs'}]});
     }
-  }, [data, navigation]);
+  }, [data, isError, isSuccess, navigation]);
 
   return (
     <View style={tw`flex h-full flex-col items-center justify-center`}>

@@ -3,7 +3,7 @@ import {useQuery} from '@tanstack/react-query';
 import EncryptedStorage from 'react-native-encrypted-storage';
 
 export const useSignIn = (code: string) => {
-  const {isLoading, isError} = useQuery({
+  const {isSuccess} = useQuery({
     queryKey: ['signIn', code],
     queryFn: async () => {
       const signInResponse = await fetch(
@@ -34,5 +34,5 @@ export const useSignIn = (code: string) => {
     retry: 0,
   });
 
-  return {isLoading, isError};
+  return {isSuccess};
 };
