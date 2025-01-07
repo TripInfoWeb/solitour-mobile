@@ -6,9 +6,10 @@ import {COLOR} from '@src/constants/color';
 interface MypageItemProps {
   children: React.ReactNode;
   title: string;
+  onPress?: () => void;
 }
 
-export const MypageItem = ({children, title}: MypageItemProps) => {
+export const MypageItem = ({children, title, onPress}: MypageItemProps) => {
   return (
     <Pressable
       style={({pressed}) =>
@@ -17,7 +18,8 @@ export const MypageItem = ({children, title}: MypageItemProps) => {
           'flex h-16 w-full flex-row items-center justify-between border-b border-b-gray-200',
         ])
       }
-      android_ripple={{color: COLOR.GRAY_RIPPLE}}>
+      android_ripple={{color: COLOR.GRAY_RIPPLE}}
+      onPress={onPress}>
       <Text>{title}</Text>
       {children}
     </Pressable>

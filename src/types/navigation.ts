@@ -8,6 +8,9 @@ export type NavigationList = {
   Home: undefined;
   Diary: undefined;
   Mypage: undefined;
+  Auth: undefined;
+  AuthSignIn: undefined;
+  AuthLoading: {code: string};
   SurveyTheme: undefined;
   SurveyContent: undefined;
   SurveyActivity: undefined;
