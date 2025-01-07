@@ -1,8 +1,9 @@
 import {BACKEND_URL, KAKAO_REDIRECT_URL} from '@env';
 import {useQuery} from '@tanstack/react-query';
+import EncryptedStorage from 'react-native-encrypted-storage';
 
 export const useSignIn = (code: string) => {
-  const {} = useQuery({
+  const {isLoading, isError} = useQuery({
     queryKey: ['signIn', code],
     queryFn: async () => {
       const signInResponse = await fetch(
@@ -12,7 +13,26 @@ export const useSignIn = (code: string) => {
           credentials: 'include',
         },
       );
+
+      const cookies = signInResponse.headers.get('set-cookie')?.split(',');
+
+      if (!signInResponse.ok || !cookies) {
+        throw new Error(signInResponse.statusText);
+      }
+
+      for (const cookie of cookies) {
+        const [key, value] = cookie
+          .split(';')[0]
+          .split('=')
+          .map(str => str.trim());
+
+        await EncryptedStorage.setItem(key, value);
+      }
+
+      return true;
     },
     retry: 0,
   });
+
+  return {isLoading, isError};
 };

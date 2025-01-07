@@ -3,7 +3,7 @@ import {User} from '@src/types/user';
 import {useQuery} from '@tanstack/react-query';
 import EncryptedStorage from 'react-native-encrypted-storage';
 
-export const useUserInfo = () => {
+export const useUserInfo = (enabled?: boolean) => {
   const {data, isLoading, isError} = useQuery<User>({
     queryKey: ['userInfo'],
     queryFn: async () => {
@@ -21,6 +21,7 @@ export const useUserInfo = () => {
     staleTime: Infinity,
     gcTime: 0,
     retry: false,
+    enabled: enabled,
   });
 
   return {data, isLoading, isError};
