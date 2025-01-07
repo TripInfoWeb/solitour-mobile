@@ -16,6 +16,7 @@ module.exports = {
         'custom-02': '#404040',
         'custom-03': '#6F6F6F',
         'custom-04': '#B5B5B5',
+        'custom-blue': '#5165E7',
       },
     },
   },

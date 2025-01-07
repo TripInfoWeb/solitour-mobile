@@ -12,7 +12,7 @@ export const SurveyContentScreen = () => {
   const [content, setContent] = useState<string | null>(null);
 
   return (
-    <View style={tw`h-full w-full bg-white px-4 pt-10`}>
+    <View style={tw`h-full w-full bg-white px-4 pt-2`}>
       <SurveyProgressBar totalProgress={3} currentProgress={2} />
       <Text style={tw`pt-8 text-2xl font-bold text-custom-01`}>
         어떤 예능의 {/* TODO */}
