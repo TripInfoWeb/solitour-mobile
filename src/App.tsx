@@ -5,7 +5,7 @@ import {NavigationList} from './types/navigation';
 import {BottomTabs} from './components/common/BottomTabs';
 import {SurveyThemeScreen} from './screens/survey/SurveyThemeScreen';
 import {DiaryEditorScreen} from './screens/diary/DiaryEditorScreen';
-import {Pressable, Text} from 'react-native';
+import {Image, Pressable, Text, View} from 'react-native';
 import {tw} from './libs/tailwind';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import SplashScreen from 'react-native-splash-screen';
@@ -18,6 +18,7 @@ import {AuthScreen} from './screens/auth/AuthScreen';
 import {AuthSignInScreen} from './screens/auth/AuthSignInScreen';
 import {AuthLoadingScreen} from './screens/auth/AuthLoadingScreen';
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
+import {useNetInfo} from '@react-native-community/netinfo';
 
 const DiaryRegisterButton = () => {
   return (
@@ -34,9 +35,26 @@ const queryClient = new QueryClient();
 const Stack = createNativeStackNavigator<NavigationList>();
 
 export const App = () => {
+  const {isConnected} = useNetInfo();
+
   useEffect(() => {
     SplashScreen.hide();
   }, []);
+
+  if (isConnected === false) {
+    return (
+      <View style={tw`flex h-full flex-col items-center justify-center`}>
+        <Image
+          style={tw`h-40 w-40`}
+          source={require('@src/assets/common/disconnection.png')}
+        />
+        <Text style={tw`pb-1 pt-4 text-lg font-bold text-custom-01`}>
+          인터넷에 연결되어 있지 않습니다.
+        </Text>
+        <Text style={tw`text-custom-03`}>연결 상태를 다시 확인해 주세요.</Text>
+      </View>
+    );
+  }
 
   return (
     <QueryClientProvider client={queryClient}>
