@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
   Image,
   KeyboardAvoidingView,
@@ -22,10 +22,12 @@ import {
   useEditorContent,
 } from '@10play/tentap-editor';
 import {launchImageLibrary} from 'react-native-image-picker';
+import {Controller, FormProvider, useForm} from 'react-hook-form';
+import {DiarySchema} from '@src/libs/zod/DiarySchema';
+import {zodResolver} from '@hookform/resolvers/zod';
+import {Diary} from '@src/types/diary';
 
 export const DiaryEditorScreen = () => {
-  // TODO: 커스텀 훅 생성
-  const [title, setTitle] = useState('');
   const editor = useEditorBridge({
     avoidIosKeyboard: true,
     initialContent: '',
@@ -38,55 +40,80 @@ export const DiaryEditorScreen = () => {
     ],
   });
   const content = useEditorContent(editor, {type: 'html'});
-  const [image, setImage] = useState<string | null>(null);
+
+  const methods = useForm<Diary>({
+    resolver: zodResolver(DiarySchema),
+    defaultValues: {
+      title: '',
+      startDate: null,
+      endDate: null,
+      address: null,
+      feeling: null,
+      content: content,
+      image: null,
+    },
+    mode: 'onChange',
+  });
 
   const handleImageUpload = () => {
     launchImageLibrary({mediaType: 'photo'}, response => {
       if (response.assets) {
-        setImage(response.assets![0].uri!);
+        methods.setValue('image', response.assets[0].uri!);
       }
     });
   };
 
   return (
-    <BottomSheetModalProvider>
-      <ScrollView style={tw`h-full bg-white px-4 pb-6`}>
-        <TextInput
-          style={tw`h-14 text-lg font-semibold`}
-          placeholder="제목을 입력해 주세요."
-          value={title}
-          onChangeText={setTitle}
-        />
-        <DiaryDatePicker />
-        <DiaryLocationPicker />
-        <DiaryFeelingPicker />
-        <SafeAreaView style={tw`h-80 flex-1 py-7`}>
-          <RichText editor={editor} />
-        </SafeAreaView>
-      </ScrollView>
-      <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        style={tw`absolute bottom-0 flex w-full flex-col gap-4`}>
-        {image && (
-          <Image
-            style={tw`ml-4 h-20 w-20 rounded-lg border border-custom-04`}
-            source={{uri: image}}
+    <FormProvider {...methods}>
+      <BottomSheetModalProvider>
+        <ScrollView style={tw`h-full bg-white px-4 pb-6`}>
+          <Controller
+            control={methods.control}
+            rules={{
+              required: true,
+              maxLength: 50,
+            }}
+            render={({field: {onChange, value}}) => (
+              <TextInput
+                style={tw`h-14 text-lg font-semibold`}
+                placeholder="제목을 입력해 주세요."
+                onChangeText={onChange}
+                value={value}
+              />
+            )}
+            name="title"
           />
-        )}
-        <Toolbar
-          editor={editor}
-          hidden={false}
-          items={[
-            {
-              onPress: () => () => handleImageUpload(),
-              active: () => false,
-              disabled: () => false,
-              image: () => require('@src/assets/common/image-icon.png'),
-            },
-            ...DEFAULT_TOOLBAR_ITEMS,
-          ]}
-        />
-      </KeyboardAvoidingView>
-    </BottomSheetModalProvider>
+          <DiaryDatePicker />
+          <DiaryLocationPicker />
+          <DiaryFeelingPicker />
+          <SafeAreaView style={tw`h-80 flex-1 py-7`}>
+            <RichText editor={editor} />
+          </SafeAreaView>
+        </ScrollView>
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+          style={tw`absolute bottom-0 flex w-full flex-col gap-4`}>
+          {methods.getValues('image') && (
+            <Image
+              style={tw`ml-4 h-20 w-20 rounded-lg border border-custom-04`}
+              source={{uri: methods.getValues('image')!}}
+            />
+          )}
+          <Toolbar
+            editor={editor}
+            hidden={false}
+            items={[
+              {
+                onPress: () => () => handleImageUpload(),
+                active: () => false,
+                disabled: () => false,
+                image: () => require('@src/assets/common/image-icon.png'),
+              },
+              ...DEFAULT_TOOLBAR_ITEMS,
+            ]}
+          />
+        </KeyboardAvoidingView>
+      </BottomSheetModalProvider>
+    </FormProvider>
   );
 };

@@ -1,12 +1,14 @@
 import {BottomSheetModal} from '@gorhom/bottom-sheet';
-import React, {useCallback, useRef, useState} from 'react';
+import React, {useCallback, useRef} from 'react';
 import {Image, Pressable, Text, View} from 'react-native';
 import {COLOR} from '@src/constants/color';
 import {tw} from '@src/libs/tailwind';
 import {DiaryFeelingBottomSheetModal} from './DiaryFeelingBottomSheetModal';
+import {useFormContext} from 'react-hook-form';
+import {Diary} from '@src/types/diary';
 
 export const DiaryFeelingPicker = () => {
-  const [feeling, setFeeling] = useState<string | null>(null);
+  const formContext = useFormContext<Diary>();
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
   const handlePresentModalPress = useCallback(() => {
     bottomSheetModalRef.current?.present();
@@ -28,14 +30,16 @@ export const DiaryFeelingPicker = () => {
           source={require('@src/assets/diary/feeling.png')}
         />
         <Text
-          style={tw.style(feeling ? 'text-primary-green' : 'text-gray-500')}>
-          {feeling ?? '기분'}
+          style={tw.style(
+            formContext.getValues('feeling')
+              ? 'text-primary-green'
+              : 'text-gray-500',
+          )}>
+          {formContext.getValues('feeling') ?? '기분'}
         </Text>
       </Pressable>
       <DiaryFeelingBottomSheetModal
         ref={bottomSheetModalRef}
-        feeling={feeling}
-        setFeeling={(value: string) => setFeeling(value)}
         closeBottomSheetModal={() =>
           bottomSheetModalRef.current?.close({duration: 300})
         }
