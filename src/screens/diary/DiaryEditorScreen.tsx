@@ -81,7 +81,6 @@ export const DiaryEditorScreen = () => {
             control={methods.control}
             rules={{
               required: true,
-              maxLength: 50,
             }}
             render={({field: {onChange, value}}) => (
               <TextInput
@@ -89,6 +88,7 @@ export const DiaryEditorScreen = () => {
                 placeholder="제목을 입력해 주세요."
                 onChangeText={onChange}
                 value={value}
+                maxLength={50}
               />
             )}
             name="title"

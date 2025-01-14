@@ -108,9 +108,7 @@ export const App = () => {
               <Stack.Screen
                 name="DiaryEditor"
                 component={DiaryEditorScreen}
-                options={{
-                  title: '여행일기',
-                }}
+                options={{title: '여행일기'}}
               />
             </Stack.Navigator>
           </ErrorBoundary>
