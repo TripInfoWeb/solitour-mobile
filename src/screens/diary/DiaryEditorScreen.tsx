@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {
+  Image,
   KeyboardAvoidingView,
   Platform,
   SafeAreaView,
@@ -21,7 +22,6 @@ import {
   useEditorContent,
 } from '@10play/tentap-editor';
 import {launchImageLibrary} from 'react-native-image-picker';
-import {DiaryImageList} from '@src/components/diary/editor/image/DiaryImageList';
 
 export const DiaryEditorScreen = () => {
   // TODO: 커스텀 훅 생성
@@ -38,12 +38,12 @@ export const DiaryEditorScreen = () => {
     ],
   });
   const content = useEditorContent(editor, {type: 'html'});
-  const [images, setImages] = useState<string[]>([]);
+  const [image, setImage] = useState<string | null>(null);
 
   const handleImageUpload = () => {
     launchImageLibrary({mediaType: 'photo'}, response => {
       if (response.assets) {
-        setImages(value => [...value, response.assets![0].uri!]);
+        setImage(response.assets![0].uri!);
       }
     });
   };
@@ -67,10 +67,12 @@ export const DiaryEditorScreen = () => {
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={tw`absolute bottom-0 flex w-full flex-col gap-4`}>
-        <DiaryImageList
-          images={images}
-          setImages={(value: string[]) => setImages(value)}
-        />
+        {image && (
+          <Image
+            style={tw`ml-4 h-20 w-20 rounded-lg border border-custom-04`}
+            source={{uri: image}}
+          />
+        )}
         <Toolbar
           editor={editor}
           hidden={false}
