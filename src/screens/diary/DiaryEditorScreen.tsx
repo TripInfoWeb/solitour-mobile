@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   Image,
   KeyboardAvoidingView,
@@ -26,8 +26,12 @@ import {Controller, FormProvider, useForm} from 'react-hook-form';
 import {DiarySchema} from '@src/libs/zod/DiarySchema';
 import {zodResolver} from '@hookform/resolvers/zod';
 import {Diary} from '@src/types/diary';
+import {useNavigation} from '@react-navigation/native';
+import {NavigationProps} from '@src/types/navigation';
+import {DiaryRegisterButton} from '@src/components/diary/editor/DiaryRegisterButton';
 
 export const DiaryEditorScreen = () => {
+  const navigation = useNavigation<NavigationProps>();
   const editor = useEditorBridge({
     avoidIosKeyboard: true,
     initialContent: '',
@@ -61,6 +65,13 @@ export const DiaryEditorScreen = () => {
       }
     });
   };
+
+  useEffect(() => {
+    navigation.setOptions({
+      // eslint-disable-next-line react/no-unstable-nested-components
+      headerRight: () => <DiaryRegisterButton methods={methods} />,
+    });
+  }, [methods, navigation]);
 
   return (
     <FormProvider {...methods}>
