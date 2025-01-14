@@ -12,6 +12,7 @@
   "dependencies": {
     "@10play/tentap-editor": "^0.5.29",
     "@gorhom/bottom-sheet": "^5.0.6",
+    "@hookform/resolvers": "^3.10.0",
     "@react-native-community/netinfo": "^11.4.1",
     "@react-navigation/bottom-tabs": "^7.2.0",
     "@react-navigation/elements": "^2.2.5",
