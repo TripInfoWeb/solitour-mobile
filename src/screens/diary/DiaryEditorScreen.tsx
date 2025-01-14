@@ -40,7 +40,6 @@ export const DiaryEditorScreen = () => {
     ],
   });
   const content = useEditorContent(editor, {type: 'html'});
-
   const methods = useForm<Diary>({
     resolver: zodResolver(DiarySchema),
     defaultValues: {
@@ -93,10 +92,10 @@ export const DiaryEditorScreen = () => {
         <KeyboardAvoidingView
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
           style={tw`absolute bottom-0 flex w-full flex-col gap-4`}>
-          {methods.getValues('image') && (
+          {methods.watch('image') && (
             <Image
               style={tw`ml-4 h-20 w-20 rounded-lg border border-custom-04`}
-              source={{uri: methods.getValues('image')!}}
+              source={{uri: methods.watch('image')!}}
             />
           )}
           <Toolbar
@@ -107,7 +106,7 @@ export const DiaryEditorScreen = () => {
                 onPress: () => () => handleImageUpload(),
                 active: () => false,
                 disabled: () => false,
-                image: () => require('@src/assets/common/image-icon.png'),
+                image: () => require('@src/assets/common/image-icon-small.png'),
               },
               ...DEFAULT_TOOLBAR_ITEMS,
             ]}
