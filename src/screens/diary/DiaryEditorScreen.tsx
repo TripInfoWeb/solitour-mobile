@@ -47,7 +47,7 @@ export const DiaryEditorScreen = () => {
       title: '',
       startDate: null,
       endDate: null,
-      address: null,
+      location: null,
       feeling: null,
       content: content,
       image: null,

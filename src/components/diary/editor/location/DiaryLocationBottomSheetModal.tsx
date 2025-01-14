@@ -87,17 +87,17 @@ export const DiaryLocationBottomSheetModal = forwardRef<
               style={({pressed}) =>
                 tw.style([
                   pressed ? 'bg-primary-green' : '',
-                  formContext.getValues('address') === item
+                  formContext.getValues('location') === item
                     ? 'border-primary-green bg-primary-green'
                     : 'border-gray-200',
                   'mr-1.5 flex h-10 w-[3.75rem] items-center justify-center rounded-full border',
                 ])
               }
-              onPress={() => formContext.setValue('address', item)}
+              onPress={() => formContext.setValue('location', item)}
               children={({pressed}) => (
                 <Text
                   style={tw.style(
-                    pressed || formContext.getValues('address') === item
+                    pressed || formContext.getValues('location') === item
                       ? 'text-white'
                       : 'text-black',
                     'font-semibold',
@@ -112,7 +112,7 @@ export const DiaryLocationBottomSheetModal = forwardRef<
         />
         <PrimaryButton
           title="선택하기"
-          disabled={formContext.getValues('address') === null}
+          disabled={formContext.getValues('location') === null}
           onPress={() => closeBottomSheetModal()}
         />
       </BottomSheetView>

@@ -3,7 +3,7 @@ import {BottomSheetModal} from '@gorhom/bottom-sheet';
 import {Image, Pressable, Text, View} from 'react-native';
 import {tw} from '@src/libs/tailwind';
 import {COLOR} from '@src/constants/color';
-import {DiaryAddressBottomSheetModal} from './DiaryLocationBottomSheetModal';
+import {DiaryLocationBottomSheetModal} from './DiaryLocationBottomSheetModal';
 import {Diary} from '@src/types/diary';
 import {useFormContext} from 'react-hook-form';
 
@@ -31,14 +31,14 @@ export const DiaryLocationPicker = () => {
         />
         <Text
           style={tw.style(
-            formContext.getValues('address')
+            formContext.getValues('location')
               ? 'text-primary-green'
               : 'text-gray-500',
           )}>
-          {formContext.getValues('address') ?? '장소'}
+          {formContext.getValues('location') ?? '장소'}
         </Text>
       </Pressable>
-      <DiaryAddressBottomSheetModal
+      <DiaryLocationBottomSheetModal
         ref={bottomSheetModalRef}
         closeBottomSheetModal={() =>
           bottomSheetModalRef.current?.close({duration: 300})
