@@ -111,7 +111,7 @@ export const DiaryDateBottomSheetModal = forwardRef<
         </View>
         <PrimaryButton
           title="선택하기"
-          disabled={formContext.getValues('endDate') === null}
+          disabled={formContext.watch('endDate') === null}
           onPress={() => closeBottomSheetModal()}
         />
       </BottomSheetView>

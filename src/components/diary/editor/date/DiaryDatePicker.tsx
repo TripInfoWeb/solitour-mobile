@@ -33,12 +33,12 @@ export const DiaryDatePicker = () => {
         />
         <Text
           style={tw.style(
-            formContext.getValues('endDate')
+            formContext.watch('endDate')
               ? 'text-primary-green'
               : 'text-gray-500',
           )}>
-          {formContext.getValues('endDate') !== null
-            ? `${formContext.getValues('startDate')?.toLocaleDateString('ko-KR')}  -  ${formContext.getValues('endDate')?.toLocaleDateString('ko-KR')}`
+          {formContext.watch('endDate') !== null
+            ? `${formContext.watch('startDate')?.toLocaleDateString('ko-KR')}  -  ${formContext.watch('endDate')?.toLocaleDateString('ko-KR')}`
             : '날짜'}
         </Text>
       </Pressable>

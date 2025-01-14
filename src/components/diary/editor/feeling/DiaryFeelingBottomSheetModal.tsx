@@ -84,7 +84,7 @@ export const DiaryFeelingBottomSheetModal = forwardRef<
               <Image style={tw`h-10 w-8`} source={item.source} />
               <Text
                 style={tw.style(
-                  formContext.getValues('feeling') === item.label
+                  formContext.watch('feeling') === item.label
                     ? 'text-primary-green'
                     : 'text-gray-500',
                 )}>
@@ -97,7 +97,7 @@ export const DiaryFeelingBottomSheetModal = forwardRef<
         />
         <PrimaryButton
           title="선택하기"
-          disabled={formContext.getValues('feeling') === null}
+          disabled={formContext.watch('feeling') === null}
           onPress={() => closeBottomSheetModal()}
         />
       </BottomSheetView>

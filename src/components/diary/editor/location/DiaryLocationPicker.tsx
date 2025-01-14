@@ -31,11 +31,11 @@ export const DiaryLocationPicker = () => {
         />
         <Text
           style={tw.style(
-            formContext.getValues('location')
+            formContext.watch('location')
               ? 'text-primary-green'
               : 'text-gray-500',
           )}>
-          {formContext.getValues('location') ?? '장소'}
+          {formContext.watch('location') ?? '장소'}
         </Text>
       </Pressable>
       <DiaryLocationBottomSheetModal
