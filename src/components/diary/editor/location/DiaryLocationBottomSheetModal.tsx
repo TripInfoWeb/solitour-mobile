@@ -93,7 +93,10 @@ export const DiaryLocationBottomSheetModal = forwardRef<
                   'mr-1.5 flex h-10 w-[3.75rem] items-center justify-center rounded-full border',
                 ])
               }
-              onPress={() => formContext.setValue('location', item)}
+              onPress={() => {
+                formContext.setValue('location', item);
+                formContext.trigger('location');
+              }}
               children={({pressed}) => (
                 <Text
                   style={tw.style(

@@ -34,7 +34,6 @@ export const useDiaryEditor = () => {
       endDate: null,
       location: null,
       feeling: null,
-      content: content,
       image: null,
     },
     mode: 'onChange',
@@ -71,6 +70,7 @@ export const useDiaryEditor = () => {
     },
     onSuccess: (data: {fileUrl: string}) => {
       methods.setValue('image', data.fileUrl);
+      methods.trigger('image');
     },
     throwOnError: true,
   });
@@ -87,5 +87,5 @@ export const useDiaryEditor = () => {
     });
   };
 
-  return {methods, editor, imageMutation, handleImageUpload};
+  return {methods, content, editor, imageMutation, handleImageUpload};
 };

@@ -6,6 +6,7 @@ import {
   Platform,
   SafeAreaView,
   ScrollView,
+  Text,
   TextInput,
   View,
 } from 'react-native';
@@ -23,15 +24,18 @@ import {COLOR} from '@src/constants/color';
 import {useDiaryEditor} from '@src/hooks/diary/useDiaryEditor';
 
 export const DiaryEditorScreen = () => {
-  const {methods, editor, imageMutation, handleImageUpload} = useDiaryEditor();
+  const {methods, content, editor, imageMutation, handleImageUpload} =
+    useDiaryEditor();
   const navigation = useNavigation<NavigationProps>();
 
   useEffect(() => {
     navigation.setOptions({
       // eslint-disable-next-line react/no-unstable-nested-components
-      headerRight: () => <DiaryRegisterButton methods={methods} />,
+      headerRight: () => (
+        <DiaryRegisterButton methods={methods} content={content} />
+      ),
     });
-  }, [methods, navigation]);
+  }, [content, methods, navigation]);
 
   return (
     <FormProvider {...methods}>
@@ -45,6 +49,9 @@ export const DiaryEditorScreen = () => {
             render={({field: {onChange, value}}) => (
               <TextInput
                 style={tw`h-14 text-lg font-semibold`}
+                placeholderTextColor={
+                  methods.formState.errors.title && COLOR.BLUE
+                }
                 placeholder="제목을 입력해 주세요."
                 onChangeText={onChange}
                 value={value}
@@ -63,6 +70,11 @@ export const DiaryEditorScreen = () => {
         <KeyboardAvoidingView
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
           style={tw`absolute bottom-0 flex w-full flex-col gap-4`}>
+          {methods.formState.errors.image && (
+            <Text style={tw`ml-4 text-blue-500`}>
+              {methods.formState.errors.image.message}
+            </Text>
+          )}
           {imageMutation.isPending ? (
             <View
               style={tw`ml-4 flex h-20 w-20 items-center justify-center rounded-lg border border-custom-04`}>

@@ -35,11 +35,15 @@ export const DiaryDatePicker = () => {
           style={tw.style(
             formContext.watch('endDate')
               ? 'text-primary-green'
-              : 'text-gray-500',
+              : formContext.formState.errors.endDate
+                ? 'text-blue-500'
+                : 'text-gray-500',
           )}>
           {formContext.watch('endDate') !== null
             ? `${formContext.watch('startDate')?.toLocaleDateString('ko-KR')}  -  ${formContext.watch('endDate')?.toLocaleDateString('ko-KR')}`
-            : '날짜'}
+            : formContext.formState.errors.endDate
+              ? '날짜를 입력해 주세요.'
+              : '날짜'}
         </Text>
       </Pressable>
       <DiaryDateBottomSheetModal

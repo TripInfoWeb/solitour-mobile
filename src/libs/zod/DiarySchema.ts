@@ -26,23 +26,18 @@ export const DiarySchema = z.object({
     }),
   location: z
     .string({
-      required_error: '주소를 입력해 주세요.',
-      invalid_type_error: 'Location must be a string.',
+      required_error: '장소를 선택해 주세요.',
+      invalid_type_error: '장소를 선택해 주세요.',
     })
-    .min(1, {message: '주소를 입력해 주세요.'}),
+    .min(1, {message: '장소를 선택해 주세요.'}),
   feeling: z
-    .number({
+    .string({
       required_error: '기분을 선택해 주세요.',
-      invalid_type_error: 'Feeling must be a integer.',
+      invalid_type_error: '기분을 선택해 주세요.',
     })
-    .int({message: '기분을 선택해 주세요.'})
-    .positive({message: '기분을 선택해 주세요.'}),
-  content: z.string({
-    required_error: '내용을 입력해 주세요.',
-    invalid_type_error: 'Content must be a string.',
-  }),
+    .min(1, {message: '기분을 선택해 주세요.'}),
   image: z.string({
-    required_error: '최소 1장의 이미지를 등록해 주세요.',
-    invalid_type_error: 'Image must be a string.',
+    required_error: '이미지 1장을 등록해 주세요.',
+    invalid_type_error: '이미지 1장을 등록해 주세요.',
   }),
 });

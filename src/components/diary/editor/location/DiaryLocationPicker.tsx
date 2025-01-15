@@ -33,9 +33,13 @@ export const DiaryLocationPicker = () => {
           style={tw.style(
             formContext.watch('location')
               ? 'text-primary-green'
-              : 'text-gray-500',
+              : formContext.formState.errors.location
+                ? 'text-blue-500'
+                : 'text-gray-500',
           )}>
-          {formContext.watch('location') ?? '장소'}
+          {formContext.formState.errors.location
+            ? formContext.formState.errors.location.message
+            : (formContext.watch('location') ?? '장소')}
         </Text>
       </Pressable>
       <DiaryLocationBottomSheetModal

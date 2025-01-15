@@ -80,7 +80,10 @@ export const DiaryFeelingBottomSheetModal = forwardRef<
                 ])
               }
               android_ripple={{color: COLOR.GREEN_RIPPLE}}
-              onPress={() => formContext.setValue('feeling', item.label)}>
+              onPress={() => {
+                formContext.setValue('feeling', item.label);
+                formContext.trigger('feeling');
+              }}>
               <Image style={tw`h-10 w-8`} source={item.source} />
               <Text
                 style={tw.style(

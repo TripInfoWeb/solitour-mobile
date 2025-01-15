@@ -33,9 +33,13 @@ export const DiaryFeelingPicker = () => {
           style={tw.style(
             formContext.watch('feeling')
               ? 'text-primary-green'
-              : 'text-gray-500',
+              : formContext.formState.errors.feeling
+                ? 'text-blue-500'
+                : 'text-gray-500',
           )}>
-          {formContext.watch('feeling') ?? '기분'}
+          {formContext.formState.errors.feeling
+            ? formContext.formState.errors.feeling.message
+            : (formContext.watch('feeling') ?? '기분')}
         </Text>
       </Pressable>
       <DiaryFeelingBottomSheetModal
