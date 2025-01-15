@@ -18,9 +18,9 @@ export const DiaryRegisterButton = ({
 
   return (
     <Pressable
-      style={({pressed}) => {
-        return tw.style([pressed ? 'bg-slate-100' : '', 'rounded-2xl p-2']);
-      }}
+      style={({pressed}) =>
+        tw.style([pressed ? 'bg-slate-100' : '', 'rounded-2xl p-2'])
+      }
       onPressOut={() => handleSubmit()}>
       {/* Notice: 2025. 01. 15. 기준 useEffect로 헤더에 등록된 버튼에 이벤트를 등록할 때 onPress는 동작하지 않는 오류가 있습니다.
                   대신 onPressIn과 onPressOut은 잘 동작합니다.
