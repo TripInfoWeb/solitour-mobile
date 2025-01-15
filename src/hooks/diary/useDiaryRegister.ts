@@ -64,5 +64,5 @@ export const useDiaryRegister = (
     mutation.mutate();
   };
 
-  return {handleSubmit};
+  return {isPending: mutation.isPending, handleSubmit};
 };

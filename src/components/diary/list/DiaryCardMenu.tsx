@@ -1,8 +1,16 @@
 import {BACKEND_URL} from '@env';
+import {COLOR} from '@src/constants/color';
 import {tw} from '@src/libs/tailwind';
 import {useMutation, useQueryClient} from '@tanstack/react-query';
 import React, {useState} from 'react';
-import {Alert, Image, Pressable, Text, View} from 'react-native';
+import {
+  ActivityIndicator,
+  Alert,
+  Image,
+  Pressable,
+  Text,
+  View,
+} from 'react-native';
 import EncryptedStorage from 'react-native-encrypted-storage';
 
 interface DiaryCardMenuProps {
@@ -48,19 +56,26 @@ export const DiaryCardMenu = ({diaryId}: DiaryCardMenuProps) => {
 
   return (
     <View style={tw`relative`}>
-      <Pressable
-        style={({pressed}) =>
-          tw.style([pressed ? 'bg-white' : '', 'rounded-lg p-1'])
-        }
-        onTouchEnd={e => {
-          e.stopPropagation();
-          setVisible(true);
-        }}>
-        <Image
-          style={tw`h-6 w-6`}
-          source={require('@src/assets/diary/menu-icon.png')}
+      {mutation.isPending ? (
+        <ActivityIndicator
+          style={tw`h-8 w-8 bg-blue-100`}
+          color={COLOR.PRIMARY_GREEN}
         />
-      </Pressable>
+      ) : (
+        <Pressable
+          style={({pressed}) =>
+            tw.style([pressed ? 'bg-white' : '', 'rounded-lg p-1'])
+          }
+          onTouchEnd={e => {
+            e.stopPropagation();
+            setVisible(true);
+          }}>
+          <Image
+            style={tw`h-6 w-6`}
+            source={require('@src/assets/diary/menu-icon.png')}
+          />
+        </Pressable>
+      )}
       {visible && (
         <View
           style={tw`absolute right-1.5 top-8 flex w-20 flex-col items-center rounded-lg bg-white shadow`}>
