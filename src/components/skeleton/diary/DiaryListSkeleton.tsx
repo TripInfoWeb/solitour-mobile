@@ -1,37 +1,11 @@
+import {usePulseAnimation} from '@src/hooks/common/usePulseAnimation';
 import {tw} from '@src/libs/tailwind';
-import React, {useEffect} from 'react';
-import {
-  Animated,
-  FlatList,
-  useAnimatedValue,
-  useWindowDimensions,
-  View,
-} from 'react-native';
+import React from 'react';
+import {Animated, FlatList, useWindowDimensions, View} from 'react-native';
 
 export const DiaryListSkeleton = () => {
   const {width} = useWindowDimensions();
-  const opacity = useAnimatedValue(1);
-
-  const pulseStart = () => {
-    Animated.timing(opacity, {
-      toValue: 0.25,
-      duration: 1000,
-      useNativeDriver: true,
-    }).start(() => pulseEnd());
-  };
-
-  const pulseEnd = () => {
-    Animated.timing(opacity, {
-      toValue: 1,
-      duration: 1000,
-      useNativeDriver: true,
-    }).start(() => pulseStart());
-  };
-
-  useEffect(() => {
-    pulseStart();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const {opacity} = usePulseAnimation();
 
   return (
     <FlatList
@@ -49,9 +23,7 @@ export const DiaryListSkeleton = () => {
           <Animated.View
             style={tw.style(
               'h-[26rem] w-[17.75rem] rounded-xl bg-custom-gray',
-              {
-                opacity: opacity,
-              },
+              {opacity},
             )}
           />
         </View>

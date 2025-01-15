@@ -9,7 +9,7 @@ import {Image, Pressable, Text, View} from 'react-native';
 import {COLOR} from '@src/constants/color';
 import CalendarPicker from 'react-native-calendar-picker';
 import {PrimaryButton} from '@src/components/common/PrimaryButton';
-import {useBackHandler} from '@src/hooks/useBackHandler';
+import {useBackHandler} from '@src/hooks/common/useBackHandler';
 import {useFormContext} from 'react-hook-form';
 import {Diary} from '@src/types/diary';
 

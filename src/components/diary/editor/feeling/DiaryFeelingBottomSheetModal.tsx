@@ -8,7 +8,7 @@ import {FlatList, Image, Pressable, Text, View} from 'react-native';
 import {tw} from '@src/libs/tailwind';
 import {COLOR} from '@src/constants/color';
 import {PrimaryButton} from '@src/components/common/PrimaryButton';
-import {useBackHandler} from '@src/hooks/useBackHandler';
+import {useBackHandler} from '@src/hooks/common/useBackHandler';
 import {useFormContext} from 'react-hook-form';
 import {Diary} from '@src/types/diary';
 
