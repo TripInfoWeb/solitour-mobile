@@ -18,7 +18,7 @@ export interface DiaryList {
       diaryDayContentDetail: {
         content: string;
         feelingStatus: string;
-        contentImage: string;
+        contentImage: 'EXCITED' | 'NICE' | 'SOSO' | 'SAD' | 'ANGRY';
         place: string;
       }[];
     };

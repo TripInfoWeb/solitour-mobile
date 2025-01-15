@@ -56,6 +56,10 @@ export const DiaryListViewer = ({
               location={
                 item.diaryDayContentResponses.diaryDayContentDetail[0].place
               }
+              feeling={
+                item.diaryDayContentResponses.diaryDayContentDetail[0]
+                  .feelingStatus
+              }
               imageUrl={item.titleImage}
               content={
                 item.diaryDayContentResponses.diaryDayContentDetail[0].content
