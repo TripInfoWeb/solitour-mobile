@@ -15,7 +15,7 @@ import {DiaryDatePicker} from '@src/components/diary/editor/date/DiaryDatePicker
 import {DiaryLocationPicker} from '@src/components/diary/editor/location/DiaryLocationPicker';
 import {DiaryFeelingPicker} from '@src/components/diary/editor/feeling/DiaryFeelingPicker';
 import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
-import {RichText, Toolbar, DEFAULT_TOOLBAR_ITEMS} from '@10play/tentap-editor';
+import {DEFAULT_TOOLBAR_ITEMS, RichText, Toolbar} from '@10play/tentap-editor';
 import {Controller, FormProvider} from 'react-hook-form';
 import {useNavigation} from '@react-navigation/native';
 import {NavigationProps} from '@src/types/navigation';
@@ -24,15 +24,15 @@ import {COLOR} from '@src/constants/color';
 import {useDiaryEditor} from '@src/hooks/diary/useDiaryEditor';
 
 export const DiaryEditorScreen = () => {
+  const navigation = useNavigation<NavigationProps>();
   const {methods, content, editor, imageMutation, handleImageUpload} =
     useDiaryEditor();
-  const navigation = useNavigation<NavigationProps>();
 
   useEffect(() => {
     navigation.setOptions({
       // eslint-disable-next-line react/no-unstable-nested-components
       headerRight: () => (
-        <DiaryRegisterButton methods={methods} content={content} />
+        <DiaryRegisterButton methods={methods} content={content ?? ''} />
       ),
     });
   }, [content, methods, navigation]);
@@ -98,7 +98,9 @@ export const DiaryEditorScreen = () => {
                 disabled: () => false,
                 image: () => require('@src/assets/common/image-icon-small.png'),
               },
-              ...DEFAULT_TOOLBAR_ITEMS,
+              ...DEFAULT_TOOLBAR_ITEMS.filter((_, index) =>
+                [0, 1, 6, 7, 13, 14].includes(index),
+              ),
             ]}
           />
         </KeyboardAvoidingView>
