@@ -34,7 +34,7 @@ export const DiaryCard = ({
   const {interpolate, isTail, flipCard} = useCardFlipAnimation();
   const editor = useEditorBridge({
     avoidIosKeyboard: true,
-    initialContent: content + content + content,
+    initialContent: content,
     editable: false,
     bridgeExtensions: [
       ...TenTapStartKit,
