@@ -1,11 +1,13 @@
 import React, {useEffect} from 'react';
 import {
+  ActivityIndicator,
   Image,
   KeyboardAvoidingView,
   Platform,
   SafeAreaView,
   ScrollView,
   TextInput,
+  View,
 } from 'react-native';
 import {tw} from '@src/libs/tailwind';
 import {DiaryDatePicker} from '@src/components/diary/editor/date/DiaryDatePicker';
@@ -29,6 +31,10 @@ import {Diary} from '@src/types/diary';
 import {useNavigation} from '@react-navigation/native';
 import {NavigationProps} from '@src/types/navigation';
 import {DiaryRegisterButton} from '@src/components/diary/editor/DiaryRegisterButton';
+import {BACKEND_URL} from '@env';
+import EncryptedStorage from 'react-native-encrypted-storage';
+import {useMutation} from '@tanstack/react-query';
+import {COLOR} from '@src/constants/color';
 
 export const DiaryEditorScreen = () => {
   const navigation = useNavigation<NavigationProps>();
@@ -58,10 +64,49 @@ export const DiaryEditorScreen = () => {
     mode: 'onChange',
   });
 
+  const imageMutation = useMutation({
+    mutationFn: async (image: {
+      fileName: string;
+      type: string;
+      uri: string;
+    }) => {
+      const accessToken = await EncryptedStorage.getItem('access_token');
+      const formData = new FormData();
+      formData.append('image', {
+        name: image.fileName,
+        type: image.type,
+        uri: image.uri,
+      });
+      formData.append('type', 'DIARY');
+
+      const response = await fetch(`${BACKEND_URL}/api/image`, {
+        method: 'POST',
+        headers: {
+          Cookie: `access_token=${accessToken}`,
+        },
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to upload an image.');
+      }
+
+      return await response.json();
+    },
+    onSuccess: (data: {fileUrl: string}) => {
+      methods.setValue('image', data.fileUrl);
+    },
+    throwOnError: true,
+  });
+
   const handleImageUpload = () => {
     launchImageLibrary({mediaType: 'photo'}, response => {
       if (response.assets) {
-        methods.setValue('image', response.assets[0].uri!);
+        imageMutation.mutate({
+          fileName: response.assets[0].fileName!,
+          type: response.assets[0].type!,
+          uri: response.assets[0].uri!,
+        });
       }
     });
   };
@@ -103,11 +148,18 @@ export const DiaryEditorScreen = () => {
         <KeyboardAvoidingView
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
           style={tw`absolute bottom-0 flex w-full flex-col gap-4`}>
-          {methods.watch('image') && (
-            <Image
-              style={tw`ml-4 h-20 w-20 rounded-lg border border-custom-04`}
-              source={{uri: methods.watch('image')!}}
-            />
+          {imageMutation.isPending ? (
+            <View
+              style={tw`ml-4 flex h-20 w-20 items-center justify-center rounded-lg border border-custom-04`}>
+              <ActivityIndicator color={COLOR.PRIMARY_GREEN} />
+            </View>
+          ) : (
+            methods.watch('image') && (
+              <Image
+                style={tw`ml-4 h-20 w-20 rounded-lg border border-custom-04`}
+                source={{uri: methods.watch('image')!}}
+              />
+            )
           )}
           <Toolbar
             editor={editor}
