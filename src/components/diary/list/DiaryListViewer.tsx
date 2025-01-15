@@ -51,6 +51,7 @@ export const DiaryListViewer = ({
           data={diaryList.content}
           renderItem={({item}) => (
             <DiaryCard
+              diaryId={item.diaryId}
               title={item.title}
               period={`${new Date(item.startDatetime).toLocaleDateString()} - ${new Date(item.endDatetime).toLocaleDateString()}`}
               location={

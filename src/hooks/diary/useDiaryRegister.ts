@@ -4,7 +4,7 @@ import {FEELING_STATUS} from '@src/constants/feelingStatus';
 import {SANITIZE_OPTION} from '@src/constants/sanitizeOption';
 import {Diary} from '@src/types/diary';
 import {NavigationProps} from '@src/types/navigation';
-import {useMutation} from '@tanstack/react-query';
+import {useMutation, useQueryClient} from '@tanstack/react-query';
 import {UseFormReturn} from 'react-hook-form';
 import EncryptedStorage from 'react-native-encrypted-storage';
 import sanitizeHtml from 'sanitize-html';
@@ -14,6 +14,7 @@ export const useDiaryRegister = (
   content: string,
 ) => {
   const navigation = useNavigation<NavigationProps>();
+  const queryClient = useQueryClient();
   const mutation = useMutation({
     mutationFn: async () => {
       const diaryData = {
@@ -47,9 +48,9 @@ export const useDiaryRegister = (
 
       return await response.text();
     },
-    onSuccess: () => {
-      navigation.pop();
-      // TODO: Invalidate Cache
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({queryKey: ['diaryList']});
+      navigation.goBack();
     },
     throwOnError: true,
   });
