@@ -91,6 +91,7 @@ export const DiaryCard = ({
         onTouchEnd={() => flipCard()}>
         <ImageBackground
           style={tw`flex-1`}
+          imageStyle={tw`rounded-xl`}
           source={{uri: imageUrl}}
           resizeMode="cover"
         />
