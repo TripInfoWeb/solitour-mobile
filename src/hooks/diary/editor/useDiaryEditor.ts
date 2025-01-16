@@ -24,7 +24,7 @@ export const useDiaryEditor = (placeholderData?: {
 }) => {
   const editor = useEditorBridge({
     avoidIosKeyboard: true,
-    initialContent: placeholderData?.content ?? '',
+    initialContent: placeholderData?.content,
     bridgeExtensions: [
       ...TenTapStartKit,
       PlaceholderBridge.configureExtension({

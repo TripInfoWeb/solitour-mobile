@@ -1,10 +1,30 @@
 import {COLOR} from '@src/constants/color';
+import {useDiaryUpdate} from '@src/hooks/diary/update/useDiaryUpdate';
 import {tw} from '@src/libs/tailwind';
+import {Diary} from '@src/types/diary';
 import React from 'react';
+import {UseFormReturn} from 'react-hook-form';
 import {ActivityIndicator, Pressable, Text} from 'react-native';
 
-export const DiaryUpdateButton = () => {
-  const {isPending, handleSubmit} = useDiaryRegister(methods, content);
+interface DiaryUpdateButtonProps {
+  diaryId: number;
+  originalImage: string;
+  methods: UseFormReturn<Diary, any, undefined>;
+  content: string;
+}
+
+export const DiaryUpdateButton = ({
+  diaryId,
+  originalImage,
+  methods,
+  content,
+}: DiaryUpdateButtonProps) => {
+  const {isPending, handleSubmit} = useDiaryUpdate(
+    diaryId,
+    originalImage,
+    methods,
+    content,
+  );
 
   if (isPending) {
     return <ActivityIndicator style={tw`p-2`} color={COLOR.PRIMARY_GREEN} />;

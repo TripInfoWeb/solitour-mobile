@@ -1,7 +1,7 @@
 import {tw} from '@src/libs/tailwind';
 import React from 'react';
 import {FlatList, Image, Text, useWindowDimensions, View} from 'react-native';
-import {useDiaryList} from '@src/hooks/diary/useDiaryList';
+import {useDiaryList} from '@src/hooks/diary/list/useDiaryList';
 import {DiaryCard} from './DiaryCard';
 import {DiaryPageIndicator} from './DiaryPageIndicator';
 

@@ -5,7 +5,7 @@ import {
   useEditorBridge,
 } from '@10play/tentap-editor';
 import {FEELING_IMAGE} from '@src/constants/feelingImage';
-import {useCardFlipAnimation} from '@src/hooks/diary/useCardFlipAnimation';
+import {useCardFlipAnimation} from '@src/hooks/diary/list/useCardFlipAnimation';
 import {tw} from '@src/libs/tailwind';
 import React from 'react';
 import {Animated, Image, ImageBackground, Text, View} from 'react-native';

@@ -19,7 +19,6 @@ import {DEFAULT_TOOLBAR_ITEMS, RichText, Toolbar} from '@10play/tentap-editor';
 import {Controller, FormProvider} from 'react-hook-form';
 import {useNavigation} from '@react-navigation/native';
 import {NavigationProps} from '@src/types/navigation';
-import {DiaryRegisterButton} from '@src/components/diary/register/DiaryRegisterButton';
 import {COLOR} from '@src/constants/color';
 import {useDiaryEditor} from '@src/hooks/diary/editor/useDiaryEditor';
 import {useSuspenseQuery} from '@tanstack/react-query';
@@ -27,6 +26,7 @@ import EncryptedStorage from 'react-native-encrypted-storage';
 import {BACKEND_URL} from '@env';
 import {DiaryDetail} from '@src/types/diary';
 import {FEELING_STATUS} from '@src/constants/feelingStatus';
+import {DiaryUpdateButton} from './DiaryUpdateButton';
 
 interface DiaryUpdateEditorProps {
   diaryId: number;
@@ -75,10 +75,22 @@ export const DiaryUpdateEditor = ({diaryId}: DiaryUpdateEditorProps) => {
     navigation.setOptions({
       // eslint-disable-next-line react/no-unstable-nested-components
       headerRight: () => (
-        <DiaryRegisterButton methods={methods} content={content ?? ''} />
+        <DiaryUpdateButton
+          diaryId={diaryId}
+          originalImage={data.diaryContentResponse.titleImage}
+          methods={methods}
+          content={content ?? ''}
+        />
       ),
     });
-  }, [content, methods, navigation]);
+  }, [
+    content,
+    data.diaryContentResponse.titleImage,
+    diaryId,
+    editor,
+    methods,
+    navigation,
+  ]);
 
   return (
     <FormProvider {...methods}>
