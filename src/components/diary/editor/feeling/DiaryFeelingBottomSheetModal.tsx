@@ -8,7 +8,9 @@ import {FlatList, Image, Pressable, Text, View} from 'react-native';
 import {tw} from '@src/libs/tailwind';
 import {COLOR} from '@src/constants/color';
 import {PrimaryButton} from '@src/components/common/PrimaryButton';
-import {useBackHandler} from '@src/hooks/useBackHandler';
+import {useBackHandler} from '@src/hooks/common/useBackHandler';
+import {useFormContext} from 'react-hook-form';
+import {Diary} from '@src/types/diary';
 
 const FEELINGLIST = [
   {source: require('@src/assets/diary/feeling1.png'), label: '최고'},
@@ -19,15 +21,14 @@ const FEELINGLIST = [
 ] as const;
 
 interface DiaryFeelingBottomSheetModalProps {
-  feeling: string | null;
-  setFeeling: (value: string) => void;
   closeBottomSheetModal: () => void;
 }
 
 export const DiaryFeelingBottomSheetModal = forwardRef<
   BottomSheetModal,
   DiaryFeelingBottomSheetModalProps
->(({feeling, setFeeling, closeBottomSheetModal}, bottomSheetModalRef) => {
+>(({closeBottomSheetModal}, bottomSheetModalRef) => {
+  const formContext = useFormContext<Diary>();
   const {addBackPressEventListener, removeBackPressEventListener} =
     useBackHandler(closeBottomSheetModal);
   const renderBackdrop = useCallback(
@@ -79,11 +80,14 @@ export const DiaryFeelingBottomSheetModal = forwardRef<
                 ])
               }
               android_ripple={{color: COLOR.GREEN_RIPPLE}}
-              onPress={() => setFeeling(item.label)}>
+              onPress={() => {
+                formContext.setValue('feeling', item.label);
+                formContext.trigger('feeling');
+              }}>
               <Image style={tw`h-10 w-8`} source={item.source} />
               <Text
                 style={tw.style(
-                  feeling === item.label
+                  formContext.watch('feeling') === item.label
                     ? 'text-primary-green'
                     : 'text-gray-500',
                 )}>
@@ -96,7 +100,7 @@ export const DiaryFeelingBottomSheetModal = forwardRef<
         />
         <PrimaryButton
           title="선택하기"
-          disabled={feeling === null}
+          disabled={formContext.watch('feeling') === null}
           onPress={() => closeBottomSheetModal()}
         />
       </BottomSheetView>

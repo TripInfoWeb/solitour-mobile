@@ -1,12 +1,14 @@
-import React, {useCallback, useRef, useState} from 'react';
+import React, {useCallback, useRef} from 'react';
 import {BottomSheetModal} from '@gorhom/bottom-sheet';
 import {Image, Pressable, Text, View} from 'react-native';
 import {tw} from '@src/libs/tailwind';
 import {COLOR} from '@src/constants/color';
 import {DiaryLocationBottomSheetModal} from './DiaryLocationBottomSheetModal';
+import {Diary} from '@src/types/diary';
+import {useFormContext} from 'react-hook-form';
 
 export const DiaryLocationPicker = () => {
-  const [location, setLocation] = useState<string | null>(null);
+  const formContext = useFormContext<Diary>();
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
   const handlePresentModalPress = useCallback(() => {
     bottomSheetModalRef.current?.present();
@@ -28,14 +30,20 @@ export const DiaryLocationPicker = () => {
           source={require('@src/assets/diary/location.png')}
         />
         <Text
-          style={tw.style(location ? 'text-primary-green' : 'text-gray-500')}>
-          {location ?? '장소'}
+          style={tw.style(
+            formContext.watch('location')
+              ? 'text-primary-green'
+              : formContext.formState.errors.location
+                ? 'text-blue-500'
+                : 'text-gray-500',
+          )}>
+          {formContext.formState.errors.location
+            ? formContext.formState.errors.location.message
+            : (formContext.watch('location') ?? '장소')}
         </Text>
       </Pressable>
       <DiaryLocationBottomSheetModal
         ref={bottomSheetModalRef}
-        location={location}
-        setLocation={(value: string) => setLocation(value)}
         closeBottomSheetModal={() =>
           bottomSheetModalRef.current?.close({duration: 300})
         }
