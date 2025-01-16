@@ -96,8 +96,8 @@ export const DiaryCard = ({
           resizeMode="cover"
         />
         <LinearGradient
-          colors={['#FFFFFF', '#AAAAAA']}
-          style={tw`absolute bottom-0 flex h-[11.5rem] w-full rounded-b-xl opacity-50`}
+          colors={['rgba(17, 17, 17, 0)', 'rgba(17, 17, 17, 0.5)']}
+          style={tw`absolute bottom-0 flex h-[11.5rem] w-full rounded-b-xl`}
         />
         <View style={tw`absolute bottom-[1.875rem] flex flex-col gap-1 px-8`}>
           <Text style={tw`text-xl font-semibold text-white`}>{title}</Text>
