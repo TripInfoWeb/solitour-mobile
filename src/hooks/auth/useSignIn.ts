@@ -31,6 +31,8 @@ export const useSignIn = (code: string) => {
 
       return true;
     },
+    staleTime: 0,
+    gcTime: 0,
     retry: 0,
   });
 
