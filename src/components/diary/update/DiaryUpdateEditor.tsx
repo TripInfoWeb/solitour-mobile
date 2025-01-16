@@ -22,11 +22,54 @@ import {NavigationProps} from '@src/types/navigation';
 import {DiaryRegisterButton} from '@src/components/diary/register/DiaryRegisterButton';
 import {COLOR} from '@src/constants/color';
 import {useDiaryEditor} from '@src/hooks/diary/editor/useDiaryEditor';
+import {useSuspenseQuery} from '@tanstack/react-query';
+import EncryptedStorage from 'react-native-encrypted-storage';
+import {BACKEND_URL} from '@env';
+import {DiaryDetail} from '@src/types/diary';
+import {FEELING_STATUS} from '@src/constants/feelingStatus';
 
-export const DiaryEditorScreen = () => {
+interface DiaryUpdateEditorProps {
+  diaryId: number;
+}
+
+export const DiaryUpdateEditor = ({diaryId}: DiaryUpdateEditorProps) => {
   const navigation = useNavigation<NavigationProps>();
+  const {data} = useSuspenseQuery<DiaryDetail>({
+    queryKey: ['diary', diaryId],
+    queryFn: async () => {
+      const accessToken = await EncryptedStorage.getItem('access_token');
+      const response = await fetch(`${BACKEND_URL}/api/diary/${diaryId}`, {
+        method: 'GET',
+        headers: {
+          Cookie: `access_token=${accessToken}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+
+      return await response.json();
+    },
+  });
   const {methods, content, editor, imageMutation, handleImageUpload} =
-    useDiaryEditor();
+    useDiaryEditor({
+      title: data.diaryContentResponse.title,
+      startDate: new Date(data.diaryContentResponse.startDatetime),
+      endDate: new Date(data.diaryContentResponse.endDatetime),
+      location:
+        data.diaryContentResponse.diaryDayContentResponses
+          .diaryDayContentDetail[0].place,
+      feeling:
+        FEELING_STATUS[
+          data.diaryContentResponse.diaryDayContentResponses
+            .diaryDayContentDetail[0].feelingStatus
+        ],
+      content:
+        data.diaryContentResponse.diaryDayContentResponses
+          .diaryDayContentDetail[0].content,
+      image: data.diaryContentResponse.titleImage,
+    });
 
   useEffect(() => {
     navigation.setOptions({

@@ -1,6 +1,8 @@
 import {BACKEND_URL} from '@env';
+import {useNavigation} from '@react-navigation/native';
 import {COLOR} from '@src/constants/color';
 import {tw} from '@src/libs/tailwind';
+import {NavigationProps} from '@src/types/navigation';
 import {useMutation, useQueryClient} from '@tanstack/react-query';
 import React, {useState} from 'react';
 import {
@@ -18,6 +20,7 @@ interface DiaryCardMenuProps {
 }
 
 export const DiaryCardMenu = ({diaryId}: DiaryCardMenuProps) => {
+  const navigation = useNavigation<NavigationProps>();
   const [visible, setVisible] = useState(false);
   const queryClient = useQueryClient();
   const mutation = useMutation({
@@ -68,7 +71,7 @@ export const DiaryCardMenu = ({diaryId}: DiaryCardMenuProps) => {
           }
           onTouchEnd={e => {
             e.stopPropagation();
-            setVisible(true);
+            setVisible(value => !value);
           }}>
           <Image
             style={tw`h-6 w-6`}
@@ -79,6 +82,17 @@ export const DiaryCardMenu = ({diaryId}: DiaryCardMenuProps) => {
       {visible && (
         <View
           style={tw`absolute right-1.5 top-8 flex w-20 flex-col items-center rounded-lg bg-white shadow`}>
+          <Pressable
+            style={({pressed}) =>
+              tw.style([pressed ? 'bg-slate-100' : '', 'w-full'])
+            }
+            onTouchEnd={e => {
+              e.stopPropagation();
+              setVisible(false);
+              navigation.navigate('DiaryUpdate', {diaryId});
+            }}>
+            <Text style={tw`py-2 text-center`}>수정</Text>
+          </Pressable>
           <Pressable
             style={({pressed}) =>
               tw.style([pressed ? 'bg-slate-100' : '', 'w-full'])

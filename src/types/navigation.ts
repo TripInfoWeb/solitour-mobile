@@ -7,6 +7,8 @@ export type NavigationList = {
   Discovery: undefined;
   Home: undefined;
   Diary: undefined;
+  DiaryEditor: undefined;
+  DiaryUpdate: {diaryId: number};
   Mypage: undefined;
   Auth: undefined;
   AuthSignIn: undefined;
@@ -17,7 +19,6 @@ export type NavigationList = {
   SurveyLoading: undefined;
   SurveyResultList: undefined;
   SurveyResultDetail: {index: number; plan: Plan};
-  DiaryEditor: undefined;
 };
 
 export type NavigationProps = NativeStackNavigationProp<NavigationList>;

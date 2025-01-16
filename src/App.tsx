@@ -21,6 +21,7 @@ import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
 import {useNetInfo} from '@react-native-community/netinfo';
 import {ErrorBoundary} from 'react-error-boundary';
 import {ErrorBoundaryScreen} from './screens/ErrorBoundaryScreen';
+import {DiaryUpdateScreen} from './screens/diary/DiaryUpdateScreen';
 
 const queryClient = new QueryClient();
 const Stack = createNativeStackNavigator<NavigationList>();
@@ -108,6 +109,11 @@ export const App = () => {
               <Stack.Screen
                 name="DiaryEditor"
                 component={DiaryEditorScreen}
+                options={{title: '여행일기'}}
+              />
+              <Stack.Screen
+                name="DiaryUpdate"
+                component={DiaryUpdateScreen}
                 options={{title: '여행일기'}}
               />
             </Stack.Navigator>

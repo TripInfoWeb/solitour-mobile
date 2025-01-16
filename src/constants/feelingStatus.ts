@@ -8,4 +8,9 @@ export const FEELING_STATUS: FEELING_STATUS_TYPE = {
   무난: 'SOSO',
   슬퍼: 'SAD',
   화나: 'ANGRY',
+  EXCITED: '최고',
+  NICE: '좋아',
+  SOSO: '무난',
+  SAD: '슬퍼',
+  ANGRY: '화나',
 } as const;
