@@ -16,7 +16,7 @@ export const useDiaryList = (page: number) => {
       });
 
       if (!response.ok) {
-        throw new Error(response.statusText);
+        throw new Error('Failed to fetch data.');
       }
 
       return await response.json();

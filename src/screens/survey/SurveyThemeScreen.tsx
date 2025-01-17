@@ -6,12 +6,17 @@ import {CONTENT_CATEGORY} from '@src/constants/contentCategory';
 import {tw} from '@src/libs/tailwind';
 import {useSurveyStore} from '@src/stores/surveyStore';
 import {NavigationProps} from '@src/types/navigation';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {FlatList, SafeAreaView, Text, View} from 'react-native';
 
 export const SurveyThemeScreen = () => {
   const navigation = useNavigation<NavigationProps>();
   const {contentCategory, setSurveyState} = useSurveyStore();
+
+  useEffect(() => {
+    // TODO: 삭제
+    throw new Error('TEST');
+  }, []);
 
   return (
     <View style={tw`h-full w-full bg-white px-4 pt-2`}>

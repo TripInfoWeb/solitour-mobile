@@ -10,12 +10,14 @@ import {
 
 interface SurveyContentItemProps {
   title: string;
+  image: string;
   isActive?: boolean;
   onPress?: ((event: GestureResponderEvent) => void) | null;
 }
 
 export const SurveyContentItem = ({
   title,
+  image,
   isActive,
   onPress,
 }: SurveyContentItemProps) => {
@@ -30,7 +32,7 @@ export const SurveyContentItem = ({
               pressed || isActive ? 'border-8 border-primary-green' : '',
               'h-[11.5rem] w-full rounded-lg',
             ])}
-            source={require('@src/assets/test/diary-example.png')}
+            source={{uri: image}}
           />
           <Text
             style={tw.style([

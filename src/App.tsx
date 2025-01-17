@@ -1,5 +1,8 @@
 import React, {useEffect} from 'react';
-import {NavigationContainer} from '@react-navigation/native';
+import {
+  NavigationContainer,
+  useNavigationContainerRef,
+} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationList} from './types/navigation';
 import {BottomTabs} from './components/common/BottomTabs';
@@ -52,72 +55,76 @@ export const App = () => {
     <QueryClientProvider client={queryClient}>
       <GestureHandlerRootView>
         <NavigationContainer>
-          <ErrorBoundary fallback={<ErrorBoundaryScreen />}>
-            <Stack.Navigator
-              initialRouteName="Auth"
-              screenOptions={{headerShadowVisible: false}}>
-              <Stack.Screen
-                name="BottomTabs"
-                component={BottomTabs}
-                options={{headerShown: false}}
-              />
-              <Stack.Screen
-                name="Auth"
-                component={AuthScreen}
-                options={{headerShown: false}}
-              />
-              <Stack.Screen
-                name="AuthSignIn"
-                component={AuthSignInScreen}
-                options={{headerShown: false}}
-              />
-              <Stack.Screen
-                name="AuthLoading"
-                component={AuthLoadingScreen}
-                options={{headerShown: false}}
-              />
-              <Stack.Screen
-                name="SurveyTheme"
-                component={SurveyThemeScreen}
-                options={{title: 'AI 콘텐츠 여행 추천'}}
-              />
-              <Stack.Screen
-                name="SurveyContent"
-                component={SurveyContentScreen}
-                options={{title: 'AI 콘텐츠 여행 추천'}}
-              />
-              <Stack.Screen
-                name="SurveyActivity"
-                component={SurveyActivityScreen}
-                options={{title: 'AI 콘텐츠 여행 추천'}}
-              />
-              <Stack.Screen
-                name="SurveyLoading"
-                component={SurveyLoadingScreen}
-                options={{title: 'AI 콘텐츠 여행 추천'}}
-              />
-              <Stack.Screen
-                name="SurveyResultList"
-                component={SurveyResultListScreen}
-                options={{title: 'AI 콘텐츠 여행 추천'}}
-              />
-              <Stack.Screen
-                name="SurveyResultDetail"
-                component={SurveyResultDetailScreen}
-                options={{title: 'AI 콘텐츠 여행 추천'}}
-              />
-              <Stack.Screen
-                name="DiaryEditor"
-                component={DiaryEditorScreen}
-                options={{title: '여행일기'}}
-              />
-              <Stack.Screen
-                name="DiaryUpdate"
-                component={DiaryUpdateScreen}
-                options={{title: '여행일기'}}
-              />
-            </Stack.Navigator>
-          </ErrorBoundary>
+          <Stack.Navigator
+            initialRouteName="Auth"
+            screenOptions={{headerShadowVisible: false}}
+            // eslint-disable-next-line react/no-unstable-nested-components
+            screenLayout={({children}) => (
+              <ErrorBoundary fallback={<ErrorBoundaryScreen />}>
+                {children}
+              </ErrorBoundary>
+            )}>
+            <Stack.Screen
+              name="BottomTabs"
+              component={BottomTabs}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="Auth"
+              component={AuthScreen}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="AuthSignIn"
+              component={AuthSignInScreen}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="AuthLoading"
+              component={AuthLoadingScreen}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="SurveyTheme"
+              component={SurveyThemeScreen}
+              options={{title: 'AI 콘텐츠 여행 추천'}}
+            />
+            <Stack.Screen
+              name="SurveyContent"
+              component={SurveyContentScreen}
+              options={{title: 'AI 콘텐츠 여행 추천'}}
+            />
+            <Stack.Screen
+              name="SurveyActivity"
+              component={SurveyActivityScreen}
+              options={{title: 'AI 콘텐츠 여행 추천'}}
+            />
+            <Stack.Screen
+              name="SurveyLoading"
+              component={SurveyLoadingScreen}
+              options={{title: 'AI 콘텐츠 여행 추천'}}
+            />
+            <Stack.Screen
+              name="SurveyResultList"
+              component={SurveyResultListScreen}
+              options={{title: 'AI 콘텐츠 여행 추천'}}
+            />
+            <Stack.Screen
+              name="SurveyResultDetail"
+              component={SurveyResultDetailScreen}
+              options={{title: 'AI 콘텐츠 여행 추천'}}
+            />
+            <Stack.Screen
+              name="DiaryEditor"
+              component={DiaryEditorScreen}
+              options={{title: '여행일기'}}
+            />
+            <Stack.Screen
+              name="DiaryUpdate"
+              component={DiaryUpdateScreen}
+              options={{title: '여행일기'}}
+            />
+          </Stack.Navigator>
         </NavigationContainer>
       </GestureHandlerRootView>
     </QueryClientProvider>
