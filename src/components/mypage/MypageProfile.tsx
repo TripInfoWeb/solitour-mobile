@@ -9,8 +9,8 @@ export const MypageProfile = () => {
   return (
     <View style={tw`flex flex-col items-center pt-[3.375rem]`}>
       <Image
-        style={tw`h-[6.75rem] w-[6.75rem]`}
-        source={require('@src/assets/mypage/man.png')}
+        style={tw`h-[6.75rem] w-[6.75rem] rounded-full`}
+        source={{uri: data?.userImage.address}}
       />
       <View style={tw`flex flex-row items-center gap-1 pt-3`}>
         <Text style={tw`text-2xl font-semibold`}>{`${data?.nickname}님`}</Text>
