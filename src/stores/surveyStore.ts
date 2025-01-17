@@ -2,6 +2,7 @@ import {create, StateCreator} from 'zustand';
 
 interface SurveyState {
   contentTitles: string[];
+  contentCategory: 'DRAMA' | 'ARTIST' | 'MOVIE' | 'ENTERTAINMENT' | null;
   days: number;
   preferredTrips: (
     | 'CULTURAL_FACILITY'
@@ -13,12 +14,13 @@ interface SurveyState {
 }
 
 interface SurveyAction {
-  initialize: () => void;
+  initializeSurveyState: () => void;
   setSurveyState: (data: Partial<SurveyState>) => void;
 }
 
 const initialState: SurveyState = {
   contentTitles: [],
+  contentCategory: null,
   days: 0,
   preferredTrips: [],
 };
@@ -27,7 +29,7 @@ type SurveyStoreType = SurveyState & SurveyAction;
 
 const surveyStore: StateCreator<SurveyStoreType> = set => ({
   ...initialState,
-  initialize: () => set({...initialState}),
+  initializeSurveyState: () => set({...initialState}),
   setSurveyState: (data: Partial<SurveyState>) => set({...data}),
 });
 

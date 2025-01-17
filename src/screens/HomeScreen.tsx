@@ -15,10 +15,12 @@ import {NavigationProps} from '@src/types/navigation';
 import {tw} from '@src/libs/tailwind';
 import {PrimaryButton} from '@src/components/common/PrimaryButton';
 import {useUserInfo} from '@src/hooks/auth/useUserInfo';
+import {useSurveyStore} from '@src/stores/surveyStore';
 
 export const HomeScreen = () => {
   const navigation = useNavigation<NavigationProps>();
   const {data} = useUserInfo();
+  const {initializeSurveyState} = useSurveyStore();
 
   return (
     <ScrollView style={tw`bg-white`}>
@@ -37,7 +39,10 @@ export const HomeScreen = () => {
         </Text>
         <PrimaryButton
           title="AI 콘텐츠 여행 추천"
-          onPress={() => navigation.navigate('SurveyTheme')}
+          onPress={() => {
+            initializeSurveyState();
+            navigation.navigate('SurveyTheme');
+          }}
         />
       </View>
       <View style={tw`flex flex-col gap-14 px-4 py-14`}>

@@ -26,7 +26,7 @@ export const AuthScreen = () => {
   if (!isError && (data || isLoading)) {
     return (
       <ActivityIndicator
-        style={tw`h-full`}
+        style={tw`h-full bg-white`}
         size={50}
         color={COLOR.PRIMARY_GREEN}
       />

@@ -2,16 +2,16 @@ import {useNavigation} from '@react-navigation/native';
 import {SurveyButton} from '@src/components/survey/common/SurveyButton';
 import {SurveyNextButton} from '@src/components/survey/common/SurveyNextButton';
 import {SurveyProgressBar} from '@src/components/survey/common/SurveyProgressBar';
+import {CONTENT_CATEGORY} from '@src/constants/contentCategory';
 import {tw} from '@src/libs/tailwind';
+import {useSurveyStore} from '@src/stores/surveyStore';
 import {NavigationProps} from '@src/types/navigation';
-import React, {useState} from 'react';
-import {Text, View} from 'react-native';
+import React from 'react';
+import {FlatList, SafeAreaView, Text, View} from 'react-native';
 
 export const SurveyThemeScreen = () => {
   const navigation = useNavigation<NavigationProps>();
-  const [theme, setTheme] = useState<
-    'MOVIE' | 'DRAMA' | 'K-POP' | 'ENTERTAINMENT' | null
-  >(null);
+  const {contentCategory, setSurveyState} = useSurveyStore();
 
   return (
     <View style={tw`h-full w-full bg-white px-4 pt-2`}>
@@ -22,35 +22,26 @@ export const SurveyThemeScreen = () => {
       <Text style={tw`pb-12 text-2xl font-bold text-custom-01`}>
         여행을 떠나고 싶나요?
       </Text>
-      <View style={tw`flex flex-col items-center gap-4`}>
-        <View style={tw`flex flex-row items-center gap-2.5`}>
-          <SurveyButton
-            title="영화"
-            isActive={theme === 'MOVIE'}
-            onPress={() => setTheme('MOVIE')}
-          />
-          <SurveyButton
-            title="드라마"
-            isActive={theme === 'DRAMA'}
-            onPress={() => setTheme('DRAMA')}
-          />
-        </View>
-        <View style={tw`flex flex-row items-center gap-2.5`}>
-          <SurveyButton
-            title="K-POP"
-            isActive={theme === 'K-POP'}
-            onPress={() => setTheme('K-POP')}
-          />
-          <SurveyButton
-            title="예능"
-            isActive={theme === 'ENTERTAINMENT'}
-            onPress={() => setTheme('ENTERTAINMENT')}
-          />
-        </View>
-      </View>
+      <SafeAreaView>
+        <FlatList
+          style={tw`gap-2.5`}
+          columnWrapperStyle={tw`gap-2.5`}
+          contentContainerStyle={tw`gap-4`}
+          data={CONTENT_CATEGORY}
+          renderItem={({item}) => (
+            <SurveyButton
+              title={item.title}
+              isActive={contentCategory === item.category}
+              onPress={() => setSurveyState({contentCategory: item.category})}
+            />
+          )}
+          keyExtractor={item => item.category}
+          numColumns={2}
+        />
+      </SafeAreaView>
       <SurveyNextButton
-        disabled={theme === null}
-        onPress={() => navigation.navigate('SurveyContent')} // TODO
+        disabled={contentCategory === null}
+        onPress={() => navigation.navigate('SurveyContent')}
       />
     </View>
   );
