@@ -1,8 +1,5 @@
 import React, {useEffect} from 'react';
-import {
-  NavigationContainer,
-  useNavigationContainerRef,
-} from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationList} from './types/navigation';
 import {BottomTabs} from './components/common/BottomTabs';
