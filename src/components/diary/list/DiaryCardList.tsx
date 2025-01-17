@@ -5,17 +5,17 @@ import {useDiaryList} from '@src/hooks/diary/list/useDiaryList';
 import {DiaryCard} from './DiaryCard';
 import {DiaryPageIndicator} from './DiaryPageIndicator';
 
-interface DiaryListViewerProps {
+interface DiaryCardListProps {
   page: number;
   goPreviousPage: () => void;
   goNextPage: () => void;
 }
 
-export const DiaryListViewer = ({
+export const DiaryCardList = ({
   page,
   goPreviousPage,
   goNextPage,
-}: DiaryListViewerProps) => {
+}: DiaryCardListProps) => {
   const {width} = useWindowDimensions();
   const {diaryList} = useDiaryList(page);
 
