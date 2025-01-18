@@ -22,6 +22,7 @@ import {useNetInfo} from '@react-native-community/netinfo';
 import {ErrorBoundary} from 'react-error-boundary';
 import {ErrorBoundaryScreen} from './screens/ErrorBoundaryScreen';
 import {DiaryUpdateScreen} from './screens/diary/DiaryUpdateScreen';
+import {SurveyDayScreen} from './screens/survey/SurveyDayScreen';
 
 const queryClient = new QueryClient();
 const Stack = createNativeStackNavigator<NavigationList>();
@@ -80,6 +81,11 @@ export const App = () => {
               name="AuthLoading"
               component={AuthLoadingScreen}
               options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="SurveyDay"
+              component={SurveyDayScreen}
+              options={{title: 'AI 콘텐츠 여행 추천'}}
             />
             <Stack.Screen
               name="SurveyTheme"

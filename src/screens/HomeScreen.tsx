@@ -41,7 +41,7 @@ export const HomeScreen = () => {
           title="AI 콘텐츠 여행 추천"
           onPress={() => {
             initializeSurveyState();
-            navigation.navigate('SurveyTheme');
+            navigation.navigate('SurveyDay');
           }}
         />
       </View>
