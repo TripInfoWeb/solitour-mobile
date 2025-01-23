@@ -9,13 +9,11 @@ import {
   View,
 } from 'react-native';
 
-interface DiaryListViewerSkeletonProps {
+interface DiaryCardListSkeletonProps {
   page: number;
 }
 
-export const DiaryListViewerSkeleton = ({
-  page,
-}: DiaryListViewerSkeletonProps) => {
+export const DiaryCardListSkeleton = ({page}: DiaryCardListSkeletonProps) => {
   const {width} = useWindowDimensions();
   const {opacity} = usePulseAnimation();
 

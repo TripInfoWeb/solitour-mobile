@@ -46,7 +46,7 @@ export const DiaryUpdateEditor = ({diaryId}: DiaryUpdateEditorProps) => {
       });
 
       if (!response.ok) {
-        throw new Error(response.statusText);
+        throw new Error('Failed to update.');
       }
 
       return await response.json();

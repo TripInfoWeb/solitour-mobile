@@ -13,11 +13,12 @@ export type NavigationList = {
   Auth: undefined;
   AuthSignIn: undefined;
   AuthLoading: {code: string};
+  SurveyDay: undefined;
   SurveyTheme: undefined;
   SurveyContent: undefined;
   SurveyActivity: undefined;
   SurveyLoading: undefined;
-  SurveyResultList: undefined;
+  SurveyResultList: {plans: Plan[]};
   SurveyResultDetail: {index: number; plan: Plan};
 };
 

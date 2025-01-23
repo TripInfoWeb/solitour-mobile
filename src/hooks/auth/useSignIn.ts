@@ -17,7 +17,7 @@ export const useSignIn = (code: string) => {
       const cookies = signInResponse.headers.get('set-cookie')?.split(',');
 
       if (!signInResponse.ok || !cookies) {
-        throw new Error(signInResponse.statusText);
+        throw new Error('Failed to sign in.');
       }
 
       for (const cookie of cookies) {

@@ -8,7 +8,7 @@ export const ErrorBoundaryScreen = () => {
   const navigation = useNavigation<NavigationProps>();
 
   return (
-    <View style={tw`flex h-full flex-col items-center justify-center`}>
+    <View style={tw`flex h-full flex-col items-center justify-center bg-white`}>
       <Image
         style={tw`h-40 w-52`}
         source={require('@src/assets/common/error-sign.png')}

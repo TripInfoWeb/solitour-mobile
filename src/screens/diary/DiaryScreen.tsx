@@ -1,13 +1,13 @@
 import React, {Suspense, useState} from 'react';
-import {DiaryListViewer} from '@src/components/diary/list/DiaryListViewer';
-import {DiaryListViewerSkeleton} from '@src/components/skeleton/diary/DiaryListViewerSkeleton';
+import {DiaryCardList} from '@src/components/diary/list/DiaryCardList';
+import {DiaryCardListSkeleton} from '@src/components/skeleton/diary/DiaryCardListSkeleton';
 
 export const DiaryScreen = () => {
   const [page, setPage] = useState(0);
 
   return (
-    <Suspense fallback={<DiaryListViewerSkeleton page={page} />}>
-      <DiaryListViewer
+    <Suspense fallback={<DiaryCardListSkeleton page={page} />}>
+      <DiaryCardList
         page={page}
         goPreviousPage={() => setPage(value => value - 1)}
         goNextPage={() => setPage(value => value + 1)}
