@@ -6,7 +6,7 @@ import {NavigationProps} from '@src/types/navigation';
 import {Plan} from '@src/types/plan';
 import LottieView from 'lottie-react-native';
 import React, {useEffect} from 'react';
-import {Text} from 'react-native';
+import {Alert, Text} from 'react-native';
 import EncryptedStorage from 'react-native-encrypted-storage';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -34,17 +34,17 @@ export const SurveyLoadingScreen = () => {
 
       if (!response.ok) {
         // TODO: 수정 필요
+        Alert.alert('Error', '데이터가 부족합니다.', [{text: '확인'}]);
         navigation.reset({index: 0, routes: [{name: 'BottomTabs'}]});
         throw new Error('Failed to fetch data.');
       }
 
       const data: {plans: Plan[]} = await response.json();
-      console.log(data); // TODO
       navigation.reset({
         index: 1,
         routes: [
           {name: 'BottomTabs'},
-          {name: 'SurveyResultList', params: data.plans},
+          {name: 'SurveyResultList', params: {plans: data.plans}},
         ],
       });
     })();
