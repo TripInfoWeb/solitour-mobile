@@ -13,10 +13,18 @@ import {useForm} from 'react-hook-form';
 import EncryptedStorage from 'react-native-encrypted-storage';
 import {launchImageLibrary} from 'react-native-image-picker';
 
-export const useDiaryEditor = () => {
+export const useDiaryEditor = (placeholderData?: {
+  title: string;
+  startDate: Date;
+  endDate: Date;
+  location: string;
+  feeling: string;
+  content: string;
+  image: string;
+}) => {
   const editor = useEditorBridge({
     avoidIosKeyboard: true,
-    initialContent: '',
+    initialContent: placeholderData?.content,
     bridgeExtensions: [
       ...TenTapStartKit,
       PlaceholderBridge.configureExtension({
@@ -29,12 +37,12 @@ export const useDiaryEditor = () => {
   const methods = useForm<Diary>({
     resolver: zodResolver(DiarySchema),
     defaultValues: {
-      title: '',
-      startDate: null,
-      endDate: null,
-      location: null,
-      feeling: null,
-      image: null,
+      title: placeholderData?.title ?? '',
+      startDate: placeholderData?.startDate ?? null,
+      endDate: placeholderData?.endDate ?? null,
+      location: placeholderData?.location ?? null,
+      feeling: placeholderData?.feeling ?? null,
+      image: placeholderData?.image ?? null,
     },
     mode: 'onChange',
   });

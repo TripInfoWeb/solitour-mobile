@@ -7,6 +7,24 @@ export interface Diary {
   image: string | null;
 }
 
+export interface DiaryDetail {
+  diaryContentResponse: {
+    diaryId: number;
+    title: string;
+    titleImage: string;
+    startDatetime: Date;
+    endDatetime: Date;
+    diaryDayContentResponses: {
+      diaryDayContentDetail: {
+        content: string;
+        feelingStatus: string;
+        diaryDayContentImages: string;
+        place: string;
+      }[];
+    };
+  };
+}
+
 export interface DiaryList {
   content: {
     diaryId: number;
@@ -23,7 +41,5 @@ export interface DiaryList {
       }[];
     };
   }[];
-  page: {
-    totalPages: number;
-  };
+  page: {totalPages: number};
 }

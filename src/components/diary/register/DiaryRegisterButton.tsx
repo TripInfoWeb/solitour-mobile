@@ -1,5 +1,5 @@
 import {COLOR} from '@src/constants/color';
-import {useDiaryRegister} from '@src/hooks/diary/useDiaryRegister';
+import {useDiaryRegister} from '@src/hooks/diary/register/useDiaryRegister';
 import {tw} from '@src/libs/tailwind';
 import {Diary} from '@src/types/diary';
 import React from 'react';
