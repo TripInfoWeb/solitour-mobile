@@ -88,7 +88,7 @@ export const SurveyKakaoMap = ({index, plan}: SurveyKakaoMapProps) => {
       <View style={tw`h-48`}>
         <WebView ref={webViewRef} source={{html: html}} />
       </View>
-      <ScrollView style={tw`mt-4 px-4`}>
+      <ScrollView style={tw`px-4 pt-4`}>
         <View style={tw`flex flex-row items-center gap-2 pb-6`}>
           <Text
             style={tw`h-6 w-6 rounded-full border border-custom-blue text-center font-semibold text-custom-blue`}>

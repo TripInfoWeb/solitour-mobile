@@ -4,6 +4,7 @@ export interface Plan {
   createdDate: string;
   days: {
     id: number;
+    address: string;
     placeName: string;
     latitude: number;
     longitude: number;
