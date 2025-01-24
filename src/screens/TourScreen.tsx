@@ -7,6 +7,20 @@ export const TourScreen = () => {
   // TODO: 삭제 필요
   const [temp, setTemp] = useState<number[] | null>(null);
 
+  // useEffect(() => {
+  //   (async () => {
+  //     const accessToken = await EncryptedStorage.getItem('access_token');
+  //     const response = await fetch(`${BACKEND_URL}/api/travel/user-plan`, {
+  //       method: 'GET',
+  //       headers: {
+  //         Cookie: `access_token=${accessToken}`,
+  //       },
+  //     });
+
+  //     console.log(await response.json());
+  //   })();
+  // }, []);
+
   return (
     <View style={tw`flex h-full flex-col justify-center bg-white px-4`}>
       {temp === null ? (
