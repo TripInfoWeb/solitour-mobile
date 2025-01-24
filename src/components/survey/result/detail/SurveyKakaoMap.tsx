@@ -2,7 +2,7 @@ import {KAKAO_API_KEY} from '@env';
 import {tw} from '@src/libs/tailwind';
 import {Plan} from '@src/types/plan';
 import React, {useRef} from 'react';
-import {Image, Pressable, ScrollView, Text, View} from 'react-native';
+import {Pressable, ScrollView, Text, View} from 'react-native';
 import WebView from 'react-native-webview';
 import {SurveyPlaceItem} from './SurveyPlaceItem';
 import {COLOR} from '@src/constants/color';
@@ -106,18 +106,6 @@ export const SurveyKakaoMap = ({index, plan}: SurveyKakaoMapProps) => {
       </ScrollView>
       <View
         style={tw`flex h-20 w-full flex-row items-center gap-2.5 rounded-t-2xl bg-white px-2.5 pb-3 pt-[1.125rem] shadow-2xl`}>
-        <Pressable
-          style={({pressed}) =>
-            tw.style([
-              pressed ? 'bg-blue-100' : '',
-              'flex h-12 w-12 items-center justify-center rounded-lg border border-gray-200',
-            ])
-          }>
-          <Image
-            style={tw`h-6 w-6`}
-            source={require('@src/assets/common/reset.png')}
-          />
-        </Pressable>
         <Pressable
           style={({pressed}) =>
             tw.style([
