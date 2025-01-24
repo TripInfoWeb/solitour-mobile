@@ -6,6 +6,7 @@ import {Pressable, ScrollView, Text, View} from 'react-native';
 import WebView from 'react-native-webview';
 import {SurveyPlaceItem} from './SurveyPlaceItem';
 import {COLOR} from '@src/constants/color';
+import {usePlanSave} from '@src/hooks/survey/result/usePlanSave';
 
 interface SurveyKakaoMapProps {
   index: number;
@@ -80,6 +81,8 @@ export const SurveyKakaoMap = ({index, plan}: SurveyKakaoMapProps) => {
     webViewRef.current?.postMessage(JSON.stringify({latitude, longitude}));
   };
 
+  const {handleSaveButtonClick} = usePlanSave(plan.id);
+
   return (
     <View style={tw`h-full`}>
       <View style={tw`h-48`}>
@@ -115,7 +118,8 @@ export const SurveyKakaoMap = ({index, plan}: SurveyKakaoMapProps) => {
               'flex h-12 flex-1 flex-row items-center justify-center rounded-lg',
             ])
           }
-          android_ripple={{color: COLOR.PRIMARY_GREEN_RIPPLE}}>
+          android_ripple={{color: COLOR.PRIMARY_GREEN_RIPPLE}}
+          onPress={() => handleSaveButtonClick()}>
           <Text style={tw`text-center text-lg font-semibold text-white`}>
             코스 저장하기
           </Text>

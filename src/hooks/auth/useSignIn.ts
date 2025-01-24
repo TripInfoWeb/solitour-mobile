@@ -33,7 +33,7 @@ export const useSignIn = (code: string) => {
     },
     staleTime: 0,
     gcTime: 0,
-    retry: 0,
+    retry: false,
   });
 
   return {isSuccess};
