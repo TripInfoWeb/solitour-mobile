@@ -1,11 +1,12 @@
 import {BACKEND_URL} from '@env';
 import {BottomSheetModal} from '@gorhom/bottom-sheet';
-import {useMutation} from '@tanstack/react-query';
+import {useMutation, useQueryClient} from '@tanstack/react-query';
 import {useRef} from 'react';
 import EncryptedStorage from 'react-native-encrypted-storage';
 
 export const usePlanSave = (planId: number) => {
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
+  const queryClient = useQueryClient();
   const mutation = useMutation({
     mutationFn: async () => {
       const accessToken = await EncryptedStorage.getItem('access_token');
@@ -27,9 +28,11 @@ export const usePlanSave = (planId: number) => {
 
       return true;
     },
-    onSuccess: () => {
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({queryKey: ['tourItemList']});
       bottomSheetModalRef.current?.present();
     },
+    throwOnError: true,
   });
 
   const handleSaveButtonClick = () => {
