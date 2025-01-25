@@ -50,23 +50,4 @@ export const TourItem = ({data}: TourItemProps) => {
       </Pressable>
     </View>
   );
-
-  // return (
-  //   <View
-  //     style={tw`flex h-[7.5rem] w-full flex-col gap-3 rounded-xl bg-custom-gray px-4 pt-3.5`}>
-  //     <Text style={tw`text-lg font-bold text-custom-01`}>
-  //       뉴진스 부산 2박 3일 여행 코스
-  //     </Text>
-  //     <View style={tw`flex flex-col gap-1`}>
-  //       <View style={tw`flex flex-row items-center gap-4`}>
-  //         <Text style={tw`text-sm text-custom-03`}>‧ K-POP</Text>
-  //         <Text style={tw`text-custom-03`}>뉴진스 코드</Text>
-  //       </View>
-  //       <View style={tw`flex flex-row items-center gap-4`}>
-  //         <Text style={tw`text-sm text-custom-03`}>‧ 총 거리</Text>
-  //         <Text style={tw`text-custom-03`}>50km</Text>
-  //       </View>
-  //     </View>
-  //   </View>
-  // );
 };

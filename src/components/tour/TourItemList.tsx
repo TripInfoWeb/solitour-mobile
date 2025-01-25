@@ -25,12 +25,16 @@ export const TourItemList = () => {
 
       return await response.json();
     },
-    staleTime: 600000,
-    gcTime: 1800000,
+    staleTime: 0,
+    gcTime: 0,
   });
 
   return (
-    <View style={tw`flex h-full flex-col justify-center bg-[#F3F3F3] px-4`}>
+    <View
+      style={tw.style(
+        data.length === 0 ? 'bg-white' : 'bg-[#F3F3F3]',
+        'flex h-full flex-col justify-center px-4',
+      )}>
       {data.length === 0 ? (
         <View style={tw`flex flex-col items-center gap-[1.125rem]`}>
           <Image
