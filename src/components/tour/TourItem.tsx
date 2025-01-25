@@ -1,4 +1,6 @@
+import {useNavigation} from '@react-navigation/native';
 import {tw} from '@src/libs/tailwind';
+import {NavigationProps} from '@src/types/navigation';
 import {SavedPlan} from '@src/types/plan';
 import React from 'react';
 import {FlatList, Pressable, Text, View} from 'react-native';
@@ -8,6 +10,8 @@ interface TourItemProps {
 }
 
 export const TourItem = ({data}: TourItemProps) => {
+  const navigation = useNavigation<NavigationProps>();
+
   return (
     <View
       style={tw`mt-4 flex w-full flex-col gap-5 rounded-lg bg-white px-6 py-5`}>
@@ -45,7 +49,8 @@ export const TourItem = ({data}: TourItemProps) => {
             'flex h-[2.625rem] items-center justify-center rounded-lg',
           ])
         }
-        android_ripple={{color: '#bfdbfe'}}>
+        android_ripple={{color: '#bfdbfe'}}
+        onPress={() => navigation.navigate('TourDetail', {savedPlan: data})}>
         <Text style={tw`text-center text-custom-blue`}>자세히 보기</Text>
       </Pressable>
     </View>
