@@ -1,7 +1,7 @@
 import {KAKAO_API_KEY} from '@env';
 import {tw} from '@src/libs/tailwind';
 import {Plan} from '@src/types/plan';
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import {
   ActivityIndicator,
   Pressable,
@@ -15,6 +15,7 @@ import {COLOR} from '@src/constants/color';
 import {usePlanSave} from '@src/hooks/survey/result/usePlanSave';
 import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 import {SurveyBottomSheetModal} from './SurveyBottomSheetModal';
+import {SurveyDayList} from './SurveyDayList';
 
 interface SurveyKakaoMapProps {
   index: number;
@@ -22,6 +23,7 @@ interface SurveyKakaoMapProps {
 }
 
 export const SurveyKakaoMap = ({index, plan}: SurveyKakaoMapProps) => {
+  const [day, setDay] = useState(0);
   const webViewRef = useRef<WebView>(null);
   const html = `
   <html>
@@ -37,14 +39,14 @@ export const SurveyKakaoMap = ({index, plan}: SurveyKakaoMapProps) => {
           const container = document.getElementById('map');
           const options = { 
             // 지도 좌표값 설정
-            center: new kakao.maps.LatLng(${plan.days[0][0].latitude}, ${plan.days[0][0].longitude}),
+            center: new kakao.maps.LatLng(${plan.days[day][0].latitude}, ${plan.days[day][0].longitude}),
 
             // 줌 레벨을 9으로 설정
             level: 9,
           };                
             
           const map = new kakao.maps.Map(container, options);
-          const positions = ${JSON.stringify(plan.days[0])}.map((position) => new kakao.maps.LatLng(position.latitude, position.longitude));
+          const positions = ${JSON.stringify(plan.days[day])}.map((position) => new kakao.maps.LatLng(position.latitude, position.longitude));
           
           // 커스텀 오버레이 생성
           const overlays = positions.map((position, index) => new kakao.maps.CustomOverlay({
@@ -100,7 +102,7 @@ export const SurveyKakaoMap = ({index, plan}: SurveyKakaoMapProps) => {
           <WebView ref={webViewRef} source={{html: html}} />
         </View>
         <ScrollView style={tw`mt-4 px-4`}>
-          <View style={tw`flex flex-row items-center gap-2 pb-6`}>
+          <View style={tw`flex flex-row items-center gap-2`}>
             <Text
               style={tw`h-6 w-6 rounded-full border border-custom-blue text-center font-semibold text-custom-blue`}>
               {index}
@@ -109,7 +111,12 @@ export const SurveyKakaoMap = ({index, plan}: SurveyKakaoMapProps) => {
               {plan.title}
             </Text>
           </View>
-          {plan.days[0].map((item, idx) => (
+          <SurveyDayList
+            currentDay={day}
+            totalDays={plan.days.length}
+            setDay={(value: number) => setDay(value)}
+          />
+          {plan.days[day].map((item, idx) => (
             <SurveyPlaceItem
               key={item.id}
               index={idx}
