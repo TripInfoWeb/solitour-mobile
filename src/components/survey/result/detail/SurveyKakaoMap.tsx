@@ -1,7 +1,7 @@
 import {KAKAO_API_KEY} from '@env';
 import {tw} from '@src/libs/tailwind';
 import {Plan} from '@src/types/plan';
-import React, {useCallback, useRef} from 'react';
+import React, {useRef} from 'react';
 import {
   ActivityIndicator,
   Pressable,
@@ -13,7 +13,7 @@ import WebView from 'react-native-webview';
 import {SurveyPlaceItem} from './SurveyPlaceItem';
 import {COLOR} from '@src/constants/color';
 import {usePlanSave} from '@src/hooks/survey/result/usePlanSave';
-import {BottomSheetModal, BottomSheetModalProvider} from '@gorhom/bottom-sheet';
+import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 import {SurveyBottomSheetModal} from './SurveyBottomSheetModal';
 
 interface SurveyKakaoMapProps {
@@ -89,12 +89,9 @@ export const SurveyKakaoMap = ({index, plan}: SurveyKakaoMapProps) => {
     webViewRef.current?.postMessage(JSON.stringify({latitude, longitude}));
   };
 
-  const {isPending, handleSaveButtonClick} = usePlanSave(plan.id);
-
-  const bottomSheetModalRef = useRef<BottomSheetModal>(null);
-  const openBottomSheetModal = useCallback(() => {
-    bottomSheetModalRef.current?.present();
-  }, []);
+  const {isPending, bottomSheetModalRef, handleSaveButtonClick} = usePlanSave(
+    plan.id,
+  );
 
   return (
     <BottomSheetModalProvider>
@@ -122,7 +119,7 @@ export const SurveyKakaoMap = ({index, plan}: SurveyKakaoMapProps) => {
           ))}
         </ScrollView>
         <View
-          style={tw`flex h-20 w-full flex-row items-center gap-2.5 rounded-t-2xl bg-white px-2.5 pb-3 pt-[1.125rem] shadow-2xl`}>
+          style={tw`flex h-20 w-full flex-row items-center gap-2.5 rounded-t-2xl bg-white px-2.5 pb-3 pt-[1.125rem]`}>
           <Pressable
             style={({pressed}) =>
               tw.style([
@@ -133,8 +130,7 @@ export const SurveyKakaoMap = ({index, plan}: SurveyKakaoMapProps) => {
               ])
             }
             android_ripple={{color: COLOR.PRIMARY_GREEN_RIPPLE}}
-            // onPress={() => handleSaveButtonClick()} TODO
-          >
+            onPress={() => handleSaveButtonClick()}>
             {isPending ? (
               <ActivityIndicator size={30} color={'#FFFFFF'} />
             ) : (

@@ -1,11 +1,11 @@
 import {BACKEND_URL} from '@env';
-import {useNavigation} from '@react-navigation/native';
-import {NavigationProps} from '@src/types/navigation';
+import {BottomSheetModal} from '@gorhom/bottom-sheet';
 import {useMutation} from '@tanstack/react-query';
+import {useRef} from 'react';
 import EncryptedStorage from 'react-native-encrypted-storage';
 
 export const usePlanSave = (planId: number) => {
-  const navigation = useNavigation<NavigationProps>();
+  const bottomSheetModalRef = useRef<BottomSheetModal>(null);
   const mutation = useMutation({
     mutationFn: async () => {
       const accessToken = await EncryptedStorage.getItem('access_token');
@@ -28,12 +28,7 @@ export const usePlanSave = (planId: number) => {
       return true;
     },
     onSuccess: () => {
-      // TODO: 수정 필요
-
-      navigation.reset({
-        index: 0,
-        routes: [{name: 'BottomTabs', params: {screen: 'Tour'}}],
-      });
+      bottomSheetModalRef.current?.present();
     },
   });
 
@@ -41,5 +36,9 @@ export const usePlanSave = (planId: number) => {
     mutation.mutate();
   };
 
-  return {isPending: mutation.isPending, handleSaveButtonClick};
+  return {
+    isPending: mutation.isPending,
+    bottomSheetModalRef,
+    handleSaveButtonClick,
+  };
 };
