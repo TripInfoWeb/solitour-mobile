@@ -1,12 +1,20 @@
 import {KAKAO_API_KEY} from '@env';
 import {tw} from '@src/libs/tailwind';
 import {Plan} from '@src/types/plan';
-import React, {useRef} from 'react';
-import {Pressable, ScrollView, Text, View} from 'react-native';
+import React, {useCallback, useRef} from 'react';
+import {
+  ActivityIndicator,
+  Pressable,
+  ScrollView,
+  Text,
+  View,
+} from 'react-native';
 import WebView from 'react-native-webview';
 import {SurveyPlaceItem} from './SurveyPlaceItem';
 import {COLOR} from '@src/constants/color';
 import {usePlanSave} from '@src/hooks/survey/result/usePlanSave';
+import {BottomSheetModal, BottomSheetModalProvider} from '@gorhom/bottom-sheet';
+import {SurveyBottomSheetModal} from './SurveyBottomSheetModal';
 
 interface SurveyKakaoMapProps {
   index: number;
@@ -81,50 +89,68 @@ export const SurveyKakaoMap = ({index, plan}: SurveyKakaoMapProps) => {
     webViewRef.current?.postMessage(JSON.stringify({latitude, longitude}));
   };
 
-  const {handleSaveButtonClick} = usePlanSave(plan.id);
+  const {isPending, handleSaveButtonClick} = usePlanSave(plan.id);
+
+  const bottomSheetModalRef = useRef<BottomSheetModal>(null);
+  const openBottomSheetModal = useCallback(() => {
+    bottomSheetModalRef.current?.present();
+  }, []);
 
   return (
-    <View style={tw`h-full`}>
-      <View style={tw`h-48`}>
-        <WebView ref={webViewRef} source={{html: html}} />
-      </View>
-      <ScrollView style={tw`px-4 pt-4`}>
-        <View style={tw`flex flex-row items-center gap-2 pb-6`}>
-          <Text
-            style={tw`h-6 w-6 rounded-full border border-custom-blue text-center font-semibold text-custom-blue`}>
-            {index}
-          </Text>
-          <Text style={tw`text-xl font-semibold text-custom-01`}>
-            {plan.title}
-          </Text>
+    <BottomSheetModalProvider>
+      <View style={tw`h-full`}>
+        <View style={tw`h-48`}>
+          <WebView ref={webViewRef} source={{html: html}} />
         </View>
-        {plan.days[0].map((item, idx) => (
-          <SurveyPlaceItem
-            key={item.id}
-            index={idx}
-            item={item}
-            onPress={handlePanTo}
-          />
-        ))}
-      </ScrollView>
-      <View
-        style={tw`flex h-20 w-full flex-row items-center gap-2.5 rounded-t-2xl bg-white px-2.5 pb-3 pt-[1.125rem] shadow-2xl`}>
-        <Pressable
-          style={({pressed}) =>
-            tw.style([
-              pressed
-                ? 'android:bg-primary-green ios:bg-primary-green-ripple'
-                : 'bg-primary-green',
-              'flex h-12 flex-1 flex-row items-center justify-center rounded-lg',
-            ])
-          }
-          android_ripple={{color: COLOR.PRIMARY_GREEN_RIPPLE}}
-          onPress={() => handleSaveButtonClick()}>
-          <Text style={tw`text-center text-lg font-semibold text-white`}>
-            코스 저장하기
-          </Text>
-        </Pressable>
+        <ScrollView style={tw`mt-4 px-4`}>
+          <View style={tw`flex flex-row items-center gap-2 pb-6`}>
+            <Text
+              style={tw`h-6 w-6 rounded-full border border-custom-blue text-center font-semibold text-custom-blue`}>
+              {index}
+            </Text>
+            <Text style={tw`text-xl font-semibold text-custom-01`}>
+              {plan.title}
+            </Text>
+          </View>
+          {plan.days[0].map((item, idx) => (
+            <SurveyPlaceItem
+              key={item.id}
+              index={idx}
+              item={item}
+              onPress={handlePanTo}
+            />
+          ))}
+        </ScrollView>
+        <View
+          style={tw`flex h-20 w-full flex-row items-center gap-2.5 rounded-t-2xl bg-white px-2.5 pb-3 pt-[1.125rem] shadow-2xl`}>
+          <Pressable
+            style={({pressed}) =>
+              tw.style([
+                pressed
+                  ? 'android:bg-primary-green ios:bg-primary-green-ripple'
+                  : 'bg-primary-green',
+                'flex h-12 flex-1 flex-row items-center justify-center rounded-lg',
+              ])
+            }
+            android_ripple={{color: COLOR.PRIMARY_GREEN_RIPPLE}}
+            // onPress={() => handleSaveButtonClick()} TODO
+          >
+            {isPending ? (
+              <ActivityIndicator size={30} color={'#FFFFFF'} />
+            ) : (
+              <Text style={tw`text-center text-lg font-semibold text-white`}>
+                코스 저장하기
+              </Text>
+            )}
+          </Pressable>
+        </View>
       </View>
-    </View>
+      <SurveyBottomSheetModal
+        ref={bottomSheetModalRef}
+        closeBottomSheetModal={() =>
+          bottomSheetModalRef.current?.close({duration: 300})
+        }
+      />
+    </BottomSheetModalProvider>
   );
 };

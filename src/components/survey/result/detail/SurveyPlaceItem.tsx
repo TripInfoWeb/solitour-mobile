@@ -26,7 +26,7 @@ export const SurveyPlaceItem = ({
           style={tw`h-[1.125rem] w-[1.125rem] rounded-full bg-custom-01 text-center text-xs text-white`}>
           {index + 1}
         </Text>
-        <View style={tw`h-24 w-px border border-dashed border-[#D2D2D2]`} />
+        <View style={tw`h-20 w-px border border-dashed border-[#D2D2D2]`} />
       </View>
       <Pressable
         style={({pressed}) =>

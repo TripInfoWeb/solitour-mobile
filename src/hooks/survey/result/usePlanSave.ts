@@ -28,6 +28,8 @@ export const usePlanSave = (planId: number) => {
       return true;
     },
     onSuccess: () => {
+      // TODO: 수정 필요
+
       navigation.reset({
         index: 0,
         routes: [{name: 'BottomTabs', params: {screen: 'Tour'}}],
@@ -39,5 +41,5 @@ export const usePlanSave = (planId: number) => {
     mutation.mutate();
   };
 
-  return {handleSaveButtonClick};
+  return {isPending: mutation.isPending, handleSaveButtonClick};
 };
