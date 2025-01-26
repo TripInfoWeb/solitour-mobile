@@ -18,12 +18,12 @@ export const AuthScreen = () => {
       return;
     }
 
-    if (data) {
+    if (data?.id) {
       navigation.reset({index: 0, routes: [{name: 'BottomTabs'}]});
     }
   }, [data, isError, navigation]);
 
-  if (!isError && (data || isLoading)) {
+  if (!isError && (data?.id || isLoading)) {
     return (
       <ActivityIndicator
         style={tw`h-full bg-white`}

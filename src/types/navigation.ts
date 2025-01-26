@@ -1,9 +1,10 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {Plan} from './plan';
+import {Plan, SavedPlan} from './plan';
 
 export type NavigationList = {
   BottomTabs: undefined;
   Tour: undefined;
+  TourDetail: {savedPlan: SavedPlan};
   Discovery: undefined;
   Home: undefined;
   Diary: undefined;

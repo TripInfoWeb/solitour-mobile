@@ -33,10 +33,12 @@ export const SurveyLoadingScreen = () => {
       });
 
       if (!response.ok) {
-        // TODO: 수정 필요
-        Alert.alert('Error', '데이터가 부족합니다.', [{text: '확인'}]);
-        navigation.reset({index: 0, routes: [{name: 'BottomTabs'}]});
-        throw new Error('Failed to fetch data.');
+        Alert.alert(
+          '알림',
+          '여행을 추천하기에 데이터가 부족합니다. 여러 콘텐츠를 선택해 주세요.',
+          [{text: '확인'}],
+        );
+        return navigation.pop(2);
       }
 
       const data: {plans: Plan[]} = await response.json();

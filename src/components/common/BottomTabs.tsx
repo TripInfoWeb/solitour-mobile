@@ -6,7 +6,7 @@ import {tw} from '@src/libs/tailwind';
 import {NavigationList, NavigationProps} from '@src/types/navigation';
 import {COLOR} from '@src/constants/color';
 import {HomeScreen} from '@src/screens/HomeScreen';
-import {TourScreen} from '@src/screens/TourScreen';
+import {TourScreen} from '@src/screens/tour/TourScreen';
 import {DiaryScreen} from '@src/screens/diary/DiaryScreen';
 import {MypageScreen} from '@src/screens/MypageScreen';
 import {DiscoveryScreen} from '@src/screens/DiscoveryScreen';

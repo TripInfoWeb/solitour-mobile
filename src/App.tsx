@@ -23,6 +23,7 @@ import {ErrorBoundary} from 'react-error-boundary';
 import {ErrorBoundaryScreen} from './screens/ErrorBoundaryScreen';
 import {DiaryUpdateScreen} from './screens/diary/DiaryUpdateScreen';
 import {SurveyDayScreen} from './screens/survey/SurveyDayScreen';
+import {TourDetailScreen} from './screens/tour/TourDetailScreen';
 
 const queryClient = new QueryClient();
 const Stack = createNativeStackNavigator<NavigationList>();
@@ -126,6 +127,11 @@ export const App = () => {
               name="DiaryUpdate"
               component={DiaryUpdateScreen}
               options={{title: '여행일기'}}
+            />
+            <Stack.Screen
+              name="TourDetail"
+              component={TourDetailScreen}
+              options={{title: '내 여행'}}
             />
           </Stack.Navigator>
         </NavigationContainer>
