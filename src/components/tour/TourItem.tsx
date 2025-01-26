@@ -4,6 +4,7 @@ import {NavigationProps} from '@src/types/navigation';
 import {SavedPlan} from '@src/types/plan';
 import React from 'react';
 import {FlatList, Pressable, Text, View} from 'react-native';
+import {TourItemMenu} from './TourItemMenu';
 
 interface TourItemProps {
   data: SavedPlan;
@@ -15,10 +16,15 @@ export const TourItem = ({data}: TourItemProps) => {
   return (
     <View
       style={tw`mt-4 flex w-full flex-col gap-5 rounded-lg bg-white px-6 py-5`}>
-      <View style={tw`flex flex-col`}>
-        <Text style={tw`text-xl font-semibold text-custom-01`}>
-          {data.plan.title}
-        </Text>
+      <View style={tw`flex w-full`}>
+        <View style={tw`flex flex-row items-center justify-between`}>
+          <Text
+            style={tw`text-xl font-semibold text-custom-01`}
+            numberOfLines={1}>
+            {data.plan.title}
+          </Text>
+          <TourItemMenu planId={data.plan.planId} planTitle={data.plan.title} />
+        </View>
         <Text
           style={tw`pt-2 text-sm text-custom-03`}>{`생성 날짜: ${data.plan.createdDate}`}</Text>
         <Text
