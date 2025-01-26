@@ -12,7 +12,7 @@ import {SurveyContentItemListSkeleton} from '@src/components/skeleton/survey/con
 
 export const SurveyContentScreen = () => {
   const navigation = useNavigation<NavigationProps>();
-  const {contentCategory, contentTitles} = useSurveyStore();
+  const {contentCategory, contentTitles, setSurveyState} = useSurveyStore();
 
   return (
     <View style={tw`h-full w-full bg-white px-4 pt-2`}>
@@ -31,7 +31,10 @@ export const SurveyContentScreen = () => {
       </Suspense>
       <SurveyNextButton
         disabled={contentTitles.length === 0}
-        onPress={() => navigation.navigate('SurveyActivity')}
+        onPress={() => {
+          setSurveyState({preferredTrips: []});
+          navigation.navigate('SurveyActivity');
+        }}
       />
     </View>
   );
