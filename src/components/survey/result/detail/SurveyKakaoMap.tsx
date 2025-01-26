@@ -41,8 +41,8 @@ export const SurveyKakaoMap = ({index, plan}: SurveyKakaoMapProps) => {
             // 지도 좌표값 설정
             center: new kakao.maps.LatLng(${plan.days[day][0].latitude}, ${plan.days[day][0].longitude}),
 
-            // 줌 레벨을 9으로 설정
-            level: 9,
+            // 줌 레벨을 5으로 설정
+            level: 5,
           };                
             
           const map = new kakao.maps.Map(container, options);
