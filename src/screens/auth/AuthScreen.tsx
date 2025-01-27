@@ -6,24 +6,18 @@ import {NavigationProps} from '@src/types/navigation';
 import LottieView from 'lottie-react-native';
 import React, {useEffect} from 'react';
 import {ActivityIndicator, Image, Pressable, Text, View} from 'react-native';
-import EncryptedStorage from 'react-native-encrypted-storage';
 
 export const AuthScreen = () => {
   const navigation = useNavigation<NavigationProps>();
-  const {data, isLoading, isError} = useUserInfo();
+  const {data, isLoading} = useUserInfo();
 
   useEffect(() => {
-    if (isError) {
-      EncryptedStorage.clear();
-      return;
-    }
-
     if (data?.id) {
       navigation.reset({index: 0, routes: [{name: 'BottomTabs'}]});
     }
-  }, [data?.id, isError, navigation]);
+  }, [data?.id, navigation]);
 
-  if (!isError && (data?.id || isLoading)) {
+  if (data?.id || isLoading) {
     return (
       <ActivityIndicator
         style={tw`h-full bg-white`}
