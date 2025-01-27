@@ -27,8 +27,8 @@ export const useSurveyContentItemList = (
 
       return await response.json();
     },
-    staleTime: 600000,
-    gcTime: 1800000,
+    staleTime: 1000 * 60 * 10,
+    gcTime: 1000 * 60 * 30,
     retry: 1,
   });
 
