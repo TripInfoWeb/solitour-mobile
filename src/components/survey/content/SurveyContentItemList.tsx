@@ -18,8 +18,20 @@ export const SurveyContentItemList = () => {
         <SurveyContentItem
           title={item.mediaName}
           image={item.mediaImage}
-          isActive={contentTitles[0] === item.mediaName}
-          onPress={() => setSurveyState({contentTitles: [item.mediaName]})}
+          isActive={contentTitles.includes(item.mediaName)}
+          onPress={() => {
+            if (contentTitles.includes(item.mediaName)) {
+              setSurveyState({
+                contentTitles: contentTitles.filter(
+                  contentTitle => contentTitle !== item.mediaName,
+                ),
+              });
+            } else {
+              setSurveyState({
+                contentTitles: [...contentTitles, item.mediaName],
+              });
+            }
+          }}
         />
       )}
       keyExtractor={item => item.id.toString()}

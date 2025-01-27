@@ -21,7 +21,7 @@ export const AuthLoadingScreen = ({
       return;
     }
 
-    if (data) {
+    if (data?.id) {
       navigation.reset({index: 0, routes: [{name: 'BottomTabs'}]});
     }
   }, [data, isError, isSuccess, navigation]);

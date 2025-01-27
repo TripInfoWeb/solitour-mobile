@@ -49,24 +49,7 @@ export const DiaryCardList = ({
             y: 0,
           }}
           data={diaryList.content}
-          renderItem={({item}) => (
-            <DiaryCard
-              diaryId={item.diaryId}
-              title={item.title}
-              period={`${new Date(item.startDatetime).toLocaleDateString()} - ${new Date(item.endDatetime).toLocaleDateString()}`}
-              location={
-                item.diaryDayContentResponses.diaryDayContentDetail[0].place
-              }
-              feeling={
-                item.diaryDayContentResponses.diaryDayContentDetail[0]
-                  .feelingStatus
-              }
-              imageUrl={item.titleImage}
-              content={
-                item.diaryDayContentResponses.diaryDayContentDetail[0].content
-              }
-            />
-          )}
+          renderItem={({item}) => <DiaryCard diary={item} />}
           keyExtractor={item => item.diaryId.toString()}
         />
       )}

@@ -1,15 +1,15 @@
 import {BACKEND_URL} from '@env';
 import {getNewAccessToken} from '@src/libs/getNewAccessToken';
-import {User} from '@src/types/user';
-import {useQuery} from '@tanstack/react-query';
+import {SavedPlan} from '@src/types/plan';
+import {useSuspenseQuery} from '@tanstack/react-query';
 import EncryptedStorage from 'react-native-encrypted-storage';
 
-export const useUserInfo = (enabled?: boolean) => {
-  const {data, isLoading} = useQuery<User>({
-    queryKey: ['userInfo'],
+export const useTourItemList = () => {
+  const {data} = useSuspenseQuery<SavedPlan[]>({
+    queryKey: ['tourItemList'],
     queryFn: async () => {
       const accessToken = await EncryptedStorage.getItem('access_token');
-      const response = await fetch(`${BACKEND_URL}/api/users/info`, {
+      const response = await fetch(`${BACKEND_URL}/api/travel/user-plan`, {
         method: 'GET',
         headers: {Cookie: `access_token=${accessToken}`},
       });
@@ -20,16 +20,15 @@ export const useUserInfo = (enabled?: boolean) => {
       }
 
       if (!response.ok) {
-        await EncryptedStorage.clear();
+        return [];
       }
 
       return await response.json();
     },
-    staleTime: Infinity,
-    gcTime: 0,
+    staleTime: 1000 * 60 * 10,
+    gcTime: 1000 * 60 * 30,
     retry: 1,
-    enabled: enabled,
   });
 
-  return {data, isLoading};
+  return {tourItemList: data};
 };

@@ -1,0 +1,53 @@
+import {BACKEND_URL} from '@env';
+import {getNewAccessToken} from '@src/libs/getNewAccessToken';
+import {useMutation, useQueryClient} from '@tanstack/react-query';
+import {Alert} from 'react-native';
+import EncryptedStorage from 'react-native-encrypted-storage';
+
+export const useTourItemDelete = (planId: number, planTitle: string) => {
+  const queryClient = useQueryClient();
+  const mutation = useMutation({
+    mutationFn: async () => {
+      const accessToken = await EncryptedStorage.getItem('access_token');
+      const response = await fetch(
+        `${BACKEND_URL}/api/travel/user-plan/${planId}`,
+        {
+          method: 'DELETE',
+          headers: {
+            Cookie: `access_token=${accessToken}`,
+          },
+        },
+      );
+
+      if (response.status === 401) {
+        await getNewAccessToken();
+        throw new Error('Access token has expired.');
+      }
+
+      if (!response.ok) {
+        throw new Error('Failed to delete.');
+      }
+
+      return true;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({queryKey: ['tourItemList']});
+    },
+    retry: 1,
+    throwOnError: true,
+  });
+
+  const handleDeleteButtonClick = () => {
+    Alert.alert(`${planTitle} 삭제`, '정말 삭제하시겠습니까?', [
+      {text: '취소'},
+      {
+        text: 'TODO', // TODO: "삭제"
+        onPress: () => {
+          // mutation.mutate();
+        },
+      },
+    ]);
+  };
+
+  return {isPending: mutation.isPending, handleDeleteButtonClick};
+};
