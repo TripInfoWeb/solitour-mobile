@@ -8,6 +8,11 @@ export const useTourItemList = () => {
     queryKey: ['tourItemList'],
     queryFn: async () => {
       const accessToken = await EncryptedStorage.getItem('access_token');
+
+      console.log('[tourItemList]');
+      console.log(accessToken); // TODO
+      console.log();
+
       const response = await fetch(`${BACKEND_URL}/api/travel/user-plan`, {
         method: 'GET',
         headers: {

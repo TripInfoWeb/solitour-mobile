@@ -8,6 +8,11 @@ export const useUserInfo = (enabled?: boolean) => {
     queryKey: ['userInfo'],
     queryFn: async () => {
       const accessToken = await EncryptedStorage.getItem('access_token');
+
+      console.log('[userInfo]');
+      console.log(accessToken); // TODO
+      console.log();
+
       const userInfoResponse = await fetch(`${BACKEND_URL}/api/users/info`, {
         method: 'GET',
         headers: {
