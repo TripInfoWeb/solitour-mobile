@@ -1,5 +1,6 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {Plan, SavedPlan} from './plan';
+import {DiaryDetail} from './diary';
 
 export type NavigationList = {
   BottomTabs: undefined;
@@ -9,7 +10,7 @@ export type NavigationList = {
   Home: undefined;
   Diary: undefined;
   DiaryEditor: undefined;
-  DiaryUpdate: {diaryId: number};
+  DiaryUpdate: {diary: DiaryDetail};
   Mypage: undefined;
   Auth: undefined;
   AuthSignIn: undefined;

@@ -21,61 +21,28 @@ import {useNavigation} from '@react-navigation/native';
 import {NavigationProps} from '@src/types/navigation';
 import {COLOR} from '@src/constants/color';
 import {useDiaryEditor} from '@src/hooks/diary/editor/useDiaryEditor';
-import {useSuspenseQuery} from '@tanstack/react-query';
-import EncryptedStorage from 'react-native-encrypted-storage';
-import {BACKEND_URL} from '@env';
 import {DiaryDetail} from '@src/types/diary';
 import {FEELING_STATUS} from '@src/constants/feelingStatus';
 import {DiaryUpdateButton} from './DiaryUpdateButton';
-import {getNewAccessToken} from '@src/libs/getNewAccessToken';
 
 interface DiaryUpdateEditorProps {
-  diaryId: number;
+  diary: DiaryDetail;
 }
 
-export const DiaryUpdateEditor = ({diaryId}: DiaryUpdateEditorProps) => {
+export const DiaryUpdateEditor = ({diary}: DiaryUpdateEditorProps) => {
   const navigation = useNavigation<NavigationProps>();
-  const {data} = useSuspenseQuery<DiaryDetail>({
-    queryKey: ['diary', diaryId],
-    queryFn: async () => {
-      const accessToken = await EncryptedStorage.getItem('access_token');
-      const response = await fetch(`${BACKEND_URL}/api/diary/${diaryId}`, {
-        method: 'GET',
-        headers: {Cookie: `access_token=${accessToken}`},
-      });
-
-      if (response.status === 401) {
-        await getNewAccessToken();
-        throw new Error('Access token has expired.');
-      }
-
-      if (!response.ok) {
-        throw new Error('Failed to fetch data.');
-      }
-
-      return await response.json();
-    },
-    staleTime: 0,
-    gcTime: 0,
-    retry: 1,
-  });
   const {methods, content, editor, imageMutation, handleImageUpload} =
     useDiaryEditor({
-      title: data.diaryContentResponse.title,
-      startDate: new Date(data.diaryContentResponse.startDatetime),
-      endDate: new Date(data.diaryContentResponse.endDatetime),
-      location:
-        data.diaryContentResponse.diaryDayContentResponses
-          .diaryDayContentDetail[0].place,
+      title: diary.title,
+      startDate: new Date(diary.startDatetime),
+      endDate: new Date(diary.endDatetime),
+      location: diary.diaryDayContentResponses.diaryDayContentDetail[0].place,
       feeling:
         FEELING_STATUS[
-          data.diaryContentResponse.diaryDayContentResponses
-            .diaryDayContentDetail[0].feelingStatus
+          diary.diaryDayContentResponses.diaryDayContentDetail[0].feelingStatus
         ],
-      content:
-        data.diaryContentResponse.diaryDayContentResponses
-          .diaryDayContentDetail[0].content,
-      image: data.diaryContentResponse.titleImage,
+      content: diary.diaryDayContentResponses.diaryDayContentDetail[0].content,
+      image: diary.titleImage,
     });
 
   useEffect(() => {
@@ -83,21 +50,14 @@ export const DiaryUpdateEditor = ({diaryId}: DiaryUpdateEditorProps) => {
       // eslint-disable-next-line react/no-unstable-nested-components
       headerRight: () => (
         <DiaryUpdateButton
-          diaryId={diaryId}
-          originalImage={data.diaryContentResponse.titleImage}
+          diaryId={diary.diaryId}
+          originalImage={diary.titleImage}
           methods={methods}
           content={content ?? ''}
         />
       ),
     });
-  }, [
-    content,
-    data.diaryContentResponse.titleImage,
-    diaryId,
-    editor,
-    methods,
-    navigation,
-  ]);
+  }, [content, diary.diaryId, diary.titleImage, methods, navigation]);
 
   return (
     <FormProvider {...methods}>

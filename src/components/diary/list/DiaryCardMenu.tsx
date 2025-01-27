@@ -2,18 +2,19 @@ import {useNavigation} from '@react-navigation/native';
 import {COLOR} from '@src/constants/color';
 import {useDiaryDelete} from '@src/hooks/diary/list/useDiaryDelete';
 import {tw} from '@src/libs/tailwind';
+import {DiaryDetail} from '@src/types/diary';
 import {NavigationProps} from '@src/types/navigation';
 import React, {useState} from 'react';
 import {ActivityIndicator, Image, Pressable, Text, View} from 'react-native';
 
 interface DiaryCardMenuProps {
-  diaryId: number;
+  diary: DiaryDetail;
 }
 
-export const DiaryCardMenu = ({diaryId}: DiaryCardMenuProps) => {
+export const DiaryCardMenu = ({diary}: DiaryCardMenuProps) => {
   const navigation = useNavigation<NavigationProps>();
   const [visible, setVisible] = useState(false);
-  const {isPending, handleDeleteButtonClick} = useDiaryDelete(diaryId);
+  const {isPending, handleDeleteButtonClick} = useDiaryDelete(diary.diaryId);
 
   return (
     <View style={tw`relative`}>
@@ -47,7 +48,7 @@ export const DiaryCardMenu = ({diaryId}: DiaryCardMenuProps) => {
             onTouchEnd={e => {
               e.stopPropagation();
               setVisible(false);
-              navigation.navigate('DiaryUpdate', {diaryId});
+              navigation.navigate('DiaryUpdate', {diary});
             }}>
             <Text style={tw`py-2 text-center`}>수정</Text>
           </Pressable>
