@@ -1,4 +1,5 @@
 import {BACKEND_URL} from '@env';
+import {getNewAccessToken} from '@src/libs/getNewAccessToken';
 import {DiaryList} from '@src/types/diary';
 import {useSuspenseQuery} from '@tanstack/react-query';
 import EncryptedStorage from 'react-native-encrypted-storage';
@@ -10,10 +11,13 @@ export const useDiaryList = (page: number) => {
       const accessToken = await EncryptedStorage.getItem('access_token');
       const response = await fetch(`${BACKEND_URL}/api/diary?page=${page}`, {
         method: 'GET',
-        headers: {
-          Cookie: `access_token=${accessToken}`,
-        },
+        headers: {Cookie: `access_token=${accessToken}`},
       });
+
+      if (response.status === 401) {
+        await getNewAccessToken();
+        throw new Error('Access token has expired.');
+      }
 
       if (!response.ok) {
         throw new Error('Failed to fetch data.');
@@ -23,6 +27,7 @@ export const useDiaryList = (page: number) => {
     },
     staleTime: 600000,
     gcTime: 1800000,
+    retry: 1,
   });
 
   return {diaryList: data};

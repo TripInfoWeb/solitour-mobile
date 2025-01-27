@@ -27,6 +27,7 @@ import {BACKEND_URL} from '@env';
 import {DiaryDetail} from '@src/types/diary';
 import {FEELING_STATUS} from '@src/constants/feelingStatus';
 import {DiaryUpdateButton} from './DiaryUpdateButton';
+import {getNewAccessToken} from '@src/libs/getNewAccessToken';
 
 interface DiaryUpdateEditorProps {
   diaryId: number;
@@ -40,17 +41,23 @@ export const DiaryUpdateEditor = ({diaryId}: DiaryUpdateEditorProps) => {
       const accessToken = await EncryptedStorage.getItem('access_token');
       const response = await fetch(`${BACKEND_URL}/api/diary/${diaryId}`, {
         method: 'GET',
-        headers: {
-          Cookie: `access_token=${accessToken}`,
-        },
+        headers: {Cookie: `access_token=${accessToken}`},
       });
 
+      if (response.status === 401) {
+        await getNewAccessToken();
+        throw new Error('Access token has expired.');
+      }
+
       if (!response.ok) {
-        throw new Error('Failed to update.');
+        throw new Error('Failed to fetch data.');
       }
 
       return await response.json();
     },
+    staleTime: 0,
+    gcTime: 0,
+    retry: 1,
   });
   const {methods, content, editor, imageMutation, handleImageUpload} =
     useDiaryEditor({

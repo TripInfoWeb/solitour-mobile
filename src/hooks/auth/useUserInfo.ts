@@ -9,21 +9,21 @@ export const useUserInfo = (enabled?: boolean) => {
     queryKey: ['userInfo'],
     queryFn: async () => {
       const accessToken = await EncryptedStorage.getItem('access_token');
-      const userInfoResponse = await fetch(`${BACKEND_URL}/api/users/info`, {
+      const response = await fetch(`${BACKEND_URL}/api/users/info`, {
         method: 'GET',
         headers: {Cookie: `access_token=${accessToken}`},
       });
 
-      if (userInfoResponse.status === 401) {
+      if (response.status === 401) {
         await getNewAccessToken();
         throw new Error('Access token has expired.');
       }
 
-      if (!userInfoResponse.ok) {
+      if (!response.ok) {
         await EncryptedStorage.clear();
       }
 
-      return await userInfoResponse.json();
+      return await response.json();
     },
     staleTime: Infinity,
     gcTime: 0,

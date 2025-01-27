@@ -1,5 +1,6 @@
 import {BACKEND_URL} from '@env';
 import {BottomSheetModal} from '@gorhom/bottom-sheet';
+import {getNewAccessToken} from '@src/libs/getNewAccessToken';
 import {useMutation, useQueryClient} from '@tanstack/react-query';
 import {useRef} from 'react';
 import EncryptedStorage from 'react-native-encrypted-storage';
@@ -22,6 +23,11 @@ export const usePlanSave = (planId: number) => {
         body: formData.toString(),
       });
 
+      if (response.status === 401) {
+        await getNewAccessToken();
+        throw new Error('Access token has expired.');
+      }
+
       if (!response.ok) {
         throw new Error('Failed to save a course.');
       }
@@ -32,6 +38,7 @@ export const usePlanSave = (planId: number) => {
       await queryClient.invalidateQueries({queryKey: ['tourItemList']});
       bottomSheetModalRef.current?.present();
     },
+    retry: 1,
     throwOnError: true,
   });
 
