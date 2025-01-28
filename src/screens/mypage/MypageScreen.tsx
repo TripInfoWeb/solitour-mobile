@@ -13,7 +13,6 @@ export const MypageScreen = () => {
   const navigation = useNavigation<NavigationProps>();
   const queryClient = useQueryClient();
   const {data} = useUserInfo();
-  console.log(data);
 
   const handleSignOut = async () => {
     await EncryptedStorage.clear();
