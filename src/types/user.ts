@@ -12,4 +12,6 @@ export interface User {
   email: string;
   phoneNumber: string | null;
   isAdmin: boolean;
+  createdAt: Date;
+  provider: string;
 }
