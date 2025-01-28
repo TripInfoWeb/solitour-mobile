@@ -41,7 +41,10 @@ export const SurveyThemeScreen = () => {
       </SafeAreaView>
       <SurveyNextButton
         disabled={contentCategory === null}
-        onPress={() => navigation.navigate('SurveyContent')}
+        onPress={() => {
+          setSurveyState({contentTitles: []});
+          navigation.navigate('SurveyContent');
+        }}
       />
     </View>
   );
