@@ -11,6 +11,7 @@ export const MypageProfile = () => {
   return (
     <View style={tw`flex flex-col items-center pt-[3.375rem]`}>
       <MypageNicknameModal
+        nickname={data?.nickname ?? ''}
         modalVisible={modalVisible}
         closeModal={() => setModalVisible(false)}
       />

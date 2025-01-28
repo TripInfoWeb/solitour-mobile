@@ -9,4 +9,5 @@ export const COLOR = {
   BLUE: '#3B82F6',
   LIGHTGREEN: '#F2F6EC',
   LIGHTGRAY: '#F8F8F8',
+  WHITE: '#FFFFFF',
 } as const;
