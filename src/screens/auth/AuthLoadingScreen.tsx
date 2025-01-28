@@ -17,8 +17,7 @@ export const AuthLoadingScreen = ({
 
   useEffect(() => {
     if (isSuccess && isError) {
-      navigation.popToTop();
-      return;
+      return navigation.popToTop();
     }
 
     if (data?.id) {
