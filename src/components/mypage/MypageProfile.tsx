@@ -9,7 +9,7 @@ export const MypageProfile = () => {
   return (
     <View style={tw`flex flex-col items-center pt-[3.375rem]`}>
       <Image
-        style={tw`h-[6.75rem] w-[6.75rem] rounded-full`}
+        style={tw`h-[6.75rem] w-[6.75rem] rounded-full border border-gray-200`}
         source={{uri: data?.userImage?.address}}
       />
       <View style={tw`flex flex-row items-center gap-1 pt-3`}>
