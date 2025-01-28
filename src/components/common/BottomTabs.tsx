@@ -111,10 +111,7 @@ const WriteButton = () => {
   return (
     <Pressable
       style={({pressed}) => {
-        return tw.style([
-          pressed ? 'bg-slate-100' : '',
-          'mr-4 rounded-2xl p-2',
-        ]);
+        return tw.style(pressed && 'bg-slate-100', 'mr-4 rounded-2xl p-2');
       }}
       onPress={() => navigation.navigate('DiaryEditor')}>
       <Image

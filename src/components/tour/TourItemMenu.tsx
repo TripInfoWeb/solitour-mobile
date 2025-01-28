@@ -22,7 +22,7 @@ export const TourItemMenu = ({planId, planTitle}: TourItemMenuProps) => {
       ) : (
         <Pressable
           style={({pressed}) =>
-            tw.style(pressed ? 'bg-slate-100' : '', 'rounded-lg p-2')
+            tw.style(pressed && 'bg-slate-100', 'rounded-lg p-2')
           }
           onPress={() => handleDeleteButtonClick()}>
           <Image

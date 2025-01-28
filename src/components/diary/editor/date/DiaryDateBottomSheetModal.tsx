@@ -53,7 +53,7 @@ export const DiaryDateBottomSheetModal = forwardRef<
           <Text style={tw`text-[1.375rem] font-semibold`}>날짜</Text>
           <Pressable
             style={({pressed}) =>
-              tw.style([pressed ? 'ios:bg-slate-100' : '', 'rounded-2xl p-2'])
+              tw.style(pressed && 'ios:bg-slate-100', 'rounded-2xl p-2')
             }
             android_ripple={{color: COLOR.GRAY_RIPPLE}}
             onPress={() => closeBottomSheetModal()}>

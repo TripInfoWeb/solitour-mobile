@@ -26,7 +26,7 @@ export const DiaryCardMenu = ({diary}: DiaryCardMenuProps) => {
       ) : (
         <Pressable
           style={({pressed}) =>
-            tw.style([pressed ? 'bg-white' : '', 'rounded-lg p-1'])
+            tw.style(pressed && 'bg-white', 'rounded-lg p-1')
           }
           onTouchEnd={e => {
             e.stopPropagation();
@@ -42,9 +42,7 @@ export const DiaryCardMenu = ({diary}: DiaryCardMenuProps) => {
         <View
           style={tw`absolute right-1.5 top-8 flex w-20 flex-col items-center rounded-lg bg-white shadow`}>
           <Pressable
-            style={({pressed}) =>
-              tw.style([pressed ? 'bg-slate-100' : '', 'w-full'])
-            }
+            style={({pressed}) => tw.style(pressed && 'bg-slate-100', 'w-full')}
             onTouchEnd={e => {
               e.stopPropagation();
               setVisible(false);
@@ -53,9 +51,7 @@ export const DiaryCardMenu = ({diary}: DiaryCardMenuProps) => {
             <Text style={tw`py-2 text-center`}>수정</Text>
           </Pressable>
           <Pressable
-            style={({pressed}) =>
-              tw.style([pressed ? 'bg-slate-100' : '', 'w-full'])
-            }
+            style={({pressed}) => tw.style(pressed && 'bg-slate-100', 'w-full')}
             onTouchEnd={e => {
               e.stopPropagation();
               setVisible(false);

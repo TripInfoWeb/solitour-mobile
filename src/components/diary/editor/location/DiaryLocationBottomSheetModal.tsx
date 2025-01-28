@@ -68,7 +68,7 @@ export const DiaryLocationBottomSheetModal = forwardRef<
           <Text style={tw`text-[1.375rem] font-semibold`}>장소</Text>
           <Pressable
             style={({pressed}) =>
-              tw.style([pressed ? 'ios:bg-slate-100' : '', 'rounded-2xl p-2'])
+              tw.style(pressed && 'ios:bg-slate-100', 'rounded-2xl p-2')
             }
             android_ripple={{color: COLOR.GRAY_RIPPLE}}
             onPress={() => closeBottomSheetModal()}>
@@ -85,13 +85,13 @@ export const DiaryLocationBottomSheetModal = forwardRef<
           renderItem={({item}) => (
             <Pressable
               style={({pressed}) =>
-                tw.style([
-                  pressed ? 'bg-primary-green' : '',
+                tw.style(
+                  pressed && 'bg-primary-green',
                   formContext.watch('location') === item
                     ? 'border-primary-green bg-primary-green'
                     : 'border-gray-200',
                   'mr-1.5 flex h-10 w-[3.75rem] items-center justify-center rounded-full border',
-                ])
+                )
               }
               onPress={() => {
                 formContext.setValue('location', item);

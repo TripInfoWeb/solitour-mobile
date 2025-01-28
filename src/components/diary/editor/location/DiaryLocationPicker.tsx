@@ -18,10 +18,10 @@ export const DiaryLocationPicker = () => {
     <View>
       <Pressable
         style={({pressed}) =>
-          tw.style([
-            pressed ? 'ios:bg-slate-100' : '',
+          tw.style(
+            pressed && 'ios:bg-slate-100',
             'flex h-12 flex-row items-center gap-[1.125rem] border-b border-gray-200 text-gray-200',
-          ])
+          )
         }
         android_ripple={{color: COLOR.GRAY_RIPPLE}}
         onPress={handlePresentModalPress}>
