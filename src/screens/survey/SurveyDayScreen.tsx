@@ -37,7 +37,10 @@ export const SurveyDayScreen = () => {
       />
       <SurveyNextButton
         disabled={days === 0}
-        onPress={() => navigation.navigate('SurveyTheme')}
+        onPress={() => {
+          setSurveyState({contentCategory: null});
+          navigation.navigate('SurveyTheme');
+        }}
       />
     </View>
   );

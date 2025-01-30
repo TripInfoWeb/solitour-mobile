@@ -17,11 +17,10 @@ export const AuthLoadingScreen = ({
 
   useEffect(() => {
     if (isSuccess && isError) {
-      navigation.popToTop();
-      return;
+      return navigation.popToTop();
     }
 
-    if (data) {
+    if (data?.id) {
       navigation.reset({index: 0, routes: [{name: 'BottomTabs'}]});
     }
   }, [data, isError, isSuccess, navigation]);
