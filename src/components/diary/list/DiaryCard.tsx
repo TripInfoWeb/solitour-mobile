@@ -67,7 +67,7 @@ export const DiaryCard = ({diary}: DiaryCardProps) => {
           />
           <Text style={tw`pt-5 text-lg font-bold`}>{diary.title}</Text>
           <Text
-            style={tw`text-gray-500`}>{`${new Date(diary.startDatetime).toLocaleDateString()} - ${new Date(diary.endDatetime).toLocaleDateString()}`}</Text>
+            style={tw`text-gray-500`}>{`${new Date(`${diary.startDatetime}.0Z`).toLocaleDateString()} - ${new Date(`${diary.endDatetime}.0Z`).toLocaleDateString()}`}</Text>
           <RichText style={tw`mt-2`} editor={editor} />
         </Animated.View>
       </View>
@@ -100,7 +100,7 @@ export const DiaryCard = ({diary}: DiaryCardProps) => {
             {diary.title}
           </Text>
           <Text
-            style={tw`text-sm text-white`}>{`${new Date(diary.startDatetime).toLocaleDateString()} - ${new Date(diary.endDatetime).toLocaleDateString()}`}</Text>
+            style={tw`text-sm text-white`}>{`${new Date(`${diary.startDatetime}.0Z`).toLocaleDateString()} - ${new Date(`${diary.endDatetime}.0Z`).toLocaleDateString()}`}</Text>
         </View>
       </Animated.View>
     </View>

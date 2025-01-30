@@ -11,8 +11,8 @@ export interface DiaryDetail {
   diaryId: number;
   title: string;
   titleImage: string;
-  startDatetime: Date;
-  endDatetime: Date;
+  startDatetime: string;
+  endDatetime: string;
   diaryDayContentResponses: {
     diaryDayContentDetail: {
       content: string;
