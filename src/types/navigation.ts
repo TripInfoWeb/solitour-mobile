@@ -1,14 +1,16 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {Plan} from './plan';
+import {Plan, SavedPlan} from './plan';
+import {DiaryDetail} from './diary';
 
 export type NavigationList = {
   BottomTabs: undefined;
   Tour: undefined;
+  TourDetail: {savedPlan: SavedPlan};
   Discovery: undefined;
   Home: undefined;
   Diary: undefined;
   DiaryEditor: undefined;
-  DiaryUpdate: {diaryId: number};
+  DiaryUpdate: {diary: DiaryDetail};
   Mypage: undefined;
   Auth: undefined;
   AuthSignIn: undefined;

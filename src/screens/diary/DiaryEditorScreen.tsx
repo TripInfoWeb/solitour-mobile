@@ -43,9 +43,7 @@ export const DiaryEditorScreen = () => {
         <ScrollView style={tw`h-full bg-white px-4 pb-6`}>
           <Controller
             control={methods.control}
-            rules={{
-              required: true,
-            }}
+            rules={{required: true}}
             render={({field: {onChange, value}}) => (
               <TextInput
                 style={tw`h-14 text-lg font-semibold`}
