@@ -86,37 +86,37 @@ export const App = () => {
             <Stack.Screen
               name="SurveyDay"
               component={SurveyDayScreen}
-              options={{title: 'AI 콘텐츠 여행 추천'}}
+              options={{title: '테마 여행 추천'}}
             />
             <Stack.Screen
               name="SurveyTheme"
               component={SurveyThemeScreen}
-              options={{title: 'AI 콘텐츠 여행 추천'}}
+              options={{title: '테마 여행 추천'}}
             />
             <Stack.Screen
               name="SurveyContent"
               component={SurveyContentScreen}
-              options={{title: 'AI 콘텐츠 여행 추천'}}
+              options={{title: '테마 여행 추천'}}
             />
             <Stack.Screen
               name="SurveyActivity"
               component={SurveyActivityScreen}
-              options={{title: 'AI 콘텐츠 여행 추천'}}
+              options={{title: '테마 여행 추천'}}
             />
             <Stack.Screen
               name="SurveyLoading"
               component={SurveyLoadingScreen}
-              options={{title: 'AI 콘텐츠 여행 추천'}}
+              options={{title: '테마 여행 추천'}}
             />
             <Stack.Screen
               name="SurveyResultList"
               component={SurveyResultListScreen}
-              options={{title: 'AI 콘텐츠 여행 추천'}}
+              options={{title: '테마 여행 추천'}}
             />
             <Stack.Screen
               name="SurveyResultDetail"
               component={SurveyResultDetailScreen}
-              options={{title: 'AI 콘텐츠 여행 추천'}}
+              options={{title: '테마 여행 추천'}}
             />
             <Stack.Screen
               name="DiaryEditor"
