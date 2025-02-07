@@ -18,6 +18,7 @@ module.exports = {
         'custom-03': '#6F6F6F',
         'custom-04': '#B5B5B5',
         'custom-blue': '#5165E7',
+        'custom-purple': '#7C25ED',
       },
     },
   },

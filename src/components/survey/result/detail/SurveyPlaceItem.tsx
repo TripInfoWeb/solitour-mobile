@@ -26,21 +26,22 @@ export const SurveyPlaceItem = ({
           style={tw`h-[1.125rem] w-[1.125rem] rounded-full bg-custom-01 text-center text-xs text-white`}>
           {index + 1}
         </Text>
-        <View style={tw`h-20 w-px border border-dashed border-[#D2D2D2]`} />
+        <View style={tw`w-px flex-1 border border-dashed border-[#D2D2D2]`} />
       </View>
       <Pressable
         style={({pressed}) =>
           tw.style([
             pressed ? 'bg-blue-100' : 'bg-white',
-            'flex flex-1 flex-col rounded-lg p-4',
+            'mb-4 flex flex-1 flex-col gap-1 rounded-lg p-4',
           ])
         }
         onPress={() => onPress(item.latitude, item.longitude)}>
-        <Text style={tw`-mt-[0.4375rem] mb-2 font-semibold text-custom-01`}>
-          {item.placeName}
-        </Text>
         <Text
-          style={tw`text-xs text-custom-03`}>{`주소: ${item.address}`}</Text>
+          style={tw`text-custom-purple w-16 rounded-xl bg-[#F5EEFE] py-1 text-center text-xs`}>
+          관광명소
+        </Text>
+        <Text style={tw`font-semibold text-custom-01`}>{item.placeName}</Text>
+        <Text style={tw`text-xs text-custom-03`}>{item.address}</Text>
       </Pressable>
     </View>
   );
