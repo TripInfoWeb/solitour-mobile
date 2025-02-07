@@ -22,9 +22,9 @@ export const SurveyDayScreen = () => {
         여행을 떠나고 싶나요?
       </Text>
       <FlatList
-        contentContainerStyle={tw`gap-[1.125rem] pb-20`}
+        contentContainerStyle={tw`gap-[1.125rem]`}
         columnWrapperStyle={tw`gap-2.5`}
-        data={Array.from({length: 30}, (_, index) => index + 1)}
+        data={Array.from({length: 6}, (_, index) => index + 1)}
         renderItem={({item}) => (
           <SurveyButton
             title={`${item}일`}
