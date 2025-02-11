@@ -41,10 +41,8 @@ export const useTourItemDelete = (planId: number, planTitle: string) => {
     Alert.alert(`${planTitle} 삭제`, '정말 삭제하시겠습니까?', [
       {text: '취소'},
       {
-        text: 'TODO', // TODO: "삭제"
-        onPress: () => {
-          // mutation.mutate();
-        },
+        text: '삭제',
+        onPress: () => mutation.mutate(),
       },
     ]);
   };
