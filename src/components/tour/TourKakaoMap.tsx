@@ -116,6 +116,7 @@ export const TourKakaoMap = ({savedPlan}: TourKakaoMapProps) => {
             item={item}
             distance={kakaoNaviInfo?.sections[idx]?.distance}
             duration={kakaoNaviInfo?.sections[idx]?.duration}
+            isLoading={idx === 5 ? false : isLoading}
             onPress={handlePanTo}
           />
         ))}

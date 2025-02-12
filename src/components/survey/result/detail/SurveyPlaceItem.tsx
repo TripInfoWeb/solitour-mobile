@@ -1,3 +1,5 @@
+import {convertDistance} from '@src/libs/convertDistance';
+import {convertDuration} from '@src/libs/convertDuration';
 import {tw} from '@src/libs/tailwind';
 import React from 'react';
 import {Image, Pressable, Text, View} from 'react-native';
@@ -13,6 +15,7 @@ interface SurveyPlaceItemProps {
   };
   distance?: number;
   duration?: number;
+  isLoading: boolean;
   onPress: (latitude: number, longitude: number) => void;
 }
 
@@ -21,6 +24,7 @@ export const SurveyPlaceItem = ({
   item,
   distance,
   duration,
+  isLoading,
   onPress,
 }: SurveyPlaceItemProps) => {
   return (
@@ -49,16 +53,27 @@ export const SurveyPlaceItem = ({
           <Text style={tw`text-xs text-custom-03`}>{item.address}</Text>
         </Pressable>
       </View>
-      {distance && duration ? (
+      {isLoading ? (
         <View style={tw`flex flex-row items-center gap-3.5`}>
           <Image
             style={tw`ml-px h-3.5 w-4`}
             source={require('@src/assets/common/car-icon.png')}
           />
+          <Text style={tw`py-4 text-sm font-semibold text-custom-03`}>
+            계산 중...
+          </Text>
+        </View>
+      ) : distance && duration ? (
+        <View style={tw`flex flex-row items-center gap-3.5`}>
+          <Image
+            style={tw`ml-px h-3.5 w-4`}
+            source={require('@src/assets/common/car-icon.png')}
+          />
+          <Text style={tw`py-4 text-sm font-semibold text-custom-03`}>
+            {convertDistance(distance)}
+          </Text>
           <Text
-            style={tw`py-4 text-sm font-semibold text-custom-03`}>{`${distance / 1000}km`}</Text>
-          <Text
-            style={tw`text-sm text-custom-01`}>{`이동 시간 ${duration}초`}</Text>
+            style={tw`text-sm text-custom-01`}>{`이동 시간 ${convertDuration(duration)}`}</Text>
         </View>
       ) : (
         <View style={tw`py-4`} />
