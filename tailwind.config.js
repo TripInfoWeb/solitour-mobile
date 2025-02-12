@@ -8,6 +8,7 @@ module.exports = {
         'primary-green-ripple': '#069868',
         'primary-red': '#DA1E28',
         'custom-gray': '#F0F0F0',
+        'custom-gray-ripple': '#f1f5f9',
         'custom-green': '#ECF4E2',
         'custom-lightGreen': '#F2F6EC',
         'custom-lightGray': '#F8F8F8',

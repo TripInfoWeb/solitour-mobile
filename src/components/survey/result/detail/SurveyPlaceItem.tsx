@@ -4,7 +4,13 @@ import {Pressable, Text, View} from 'react-native';
 
 interface SurveyPlaceItemProps {
   index: number;
-  item: {id: number; latitude: number; longitude: number; placeName: string};
+  item: {
+    id: number;
+    address: string;
+    latitude: number;
+    longitude: number;
+    placeName: string;
+  };
   onPress: (latitude: number, longitude: number) => void;
 }
 
@@ -20,7 +26,7 @@ export const SurveyPlaceItem = ({
           style={tw`h-[1.125rem] w-[1.125rem] rounded-full bg-custom-01 text-center text-xs text-white`}>
           {index + 1}
         </Text>
-        <View style={tw`h-24 w-px border border-dashed border-[#D2D2D2]`} />
+        <View style={tw`h-20 w-px border border-dashed border-[#D2D2D2]`} />
       </View>
       <Pressable
         style={({pressed}) =>
@@ -34,9 +40,7 @@ export const SurveyPlaceItem = ({
           {item.placeName}
         </Text>
         <Text
-          style={tw`text-xs text-custom-03`}>{`위도: ${item.latitude}`}</Text>
-        <Text
-          style={tw`text-xs text-custom-03`}>{`경도: ${item.longitude}`}</Text>
+          style={tw`text-xs text-custom-03`}>{`주소: ${item.address}`}</Text>
       </Pressable>
     </View>
   );

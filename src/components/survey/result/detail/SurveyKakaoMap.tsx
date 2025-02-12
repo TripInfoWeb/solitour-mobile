@@ -1,10 +1,21 @@
 import {KAKAO_API_KEY} from '@env';
 import {tw} from '@src/libs/tailwind';
 import {Plan} from '@src/types/plan';
-import React, {useRef} from 'react';
-import {ScrollView, Text, View} from 'react-native';
+import React, {useRef, useState} from 'react';
+import {
+  ActivityIndicator,
+  Pressable,
+  ScrollView,
+  Text,
+  View,
+} from 'react-native';
 import WebView from 'react-native-webview';
 import {SurveyPlaceItem} from './SurveyPlaceItem';
+import {COLOR} from '@src/constants/color';
+import {usePlanSave} from '@src/hooks/survey/result/usePlanSave';
+import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
+import {SurveyBottomSheetModal} from './SurveyBottomSheetModal';
+import {SurveyDayList} from './SurveyDayList';
 
 interface SurveyKakaoMapProps {
   index: number;
@@ -12,6 +23,7 @@ interface SurveyKakaoMapProps {
 }
 
 export const SurveyKakaoMap = ({index, plan}: SurveyKakaoMapProps) => {
+  const [day, setDay] = useState(0);
   const webViewRef = useRef<WebView>(null);
   const html = `
   <html>
@@ -27,14 +39,14 @@ export const SurveyKakaoMap = ({index, plan}: SurveyKakaoMapProps) => {
           const container = document.getElementById('map');
           const options = { 
             // 지도 좌표값 설정
-            center: new kakao.maps.LatLng(${plan.days[0][0].latitude}, ${plan.days[0][0].longitude}),
+            center: new kakao.maps.LatLng(${plan.days[day][0].latitude}, ${plan.days[day][0].longitude}),
 
             // 줌 레벨을 9으로 설정
             level: 9,
           };                
             
           const map = new kakao.maps.Map(container, options);
-          const positions = ${JSON.stringify(plan.days[0])}.map((position) => new kakao.maps.LatLng(position.latitude, position.longitude));
+          const positions = ${JSON.stringify(plan.days[day])}.map((position) => new kakao.maps.LatLng(position.latitude, position.longitude));
           
           // 커스텀 오버레이 생성
           const overlays = positions.map((position, index) => new kakao.maps.CustomOverlay({
@@ -79,30 +91,69 @@ export const SurveyKakaoMap = ({index, plan}: SurveyKakaoMapProps) => {
     webViewRef.current?.postMessage(JSON.stringify({latitude, longitude}));
   };
 
+  const {isPending, bottomSheetModalRef, handleSaveButtonClick} = usePlanSave(
+    plan.id,
+  );
+
   return (
-    <View style={tw`h-full`}>
-      <View style={tw`h-48`}>
-        <WebView ref={webViewRef} source={{html: html}} />
-      </View>
-      <ScrollView style={tw`px-4 pt-4`}>
-        <View style={tw`flex flex-row items-center gap-2 pb-6`}>
-          <Text
-            style={tw`h-6 w-6 rounded-full border border-custom-blue text-center font-semibold text-custom-blue`}>
-            {index}
-          </Text>
-          <Text style={tw`text-xl font-semibold text-custom-01`}>
-            {plan.title}
-          </Text>
+    <BottomSheetModalProvider>
+      <View style={tw`h-full`}>
+        <View style={tw`h-48`}>
+          <WebView ref={webViewRef} source={{html: html}} />
         </View>
-        {plan.days[0].map((item, idx) => (
-          <SurveyPlaceItem
-            key={item.id}
-            index={idx}
-            item={item}
-            onPress={handlePanTo}
+        <ScrollView style={tw`mt-4 px-4`}>
+          <View style={tw`flex flex-row items-center gap-2`}>
+            <Text
+              style={tw`h-6 w-6 rounded-full border border-custom-blue text-center font-semibold text-custom-blue`}>
+              {index}
+            </Text>
+            <Text style={tw`text-xl font-semibold text-custom-01`}>
+              {plan.title}
+            </Text>
+          </View>
+          <SurveyDayList
+            currentDay={day}
+            totalDays={plan.days.length}
+            setDay={(value: number) => setDay(value)}
           />
-        ))}
-      </ScrollView>
-    </View>
+          {plan.days[day].map((item, idx) => (
+            <SurveyPlaceItem
+              key={item.id}
+              index={idx}
+              item={item}
+              onPress={handlePanTo}
+            />
+          ))}
+        </ScrollView>
+        <View
+          style={tw`flex h-20 w-full flex-row items-center gap-2.5 rounded-t-2xl bg-white px-2.5 pb-3 pt-[1.125rem]`}>
+          <Pressable
+            style={({pressed}) =>
+              tw.style([
+                pressed
+                  ? 'android:bg-primary-green ios:bg-primary-green-ripple'
+                  : 'bg-primary-green',
+                'flex h-12 flex-1 flex-row items-center justify-center rounded-lg',
+              ])
+            }
+            android_ripple={{color: COLOR.PRIMARY_GREEN_RIPPLE}}
+            onPress={() => handleSaveButtonClick()}>
+            {isPending ? (
+              <ActivityIndicator size={30} color={'#FFFFFF'} />
+            ) : (
+              <Text style={tw`text-center text-lg font-semibold text-white`}>
+                코스 저장하기
+              </Text>
+            )}
+          </Pressable>
+        </View>
+      </View>
+      <SurveyBottomSheetModal
+        ref={bottomSheetModalRef}
+        closeBottomSheetModal={() =>
+          bottomSheetModalRef.current?.close({duration: 300})
+        }
+      />
+    </BottomSheetModalProvider>
   );
 };
