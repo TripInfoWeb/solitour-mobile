@@ -6,6 +6,7 @@ import {ScrollView, Text, View} from 'react-native';
 import WebView from 'react-native-webview';
 import {SurveyDayList} from '../survey/result/detail/SurveyDayList';
 import {SurveyPlaceItem} from '../survey/result/detail/SurveyPlaceItem';
+import {useKakaoNavi} from '@src/hooks/common/useKakaoNavi';
 
 interface TourKakaoMapProps {
   savedPlan: SavedPlan;
@@ -76,6 +77,20 @@ export const TourKakaoMap = ({savedPlan}: TourKakaoMapProps) => {
     </body>
   </html>`;
 
+  const {kakaoNaviInfo, isLoading} = useKakaoNavi(
+    [
+      savedPlan.plan.days[day].daysDetailResponses[0].longitude,
+      savedPlan.plan.days[day].daysDetailResponses[0].latitude,
+    ],
+    [
+      savedPlan.plan.days[day].daysDetailResponses[5].longitude,
+      savedPlan.plan.days[day].daysDetailResponses[5].latitude,
+    ],
+    savedPlan.plan.days[day].daysDetailResponses
+      .slice(1, 5)
+      .map(value => [value.longitude, value.latitude]),
+  );
+
   const handlePanTo = (latitude: number, longitude: number) => {
     webViewRef.current?.postMessage(JSON.stringify({latitude, longitude}));
   };
@@ -99,6 +114,8 @@ export const TourKakaoMap = ({savedPlan}: TourKakaoMapProps) => {
             key={item.id}
             index={idx}
             item={item}
+            distance={kakaoNaviInfo?.sections[idx]?.distance}
+            duration={kakaoNaviInfo?.sections[idx]?.duration}
             onPress={handlePanTo}
           />
         ))}
