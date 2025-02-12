@@ -3,18 +3,15 @@ import {KakaoNaviInfo} from '@src/types/kakaoNavi';
 import {useQuery} from '@tanstack/react-query';
 
 export const useKakaoNavi = (
+  planId: number,
+  day: number,
   origin: [number, number],
   destination: [number, number],
   waypoints: [number, number][],
 ) => {
   const {data, isLoading} = useQuery<KakaoNaviInfo>({
-    queryKey: [
-      'kakaoNavi',
-      origin[0],
-      origin[1],
-      destination[0],
-      destination[1],
-    ],
+    // eslint-disable-next-line @tanstack/query/exhaustive-deps
+    queryKey: ['kakaoNavi', planId, day],
     queryFn: async () => {
       const response = await fetch(
         'https://apis-navi.kakaomobility.com/v1/directions' +

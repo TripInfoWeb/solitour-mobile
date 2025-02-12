@@ -89,6 +89,8 @@ export const SurveyKakaoMap = ({index, plan}: SurveyKakaoMapProps) => {
   </html>`;
 
   const {kakaoNaviInfo, isLoading} = useKakaoNavi(
+    plan.id,
+    day,
     [plan.days[day][0].longitude, plan.days[day][0].latitude],
     [plan.days[day][5].longitude, plan.days[day][5].latitude],
     plan.days[day].slice(1, 5).map(value => [value.longitude, value.latitude]),

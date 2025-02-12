@@ -78,6 +78,8 @@ export const TourKakaoMap = ({savedPlan}: TourKakaoMapProps) => {
   </html>`;
 
   const {kakaoNaviInfo, isLoading} = useKakaoNavi(
+    savedPlan.plan.planId,
+    day,
     [
       savedPlan.plan.days[day].daysDetailResponses[0].longitude,
       savedPlan.plan.days[day].daysDetailResponses[0].latitude,
