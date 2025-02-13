@@ -38,7 +38,7 @@ export const HomeScreen = () => {
           {`${data?.nickname}님,\n오늘은 어디로 떠날까요?`}
         </Text>
         <PrimaryButton
-          title="AI 콘텐츠 여행 추천"
+          title="테마 여행 추천"
           onPress={() => {
             setSurveyState({days: 0});
             navigation.navigate('SurveyDay');

@@ -12,14 +12,10 @@ export const TourItemSkeleton = () => {
       <View style={tw`flex flex-col`}>
         <Animated.View style={tw.style('h-6 w-20 bg-custom-gray', {opacity})} />
         <Animated.View
-          style={tw.style('mt-4 h-4 w-40 bg-custom-gray', {opacity})}
-        />
-        <Animated.View
           style={tw.style('mt-1 h-4 w-32 bg-custom-gray', {opacity})}
         />
       </View>
       <FlatList
-        style={tw`pt-2`}
         data={[0, 1, 2]}
         renderItem={() => (
           <View style={tw`flex flex-row items-start gap-3.5`}>

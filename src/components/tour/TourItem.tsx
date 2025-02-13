@@ -25,13 +25,13 @@ export const TourItem = ({data}: TourItemProps) => {
           </Text>
           <TourItemMenu planId={data.plan.planId} planTitle={data.plan.title} />
         </View>
-        <Text
-          style={tw`pt-2 text-sm text-custom-03`}>{`생성 날짜: ${data.plan.createdDate}`}</Text>
-        <Text
-          style={tw`text-sm text-custom-03`}>{`여행 기간: ${data.plan.days.length}일`}</Text>
+        <Text style={tw`text-sm text-custom-03`}>
+          {data.plan.days.length === 1
+            ? '무박 1일'
+            : `${data.plan.days.length - 1}박 ${data.plan.days.length}일`}
+        </Text>
       </View>
       <FlatList
-        style={tw`pt-2`}
         data={data.plan.days[0].daysDetailResponses.slice(0, 3)}
         renderItem={({item}) => (
           <View style={tw`flex flex-row items-start gap-3.5`}>

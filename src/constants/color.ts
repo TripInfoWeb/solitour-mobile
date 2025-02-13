@@ -10,4 +10,5 @@ export const COLOR = {
   LIGHTGREEN: '#F2F6EC',
   LIGHTGRAY: '#F8F8F8',
   WHITE: '#FFFFFF',
+  PURPLE: '#7C25ED',
 } as const;
