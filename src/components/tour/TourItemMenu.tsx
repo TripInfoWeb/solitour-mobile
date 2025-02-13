@@ -1,8 +1,8 @@
 import {COLOR} from '@src/constants/color';
 import {useTourItemDelete} from '@src/hooks/tour/useTourItemDelete';
 import {tw} from '@src/libs/tailwind';
-import React from 'react';
-import {ActivityIndicator, Image, Pressable, View} from 'react-native';
+import React, {useState} from 'react';
+import {ActivityIndicator, Image, Pressable, Text, View} from 'react-native';
 
 interface TourItemMenuProps {
   planId: number;
@@ -10,6 +10,7 @@ interface TourItemMenuProps {
 }
 
 export const TourItemMenu = ({planId, planTitle}: TourItemMenuProps) => {
+  const [visible, setVisible] = useState(false);
   const {isPending, handleDeleteButtonClick} = useTourItemDelete(
     planId,
     planTitle,
@@ -22,14 +23,35 @@ export const TourItemMenu = ({planId, planTitle}: TourItemMenuProps) => {
       ) : (
         <Pressable
           style={({pressed}) =>
-            tw.style(pressed && 'bg-slate-100', 'rounded-lg p-2')
+            tw.style(pressed && 'bg-white', 'rounded-lg p-1')
           }
-          onPress={() => handleDeleteButtonClick()}>
+          onPress={() => setVisible(value => !value)}>
           <Image
-            style={tw`h-4 w-4`}
-            source={require('@src/assets/common/delete-icon.png')}
+            style={tw`h-6 w-6`}
+            source={require('@src/assets/common/menu-icon.png')}
           />
         </Pressable>
+      )}
+      {visible && (
+        <View
+          style={tw`absolute right-1.5 top-8 z-10 flex w-20 flex-col rounded-lg bg-white shadow`}>
+          <Pressable
+            style={({pressed}) => tw.style(pressed && 'bg-slate-100', 'w-full')}
+            onPress={() => {
+              setVisible(false);
+              // TODO
+            }}>
+            <Text style={tw`py-2.5 text-center`}>수정</Text>
+          </Pressable>
+          <Pressable
+            style={({pressed}) => tw.style(pressed && 'bg-slate-100', 'w-full')}
+            onPress={() => {
+              setVisible(false);
+              handleDeleteButtonClick();
+            }}>
+            <Text style={tw`py-2.5 text-center`}>삭제</Text>
+          </Pressable>
+        </View>
       )}
     </View>
   );

@@ -40,7 +40,7 @@ export const DiaryCardMenu = ({diary}: DiaryCardMenuProps) => {
       )}
       {visible && (
         <View
-          style={tw`absolute right-1.5 top-8 flex w-20 flex-col items-center rounded-lg bg-white shadow`}>
+          style={tw`absolute right-1.5 top-8 z-10 flex w-20 flex-col items-center rounded-lg bg-white shadow`}>
           <Pressable
             style={({pressed}) => tw.style(pressed && 'bg-slate-100', 'w-full')}
             onTouchEnd={e => {
@@ -48,7 +48,7 @@ export const DiaryCardMenu = ({diary}: DiaryCardMenuProps) => {
               setVisible(false);
               navigation.navigate('DiaryUpdate', {diary});
             }}>
-            <Text style={tw`py-2 text-center`}>수정</Text>
+            <Text style={tw`py-2.5 text-center`}>수정</Text>
           </Pressable>
           <Pressable
             style={({pressed}) => tw.style(pressed && 'bg-slate-100', 'w-full')}
@@ -57,7 +57,7 @@ export const DiaryCardMenu = ({diary}: DiaryCardMenuProps) => {
               setVisible(false);
               handleDeleteButtonClick();
             }}>
-            <Text style={tw`py-2 text-center`}>삭제</Text>
+            <Text style={tw`py-2.5 text-center`}>삭제</Text>
           </Pressable>
         </View>
       )}
