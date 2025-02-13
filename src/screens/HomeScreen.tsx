@@ -20,7 +20,7 @@ import {useSurveyStore} from '@src/stores/surveyStore';
 export const HomeScreen = () => {
   const navigation = useNavigation<NavigationProps>();
   const {data} = useUserInfo();
-  const {initializeSurveyState} = useSurveyStore();
+  const {setSurveyState} = useSurveyStore();
 
   return (
     <ScrollView style={tw`bg-white`}>
@@ -40,7 +40,7 @@ export const HomeScreen = () => {
         <PrimaryButton
           title="AI 콘텐츠 여행 추천"
           onPress={() => {
-            initializeSurveyState();
+            setSurveyState({days: 0});
             navigation.navigate('SurveyDay');
           }}
         />

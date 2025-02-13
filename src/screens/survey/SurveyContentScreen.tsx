@@ -12,7 +12,7 @@ import {SurveyContentItemListSkeleton} from '@src/components/skeleton/survey/con
 
 export const SurveyContentScreen = () => {
   const navigation = useNavigation<NavigationProps>();
-  const {contentCategory, contentTitles} = useSurveyStore();
+  const {contentCategory, contentTitles, setSurveyState} = useSurveyStore();
 
   return (
     <View style={tw`h-full w-full bg-white px-4 pt-2`}>
@@ -23,15 +23,19 @@ export const SurveyContentScreen = () => {
             ?.title
         }의`}
       </Text>
-      <Text style={tw`pb-12 text-2xl font-bold text-custom-01`}>
+      <Text style={tw`text-2xl font-bold text-custom-01`}>
         여행지로 떠나볼까요?
       </Text>
+      <Text style={tw`pb-12 pt-1.5 text-custom-03`}>여러 개 선택 가능해요</Text>
       <Suspense fallback={<SurveyContentItemListSkeleton />}>
         <SurveyContentItemList />
       </Suspense>
       <SurveyNextButton
         disabled={contentTitles.length === 0}
-        onPress={() => navigation.navigate('SurveyActivity')}
+        onPress={() => {
+          setSurveyState({preferredTrips: []});
+          navigation.navigate('SurveyActivity');
+        }}
       />
     </View>
   );
