@@ -8,38 +8,22 @@ export interface Diary {
 }
 
 export interface DiaryDetail {
-  diaryContentResponse: {
-    diaryId: number;
-    title: string;
-    titleImage: string;
-    startDatetime: Date;
-    endDatetime: Date;
-    diaryDayContentResponses: {
-      diaryDayContentDetail: {
-        content: string;
-        feelingStatus: string;
-        diaryDayContentImages: string;
-        place: string;
-      }[];
-    };
+  diaryId: number;
+  title: string;
+  titleImage: string;
+  startDatetime: Date;
+  endDatetime: Date;
+  diaryDayContentResponses: {
+    diaryDayContentDetail: {
+      content: string;
+      feelingStatus: string;
+      contentImage: 'EXCITED' | 'NICE' | 'SOSO' | 'SAD' | 'ANGRY';
+      place: string;
+    }[];
   };
 }
 
 export interface DiaryList {
-  content: {
-    diaryId: number;
-    title: string;
-    titleImage: string;
-    startDatetime: Date;
-    endDatetime: Date;
-    diaryDayContentResponses: {
-      diaryDayContentDetail: {
-        content: string;
-        feelingStatus: string;
-        contentImage: 'EXCITED' | 'NICE' | 'SOSO' | 'SAD' | 'ANGRY';
-        place: string;
-      }[];
-    };
-  }[];
+  content: DiaryDetail[];
   page: {totalPages: number};
 }

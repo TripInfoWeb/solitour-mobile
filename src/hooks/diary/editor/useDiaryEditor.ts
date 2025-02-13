@@ -6,6 +6,7 @@ import {
 } from '@10play/tentap-editor';
 import {BACKEND_URL} from '@env';
 import {zodResolver} from '@hookform/resolvers/zod';
+import {getNewAccessToken} from '@src/libs/getNewAccessToken';
 import {DiarySchema} from '@src/libs/zod/DiarySchema';
 import {Diary} from '@src/types/diary';
 import {useMutation} from '@tanstack/react-query';
@@ -64,11 +65,14 @@ export const useDiaryEditor = (placeholderData?: {
 
       const response = await fetch(`${BACKEND_URL}/api/image`, {
         method: 'POST',
-        headers: {
-          Cookie: `access_token=${accessToken}`,
-        },
+        headers: {Cookie: `access_token=${accessToken}`},
         body: formData,
       });
+
+      if (response.status === 401) {
+        await getNewAccessToken();
+        throw new Error('Access token has expired.');
+      }
 
       if (!response.ok) {
         throw new Error('Failed to upload an image.');
@@ -80,6 +84,7 @@ export const useDiaryEditor = (placeholderData?: {
       methods.setValue('image', data.fileUrl);
       methods.trigger('image');
     },
+    retry: 1,
     throwOnError: true,
   });
 

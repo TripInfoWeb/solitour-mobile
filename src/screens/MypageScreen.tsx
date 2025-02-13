@@ -14,7 +14,7 @@ export const MypageScreen = () => {
 
   const handleSignOut = async () => {
     await EncryptedStorage.clear();
-    await queryClient.invalidateQueries({queryKey: ['userInfo']});
+    queryClient.removeQueries();
     navigation.reset({index: 0, routes: [{name: 'Auth'}]});
   };
 

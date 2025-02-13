@@ -1,10 +1,8 @@
-import {BACKEND_URL} from '@env';
 import {COLOR} from '@src/constants/color';
+import {useTourItemDelete} from '@src/hooks/tour/useTourItemDelete';
 import {tw} from '@src/libs/tailwind';
-import {useMutation, useQueryClient} from '@tanstack/react-query';
 import React from 'react';
-import {ActivityIndicator, Alert, Image, Pressable, View} from 'react-native';
-import EncryptedStorage from 'react-native-encrypted-storage';
+import {ActivityIndicator, Image, Pressable, View} from 'react-native';
 
 interface TourItemMenuProps {
   planId: number;
@@ -12,47 +10,14 @@ interface TourItemMenuProps {
 }
 
 export const TourItemMenu = ({planId, planTitle}: TourItemMenuProps) => {
-  const queryClient = useQueryClient();
-  const mutation = useMutation({
-    mutationFn: async () => {
-      const accessToken = await EncryptedStorage.getItem('access_token');
-      const response = await fetch(
-        `${BACKEND_URL}/api/travel/user-plan/${planId}`,
-        {
-          method: 'DELETE',
-          headers: {
-            Cookie: `access_token=${accessToken}`,
-          },
-        },
-      );
-
-      if (!response.ok) {
-        throw new Error('Failed to delete.');
-      }
-
-      return true;
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({queryKey: ['tourItemList']});
-    },
-    throwOnError: true,
-  });
-
-  const handleDeleteButtonClick = () => {
-    Alert.alert(`${planTitle} 삭제`, '정말 삭제하시겠습니까?', [
-      {text: '취소'},
-      {
-        text: 'TODO', // TODO: "삭제"
-        onPress: () => {
-          // mutation.mutate();
-        },
-      },
-    ]);
-  };
+  const {isPending, handleDeleteButtonClick} = useTourItemDelete(
+    planId,
+    planTitle,
+  );
 
   return (
     <View style={tw`relative`}>
-      {mutation.isPending ? (
+      {isPending ? (
         <ActivityIndicator style={tw`h-8 w-8`} color={COLOR.PRIMARY_GREEN} />
       ) : (
         <Pressable

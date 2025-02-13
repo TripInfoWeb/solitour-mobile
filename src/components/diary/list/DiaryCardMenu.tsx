@@ -1,65 +1,24 @@
-import {BACKEND_URL} from '@env';
 import {useNavigation} from '@react-navigation/native';
 import {COLOR} from '@src/constants/color';
+import {useDiaryDelete} from '@src/hooks/diary/list/useDiaryDelete';
 import {tw} from '@src/libs/tailwind';
+import {DiaryDetail} from '@src/types/diary';
 import {NavigationProps} from '@src/types/navigation';
-import {useMutation, useQueryClient} from '@tanstack/react-query';
 import React, {useState} from 'react';
-import {
-  ActivityIndicator,
-  Alert,
-  Image,
-  Pressable,
-  Text,
-  View,
-} from 'react-native';
-import EncryptedStorage from 'react-native-encrypted-storage';
+import {ActivityIndicator, Image, Pressable, Text, View} from 'react-native';
 
 interface DiaryCardMenuProps {
-  diaryId: number;
+  diary: DiaryDetail;
 }
 
-export const DiaryCardMenu = ({diaryId}: DiaryCardMenuProps) => {
+export const DiaryCardMenu = ({diary}: DiaryCardMenuProps) => {
   const navigation = useNavigation<NavigationProps>();
   const [visible, setVisible] = useState(false);
-  const queryClient = useQueryClient();
-  const mutation = useMutation({
-    mutationFn: async () => {
-      const accessToken = await EncryptedStorage.getItem('access_token');
-      const response = await fetch(`${BACKEND_URL}/api/diary/${diaryId}`, {
-        method: 'DELETE',
-        headers: {
-          Cookie: `access_token=${accessToken}`,
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to delete.');
-      }
-
-      return true;
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({queryKey: ['diaryList']});
-    },
-    throwOnError: true,
-  });
-
-  const handleDeleteButtonClick = () => {
-    Alert.alert('여행일기 삭제', '정말 삭제하시겠습니까?', [
-      {text: '취소'},
-      {
-        text: '삭제',
-        onPress: () => {
-          mutation.mutate();
-        },
-      },
-    ]);
-  };
+  const {isPending, handleDeleteButtonClick} = useDiaryDelete(diary.diaryId);
 
   return (
     <View style={tw`relative`}>
-      {mutation.isPending ? (
+      {isPending ? (
         <ActivityIndicator
           style={tw`h-8 w-8 bg-blue-100`}
           color={COLOR.PRIMARY_GREEN}
@@ -89,7 +48,7 @@ export const DiaryCardMenu = ({diaryId}: DiaryCardMenuProps) => {
             onTouchEnd={e => {
               e.stopPropagation();
               setVisible(false);
-              navigation.navigate('DiaryUpdate', {diaryId});
+              navigation.navigate('DiaryUpdate', {diary});
             }}>
             <Text style={tw`py-2 text-center`}>수정</Text>
           </Pressable>

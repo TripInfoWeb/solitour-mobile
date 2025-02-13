@@ -1,28 +1,35 @@
 import {BACKEND_URL} from '@env';
+import {getNewAccessToken} from '@src/libs/getNewAccessToken';
 import {User} from '@src/types/user';
 import {useQuery} from '@tanstack/react-query';
 import EncryptedStorage from 'react-native-encrypted-storage';
 
 export const useUserInfo = (enabled?: boolean) => {
-  const {data, isLoading, isError} = useQuery<User>({
+  const {data, isLoading} = useQuery<User>({
     queryKey: ['userInfo'],
     queryFn: async () => {
       const accessToken = await EncryptedStorage.getItem('access_token');
-      const userInfoResponse = await fetch(`${BACKEND_URL}/api/users/info`, {
+      const response = await fetch(`${BACKEND_URL}/api/users/info`, {
         method: 'GET',
-        headers: {
-          Cookie: `access_token=${accessToken}`,
-          'Access-Control-Allow-Origin': '*',
-        },
+        headers: {Cookie: `access_token=${accessToken}`},
       });
 
-      return await userInfoResponse.json();
+      if (response.status === 401) {
+        await getNewAccessToken();
+        throw new Error('Access token has expired.');
+      }
+
+      if (!response.ok) {
+        await EncryptedStorage.clear();
+      }
+
+      return await response.json();
     },
     staleTime: Infinity,
     gcTime: 0,
-    retry: false,
+    retry: 1,
     enabled: enabled,
   });
 
-  return {data, isLoading, isError};
+  return {data, isLoading};
 };

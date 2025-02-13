@@ -6,17 +6,14 @@ export const useSignIn = (code: string) => {
   const {isSuccess} = useQuery({
     queryKey: ['signIn', code],
     queryFn: async () => {
-      const signInResponse = await fetch(
+      const response = await fetch(
         `${BACKEND_URL}/api/auth/oauth2/login?type=kakao&redirectUrl=${KAKAO_REDIRECT_URL}&code=${code}`,
-        {
-          method: 'GET',
-          credentials: 'include',
-        },
+        {method: 'GET', credentials: 'include'},
       );
 
-      const cookies = signInResponse.headers.get('set-cookie')?.split(',');
+      const cookies = response.headers.get('set-cookie')?.split(',');
 
-      if (!signInResponse.ok || !cookies) {
+      if (!response.ok || !cookies) {
         throw new Error('Failed to sign in.');
       }
 
