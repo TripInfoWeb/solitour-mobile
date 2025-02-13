@@ -34,8 +34,8 @@ export const DiaryUpdateEditor = ({diary}: DiaryUpdateEditorProps) => {
   const {methods, content, editor, imageMutation, handleImageUpload} =
     useDiaryEditor({
       title: diary.title,
-      startDate: new Date(diary.startDatetime),
-      endDate: new Date(diary.endDatetime),
+      startDate: new Date(`${diary.startDatetime}.0Z`),
+      endDate: new Date(`${diary.endDatetime}.0Z`),
       location: diary.diaryDayContentResponses.diaryDayContentDetail[0].place,
       feeling:
         FEELING_STATUS[

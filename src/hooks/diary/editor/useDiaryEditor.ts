@@ -10,6 +10,7 @@ import {getNewAccessToken} from '@src/libs/getNewAccessToken';
 import {DiarySchema} from '@src/libs/zod/DiarySchema';
 import {Diary} from '@src/types/diary';
 import {useMutation} from '@tanstack/react-query';
+import {useEffect} from 'react';
 import {useForm} from 'react-hook-form';
 import EncryptedStorage from 'react-native-encrypted-storage';
 import {launchImageLibrary} from 'react-native-image-picker';
@@ -99,6 +100,13 @@ export const useDiaryEditor = (placeholderData?: {
       }
     });
   };
+
+  useEffect(() => {
+    if (editor.getEditorState().isReady && placeholderData?.content) {
+      editor.setContent(placeholderData?.content);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [editor.getEditorState().isReady, placeholderData?.content]);
 
   return {methods, content, editor, imageMutation, handleImageUpload};
 };
