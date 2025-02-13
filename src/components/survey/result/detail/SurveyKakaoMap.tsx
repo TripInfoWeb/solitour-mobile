@@ -16,6 +16,7 @@ import {usePlanSave} from '@src/hooks/survey/result/usePlanSave';
 import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 import {SurveyBottomSheetModal} from './SurveyBottomSheetModal';
 import {SurveyDayList} from './SurveyDayList';
+import {useKakaoNavi} from '@src/hooks/common/useKakaoNavi';
 
 interface SurveyKakaoMapProps {
   index: number;
@@ -87,6 +88,14 @@ export const SurveyKakaoMap = ({index, plan}: SurveyKakaoMapProps) => {
     </body>
   </html>`;
 
+  const {kakaoNaviInfo, isLoading} = useKakaoNavi(
+    plan.id,
+    day,
+    [plan.days[day][0].longitude, plan.days[day][0].latitude],
+    [plan.days[day][5].longitude, plan.days[day][5].latitude],
+    plan.days[day].slice(1, 5).map(value => [value.longitude, value.latitude]),
+  );
+
   const handlePanTo = (latitude: number, longitude: number) => {
     webViewRef.current?.postMessage(JSON.stringify({latitude, longitude}));
   };
@@ -121,6 +130,9 @@ export const SurveyKakaoMap = ({index, plan}: SurveyKakaoMapProps) => {
               key={item.id}
               index={idx}
               item={item}
+              distance={kakaoNaviInfo?.sections[idx]?.distance}
+              duration={kakaoNaviInfo?.sections[idx]?.duration}
+              isLoading={idx === 5 ? false : isLoading}
               onPress={handlePanTo}
             />
           ))}
