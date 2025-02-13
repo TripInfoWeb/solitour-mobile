@@ -8,7 +8,7 @@ import {COLOR} from '@src/constants/color';
 import {HomeScreen} from '@src/screens/HomeScreen';
 import {TourScreen} from '@src/screens/tour/TourScreen';
 import {DiaryScreen} from '@src/screens/diary/DiaryScreen';
-import {MypageScreen} from '@src/screens/MypageScreen';
+import {MypageScreen} from '@src/screens/mypage/MypageScreen';
 import {DiscoveryScreen} from '@src/screens/DiscoveryScreen';
 
 interface IconProps {
@@ -111,10 +111,7 @@ const WriteButton = () => {
   return (
     <Pressable
       style={({pressed}) => {
-        return tw.style([
-          pressed ? 'bg-slate-100' : '',
-          'mr-4 rounded-2xl p-2',
-        ]);
+        return tw.style(pressed && 'bg-slate-100', 'mr-4 rounded-2xl p-2');
       }}
       onPress={() => navigation.navigate('DiaryEditor')}>
       <Image

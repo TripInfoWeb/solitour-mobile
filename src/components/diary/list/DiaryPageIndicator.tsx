@@ -20,7 +20,7 @@ export const DiaryPageIndicator = ({
       {page > 0 ? (
         <Pressable
           style={({pressed}) => {
-            return tw.style([pressed ? 'bg-slate-100' : '', 'rounded-2xl p-2']);
+            return tw.style(pressed && 'bg-slate-100', 'rounded-2xl p-2');
           }}
           onPress={() => goPreviousPage()}>
           <Image
@@ -35,7 +35,7 @@ export const DiaryPageIndicator = ({
       {page < lastPage - 1 ? (
         <Pressable
           style={({pressed}) => {
-            return tw.style([pressed ? 'bg-slate-100' : '', 'rounded-2xl p-2']);
+            return tw.style(pressed && 'bg-slate-100', 'rounded-2xl p-2');
           }}
           onPress={() => goNextPage()}>
           <Image

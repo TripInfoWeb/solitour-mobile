@@ -58,7 +58,7 @@ export const DiaryFeelingBottomSheetModal = forwardRef<
           <Text style={tw`text-[1.375rem] font-semibold`}>기분</Text>
           <Pressable
             style={({pressed}) =>
-              tw.style([pressed ? 'ios:bg-slate-100' : '', 'rounded-2xl p-2'])
+              tw.style(pressed && 'ios:bg-slate-100', 'rounded-2xl p-2')
             }
             android_ripple={{color: COLOR.GRAY_RIPPLE}}
             onPress={() => closeBottomSheetModal()}>
@@ -74,10 +74,10 @@ export const DiaryFeelingBottomSheetModal = forwardRef<
           renderItem={({item}) => (
             <Pressable
               style={({pressed}) =>
-                tw.style([
-                  pressed ? 'ios:bg-green-100' : '',
+                tw.style(
+                  pressed && 'ios:bg-green-100',
                   'flex w-[6.5rem] flex-col items-center gap-1 py-3',
-                ])
+                )
               }
               android_ripple={{color: COLOR.GREEN_RIPPLE}}
               onPress={() => {
