@@ -19,9 +19,7 @@ export const SurveyContentItemList = () => {
       <FlatList
         contentContainerStyle={tw`gap-[1.125rem] pb-20`}
         columnWrapperStyle={tw`gap-2.5`}
-        data={surveyContentList.content.filter(value =>
-          value.mediaName.includes(methods.watch('title')),
-        )}
+        data={surveyContentList}
         renderItem={({item}) => (
           <SurveyContentItem
             title={item.mediaName}

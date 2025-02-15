@@ -41,5 +41,10 @@ export const useSurveyContentItemList = (
     mode: 'onChange',
   });
 
-  return {surveyContentList: data, methods};
+  return {
+    surveyContentList: data.content.filter(content =>
+      content.mediaName.includes(methods.watch('title')),
+    ),
+    methods,
+  };
 };
