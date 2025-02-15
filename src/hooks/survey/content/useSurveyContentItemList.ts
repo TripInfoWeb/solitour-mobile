@@ -47,13 +47,17 @@ export const useSurveyContentItemList = (
     data.content,
   );
 
-  const handleFiltering = useDebounce(() => {
-    setSurveyContentList(
-      data.content.filter(content =>
-        content.mediaName.includes(methods.watch('title')),
+  const handleFiltering = useDebounce(
+    () =>
+      setSurveyContentList(
+        data.content.filter(content =>
+          content.mediaName
+            .replaceAll(' ', '')
+            .includes(methods.watch('title').replaceAll(' ', '')),
+        ),
       ),
-    );
-  }, 300);
+    300,
+  );
 
   useEffect(() => {
     handleFiltering();
