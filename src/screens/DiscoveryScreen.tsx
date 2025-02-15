@@ -1,12 +1,12 @@
 import TopDiscoveryKeywordList from '@src/components/discovery/TopDiscoveryKeywordList';
 import { tw } from '@src/libs/tailwind';
 import React from 'react';
-import { View } from 'react-native';
+import { ScrollView } from 'react-native';
 
 export const DiscoveryScreen = () => {
   return (
-    <View style={tw`h-full bg-white`}>
+    <ScrollView  style={tw`bg-white`}>
       <TopDiscoveryKeywordList />
-    </View>
+    </ScrollView >
   );
 };
