@@ -64,10 +64,9 @@ export const DiaryUpdateEditor = ({diary}: DiaryUpdateEditorProps) => {
       <BottomSheetModalProvider>
         <ScrollView style={tw`h-full bg-white px-4 pb-6`}>
           <Controller
+            name="title"
             control={methods.control}
-            rules={{
-              required: true,
-            }}
+            rules={{required: true}}
             render={({field: {onChange, value}}) => (
               <TextInput
                 style={tw`h-14 text-lg font-semibold`}
@@ -80,7 +79,6 @@ export const DiaryUpdateEditor = ({diary}: DiaryUpdateEditorProps) => {
                 maxLength={50}
               />
             )}
-            name="title"
           />
           <DiaryDatePicker />
           <DiaryLocationPicker />

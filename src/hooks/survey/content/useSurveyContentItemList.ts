@@ -1,7 +1,10 @@
 import {BACKEND_URL} from '@env';
+import {zodResolver} from '@hookform/resolvers/zod';
 import {getNewAccessToken} from '@src/libs/getNewAccessToken';
+import {ContentTitleSchema} from '@src/libs/zod/ContentTitleSchema';
 import {SurveyContentList} from '@src/types/survey';
 import {useSuspenseQuery} from '@tanstack/react-query';
+import {useForm} from 'react-hook-form';
 import EncryptedStorage from 'react-native-encrypted-storage';
 
 export const useSurveyContentItemList = (
@@ -32,5 +35,11 @@ export const useSurveyContentItemList = (
     retry: 1,
   });
 
-  return {surveyContentList: data};
+  const methods = useForm<{title: string}>({
+    resolver: zodResolver(ContentTitleSchema),
+    defaultValues: {title: ''},
+    mode: 'onChange',
+  });
+
+  return {surveyContentList: data, methods};
 };
