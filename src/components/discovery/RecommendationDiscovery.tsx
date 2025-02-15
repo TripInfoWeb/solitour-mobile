@@ -51,10 +51,10 @@ const RecommendationDiscovery = (props: IRecommendationDiscovery) => {
             <Pressable
               key={index}
               onPress={() => setSelectedRecommendation(i)}
-              style={tw`h-[2.3125rem] rounded-[1.125rem] px-[1.25rem] py-[0.4375rem] ${
+              style={tw`h-[2.3125rem] rounded-[1.125rem] px-[1.125rem] py-[0.3125rem] ${
                 selectedRecommendation.title === i.title
-                  ? 'bg-primary-green'
-                  : 'bg-white border border-outline-01'
+                  ? 'bg-primary-green border border-primary-green' // active일 때 테두리 색상만 변경
+                  : 'bg-white border border-outline-01' // 기본 테두리
               }`}>
               <Text
                 style={tw`${
@@ -67,7 +67,7 @@ const RecommendationDiscovery = (props: IRecommendationDiscovery) => {
             </Pressable>
           ))}
         </ScrollView>
-        <View style={tw`w-full mt-[1.25rem]`}>
+        <View style={tw`mt-[1.25rem] w-full`}>
           <Image
             source={{uri: selectedRecommendation.imageUrl}}
             style={tw`h-[249px] w-[343px] rounded-[12px]`}
