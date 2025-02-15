@@ -1,3 +1,4 @@
+import RecommendationDiscovery from '@src/components/discovery/RecommendationDiscovery';
 import TopDiscoveryKeywordList from '@src/components/discovery/TopDiscoveryKeywordList';
 import { tw } from '@src/libs/tailwind';
 import React from 'react';
@@ -7,6 +8,7 @@ export const DiscoveryScreen = () => {
   return (
     <ScrollView  style={tw`bg-white`}>
       <TopDiscoveryKeywordList />
+      <RecommendationDiscovery />
     </ScrollView >
   );
 };
