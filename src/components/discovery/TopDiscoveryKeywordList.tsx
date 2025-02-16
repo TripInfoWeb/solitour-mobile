@@ -44,8 +44,7 @@ useEffect(() => {
         duration: 2000, // 2초 동안 실행
         useNativeDriver: true,
       }),
-      Animated.delay(30000), // 30초 대기
-      Animated.delay(index * 800), // 0.2초 간격으로 초기에 다르게 실행되게
+      Animated.delay(20000 + index * 1800), // 30초 대기
       Animated.timing(anim, {
         toValue: 0,
         duration: 0, // 즉시 초기화
@@ -60,7 +59,7 @@ useEffect(() => {
             duration: 2000,
             useNativeDriver: true,
           }),
-          Animated.delay(30000),
+          Animated.delay(20000),
           Animated.timing(anim, {
             toValue: 0,
             duration: 0,
