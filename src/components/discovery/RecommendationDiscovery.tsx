@@ -7,24 +7,34 @@ interface IRecommendationDiscovery {}
 interface I_data {
   title: string;
   imageUrl: string;
-  description: string;
+  articleTitle: string;
+  articleDescription: string;
 }
 
 const _data = [
   {
+    id: 1,
     title: '눈물의 여왕',
-    imageUrl: 'https://poc-cf-image.cjenm.com/public/share/menumng/%EB%88%88%EB%AC%BC%EC%9D%98%EC%97%AC%EC%99%95%EB%A9%94%EC%9D%B8banner960.jpg?v=1709102043',
-    description: '운명처럼 다시 만난 사랑',
+    imageUrl:
+    'https://poc-cf-image.cjenm.com/public/share/menumng/%EB%88%88%EB%AC%BC%EC%9D%98%EC%97%AC%EC%99%95%EB%A9%94%EC%9D%B8banner960.jpg?v=1709102043',
+    articleTitle: '기사 제목',
+    articleDescription: '운명처럼 다시 만난 사랑',
   },
   {
+    id: 2,
     title: '선재 업고 튀어',
-    imageUrl: 'https://poc-cf-image.cjenm.com/public/share/menumng/%EC%84%A0%EC%9E%AC%EC%97%85%EA%B3%A0%ED%8A%80%EC%96%B4banner960.png?v=1710465873',
-    description: '위험 속에서 피어난 로맨스',
+    imageUrl:
+    'https://poc-cf-image.cjenm.com/public/share/menumng/%EC%84%A0%EC%9E%AC%EC%97%85%EA%B3%A0%ED%8A%80%EC%96%B4banner960.png?v=1710465873',
+    articleTitle: '기사 제목',
+    articleDescription: '위험 속에서 피어난 로맨스',
   },
   {
+    id: 3,
     title: '도깨비',
-    imageUrl: 'https://poc-cf-image.cjenm.com/public/share/menumng/1675755583417299173177.jpg',
-    description: '불멸의 삶과 애절한 사랑',
+    imageUrl:
+      'https://poc-cf-image.cjenm.com/public/share/menumng/1675755583417299173177.jpg',
+    articleTitle: '기사 제목',
+    articleDescription: '불멸의 삶과 애절한 사랑',
   },
 ];
 
@@ -73,7 +83,7 @@ const RecommendationDiscovery = (props: IRecommendationDiscovery) => {
             style={tw`h-[249px] w-[343px] rounded-[12px]`}
           />
           <Text style={tw`mt-4 text-[1.25rem] font-semibold text-gray-800`}>
-            {selectedRecommendation.description}
+            {selectedRecommendation.articleDescription}
           </Text>
         </View>
       </View>
