@@ -1,7 +1,12 @@
 import {BACKEND_URL} from '@env';
+import {zodResolver} from '@hookform/resolvers/zod';
+import {useDebounce} from '@src/hooks/common/useDebounce';
 import {getNewAccessToken} from '@src/libs/getNewAccessToken';
-import {SurveyContentList} from '@src/types/survey';
+import {ContentTitleSchema} from '@src/libs/zod/ContentTitleSchema';
+import {SurveyContent, SurveyContentList} from '@src/types/survey';
 import {useSuspenseQuery} from '@tanstack/react-query';
+import {useEffect, useState} from 'react';
+import {useForm} from 'react-hook-form';
 import EncryptedStorage from 'react-native-encrypted-storage';
 
 export const useSurveyContentItemList = (
@@ -32,5 +37,32 @@ export const useSurveyContentItemList = (
     retry: 1,
   });
 
-  return {surveyContentList: data};
+  const methods = useForm<{title: string}>({
+    resolver: zodResolver(ContentTitleSchema),
+    defaultValues: {title: ''},
+    mode: 'onChange',
+  });
+
+  const [surveyContentList, setSurveyContentList] = useState<SurveyContent[]>(
+    data.content,
+  );
+
+  const handleFiltering = useDebounce(
+    () =>
+      setSurveyContentList(
+        data.content.filter(content =>
+          content.mediaName
+            .replaceAll(' ', '')
+            .includes(methods.watch('title').replaceAll(' ', '')),
+        ),
+      ),
+    300,
+  );
+
+  useEffect(() => {
+    handleFiltering();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [methods.watch('title')]);
+
+  return {surveyContentList, methods};
 };

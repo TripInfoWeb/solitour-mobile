@@ -1,5 +1,11 @@
+export interface SurveyContent {
+  id: number;
+  mediaName: string;
+  mediaImage: string;
+}
+
 export interface SurveyContentList {
-  content: {id: number; mediaName: string; mediaImage: string}[];
+  content: SurveyContent[];
   page: {
     size: number;
     number: number;

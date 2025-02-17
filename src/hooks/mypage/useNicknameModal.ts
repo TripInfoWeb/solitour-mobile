@@ -16,9 +16,7 @@ export const useNicknameModal = (
     nickname: string;
   }>({
     resolver: zodResolver(NicknameSchema),
-    defaultValues: {
-      nickname: nickname,
-    },
+    defaultValues: {nickname: nickname},
     mode: 'onChange',
   });
 

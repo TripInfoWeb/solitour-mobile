@@ -26,7 +26,7 @@ export const SurveyContentScreen = () => {
       <Text style={tw`text-2xl font-bold text-custom-01`}>
         여행지로 떠나볼까요?
       </Text>
-      <Text style={tw`pb-12 pt-1.5 text-custom-03`}>여러 개 선택 가능해요</Text>
+      <Text style={tw`pb-6 pt-1.5 text-custom-03`}>여러 개 선택 가능해요</Text>
       <Suspense fallback={<SurveyContentItemListSkeleton />}>
         <SurveyContentItemList />
       </Suspense>

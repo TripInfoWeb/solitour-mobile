@@ -55,6 +55,7 @@ export const MypageNicknameModal = ({
             </Pressable>
           </View>
           <Controller
+            name="nickname"
             control={methods.control}
             rules={{required: true}}
             render={({field: {onChange, value}}) => (
@@ -63,7 +64,7 @@ export const MypageNicknameModal = ({
                   methods.formState.errors.nickname
                     ? 'border-blue-500'
                     : 'border-custom-04',
-                  'my-4 h-[3.25rem] w-full rounded-2xl border px-4',
+                  'my-4 h-[3.25rem] w-full rounded-full border px-4',
                 )}
                 placeholderTextColor={
                   methods.formState.errors.nickname && COLOR.BLUE
@@ -74,7 +75,6 @@ export const MypageNicknameModal = ({
                 maxLength={30}
               />
             )}
-            name="nickname"
           />
           <View style={tw`flex flex-row items-center gap-2`}>
             <Pressable
