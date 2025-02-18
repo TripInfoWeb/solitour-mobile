@@ -36,7 +36,7 @@ export const TourItemTitleModal = ({
   return (
     <Modal
       animationType="fade"
-      transparent={true}
+      transparent={false}
       visible={modalVisible}
       onRequestClose={() => closeModal()}>
       <View
