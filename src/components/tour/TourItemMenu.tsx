@@ -3,6 +3,7 @@ import {useTourItemDelete} from '@src/hooks/tour/useTourItemDelete';
 import {tw} from '@src/libs/tailwind';
 import React, {useState} from 'react';
 import {ActivityIndicator, Image, Pressable, Text, View} from 'react-native';
+import {TourItemTitleModal} from './TourItemTitleModal';
 
 interface TourItemMenuProps {
   planId: number;
@@ -10,7 +11,8 @@ interface TourItemMenuProps {
 }
 
 export const TourItemMenu = ({planId, planTitle}: TourItemMenuProps) => {
-  const [visible, setVisible] = useState(false);
+  const [menuVisible, setMenuVisible] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
   const {isPending, handleDeleteButtonClick} = useTourItemDelete(
     planId,
     planTitle,
@@ -25,34 +27,40 @@ export const TourItemMenu = ({planId, planTitle}: TourItemMenuProps) => {
           style={({pressed}) =>
             tw.style(pressed && 'bg-white', 'rounded-lg p-1')
           }
-          onPress={() => setVisible(value => !value)}>
+          onPress={() => setMenuVisible(value => !value)}>
           <Image
             style={tw`h-6 w-6`}
             source={require('@src/assets/common/menu-icon.png')}
           />
         </Pressable>
       )}
-      {visible && (
+      {menuVisible && (
         <View
           style={tw`absolute right-1.5 top-8 z-10 flex w-20 flex-col rounded-lg bg-white shadow`}>
           <Pressable
             style={({pressed}) => tw.style(pressed && 'bg-slate-100', 'w-full')}
             onPress={() => {
-              setVisible(false);
-              // TODO
+              setMenuVisible(false);
+              setModalVisible(true);
             }}>
             <Text style={tw`py-2.5 text-center`}>수정</Text>
           </Pressable>
           <Pressable
             style={({pressed}) => tw.style(pressed && 'bg-slate-100', 'w-full')}
             onPress={() => {
-              setVisible(false);
+              setMenuVisible(false);
               handleDeleteButtonClick();
             }}>
             <Text style={tw`py-2.5 text-center`}>삭제</Text>
           </Pressable>
         </View>
       )}
+      <TourItemTitleModal
+        planId={planId}
+        title={planTitle}
+        modalVisible={modalVisible}
+        closeModal={() => setModalVisible(false)}
+      />
     </View>
   );
 };
