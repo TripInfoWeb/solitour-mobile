@@ -3,7 +3,7 @@ import {tw} from '@src/libs/tailwind';
 import {NavigationProps} from '@src/types/navigation';
 import {SavedPlan} from '@src/types/plan';
 import React from 'react';
-import {FlatList, Pressable, Text, View} from 'react-native';
+import {Pressable, Text, View} from 'react-native';
 import {TourItemMenu} from './TourItemMenu';
 
 interface TourItemProps {
@@ -31,10 +31,9 @@ export const TourItem = ({data}: TourItemProps) => {
             : `${data.plan.days.length - 1}박 ${data.plan.days.length}일`}
         </Text>
       </View>
-      <FlatList
-        data={data.plan.days[0].daysDetailResponses.slice(0, 3)}
-        renderItem={({item}) => (
-          <View style={tw`flex flex-row items-start gap-3.5`}>
+      <View style={tw`pt-2`}>
+        {data.plan.days[0].daysDetailResponses.slice(0, 3).map(item => (
+          <View key={item.id} style={tw`flex flex-row items-start gap-3.5`}>
             <View style={tw`flex flex-col items-center`}>
               <View style={tw`h-2 w-2 rounded-full bg-custom-01`} />
               <View
@@ -45,9 +44,8 @@ export const TourItem = ({data}: TourItemProps) => {
               {item.placeName}
             </Text>
           </View>
-        )}
-        keyExtractor={item => item.id.toString()}
-      />
+        ))}
+      </View>
       <Pressable
         style={({pressed}) =>
           tw.style([
