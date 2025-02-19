@@ -51,10 +51,11 @@
 
 ## ✏️ 개발 기록
 
-| 제목                                                                                                                                                                                                                            | 핵심 키워드     |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
-| [🪟React Native 프로젝트에 Tailwind CSS 적용하기](https://github.com/TripInfoWeb/solitour-mobile/wiki/%F0%9F%AA%9FReact-Native-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EC%97%90-Tailwind-CSS-%EC%A0%81%EC%9A%A9%ED%95%98%EA%B8%B0) | `Tailwind CSS`  |
-| [⚡Splash Screen 적용하기](https://github.com/TripInfoWeb/solitour-mobile/wiki/%E2%9A%A1Splash-Screen-%EC%A0%81%EC%9A%A9%ED%95%98%EA%B8%B0)                                                                                     | `Splash Screen` |
+| 제목                                                                                                                                                                                                                                                                                                                        | 핵심 키워드     |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
+| [🪟React Native 프로젝트에 Tailwind CSS 적용하기](https://github.com/TripInfoWeb/solitour-mobile/wiki/%F0%9F%AA%9FReact-Native-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EC%97%90-Tailwind-CSS-%EC%A0%81%EC%9A%A9%ED%95%98%EA%B8%B0)                                                                                             | `Tailwind CSS`  |
+| [⚡Splash Screen 적용하기](https://github.com/TripInfoWeb/solitour-mobile/wiki/%E2%9A%A1Splash-Screen-%EC%A0%81%EC%9A%A9%ED%95%98%EA%B8%B0)                                                                                                                                                                                 | `Splash Screen` |
+| [🔍테마 여행 추천 기능에서 콘텐츠 검색 기능 구현하기](https://github.com/TripInfoWeb/solitour-mobile/wiki/%F0%9F%94%8D%ED%85%8C%EB%A7%88-%EC%97%AC%ED%96%89-%EC%B6%94%EC%B2%9C-%EA%B8%B0%EB%8A%A5%EC%97%90%EC%84%9C-%EC%BD%98%ED%85%90%EC%B8%A0-%EA%B2%80%EC%83%89-%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0) | `Debounce`      |
 
 <br />
 <br />
