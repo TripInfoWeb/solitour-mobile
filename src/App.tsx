@@ -1,29 +1,30 @@
-import React, {useEffect} from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {NavigationList} from './types/navigation';
-import {BottomTabs} from './components/common/BottomTabs';
-import {SurveyThemeScreen} from './screens/survey/SurveyThemeScreen';
-import {DiaryEditorScreen} from './screens/diary/DiaryEditorScreen';
-import {Image, Text, View} from 'react-native';
-import {tw} from './libs/tailwind';
-import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import { useNetInfo } from '@react-native-community/netinfo';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import React, { useEffect } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
+import { Image, Text, View } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import SplashScreen from 'react-native-splash-screen';
-import {SurveyContentScreen} from './screens/survey/SurveyContentScreen';
-import {SurveyActivityScreen} from './screens/survey/SurveyActivityScreen';
-import {SurveyLoadingScreen} from './screens/survey/SurveyLoadingScreen';
-import {SurveyResultListScreen} from './screens/survey/SurveyResultListScreen';
-import {SurveyResultDetailScreen} from './screens/survey/SurveyResultDetailScreen';
-import {AuthScreen} from './screens/auth/AuthScreen';
-import {AuthSignInScreen} from './screens/auth/AuthSignInScreen';
-import {AuthLoadingScreen} from './screens/auth/AuthLoadingScreen';
-import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
-import {useNetInfo} from '@react-native-community/netinfo';
-import {ErrorBoundary} from 'react-error-boundary';
-import {ErrorBoundaryScreen} from './screens/ErrorBoundaryScreen';
-import {DiaryUpdateScreen} from './screens/diary/DiaryUpdateScreen';
-import {SurveyDayScreen} from './screens/survey/SurveyDayScreen';
-import {TourDetailScreen} from './screens/tour/TourDetailScreen';
+import { BottomTabs } from './components/common/BottomTabs';
+import { DiscoveryStack } from './components/stack/DiscoveryStack';
+import { tw } from './libs/tailwind';
+import { ErrorBoundaryScreen } from './screens/ErrorBoundaryScreen';
+import { AuthLoadingScreen } from './screens/auth/AuthLoadingScreen';
+import { AuthScreen } from './screens/auth/AuthScreen';
+import { AuthSignInScreen } from './screens/auth/AuthSignInScreen';
+import { DiaryEditorScreen } from './screens/diary/DiaryEditorScreen';
+import { DiaryUpdateScreen } from './screens/diary/DiaryUpdateScreen';
+import { SurveyActivityScreen } from './screens/survey/SurveyActivityScreen';
+import { SurveyContentScreen } from './screens/survey/SurveyContentScreen';
+import { SurveyDayScreen } from './screens/survey/SurveyDayScreen';
+import { SurveyLoadingScreen } from './screens/survey/SurveyLoadingScreen';
+import { SurveyResultDetailScreen } from './screens/survey/SurveyResultDetailScreen';
+import { SurveyResultListScreen } from './screens/survey/SurveyResultListScreen';
+import { SurveyThemeScreen } from './screens/survey/SurveyThemeScreen';
+import { TourDetailScreen } from './screens/tour/TourDetailScreen';
+import { NavigationList } from './types/navigation';
 
 const queryClient = new QueryClient();
 const Stack = createNativeStackNavigator<NavigationList>();
@@ -133,6 +134,7 @@ export const App = () => {
               component={TourDetailScreen}
               options={{title: '내 여행'}}
             />
+            <Stack.Screen name="DiscoveryStack" component={DiscoveryStack} />
           </Stack.Navigator>
         </NavigationContainer>
       </GestureHandlerRootView>
