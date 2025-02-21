@@ -1,47 +1,38 @@
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { tw } from '@src/libs/tailwind';
+import { NavigationList } from '@src/types/navigation';
 import { useState } from 'react';
 import { Image, Pressable, ScrollView, Text, View } from 'react-native';
 
-interface IRecommendationDiscovery {}
-
-interface I_data {
-  title: string;
-  imageUrl: string;
-  articleTitle: string;
-  articleDescription: string;
-}
-
-const _data = [
+const _data: IDiscoveryRecommendationItem[] = [
   {
     id: 1,
     title: '눈물의 여왕',
     imageUrl:
-    'https://poc-cf-image.cjenm.com/public/share/menumng/%EB%88%88%EB%AC%BC%EC%9D%98%EC%97%AC%EC%99%95%EB%A9%94%EC%9D%B8banner960.jpg?v=1709102043',
-    articleTitle: '기사 제목',
-    articleDescription: '운명처럼 다시 만난 사랑',
+      'https://poc-cf-image.cjenm.com/public/share/menumng/%EB%88%88%EB%AC%BC%EC%9D%98%EC%97%AC%EC%99%95%EB%A9%94%EC%9D%B8banner960.jpg?v=1709102043',
+    articleTitle: '눈물의 여왕 촬영지 3곳',
   },
   {
     id: 2,
     title: '선재 업고 튀어',
     imageUrl:
     'https://poc-cf-image.cjenm.com/public/share/menumng/%EC%84%A0%EC%9E%AC%EC%97%85%EA%B3%A0%ED%8A%80%EC%96%B4banner960.png?v=1710465873',
-    articleTitle: '기사 제목',
-    articleDescription: '위험 속에서 피어난 로맨스',
+    articleTitle: '선재 업고 튀어 촬영지 3곳',
   },
   {
     id: 3,
     title: '도깨비',
     imageUrl:
-      'https://poc-cf-image.cjenm.com/public/share/menumng/1675755583417299173177.jpg',
-    articleTitle: '기사 제목',
-    articleDescription: '불멸의 삶과 애절한 사랑',
+    'https://poc-cf-image.cjenm.com/public/share/menumng/1675755583417299173177.jpg',
+    articleTitle: '도깨비 촬영지 3곳',
   },
 ];
 
-const RecommendationDiscovery = (props: IRecommendationDiscovery) => {
-  const [selectedRecommendation, setSelectedRecommendation] = useState<I_data>(
-    _data[0],
-  );
+const RecommendationDiscovery = () => {
+  const [selectedRecommendation, setSelectedRecommendation] =
+    useState<IDiscoveryRecommendationItem>(_data[0]);
+  const navigation = useNavigation<NativeStackNavigationProp<NavigationList>>();
 
   return (
     <View style={tw`mt-[3.25rem] flex w-full flex-col px-4`}>
@@ -57,7 +48,7 @@ const RecommendationDiscovery = (props: IRecommendationDiscovery) => {
           horizontal
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={tw`flex-row gap-x-[0.375rem]`}>
-          {_data.map((i: I_data, index) => (
+          {_data.map((i: IDiscoveryRecommendationItem, index) => (
             <Pressable
               key={index}
               onPress={() => setSelectedRecommendation(i)}
@@ -77,15 +68,22 @@ const RecommendationDiscovery = (props: IRecommendationDiscovery) => {
             </Pressable>
           ))}
         </ScrollView>
-        <View style={tw`mt-[1.25rem] w-full`}>
+        <Pressable
+          onPress={() =>
+            navigation.navigate('DiscoveryStack', {
+              screen: 'DiscoveryDetail', // DiscoveryStack 내부의 화면 지정
+              params: {recommendation: selectedRecommendation}, // 전달할 파라미터
+            })
+          }
+          style={tw`mt-[1.25rem] w-full`}>
           <Image
             source={{uri: selectedRecommendation.imageUrl}}
             style={tw`h-[249px] w-[343px] rounded-[12px]`}
           />
           <Text style={tw`mt-4 text-[1.25rem] font-semibold text-gray-800`}>
-            {selectedRecommendation.articleDescription}
+            {selectedRecommendation.articleTitle}
           </Text>
-        </View>
+        </Pressable>
       </View>
     </View>
   );
