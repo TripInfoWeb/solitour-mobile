@@ -3,6 +3,7 @@ import {COLOR} from '@src/constants/color';
 import {useUserInfo} from '@src/hooks/auth/useUserInfo';
 import {tw} from '@src/libs/tailwind';
 import {NavigationProps} from '@src/types/navigation';
+import {useQueryClient} from '@tanstack/react-query';
 import LottieView from 'lottie-react-native';
 import React, {useEffect} from 'react';
 import {ActivityIndicator, Image, Pressable, Text, View} from 'react-native';
@@ -10,6 +11,7 @@ import {ActivityIndicator, Image, Pressable, Text, View} from 'react-native';
 export const AuthScreen = () => {
   const navigation = useNavigation<NavigationProps>();
   const {data, isLoading} = useUserInfo();
+  const queryClient = useQueryClient();
 
   useEffect(() => {
     if (data?.id) {
@@ -53,7 +55,10 @@ export const AuthScreen = () => {
             'relative mt-24 flex h-12 w-full flex-row items-center rounded-full',
           ])
         }
-        onPress={() => navigation.navigate('AuthSignIn')}>
+        onPress={() => {
+          queryClient.removeQueries();
+          navigation.navigate('AuthSignIn');
+        }}>
         <Image
           style={tw`absolute left-2 h-10 w-10`}
           source={require('@src/assets/auth/kakao-logo.png')}
