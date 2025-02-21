@@ -134,7 +134,11 @@ export const App = () => {
               component={TourDetailScreen}
               options={{title: '내 여행'}}
             />
-            <Stack.Screen name="DiscoveryStack" component={DiscoveryStack} />
+            <Stack.Screen
+              name="DiscoveryStack"
+              component={DiscoveryStack}
+              options={{headerShown: false}}
+            />
           </Stack.Navigator>
         </NavigationContainer>
       </GestureHandlerRootView>
