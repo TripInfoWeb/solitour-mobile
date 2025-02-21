@@ -1,11 +1,10 @@
 import {BACKEND_URL} from '@env';
 import {getNewAccessToken} from '@src/libs/getNewAccessToken';
 import {User} from '@src/types/user';
-import {useQuery, useQueryClient} from '@tanstack/react-query';
+import {useQuery} from '@tanstack/react-query';
 import EncryptedStorage from 'react-native-encrypted-storage';
 
 export const useUserInfo = (enabled?: boolean) => {
-  const queryClient = useQueryClient();
   const {data, isLoading, isError} = useQuery<User>({
     queryKey: ['userInfo'],
     queryFn: async () => {
@@ -22,7 +21,6 @@ export const useUserInfo = (enabled?: boolean) => {
 
       if (!response.ok) {
         await EncryptedStorage.clear();
-        queryClient.removeQueries();
       }
 
       return await response.json();
