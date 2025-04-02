@@ -7,7 +7,7 @@ import {ErrorBoundary} from 'react-error-boundary';
 import {Image, Text, View} from 'react-native';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import SplashScreen from 'react-native-splash-screen';
-import {BottomTabs} from './components/common/BottomTabs';
+import {BottomTabs} from './app/ui/BottomTabs';
 import {DiscoveryStack} from './components/stack/DiscoveryStack';
 import {tw} from './shared/lib/utils/tailwind';
 import {ErrorBoundaryScreen} from './pages/ErrorBoundaryScreen';

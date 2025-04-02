@@ -1,8 +1,8 @@
 import {BACKEND_URL} from '@env';
-import {getNewAccessToken} from '@src/shared/api/getNewAccessToken';
 import {useSuspenseQuery} from '@tanstack/react-query';
 import EncryptedStorage from 'react-native-encrypted-storage';
 import {DiaryDetail} from '../model/diary';
+import {getNewAccessToken} from '@src/shared/api';
 
 interface DiaryList {
   content: DiaryDetail[];

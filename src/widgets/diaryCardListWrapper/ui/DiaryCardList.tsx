@@ -1,8 +1,8 @@
 import {tw} from '@src/shared/lib/utils/tailwind';
 import React from 'react';
 import {FlatList, Image, Text, useWindowDimensions, View} from 'react-native';
-import {useDiaryList} from '@src/entities/diary/api/useDiaryList';
-import {DiaryCard} from './DiaryCard';
+import {useDiaryList} from '@src/entities/diary/api/diaryList';
+import {DiaryCard} from '../../../entities/diary/ui/DiaryCard';
 import {DiaryPageIndicator} from './DiaryPageIndicator';
 
 interface DiaryCardListProps {
@@ -27,7 +27,6 @@ export const DiaryCardList = ({
         goPreviousPage={goPreviousPage}
         goNextPage={goNextPage}
       />
-
       <FlatList
         style={tw`flex-grow-0 pt-7`}
         horizontal={true}

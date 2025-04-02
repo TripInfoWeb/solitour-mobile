@@ -11,9 +11,9 @@ import {
   View,
 } from 'react-native';
 import {tw} from '@src/shared/lib/utils/tailwind';
-import {DiaryDatePicker} from '@src/components/diary/editor/date/DiaryDatePicker';
-import {DiaryLocationPicker} from '@src/components/diary/editor/location/DiaryLocationPicker';
-import {DiaryFeelingPicker} from '@src/components/diary/editor/feeling/DiaryFeelingPicker';
+import {DiaryDatePicker} from '@src/features/diaryEditor/ui/date/DiaryDatePicker';
+import {DiaryLocationPicker} from '@src/features/diaryEditor/ui/location/DiaryLocationPicker';
+import {DiaryFeelingPicker} from '@src/features/diaryEditor/ui/feeling/DiaryFeelingPicker';
 import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 import {DEFAULT_TOOLBAR_ITEMS, RichText, Toolbar} from '@10play/tentap-editor';
 import {Controller, FormProvider} from 'react-hook-form';
@@ -22,7 +22,7 @@ import {NavigationProps} from '@src/types/navigation';
 import {COLOR} from '@src/shared/config/color';
 import {useDiaryEditor} from '@src/hooks/diary/editor/useDiaryEditor';
 import {DiaryDetail} from '@src/entities/diary/model/diary';
-import {FEELING_STATUS} from '@src/constants/feelingStatus';
+import {FEELING_STATUS} from '@src/entities/diary/config/feelingStatus';
 import {DiaryUpdateButton} from './DiaryUpdateButton';
 
 interface DiaryUpdateEditorProps {

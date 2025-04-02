@@ -1,17 +1,17 @@
+import React from 'react';
 import {
   CodeBridge,
   RichText,
   TenTapStartKit,
   useEditorBridge,
 } from '@10play/tentap-editor';
-import {FEELING_IMAGE} from '@src/constants/feelingImage';
-import {useCardFlipAnimation} from '@src/hooks/diary/list/useCardFlipAnimation';
-import {tw} from '@src/shared/lib/utils/tailwind';
-import React from 'react';
-import {Animated, Image, ImageBackground, Text, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import {Animated, Image, ImageBackground, Text, View} from 'react-native';
 import {DiaryCardMenu} from './DiaryCardMenu';
-import {DiaryDetail} from '@src/entities/diary/model/diary';
+import {FEELING_IMAGE} from '../config/feelingImage';
+import {DiaryDetail} from '../model/diary';
+import {useCardFlipAnimation} from '../model/useCardFlipAnimation';
+import {tw} from '@src/shared/lib/utils';
 
 interface DiaryCardProps {
   diary: DiaryDetail;

@@ -8,7 +8,7 @@ import {COLOR} from '@src/shared/config/color';
 import {HomeScreen} from '@src/pages/HomeScreen';
 import {TourScreen} from '@src/pages/tour/TourScreen';
 import {DiaryScreen} from '@src/pages/diary/DiaryScreen';
-import {MypageScreen} from '@src/pages/mypage/MypageScreen';
+import {MypageScreen} from '@src/pages/mypage/ui/MypageScreen';
 import {DiscoveryScreen} from '@src/pages/DiscoveryScreen';
 
 interface IconProps {

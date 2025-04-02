@@ -1,13 +1,13 @@
 import React from 'react';
 import {Image, Text, View} from 'react-native';
-import {tw} from '@src/shared/lib/utils/tailwind';
-import {MypageItem} from '@src/components/mypage/MypageItem';
-import {MypageProfile} from '@src/components/mypage/MypageProfile';
 import EncryptedStorage from 'react-native-encrypted-storage';
 import {useNavigation} from '@react-navigation/native';
 import {NavigationProps} from '@src/types/navigation';
 import {useQueryClient} from '@tanstack/react-query';
-import {useUserInfo} from '@src/entities/user/api/useUserInfo';
+import {MypageProfile} from '@src/widgets/myPageProfile';
+import {useUserInfo} from '@src/entities/user';
+import {MypageItem} from './MypageItem';
+import {tw} from '@src/shared/lib/utils';
 
 export const MypageScreen = () => {
   const navigation = useNavigation<NavigationProps>();
