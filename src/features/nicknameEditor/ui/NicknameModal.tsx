@@ -14,26 +14,23 @@ import {ModalTemplate} from '@src/shared/ui/modal';
 
 interface NicknameModalProps {
   nickname: string;
-  modalVisible: boolean;
+  isOpen: boolean;
   closeModal: () => void;
 }
 
 export const NicknameModal = ({
   nickname,
-  modalVisible,
+  isOpen,
   closeModal,
 }: NicknameModalProps) => {
   const {methods, isPending, handleSubmit} = useNicknameModal(
     nickname,
-    modalVisible,
+    isOpen,
     closeModal,
   );
 
   return (
-    <ModalTemplate
-      title="닉네임 변경"
-      visible={modalVisible}
-      closeModal={closeModal}>
+    <ModalTemplate title="닉네임 변경" visible={isOpen} closeModal={closeModal}>
       <Controller
         name="nickname"
         control={methods.control}

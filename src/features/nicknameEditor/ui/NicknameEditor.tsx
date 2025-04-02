@@ -15,7 +15,7 @@ export const NicknameEditor = ({nickname}: NicknameEditorProps) => {
     <View>
       <NicknameModal
         nickname={nickname}
-        modalVisible={isOpen}
+        isOpen={isOpen}
         closeModal={closeModal}
       />
       <Pressable
