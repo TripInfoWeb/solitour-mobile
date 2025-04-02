@@ -1,13 +1,13 @@
-import {BottomSheetModal} from '@gorhom/bottom-sheet';
 import React, {useCallback, useRef} from 'react';
+import {BottomSheetModal} from '@gorhom/bottom-sheet';
 import {Image, Pressable, Text, View} from 'react-native';
-import {COLOR} from '@src/shared/config/color';
 import {tw} from '@src/shared/lib/utils/tailwind';
-import {DiaryFeelingBottomSheetModal} from './DiaryFeelingBottomSheetModal';
-import {useFormContext} from 'react-hook-form';
+import {COLOR} from '@src/shared/config/color';
+import {DiaryLocationBottomSheetModal} from './DiaryLocationBottomSheetModal';
 import {Diary} from '@src/entities/diary/model/diary';
+import {useFormContext} from 'react-hook-form';
 
-export const DiaryFeelingPicker = () => {
+export const DiaryEditorLocation = () => {
   const formContext = useFormContext<Diary>();
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
   const handlePresentModalPress = useCallback(() => {
@@ -26,23 +26,23 @@ export const DiaryFeelingPicker = () => {
         android_ripple={{color: COLOR.GRAY_RIPPLE}}
         onPress={handlePresentModalPress}>
         <Image
-          style={tw`h-4 w-4`}
-          source={require('@src/assets/diary/feeling.png')}
+          style={tw`h-[1.15625rem] w-4`}
+          source={require('@src/assets/diary/location.png')}
         />
         <Text
           style={tw.style(
-            formContext.watch('feeling')
+            formContext.watch('location')
               ? 'text-primary-green'
-              : formContext.formState.errors.feeling
+              : formContext.formState.errors.location
                 ? 'text-blue-500'
                 : 'text-gray-500',
           )}>
-          {formContext.formState.errors.feeling
-            ? formContext.formState.errors.feeling.message
-            : (formContext.watch('feeling') ?? '기분')}
+          {formContext.formState.errors.location
+            ? formContext.formState.errors.location.message
+            : (formContext.watch('location') ?? '장소')}
         </Text>
       </Pressable>
-      <DiaryFeelingBottomSheetModal
+      <DiaryLocationBottomSheetModal
         ref={bottomSheetModalRef}
         closeBottomSheetModal={() =>
           bottomSheetModalRef.current?.close({duration: 300})

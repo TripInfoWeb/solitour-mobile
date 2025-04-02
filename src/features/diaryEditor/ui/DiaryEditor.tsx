@@ -1,4 +1,14 @@
-import React, {useEffect} from 'react';
+import {
+  DEFAULT_TOOLBAR_ITEMS,
+  EditorBridge,
+  RichText,
+  Toolbar,
+} from '@10play/tentap-editor';
+import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
+import {COLOR} from '@src/shared/config';
+import {tw} from '@src/shared/lib/utils';
+import React from 'react';
+import {Controller, FormProvider, UseFormReturn} from 'react-hook-form';
 import {
   ActivityIndicator,
   Image,
@@ -10,54 +20,14 @@ import {
   TextInput,
   View,
 } from 'react-native';
-import {tw} from '@src/shared/lib/utils/tailwind';
-import {DiaryEditorDate} from '@src/features/diaryEditor/ui/DiaryEditorDate';
-import {DiaryEditorLocation} from '@src/features/diaryEditor/ui/DiaryEditorLocation';
-import {DiaryEditorFeeling} from '@src/features/diaryEditor/ui/DiaryEditorFeeling';
-import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
-import {DEFAULT_TOOLBAR_ITEMS, RichText, Toolbar} from '@10play/tentap-editor';
-import {Controller, FormProvider} from 'react-hook-form';
-import {useNavigation} from '@react-navigation/native';
-import {NavigationProps} from '@src/types/navigation';
-import {COLOR} from '@src/shared/config/color';
-import {useDiaryEditor} from '@src/features/diaryEditor/model/useDiaryEditor';
-import {DiaryDetail} from '@src/entities/diary/model/diary';
-import {FEELING_STATUS} from '@src/entities/diary/config/feelingStatus';
-import {DiaryUpdateButton} from './DiaryUpdateButton';
+import {useDiaryEditor} from '../model/useDiaryEditor';
+import {DiaryEditorDate} from './DiaryEditorDate';
+import {DiaryEditorLocation} from './DiaryEditorLocation';
+import {DiaryEditorFeeling} from './DiaryEditorFeeling';
 
-interface DiaryUpdateEditorProps {
-  diary: DiaryDetail;
-}
-
-export const DiaryUpdateEditor = ({diary}: DiaryUpdateEditorProps) => {
-  const navigation = useNavigation<NavigationProps>();
+export const DiaryEditor = () => {
   const {methods, content, editor, imageMutation, handleImageUpload} =
-    useDiaryEditor({
-      title: diary.title,
-      startDate: new Date(`${diary.startDatetime}.0Z`),
-      endDate: new Date(`${diary.endDatetime}.0Z`),
-      location: diary.diaryDayContentResponses.diaryDayContentDetail[0].place,
-      feeling:
-        FEELING_STATUS[
-          diary.diaryDayContentResponses.diaryDayContentDetail[0].feelingStatus
-        ],
-      content: diary.diaryDayContentResponses.diaryDayContentDetail[0].content,
-      image: diary.titleImage,
-    });
-
-  useEffect(() => {
-    navigation.setOptions({
-      // eslint-disable-next-line react/no-unstable-nested-components
-      headerRight: () => (
-        <DiaryUpdateButton
-          diaryId={diary.diaryId}
-          originalImage={diary.titleImage}
-          methods={methods}
-          content={content ?? ''}
-        />
-      ),
-    });
-  }, [content, diary.diaryId, diary.titleImage, methods, navigation]);
+    useDiaryEditor();
 
   return (
     <FormProvider {...methods}>

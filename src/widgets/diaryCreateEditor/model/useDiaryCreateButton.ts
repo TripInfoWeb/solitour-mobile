@@ -10,7 +10,7 @@ import {UseFormReturn} from 'react-hook-form';
 import EncryptedStorage from 'react-native-encrypted-storage';
 import sanitizeHtml from 'sanitize-html';
 
-export const useDiaryRegister = (
+export const useDiaryCreateButton = (
   methods: UseFormReturn<Diary, any, undefined>,
   content: string,
 ) => {

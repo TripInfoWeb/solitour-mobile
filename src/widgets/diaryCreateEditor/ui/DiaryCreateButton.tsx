@@ -1,21 +1,21 @@
+import {Diary} from '@src/entities/diary';
 import {COLOR} from '@src/shared/config/color';
-import {useDiaryRegister} from '@src/hooks/diary/register/useDiaryRegister';
-import {tw} from '@src/shared/lib/utils/tailwind';
-import {Diary} from '@src/entities/diary/model/diary';
 import React from 'react';
 import {UseFormReturn} from 'react-hook-form';
 import {ActivityIndicator, Pressable, Text} from 'react-native';
+import {useDiaryCreateButton} from '../model/useDiaryCreateButton';
+import {tw} from '@src/shared/lib/utils';
 
-interface DiaryRegisterButtonProps {
+interface DiaryCreateButtonProps {
   methods: UseFormReturn<Diary, any, undefined>;
   content: string;
 }
 
-export const DiaryRegisterButton = ({
+export const DiaryCreateButton = ({
   methods,
   content,
-}: DiaryRegisterButtonProps) => {
-  const {isPending, handleSubmit} = useDiaryRegister(methods, content);
+}: DiaryCreateButtonProps) => {
+  const {isPending, handleSubmit} = useDiaryCreateButton(methods, content);
 
   if (isPending) {
     return <ActivityIndicator style={tw`p-2`} color={COLOR.PRIMARY_GREEN} />;
