@@ -4,11 +4,11 @@ import {
   BottomSheetModal,
   BottomSheetView,
 } from '@gorhom/bottom-sheet';
-import {useBackHandler} from '@src/hooks/common/useBackHandler';
+import {useBackHandler} from '@src/shared/lib/hooks/useBackHandler';
 import {forwardRef, useCallback} from 'react';
-import {tw} from '@src/libs/tailwind';
+import {tw} from '@src/shared/lib/utils/tailwind';
 import {Pressable, Text} from 'react-native';
-import {COLOR} from '@src/constants/color';
+import {COLOR} from '@src/shared/config/color';
 import {useNavigation} from '@react-navigation/native';
 import {NavigationProps} from '@src/types/navigation';
 

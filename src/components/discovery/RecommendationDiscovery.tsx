@@ -1,9 +1,9 @@
-import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { tw } from '@src/libs/tailwind';
-import { NavigationList } from '@src/types/navigation';
-import { useState } from 'react';
-import { Image, Pressable, ScrollView, Text, View } from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {tw} from '@src/shared/lib/utils/tailwind';
+import {NavigationList} from '@src/types/navigation';
+import {useState} from 'react';
+import {Image, Pressable, ScrollView, Text, View} from 'react-native';
 
 const _data: IDiscoveryRecommendationItem[] = [
   {
@@ -17,14 +17,14 @@ const _data: IDiscoveryRecommendationItem[] = [
     id: 2,
     title: '선재 업고 튀어',
     imageUrl:
-    'https://poc-cf-image.cjenm.com/public/share/menumng/%EC%84%A0%EC%9E%AC%EC%97%85%EA%B3%A0%ED%8A%80%EC%96%B4banner960.png?v=1710465873',
+      'https://poc-cf-image.cjenm.com/public/share/menumng/%EC%84%A0%EC%9E%AC%EC%97%85%EA%B3%A0%ED%8A%80%EC%96%B4banner960.png?v=1710465873',
     articleTitle: '선재 업고 튀어 촬영지 3곳',
   },
   {
     id: 3,
     title: '도깨비',
     imageUrl:
-    'https://poc-cf-image.cjenm.com/public/share/menumng/1675755583417299173177.jpg',
+      'https://poc-cf-image.cjenm.com/public/share/menumng/1675755583417299173177.jpg',
     articleTitle: '도깨비 촬영지 3곳',
   },
 ];

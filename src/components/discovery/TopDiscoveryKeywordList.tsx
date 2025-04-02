@@ -1,6 +1,6 @@
-import { tw } from '@src/libs/tailwind';
-import { useEffect, useRef } from 'react';
-import { Animated, Text, View } from 'react-native';
+import {tw} from '@src/shared/lib/utils/tailwind';
+import {useEffect, useRef} from 'react';
+import {Animated, Text, View} from 'react-native';
 
 interface IData {
   title: string;
@@ -33,48 +33,44 @@ const AnimatedView = Animated.createAnimatedComponent(View);
 const rotateAnims = _data.map(() => useRef(new Animated.Value(0)).current);
 
 const TopDiscoveryKeywordList = () => {
-
-useEffect(() => {
-  rotateAnims.forEach((anim, index) => {
-    // 🎯 초기 애니메이션 (딱 1회 실행)
-    Animated.sequence([
-      Animated.delay(index * 200), // 0.2초 간격으로 초기에 다르게 실행되게
-      Animated.timing(anim, {
-        toValue: 1,
-        duration: 2000, // 2초 동안 실행
-        useNativeDriver: true,
-      }),
-      Animated.delay(20000 + index * 1800), // 30초 대기
-      Animated.timing(anim, {
-        toValue: 0,
-        duration: 0, // 즉시 초기화
-        useNativeDriver: true,
-      }),
-    ]).start(() => {
-      // 🎯 루프 애니메이션 (초기 딜레이 없이 무한 반복)
-      Animated.loop(
-        Animated.sequence([
-          Animated.timing(anim, {
-            toValue: 1,
-            duration: 2000,
-            useNativeDriver: true,
-          }),
-          Animated.delay(20000),
-          Animated.timing(anim, {
-            toValue: 0,
-            duration: 0,
-            useNativeDriver: true,
-          }),
-        ]),
-      ).start();
+  useEffect(() => {
+    rotateAnims.forEach((anim, index) => {
+      // 🎯 초기 애니메이션 (딱 1회 실행)
+      Animated.sequence([
+        Animated.delay(index * 200), // 0.2초 간격으로 초기에 다르게 실행되게
+        Animated.timing(anim, {
+          toValue: 1,
+          duration: 2000, // 2초 동안 실행
+          useNativeDriver: true,
+        }),
+        Animated.delay(20000 + index * 1800), // 30초 대기
+        Animated.timing(anim, {
+          toValue: 0,
+          duration: 0, // 즉시 초기화
+          useNativeDriver: true,
+        }),
+      ]).start(() => {
+        // 🎯 루프 애니메이션 (초기 딜레이 없이 무한 반복)
+        Animated.loop(
+          Animated.sequence([
+            Animated.timing(anim, {
+              toValue: 1,
+              duration: 2000,
+              useNativeDriver: true,
+            }),
+            Animated.delay(20000),
+            Animated.timing(anim, {
+              toValue: 0,
+              duration: 0,
+              useNativeDriver: true,
+            }),
+          ]),
+        ).start();
+      });
     });
-  });
 
-  return () => rotateAnims.forEach(anim => anim.setValue(0)); // 언마운트 시 초기화
-
-}, []);
-
-
+    return () => rotateAnims.forEach(anim => anim.setValue(0)); // 언마운트 시 초기화
+  }, []);
 
   return (
     <View style={tw`flex w-full flex-col px-4`}>

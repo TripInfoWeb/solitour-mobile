@@ -6,12 +6,12 @@ import {
 } from '@10play/tentap-editor';
 import {FEELING_IMAGE} from '@src/constants/feelingImage';
 import {useCardFlipAnimation} from '@src/hooks/diary/list/useCardFlipAnimation';
-import {tw} from '@src/libs/tailwind';
+import {tw} from '@src/shared/lib/utils/tailwind';
 import React from 'react';
 import {Animated, Image, ImageBackground, Text, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {DiaryCardMenu} from './DiaryCardMenu';
-import {DiaryDetail} from '@src/types/diary';
+import {DiaryDetail} from '@src/entities/diary/model/diary';
 
 interface DiaryCardProps {
   diary: DiaryDetail;

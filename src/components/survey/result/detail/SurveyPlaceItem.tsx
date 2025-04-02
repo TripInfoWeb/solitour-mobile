@@ -1,6 +1,5 @@
-import {convertDistance} from '@src/libs/convertDistance';
-import {convertDuration} from '@src/libs/convertDuration';
-import {tw} from '@src/libs/tailwind';
+import {tw} from '@src/shared/lib/utils/tailwind';
+import {convertDistance, convertDuration} from '@src/shared/lib/utils';
 import React from 'react';
 import {Image, Pressable, Text, View} from 'react-native';
 

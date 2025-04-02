@@ -1,7 +1,7 @@
 import React from 'react';
 import {Pressable, Text} from 'react-native';
-import {tw} from '@src/libs/tailwind';
-import {COLOR} from '@src/constants/color';
+import {tw} from '@src/shared/lib/utils/tailwind';
+import {COLOR} from '@src/shared/config/color';
 
 interface MypageItemProps {
   children: React.ReactNode;

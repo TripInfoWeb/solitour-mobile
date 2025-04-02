@@ -1,5 +1,5 @@
-import {COLOR} from '@src/constants/color';
-import {tw} from '@src/libs/tailwind';
+import {COLOR} from '@src/shared/config/color';
+import {tw} from '@src/shared/lib/utils/tailwind';
 import React from 'react';
 import {GestureResponderEvent, Pressable, Text} from 'react-native';
 

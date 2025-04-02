@@ -6,9 +6,9 @@ import {
 } from '@10play/tentap-editor';
 import {BACKEND_URL} from '@env';
 import {zodResolver} from '@hookform/resolvers/zod';
-import {getNewAccessToken} from '@src/libs/getNewAccessToken';
-import {DiarySchema} from '@src/libs/zod/DiarySchema';
-import {Diary} from '@src/types/diary';
+import {getNewAccessToken} from '@src/shared/api/getNewAccessToken';
+import {DiarySchema} from '@src/features/diaryEditor/model/DiarySchema';
+import {Diary} from '@src/entities/diary/model/diary';
 import {useMutation} from '@tanstack/react-query';
 import {useEffect} from 'react';
 import {useForm} from 'react-hook-form';

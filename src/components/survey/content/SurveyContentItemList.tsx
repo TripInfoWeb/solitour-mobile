@@ -1,4 +1,4 @@
-import {tw} from '@src/libs/tailwind';
+import {tw} from '@src/shared/lib/utils/tailwind';
 import React from 'react';
 import {FlatList, Text} from 'react-native';
 import {SurveyContentItem} from './SurveyContentItem';

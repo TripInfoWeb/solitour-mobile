@@ -1,5 +1,5 @@
 import {useNavigation} from '@react-navigation/native';
-import {tw} from '@src/libs/tailwind';
+import {tw} from '@src/shared/lib/utils/tailwind';
 import {NavigationProps} from '@src/types/navigation';
 import {Plan} from '@src/types/plan';
 import React from 'react';

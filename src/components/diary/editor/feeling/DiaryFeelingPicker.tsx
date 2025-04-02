@@ -1,11 +1,11 @@
 import {BottomSheetModal} from '@gorhom/bottom-sheet';
 import React, {useCallback, useRef} from 'react';
 import {Image, Pressable, Text, View} from 'react-native';
-import {COLOR} from '@src/constants/color';
-import {tw} from '@src/libs/tailwind';
+import {COLOR} from '@src/shared/config/color';
+import {tw} from '@src/shared/lib/utils/tailwind';
 import {DiaryFeelingBottomSheetModal} from './DiaryFeelingBottomSheetModal';
 import {useFormContext} from 'react-hook-form';
-import {Diary} from '@src/types/diary';
+import {Diary} from '@src/entities/diary/model/diary';
 
 export const DiaryFeelingPicker = () => {
   const formContext = useFormContext<Diary>();

@@ -1,7 +1,14 @@
-import { useRoute } from '@react-navigation/native';
-import { tw } from '@src/libs/tailwind';
-import { useState } from 'react';
-import { Dimensions, Image, Pressable, ScrollView, Text, View } from 'react-native';
+import {useRoute} from '@react-navigation/native';
+import {tw} from '@src/shared/lib/utils/tailwind';
+import {useState} from 'react';
+import {
+  Dimensions,
+  Image,
+  Pressable,
+  ScrollView,
+  Text,
+  View,
+} from 'react-native';
 
 // NOTE: 나중에 데이터 타입하고 아래 임시 데이터 삭제 필요
 interface IDiscoveryItemPlaces {
@@ -42,8 +49,9 @@ const DiscoveryDetail = () => {
   const route = useRoute();
   // TODO: 데이터를 API를 보내서 받아오는 작업 추가
   const {recommendation} = route.params as {recommendation: IDiscoveryItem};
-    const [selectedPlace, setSelectedPlace] =
-    useState<IDiscoveryItemPlaces>(_places[0]);
+  const [selectedPlace, setSelectedPlace] = useState<IDiscoveryItemPlaces>(
+    _places[0],
+  );
 
   // style 관련
   return (

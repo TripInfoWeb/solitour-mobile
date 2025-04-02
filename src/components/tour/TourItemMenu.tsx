@@ -1,6 +1,6 @@
-import {COLOR} from '@src/constants/color';
+import {COLOR} from '@src/shared/config/color';
 import {useTourItemDelete} from '@src/hooks/tour/useTourItemDelete';
-import {tw} from '@src/libs/tailwind';
+import {tw} from '@src/shared/lib/utils/tailwind';
 import React, {useState} from 'react';
 import {ActivityIndicator, Image, Pressable, Text, View} from 'react-native';
 import {TourItemTitleModal} from './TourItemTitleModal';

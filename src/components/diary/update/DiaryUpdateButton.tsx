@@ -1,7 +1,7 @@
-import {COLOR} from '@src/constants/color';
+import {COLOR} from '@src/shared/config/color';
 import {useDiaryUpdate} from '@src/hooks/diary/update/useDiaryUpdate';
-import {tw} from '@src/libs/tailwind';
-import {Diary} from '@src/types/diary';
+import {tw} from '@src/shared/lib/utils/tailwind';
+import {Diary} from '@src/entities/diary/model/diary';
 import React from 'react';
 import {UseFormReturn} from 'react-hook-form';
 import {ActivityIndicator, Pressable, Text} from 'react-native';

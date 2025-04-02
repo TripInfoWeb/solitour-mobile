@@ -1,7 +1,7 @@
 import {BACKEND_URL} from '@env';
 import {zodResolver} from '@hookform/resolvers/zod';
-import {useDebounce} from '@src/hooks/common/useDebounce';
-import {getNewAccessToken} from '@src/libs/getNewAccessToken';
+import {useDebounce} from '@src/shared/lib/hooks/useDebounce';
+import {getNewAccessToken} from '@src/shared/api/getNewAccessToken';
 import {ContentTitleSchema} from '@src/libs/zod/ContentTitleSchema';
 import {SurveyContent, SurveyContentList} from '@src/types/survey';
 import {useSuspenseQuery} from '@tanstack/react-query';

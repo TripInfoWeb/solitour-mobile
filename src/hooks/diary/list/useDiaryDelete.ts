@@ -1,5 +1,5 @@
 import {BACKEND_URL} from '@env';
-import {getNewAccessToken} from '@src/libs/getNewAccessToken';
+import {getNewAccessToken} from '@src/shared/api/getNewAccessToken';
 import {useMutation, useQueryClient} from '@tanstack/react-query';
 import {Alert} from 'react-native';
 import EncryptedStorage from 'react-native-encrypted-storage';

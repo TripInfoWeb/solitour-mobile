@@ -1,8 +1,8 @@
 import {useNavigation} from '@react-navigation/native';
-import {COLOR} from '@src/constants/color';
+import {COLOR} from '@src/shared/config/color';
 import {useDiaryDelete} from '@src/hooks/diary/list/useDiaryDelete';
-import {tw} from '@src/libs/tailwind';
-import {DiaryDetail} from '@src/types/diary';
+import {tw} from '@src/shared/lib/utils/tailwind';
+import {DiaryDetail} from '@src/entities/diary/model/diary';
 import {NavigationProps} from '@src/types/navigation';
 import React, {useState} from 'react';
 import {ActivityIndicator, Image, Pressable, Text, View} from 'react-native';

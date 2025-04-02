@@ -1,6 +1,6 @@
-import {COLOR} from '@src/constants/color';
+import {COLOR} from '@src/shared/config/color';
 import {useTourItemTitleUpdate} from '@src/hooks/tour/useTourItemTitleUpdate';
-import {tw} from '@src/libs/tailwind';
+import {tw} from '@src/shared/lib/utils/tailwind';
 import React from 'react';
 import {Controller} from 'react-hook-form';
 import {

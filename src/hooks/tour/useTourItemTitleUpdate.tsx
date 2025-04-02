@@ -1,6 +1,6 @@
 import {BACKEND_URL} from '@env';
 import {zodResolver} from '@hookform/resolvers/zod';
-import {getNewAccessToken} from '@src/libs/getNewAccessToken';
+import {getNewAccessToken} from '@src/shared/api/getNewAccessToken';
 import {TourItemTitleSchema} from '@src/libs/zod/TourItemTitleSchema';
 import {useMutation, useQueryClient} from '@tanstack/react-query';
 import {useEffect} from 'react';

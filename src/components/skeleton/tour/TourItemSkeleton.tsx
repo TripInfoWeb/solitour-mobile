@@ -1,7 +1,7 @@
 import React from 'react';
-import {usePulseAnimation} from '@src/hooks/common/usePulseAnimation';
+import {usePulseAnimation} from '@src/shared/lib/hooks/usePulseAnimation';
 import {Animated, FlatList, View} from 'react-native';
-import {tw} from '@src/libs/tailwind';
+import {tw} from '@src/shared/lib/utils/tailwind';
 
 export const TourItemSkeleton = () => {
   const {opacity} = usePulseAnimation();

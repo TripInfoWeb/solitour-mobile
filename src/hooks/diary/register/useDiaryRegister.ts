@@ -1,9 +1,9 @@
 import {BACKEND_URL} from '@env';
 import {useNavigation} from '@react-navigation/native';
 import {FEELING_STATUS} from '@src/constants/feelingStatus';
-import {SANITIZE_OPTION} from '@src/constants/sanitizeOption';
-import {getNewAccessToken} from '@src/libs/getNewAccessToken';
-import {Diary} from '@src/types/diary';
+import {getNewAccessToken} from '@src/shared/api/getNewAccessToken';
+import {SANITIZE_OPTION} from '@src/shared/config';
+import {Diary} from '@src/entities/diary/model/diary';
 import {NavigationProps} from '@src/types/navigation';
 import {useMutation, useQueryClient} from '@tanstack/react-query';
 import {UseFormReturn} from 'react-hook-form';

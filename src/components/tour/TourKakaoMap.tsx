@@ -1,12 +1,12 @@
 import {KAKAO_API_KEY} from '@env';
-import {tw} from '@src/libs/tailwind';
+import {tw} from '@src/shared/lib/utils/tailwind';
 import {SavedPlan} from '@src/types/plan';
 import React, {useRef, useState} from 'react';
 import {ScrollView, Text, View} from 'react-native';
 import WebView from 'react-native-webview';
 import {SurveyDayList} from '../survey/result/detail/SurveyDayList';
 import {SurveyPlaceItem} from '../survey/result/detail/SurveyPlaceItem';
-import {useKakaoNavi} from '@src/hooks/common/useKakaoNavi';
+import {useKakaoNavi} from '@src/shared/lib/hooks/useKakaoNavi';
 
 interface TourKakaoMapProps {
   savedPlan: SavedPlan;

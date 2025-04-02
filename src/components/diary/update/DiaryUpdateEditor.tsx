@@ -10,7 +10,7 @@ import {
   TextInput,
   View,
 } from 'react-native';
-import {tw} from '@src/libs/tailwind';
+import {tw} from '@src/shared/lib/utils/tailwind';
 import {DiaryDatePicker} from '@src/components/diary/editor/date/DiaryDatePicker';
 import {DiaryLocationPicker} from '@src/components/diary/editor/location/DiaryLocationPicker';
 import {DiaryFeelingPicker} from '@src/components/diary/editor/feeling/DiaryFeelingPicker';
@@ -19,9 +19,9 @@ import {DEFAULT_TOOLBAR_ITEMS, RichText, Toolbar} from '@10play/tentap-editor';
 import {Controller, FormProvider} from 'react-hook-form';
 import {useNavigation} from '@react-navigation/native';
 import {NavigationProps} from '@src/types/navigation';
-import {COLOR} from '@src/constants/color';
+import {COLOR} from '@src/shared/config/color';
 import {useDiaryEditor} from '@src/hooks/diary/editor/useDiaryEditor';
-import {DiaryDetail} from '@src/types/diary';
+import {DiaryDetail} from '@src/entities/diary/model/diary';
 import {FEELING_STATUS} from '@src/constants/feelingStatus';
 import {DiaryUpdateButton} from './DiaryUpdateButton';
 

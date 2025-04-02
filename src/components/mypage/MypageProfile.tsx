@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Image, Pressable, Text, View} from 'react-native';
-import {tw} from '@src/libs/tailwind';
-import {useUserInfo} from '@src/hooks/auth/useUserInfo';
+import {tw} from '@src/shared/lib/utils/tailwind';
+import {useUserInfo} from '@src/entities/user/api/useUserInfo';
 import {MypageNicknameModal} from './MypageNicknameModal';
 
 export const MypageProfile = () => {

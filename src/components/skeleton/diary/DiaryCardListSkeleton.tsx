@@ -1,5 +1,5 @@
-import {usePulseAnimation} from '@src/hooks/common/usePulseAnimation';
-import {tw} from '@src/libs/tailwind';
+import {usePulseAnimation} from '@src/shared/lib/hooks/usePulseAnimation';
+import {tw} from '@src/shared/lib/utils/tailwind';
 import React from 'react';
 import {
   Animated,

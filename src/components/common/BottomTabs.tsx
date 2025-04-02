@@ -2,14 +2,14 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import React from 'react';
 import {Image, Pressable} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import {tw} from '@src/libs/tailwind';
+import {tw} from '@src/shared/lib/utils/tailwind';
 import {NavigationList, NavigationProps} from '@src/types/navigation';
-import {COLOR} from '@src/constants/color';
-import {HomeScreen} from '@src/screens/HomeScreen';
-import {TourScreen} from '@src/screens/tour/TourScreen';
-import {DiaryScreen} from '@src/screens/diary/DiaryScreen';
-import {MypageScreen} from '@src/screens/mypage/MypageScreen';
-import {DiscoveryScreen} from '@src/screens/DiscoveryScreen';
+import {COLOR} from '@src/shared/config/color';
+import {HomeScreen} from '@src/pages/HomeScreen';
+import {TourScreen} from '@src/pages/tour/TourScreen';
+import {DiaryScreen} from '@src/pages/diary/DiaryScreen';
+import {MypageScreen} from '@src/pages/mypage/MypageScreen';
+import {DiscoveryScreen} from '@src/pages/DiscoveryScreen';
 
 interface IconProps {
   focused: boolean;

@@ -1,5 +1,5 @@
 import {KAKAO_API_KEY} from '@env';
-import {tw} from '@src/libs/tailwind';
+import {tw} from '@src/shared/lib/utils/tailwind';
 import {Plan} from '@src/types/plan';
 import React, {useRef, useState} from 'react';
 import {
@@ -11,12 +11,12 @@ import {
 } from 'react-native';
 import WebView from 'react-native-webview';
 import {SurveyPlaceItem} from './SurveyPlaceItem';
-import {COLOR} from '@src/constants/color';
+import {COLOR} from '@src/shared/config/color';
 import {usePlanSave} from '@src/hooks/survey/result/usePlanSave';
 import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 import {SurveyBottomSheetModal} from './SurveyBottomSheetModal';
 import {SurveyDayList} from './SurveyDayList';
-import {useKakaoNavi} from '@src/hooks/common/useKakaoNavi';
+import {useKakaoNavi} from '@src/shared/lib/hooks/useKakaoNavi';
 
 interface SurveyKakaoMapProps {
   index: number;

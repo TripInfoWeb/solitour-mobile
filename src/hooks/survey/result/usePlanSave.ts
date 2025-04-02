@@ -1,6 +1,6 @@
 import {BACKEND_URL} from '@env';
 import {BottomSheetModal} from '@gorhom/bottom-sheet';
-import {getNewAccessToken} from '@src/libs/getNewAccessToken';
+import {getNewAccessToken} from '@src/shared/api/getNewAccessToken';
 import {useMutation, useQueryClient} from '@tanstack/react-query';
 import {useRef} from 'react';
 import EncryptedStorage from 'react-native-encrypted-storage';

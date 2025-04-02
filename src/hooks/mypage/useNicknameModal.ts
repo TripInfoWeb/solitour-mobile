@@ -1,7 +1,7 @@
 import {BACKEND_URL} from '@env';
 import {zodResolver} from '@hookform/resolvers/zod';
-import {getNewAccessToken} from '@src/libs/getNewAccessToken';
-import {NicknameSchema} from '@src/libs/zod/NicknameSchema';
+import {getNewAccessToken} from '@src/shared/api/getNewAccessToken';
+import {NicknameSchema} from '@src/features/nicknameEditor/model/NicknameSchema';
 import {useMutation, useQueryClient} from '@tanstack/react-query';
 import {useEffect} from 'react';
 import {useForm} from 'react-hook-form';

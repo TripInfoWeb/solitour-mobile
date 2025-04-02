@@ -1,10 +1,10 @@
 import React, {useCallback, useRef} from 'react';
 import {BottomSheetModal} from '@gorhom/bottom-sheet';
 import {Image, Pressable, Text, View} from 'react-native';
-import {tw} from '@src/libs/tailwind';
-import {COLOR} from '@src/constants/color';
+import {tw} from '@src/shared/lib/utils/tailwind';
+import {COLOR} from '@src/shared/config/color';
 import {DiaryLocationBottomSheetModal} from './DiaryLocationBottomSheetModal';
-import {Diary} from '@src/types/diary';
+import {Diary} from '@src/entities/diary/model/diary';
 import {useFormContext} from 'react-hook-form';
 
 export const DiaryLocationPicker = () => {

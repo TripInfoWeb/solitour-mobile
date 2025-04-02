@@ -5,12 +5,12 @@ import {
 } from '@gorhom/bottom-sheet';
 import React, {forwardRef, useCallback} from 'react';
 import {FlatList, Image, Pressable, Text, View} from 'react-native';
-import {tw} from '@src/libs/tailwind';
-import {COLOR} from '@src/constants/color';
-import {PrimaryButton} from '@src/components/common/PrimaryButton';
-import {useBackHandler} from '@src/hooks/common/useBackHandler';
+import {tw} from '@src/shared/lib/utils/tailwind';
+import {COLOR} from '@src/shared/config/color';
+import {PrimaryButton} from '@src/shared/ui/button/PrimaryButton';
+import {useBackHandler} from '@src/shared/lib/hooks/useBackHandler';
 import {useFormContext} from 'react-hook-form';
-import {Diary} from '@src/types/diary';
+import {Diary} from '@src/entities/diary/model/diary';
 
 const FEELINGLIST = [
   {source: require('@src/assets/diary/feeling1.png'), label: '최고'},
