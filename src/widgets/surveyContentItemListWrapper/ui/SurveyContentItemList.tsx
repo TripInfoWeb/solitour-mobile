@@ -1,11 +1,11 @@
-import {tw} from '@src/shared/lib/utils/tailwind';
+import {tw} from '@src/shared/lib/utils';
 import React from 'react';
 import {FlatList, Text} from 'react-native';
 import {SurveyContentItem} from './SurveyContentItem';
-import {useSurveyStore} from '@src/stores/surveyStore';
-import {useSurveyContentItemList} from '@src/hooks/survey/content/useSurveyContentItemList';
+import {useSurveyStore} from '@src/entities/survey';
 import {SurveyContentSearchbar} from './SurveyContentSearchbar';
 import {FormProvider} from 'react-hook-form';
+import {useSurveyContentItemList} from '../model/useSurveyContentItemList';
 
 export const SurveyContentItemList = () => {
   const {contentCategory, contentTitles, setSurveyState} = useSurveyStore();
@@ -16,7 +16,6 @@ export const SurveyContentItemList = () => {
   return (
     <FormProvider {...methods}>
       <SurveyContentSearchbar />
-
       <FlatList
         contentContainerStyle={tw`gap-[1.125rem] pb-20`}
         columnWrapperStyle={tw`gap-2.5`}

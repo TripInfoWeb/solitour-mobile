@@ -14,7 +14,7 @@ import {NavigationProps} from '@src/types/navigation';
 import {tw} from '@src/shared/lib/utils/tailwind';
 import {PrimaryButton} from '@src/shared/ui/button/PrimaryButton';
 import {useUserInfo} from '@src/entities/user/api/useUserInfo';
-import {useSurveyStore} from '@src/stores/surveyStore';
+import {useSurveyStore} from '@src/entities/survey/model/surveyStore';
 
 export const HomeScreen = () => {
   const navigation = useNavigation<NavigationProps>();

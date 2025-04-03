@@ -1,10 +1,9 @@
 import {useNavigation} from '@react-navigation/native';
-import {SurveyButton} from '@src/components/survey/common/SurveyButton';
-import {BottomNextButton} from '@src/shared/ui/button';
+import {BottomNextButton, OptionButton} from '@src/shared/ui/button';
 import {ProgressBar} from '@src/shared/ui/progressBar';
 import {ACTIVITY} from '@src/constants/activity';
 import {tw} from '@src/shared/lib/utils/tailwind';
-import {useSurveyStore} from '@src/stores/surveyStore';
+import {useSurveyStore} from '@src/entities/survey/model/surveyStore';
 import {NavigationProps} from '@src/types/navigation';
 import React from 'react';
 import {FlatList, Text, View} from 'react-native';
@@ -26,7 +25,7 @@ export const SurveyActivityScreen = () => {
         columnWrapperStyle={tw`gap-2.5`}
         data={ACTIVITY}
         renderItem={({item}) => (
-          <SurveyButton
+          <OptionButton
             title={item.title}
             isActive={preferredTrips.includes(item.activity)}
             onPress={() => {

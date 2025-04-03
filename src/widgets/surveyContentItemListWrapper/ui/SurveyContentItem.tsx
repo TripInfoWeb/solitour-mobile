@@ -1,4 +1,4 @@
-import {tw} from '@src/shared/lib/utils/tailwind';
+import {tw} from '@src/shared/lib/utils';
 import React from 'react';
 import {
   GestureResponderEvent,
@@ -28,19 +28,19 @@ export const SurveyContentItem = ({
       children={({pressed}) => (
         <View style={tw`flex flex-col items-center gap-2`}>
           <Image
-            style={tw.style([
+            style={tw.style(
               pressed || isActive
                 ? 'border-8 border-primary-green'
                 : 'border border-gray-200',
               'h-[11.5rem] w-full rounded-lg',
-            ])}
+            )}
             source={{uri: image}}
           />
           <Text
-            style={tw.style([
+            style={tw.style(
               pressed || isActive ? 'text-primary-green' : 'text-custom-03',
               'text-sm',
-            ])}>
+            )}>
             {title}
           </Text>
         </View>

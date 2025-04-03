@@ -1,14 +1,14 @@
-import {tw} from '@src/shared/lib/utils/tailwind';
+import {tw} from '@src/shared/lib/utils';
 import React from 'react';
 import {GestureResponderEvent, Pressable, Text} from 'react-native';
 
-interface SurveyButtonProps {
+interface OptionButtonProps {
   title: string;
   isActive?: boolean;
   onPress?: ((event: GestureResponderEvent) => void) | null;
 }
 
-export const SurveyButton = ({title, isActive, onPress}: SurveyButtonProps) => {
+export const OptionButton = ({title, isActive, onPress}: OptionButtonProps) => {
   return (
     <Pressable
       style={({pressed}) =>

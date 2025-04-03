@@ -1,14 +1,13 @@
 import {useNavigation} from '@react-navigation/native';
 import {BottomNextButton} from '@src/shared/ui/button';
-import {tw} from '@src/shared/lib/utils/tailwind';
+import {tw} from '@src/shared/lib/utils';
 import {NavigationProps} from '@src/types/navigation';
-import React, {Suspense} from 'react';
+import React from 'react';
 import {Text, View} from 'react-native';
 import {ProgressBar} from '@src/shared/ui/progressBar';
-import {useSurveyStore} from '@src/stores/surveyStore';
+import {useSurveyStore} from '@src/entities/survey/model/surveyStore';
 import {CONTENT_CATEGORY} from '@src/constants/contentCategory';
-import {SurveyContentItemList} from '@src/components/survey/content/SurveyContentItemList';
-import {SurveyContentItemListSkeleton} from '@src/components/skeleton/survey/content/SurveyContentItemListSkeleton';
+import {SurveyContentItemListWrapper} from '@src/widgets/surveyContentItemListWrapper';
 
 export const SurveyContentScreen = () => {
   const navigation = useNavigation<NavigationProps>();
@@ -27,9 +26,7 @@ export const SurveyContentScreen = () => {
         여행지로 떠나볼까요?
       </Text>
       <Text style={tw`pb-6 pt-1.5 text-custom-03`}>여러 개 선택 가능해요</Text>
-      <Suspense fallback={<SurveyContentItemListSkeleton />}>
-        <SurveyContentItemList />
-      </Suspense>
+      <SurveyContentItemListWrapper />
       <BottomNextButton
         disabled={contentTitles.length === 0}
         onPress={() => {

@@ -1,10 +1,9 @@
 import {useNavigation} from '@react-navigation/native';
-import {SurveyButton} from '@src/components/survey/common/SurveyButton';
-import {BottomNextButton} from '@src/shared/ui/button';
+import {BottomNextButton, OptionButton} from '@src/shared/ui/button';
 import {ProgressBar} from '@src/shared/ui/progressBar';
 import {CONTENT_CATEGORY} from '@src/constants/contentCategory';
-import {tw} from '@src/shared/lib/utils/tailwind';
-import {useSurveyStore} from '@src/stores/surveyStore';
+import {tw} from '@src/shared/lib/utils';
+import {useSurveyStore} from '@src/entities/survey/model/surveyStore';
 import {NavigationProps} from '@src/types/navigation';
 import React from 'react';
 import {FlatList, SafeAreaView, Text, View} from 'react-native';
@@ -29,7 +28,7 @@ export const SurveyThemeScreen = () => {
           contentContainerStyle={tw`gap-4`}
           data={CONTENT_CATEGORY}
           renderItem={({item}) => (
-            <SurveyButton
+            <OptionButton
               title={item.title}
               isActive={contentCategory === item.category}
               onPress={() => setSurveyState({contentCategory: item.category})}

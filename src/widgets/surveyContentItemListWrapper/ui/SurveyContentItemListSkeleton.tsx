@@ -1,8 +1,8 @@
-import {tw} from '@src/shared/lib/utils/tailwind';
 import React from 'react';
 import {Animated, FlatList, View} from 'react-native';
 import {SurveyContentItemSkeleton} from './SurveyContentItemSkeleton';
-import {usePulseAnimation} from '@src/shared/lib/hooks/usePulseAnimation';
+import {usePulseAnimation} from '@src/shared/lib/hooks';
+import {tw} from '@src/shared/lib/utils';
 
 export const SurveyContentItemListSkeleton = () => {
   const {opacity} = usePulseAnimation();
