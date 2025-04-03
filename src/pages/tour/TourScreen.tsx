@@ -1,11 +1,6 @@
-import {TourItemListSkeleton} from '@src/components/skeleton/tour/TourItemListSkeleton';
-import {TourItemList} from '@src/components/tour/TourItemList';
-import React, {Suspense} from 'react';
+import React from 'react';
+import {TourItemListWrapper} from '@src/widgets/tourItemListWrapper';
 
 export const TourScreen = () => {
-  return (
-    <Suspense fallback={<TourItemListSkeleton />}>
-      <TourItemList />
-    </Suspense>
-  );
+  return <TourItemListWrapper />;
 };

@@ -1,7 +1,7 @@
 import {useNavigation} from '@react-navigation/native';
 import {SurveyButton} from '@src/components/survey/common/SurveyButton';
-import {SurveyNextButton} from '@src/components/survey/common/SurveyNextButton';
-import {SurveyProgressBar} from '@src/components/survey/common/SurveyProgressBar';
+import {BottomNextButton} from '@src/shared/ui/button';
+import {ProgressBar} from '@src/shared/ui/progressBar';
 import {tw} from '@src/shared/lib/utils/tailwind';
 import {useSurveyStore} from '@src/stores/surveyStore';
 import {NavigationProps} from '@src/types/navigation';
@@ -14,7 +14,7 @@ export const SurveyDayScreen = () => {
 
   return (
     <View style={tw`h-full w-full bg-white px-4 pt-2`}>
-      <SurveyProgressBar totalProgress={4} currentProgress={1} />
+      <ProgressBar totalProgress={4} currentProgress={1} />
       <Text style={tw`pt-8 text-2xl font-bold text-custom-01`}>
         얼마나 오랫동안
       </Text>
@@ -35,7 +35,7 @@ export const SurveyDayScreen = () => {
         keyExtractor={item => item.toString()}
         numColumns={3}
       />
-      <SurveyNextButton
+      <BottomNextButton
         disabled={days === 0}
         onPress={() => {
           setSurveyState({contentCategory: null});

@@ -1,7 +1,7 @@
 import {useNavigation} from '@react-navigation/native';
 import {SurveyButton} from '@src/components/survey/common/SurveyButton';
-import {SurveyNextButton} from '@src/components/survey/common/SurveyNextButton';
-import {SurveyProgressBar} from '@src/components/survey/common/SurveyProgressBar';
+import {BottomNextButton} from '@src/shared/ui/button';
+import {ProgressBar} from '@src/shared/ui/progressBar';
 import {ACTIVITY} from '@src/constants/activity';
 import {tw} from '@src/shared/lib/utils/tailwind';
 import {useSurveyStore} from '@src/stores/surveyStore';
@@ -15,7 +15,7 @@ export const SurveyActivityScreen = () => {
 
   return (
     <View style={tw`h-full w-full bg-white px-4 pt-2`}>
-      <SurveyProgressBar totalProgress={4} currentProgress={4} />
+      <ProgressBar totalProgress={4} currentProgress={4} />
       <Text style={tw`pt-8 text-2xl font-bold text-custom-01`}>여행에서</Text>
       <Text style={tw`text-2xl font-bold text-custom-01`}>
         무엇을 하고 싶나요?
@@ -47,7 +47,7 @@ export const SurveyActivityScreen = () => {
         keyExtractor={item => item.activity}
         numColumns={2}
       />
-      <SurveyNextButton
+      <BottomNextButton
         disabled={preferredTrips.length === 0}
         onPress={() => navigation.navigate('SurveyLoading')}
       />

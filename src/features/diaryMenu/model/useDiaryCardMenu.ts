@@ -4,7 +4,7 @@ import {useMutation, useQueryClient} from '@tanstack/react-query';
 import {Alert} from 'react-native';
 import EncryptedStorage from 'react-native-encrypted-storage';
 
-export const useDiaryDelete = (diaryId: number) => {
+export const useDiaryCardMenu = (diaryId: number) => {
   const queryClient = useQueryClient();
   const mutation = useMutation({
     mutationFn: async () => {

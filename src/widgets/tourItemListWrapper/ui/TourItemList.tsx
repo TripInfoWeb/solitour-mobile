@@ -1,8 +1,8 @@
 import React from 'react';
 import {Image, ScrollView, Text, View} from 'react-native';
 import {tw} from '@src/shared/lib/utils/tailwind';
-import {TourItem} from './TourItem';
-import {useTourItemList} from '@src/hooks/tour/useTourItemList';
+import {TourItem} from '../../../components/tour/TourItem';
+import {useTourItemList} from '../model/useTourItemList';
 
 export const TourItemList = () => {
   const {tourItemList} = useTourItemList();

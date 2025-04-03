@@ -1,9 +1,9 @@
-import {tw} from '@src/shared/lib/utils/tailwind';
+import {tw} from '@src/shared/lib/utils';
 import React from 'react';
 import {FlatList, Image, Text, useWindowDimensions, View} from 'react-native';
-import {useDiaryList} from '@src/entities/diary/api/diaryList';
-import {DiaryCard} from '../../../entities/diary/ui/DiaryCard';
 import {DiaryPageIndicator} from './DiaryPageIndicator';
+import {DiaryCardMenu} from '@src/features/diaryMenu';
+import {DiaryCard, useDiaryList} from '@src/entities/diary';
 
 interface DiaryCardListProps {
   page: number;
@@ -39,7 +39,11 @@ export const DiaryCardList = ({
           y: 0,
         }}
         data={diaryList.content}
-        renderItem={({item}) => <DiaryCard diary={item} />}
+        renderItem={({item}) => (
+          <DiaryCard diary={item}>
+            <DiaryCardMenu diary={item} />
+          </DiaryCard>
+        )}
         keyExtractor={item => item.diaryId.toString()}
         ListEmptyComponent={
           <View

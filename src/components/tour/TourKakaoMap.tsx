@@ -1,6 +1,6 @@
 import {KAKAO_API_KEY} from '@env';
 import {tw} from '@src/shared/lib/utils/tailwind';
-import {SavedPlan} from '@src/types/plan';
+import {SavedPlan} from '@src/entities/plan';
 import React, {useRef, useState} from 'react';
 import {ScrollView, Text, View} from 'react-native';
 import WebView from 'react-native-webview';

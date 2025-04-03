@@ -7,7 +7,6 @@ import {
 } from '@10play/tentap-editor';
 import LinearGradient from 'react-native-linear-gradient';
 import {Animated, Image, ImageBackground, Text, View} from 'react-native';
-import {DiaryCardMenu} from './DiaryCardMenu';
 import {FEELING_IMAGE} from '../config/feelingImage';
 import {DiaryDetail} from '../model/diary';
 import {useCardFlipAnimation} from '../model/useCardFlipAnimation';
@@ -15,9 +14,10 @@ import {tw} from '@src/shared/lib/utils';
 
 interface DiaryCardProps {
   diary: DiaryDetail;
+  children: React.ReactNode;
 }
 
-export const DiaryCard = ({diary}: DiaryCardProps) => {
+export const DiaryCard = ({diary, children}: DiaryCardProps) => {
   const {interpolate, isTail, flipCard} = useCardFlipAnimation();
   const editor = useEditorBridge({
     avoidIosKeyboard: true,
@@ -54,7 +54,7 @@ export const DiaryCard = ({diary}: DiaryCardProps) => {
                 {diary.diaryDayContentResponses.diaryDayContentDetail[0].place}
               </Text>
             </View>
-            <DiaryCardMenu diary={diary} />
+            {children}
           </View>
           <Image
             style={tw`mt-10 h-[4.375rem] w-14`}

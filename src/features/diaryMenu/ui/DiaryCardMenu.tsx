@@ -1,11 +1,12 @@
+import React from 'react';
 import {useNavigation} from '@react-navigation/native';
-import {COLOR} from '@src/shared/config/color';
-import {useDiaryDelete} from '@src/hooks/diary/list/useDiaryDelete';
-import {tw} from '@src/shared/lib/utils/tailwind';
-import {DiaryDetail} from '@src/entities/diary/model/diary';
+import {DiaryDetail} from '@src/entities/diary';
 import {NavigationProps} from '@src/types/navigation';
-import React, {useState} from 'react';
+import {useState} from 'react';
+import {useDiaryCardMenu} from '../model/useDiaryCardMenu';
 import {ActivityIndicator, Image, Pressable, Text, View} from 'react-native';
+import {tw} from '@src/shared/lib/utils';
+import {COLOR} from '@src/shared/config';
 
 interface DiaryCardMenuProps {
   diary: DiaryDetail;
@@ -14,7 +15,7 @@ interface DiaryCardMenuProps {
 export const DiaryCardMenu = ({diary}: DiaryCardMenuProps) => {
   const navigation = useNavigation<NavigationProps>();
   const [visible, setVisible] = useState(false);
-  const {isPending, handleDeleteButtonClick} = useDiaryDelete(diary.diaryId);
+  const {isPending, handleDeleteButtonClick} = useDiaryCardMenu(diary.diaryId);
 
   return (
     <View style={tw`relative`}>

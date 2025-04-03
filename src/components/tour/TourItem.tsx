@@ -1,7 +1,7 @@
 import {useNavigation} from '@react-navigation/native';
 import {tw} from '@src/shared/lib/utils/tailwind';
 import {NavigationProps} from '@src/types/navigation';
-import {SavedPlan} from '@src/types/plan';
+import {SavedPlan} from '@src/entities/plan';
 import React from 'react';
 import {Pressable, Text, View} from 'react-native';
 import {TourItemMenu} from './TourItemMenu';

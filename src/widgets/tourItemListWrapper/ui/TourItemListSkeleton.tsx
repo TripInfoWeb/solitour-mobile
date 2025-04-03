@@ -1,7 +1,7 @@
-import {tw} from '@src/shared/lib/utils/tailwind';
+import {tw} from '@src/shared/lib/utils';
 import React from 'react';
 import {FlatList, View} from 'react-native';
-import {TourItemSkeleton} from './TourItemSkeleton';
+import {TourItemSkeleton} from '../../../components/skeleton/tour/TourItemSkeleton';
 
 export const TourItemListSkeleton = () => {
   return (

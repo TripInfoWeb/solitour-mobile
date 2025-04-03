@@ -1,17 +1,17 @@
-import {COLOR} from '@src/shared/config/color';
-import {tw} from '@src/shared/lib/utils/tailwind';
+import {COLOR} from '@src/shared/config';
+import {tw} from '@src/shared/lib/utils';
 import React from 'react';
 import {GestureResponderEvent, Pressable, Text} from 'react-native';
 
-interface SurveyNextButtonProps {
+interface BottomNextButtonProps {
   disabled?: boolean;
   onPress?: ((event: GestureResponderEvent) => void) | null;
 }
 
-export const SurveyNextButton = ({
+export const BottomNextButton = ({
   disabled,
   onPress,
-}: SurveyNextButtonProps) => {
+}: BottomNextButtonProps) => {
   return (
     <Pressable
       style={({pressed}) =>

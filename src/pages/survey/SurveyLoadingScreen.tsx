@@ -3,7 +3,7 @@ import {useNavigation} from '@react-navigation/native';
 import {tw} from '@src/shared/lib/utils/tailwind';
 import {useSurveyStore} from '@src/stores/surveyStore';
 import {NavigationProps} from '@src/types/navigation';
-import {Plan} from '@src/types/plan';
+import {Plan} from '@src/entities/plan';
 import LottieView from 'lottie-react-native';
 import React, {useEffect} from 'react';
 import {Alert, Text} from 'react-native';

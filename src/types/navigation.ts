@@ -1,6 +1,6 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {DiaryDetail} from '../entities/diary/model/diary';
-import {Plan, SavedPlan} from './plan';
+import {Plan, SavedPlan} from '../entities/plan/model/plan';
 
 export type NavigationList = {
   BottomTabs: undefined;

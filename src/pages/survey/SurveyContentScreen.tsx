@@ -1,10 +1,10 @@
 import {useNavigation} from '@react-navigation/native';
-import {SurveyNextButton} from '@src/components/survey/common/SurveyNextButton';
+import {BottomNextButton} from '@src/shared/ui/button';
 import {tw} from '@src/shared/lib/utils/tailwind';
 import {NavigationProps} from '@src/types/navigation';
 import React, {Suspense} from 'react';
 import {Text, View} from 'react-native';
-import {SurveyProgressBar} from '@src/components/survey/common/SurveyProgressBar';
+import {ProgressBar} from '@src/shared/ui/progressBar';
 import {useSurveyStore} from '@src/stores/surveyStore';
 import {CONTENT_CATEGORY} from '@src/constants/contentCategory';
 import {SurveyContentItemList} from '@src/components/survey/content/SurveyContentItemList';
@@ -16,7 +16,7 @@ export const SurveyContentScreen = () => {
 
   return (
     <View style={tw`h-full w-full bg-white px-4 pt-2`}>
-      <SurveyProgressBar totalProgress={4} currentProgress={3} />
+      <ProgressBar totalProgress={4} currentProgress={3} />
       <Text style={tw`pt-8 text-2xl font-bold text-custom-01`}>
         {`어떤 ${
           CONTENT_CATEGORY.find(value => value.category === contentCategory)
@@ -30,7 +30,7 @@ export const SurveyContentScreen = () => {
       <Suspense fallback={<SurveyContentItemListSkeleton />}>
         <SurveyContentItemList />
       </Suspense>
-      <SurveyNextButton
+      <BottomNextButton
         disabled={contentTitles.length === 0}
         onPress={() => {
           setSurveyState({preferredTrips: []});

@@ -1,6 +1,6 @@
 import {KAKAO_API_KEY} from '@env';
 import {tw} from '@src/shared/lib/utils/tailwind';
-import {Plan} from '@src/types/plan';
+import {Plan} from '@src/entities/plan';
 import React, {useRef, useState} from 'react';
 import {
   ActivityIndicator,
