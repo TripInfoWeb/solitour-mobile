@@ -1,12 +1,10 @@
 import {KAKAO_API_KEY} from '@env';
-import {tw} from '@src/shared/lib/utils/tailwind';
-import {SavedPlan} from '@src/entities/plan';
+import {tw} from '@src/shared/lib/utils';
+import {PlanDayList, PlanPlaceItem, SavedPlan} from '@src/entities/plan';
 import React, {useRef, useState} from 'react';
 import {ScrollView, Text, View} from 'react-native';
 import WebView from 'react-native-webview';
-import {SurveyDayList} from '../survey/result/detail/SurveyDayList';
-import {SurveyPlaceItem} from '../survey/result/detail/SurveyPlaceItem';
-import {useKakaoNavi} from '@src/shared/lib/hooks/useKakaoNavi';
+import {useKakaoNavi} from '@src/shared/lib/hooks';
 
 interface TourKakaoMapProps {
   savedPlan: SavedPlan;
@@ -106,13 +104,13 @@ export const TourKakaoMap = ({savedPlan}: TourKakaoMapProps) => {
         <Text style={tw`text-xl font-semibold text-custom-01`}>
           {savedPlan.plan.title}
         </Text>
-        <SurveyDayList
+        <PlanDayList
           currentDay={day}
           totalDays={savedPlan.plan.days.length}
           setDay={(value: number) => setDay(value)}
         />
         {savedPlan.plan.days[day].daysDetailResponses.map((item, idx) => (
-          <SurveyPlaceItem
+          <PlanPlaceItem
             key={item.id}
             index={idx}
             item={item}

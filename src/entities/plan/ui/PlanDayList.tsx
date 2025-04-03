@@ -1,18 +1,18 @@
-import {tw} from '@src/shared/lib/utils/tailwind';
+import {tw} from '@src/shared/lib/utils';
 import React from 'react';
 import {FlatList, Pressable, Text} from 'react-native';
 
-interface SurveyDayListProps {
+interface PlanDayListProps {
   currentDay: number;
   totalDays: number;
   setDay: (day: number) => void;
 }
 
-export const SurveyDayList = ({
+export const PlanDayList = ({
   currentDay,
   totalDays,
   setDay,
-}: SurveyDayListProps) => {
+}: PlanDayListProps) => {
   return (
     <FlatList
       style={tw`py-4`}

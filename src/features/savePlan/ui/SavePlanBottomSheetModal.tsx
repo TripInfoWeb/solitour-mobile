@@ -54,12 +54,12 @@ export const SavePlanBottomSheetModal = forwardRef<
         </Text>
         <Pressable
           style={({pressed}) =>
-            tw.style([
+            tw.style(
               pressed
                 ? 'android:bg-primary-green ios:bg-primary-green-ripple'
                 : 'bg-primary-green',
               'mt-8 flex h-12 w-full flex-row items-center justify-center rounded-lg',
-            ])
+            )
           }
           android_ripple={{color: COLOR.PRIMARY_GREEN_RIPPLE}}
           onPress={() =>
@@ -72,12 +72,12 @@ export const SavePlanBottomSheetModal = forwardRef<
         </Pressable>
         <Pressable
           style={({pressed}) =>
-            tw.style([
+            tw.style(
               pressed
                 ? 'android:bg-custom-disabled ios:bg-custom-gray-ripple'
                 : 'bg-custom-disabled',
               'mt-3 flex h-12 w-full flex-row items-center justify-center rounded-lg',
-            ])
+            )
           }
           android_ripple={{color: COLOR.GRAY_RIPPLE}}
           onPress={() => closeBottomSheetModal()}>

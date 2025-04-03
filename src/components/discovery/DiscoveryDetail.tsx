@@ -1,5 +1,6 @@
+import React from 'react';
 import {useRoute} from '@react-navigation/native';
-import {tw} from '@src/shared/lib/utils/tailwind';
+import {tw} from '@src/shared/lib/utils';
 import {useState} from 'react';
 import {
   Dimensions,
@@ -58,15 +59,14 @@ const DiscoveryDetail = () => {
     <View style={tw`flex-1`}>
       <Image
         source={{uri: recommendation.imageUrl}}
-        style={[tw`absolute w-full`, {aspectRatio: 4 / 3, zIndex: -1}]}
+        style={tw.style('absolute w-full', {aspectRatio: 4 / 3, zIndex: -1})}
         resizeMode="stretch"
       />
       <ScrollView style={tw``}>
         <View
-          style={[
-            tw`w-full opacity-0`,
-            {height: (Dimensions.get('window').width * 3) / 4 - 16},
-          ]}
+          style={tw.style('w-full opacity-0', {
+            height: (Dimensions.get('window').width * 3) / 4 - 16,
+          })}
         />
         <View style={tw`rounded-4 bg-white px-4`}>
           <Text style={tw`mt-4 text-[1.25rem] font-semibold text-gray-800`}>
@@ -84,11 +84,12 @@ const DiscoveryDetail = () => {
                 <Pressable
                   key={i.id}
                   onPress={() => setSelectedPlace(i)}
-                  style={tw`h-[2.3125rem] rounded-[1.125rem] px-[1.125rem] py-[0.3125rem] ${
+                  style={tw.style(
                     selectedPlace.name === i.name
-                      ? 'bg-primary-green border border-primary-green' // active일 때 테두리 색상만 변경
-                      : 'bg-white border border-outline-01' // 기본 테두리
-                  }`}>
+                      ? 'border border-primary-green bg-primary-green' // active일 때 테두리 색상만 변경
+                      : 'border border-outline-01 bg-white', // 기본 테두리
+                    'h-[2.3125rem] rounded-[1.125rem] px-[1.125rem] py-[0.3125rem]',
+                  )}>
                   <Text
                     style={tw`${
                       selectedPlace.name === i.name

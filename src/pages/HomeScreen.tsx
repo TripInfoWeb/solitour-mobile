@@ -63,20 +63,20 @@ export const HomeScreen = () => {
             horizontal={true}>
             <Pressable
               onPress={() => navigation.navigate('Diary')}
-              style={({pressed}) => {
-                return tw.style([
+              style={({pressed}) =>
+                tw.style(
                   pressed ? 'bg-primary-green-ripple' : 'bg-primary-green',
                   'rounded-full px-5 py-3',
-                ]);
-              }}>
+                )
+              }>
               <Text style={tw`font-semibold text-white`}>#빵지순례</Text>
             </Pressable>
             <Pressable
               style={({pressed}) => {
-                return tw.style([
+                return tw.style(
                   pressed ? 'bg-gray-100' : 'bg-white',
                   'rounded-full border border-gray-200 px-5 py-3',
-                ]);
+                );
               }}
               onPress={() =>
                 ToastAndroid.showWithGravity(
@@ -88,12 +88,12 @@ export const HomeScreen = () => {
               <Text style={tw`font-semibold`}>#촌캉스</Text>
             </Pressable>
             <Pressable
-              style={({pressed}) => {
-                return tw.style([
+              style={({pressed}) =>
+                tw.style(
                   pressed ? 'bg-gray-100' : 'bg-white',
                   'rounded-full border border-gray-200 px-5 py-3',
-                ]);
-              }}>
+                )
+              }>
               <Text style={tw`font-semibold`}>#셀럽 PICK</Text>
             </Pressable>
           </ScrollView>

@@ -1,11 +1,9 @@
 import {KAKAO_API_KEY} from '@env';
 import {tw} from '@src/shared/lib/utils';
-import {Plan} from '@src/entities/plan';
+import {Plan, PlanDayList, PlanPlaceItem} from '@src/entities/plan';
 import React, {useRef, useState} from 'react';
 import {ScrollView, Text, View} from 'react-native';
 import WebView from 'react-native-webview';
-import {SurveyPlaceItem} from './SurveyPlaceItem';
-import {SurveyDayList} from './SurveyDayList';
 import {useKakaoNavi} from '@src/shared/lib/hooks';
 import {SavePlan} from '@src/features/savePlan';
 
@@ -106,13 +104,13 @@ export const SurveyKakaoMap = ({index, plan}: SurveyKakaoMapProps) => {
             {plan.title}
           </Text>
         </View>
-        <SurveyDayList
+        <PlanDayList
           currentDay={day}
           totalDays={plan.days.length}
           setDay={(value: number) => setDay(value)}
         />
         {plan.days[day].map((item, idx) => (
-          <SurveyPlaceItem
+          <PlanPlaceItem
             key={item.id}
             index={idx}
             item={item}

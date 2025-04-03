@@ -50,10 +50,10 @@ export const AuthScreen = () => {
       />
       <Pressable
         style={({pressed}) =>
-          tw.style([
+          tw.style(
             pressed ? 'bg-yellow-200' : 'bg-[#FEE500]',
             'relative mt-24 flex h-12 w-full flex-row items-center rounded-full',
-          ])
+          )
         }
         onPress={() => {
           queryClient.removeQueries();

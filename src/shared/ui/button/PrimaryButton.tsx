@@ -17,14 +17,14 @@ export const PrimaryButton = ({
   return (
     <Pressable
       style={({pressed}) =>
-        tw.style([
+        tw.style(
           pressed
             ? 'android:bg-primary-green ios:bg-primary-green-ripple'
             : disabled
               ? 'bg-custom-disabled'
               : 'bg-primary-green',
           'absolute bottom-6 left-4 right-4 flex h-12 items-center justify-center rounded-lg',
-        ])
+        )
       }
       android_ripple={{color: COLOR.PRIMARY_GREEN_RIPPLE}}
       disabled={disabled}

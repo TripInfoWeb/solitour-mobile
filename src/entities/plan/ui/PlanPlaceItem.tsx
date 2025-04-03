@@ -1,9 +1,9 @@
-import {tw} from '@src/shared/lib/utils/tailwind';
+import {tw} from '@src/shared/lib/utils';
 import {convertDistance, convertDuration} from '@src/shared/lib/utils';
 import React from 'react';
 import {Image, Pressable, Text, View} from 'react-native';
 
-interface SurveyPlaceItemProps {
+interface PlanPlaceItemProps {
   index: number;
   item: {
     id: number;
@@ -18,14 +18,14 @@ interface SurveyPlaceItemProps {
   onPress: (latitude: number, longitude: number) => void;
 }
 
-export const SurveyPlaceItem = ({
+export const PlanPlaceItem = ({
   index,
   item,
   distance,
   duration,
   isLoading,
   onPress,
-}: SurveyPlaceItemProps) => {
+}: PlanPlaceItemProps) => {
   return (
     <View style={tw`ml-1`}>
       <View
@@ -38,10 +38,10 @@ export const SurveyPlaceItem = ({
         </Text>
         <Pressable
           style={({pressed}) =>
-            tw.style([
+            tw.style(
               pressed ? 'bg-blue-100' : 'bg-white',
               'flex flex-1 flex-col gap-1 rounded-lg p-4',
-            ])
+            )
           }
           onPress={() => onPress(item.latitude, item.longitude)}>
           <Text

@@ -1,3 +1,4 @@
+import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {tw} from '@src/shared/lib/utils/tailwind';
@@ -36,11 +37,7 @@ const RecommendationDiscovery = () => {
 
   return (
     <View style={tw`mt-[3.25rem] flex w-full flex-col px-4`}>
-      <Text
-        style={[
-          tw`text-[1.25rem] font-extrabold text-custom-01`,
-          {letterSpacing: -0.32},
-        ]}>
+      <Text style={tw`text-[1.25rem] font-extrabold text-custom-01`}>
         솔리님을 위한 추천
       </Text>
       <View style={tw`flex gap-x-[0.375rem] pb-[1.25rem] pt-[1.5rem]`}>
@@ -52,11 +49,12 @@ const RecommendationDiscovery = () => {
             <Pressable
               key={index}
               onPress={() => setSelectedRecommendation(i)}
-              style={tw`h-[2.3125rem] rounded-[1.125rem] px-[1.125rem] py-[0.3125rem] ${
+              style={tw.style(
                 selectedRecommendation.title === i.title
-                  ? 'bg-primary-green border border-primary-green' // active일 때 테두리 색상만 변경
-                  : 'bg-white border border-outline-01' // 기본 테두리
-              }`}>
+                  ? 'border border-primary-green bg-primary-green' // active일 때 테두리 색상만 변경
+                  : 'border border-outline-01 bg-white', // 기본 테두리
+                'h-[2.3125rem] rounded-[1.125rem] px-[1.125rem] py-[0.3125rem]',
+              )}>
               <Text
                 style={tw`${
                   selectedRecommendation.title === i.title

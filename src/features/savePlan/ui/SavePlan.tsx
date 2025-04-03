@@ -20,12 +20,12 @@ export const SavePlan = ({planId}: SavePlanProps) => {
         style={tw`flex h-20 w-full flex-row items-center gap-2.5 rounded-t-2xl bg-white px-2.5 pb-3 pt-[1.125rem]`}>
         <Pressable
           style={({pressed}) =>
-            tw.style([
+            tw.style(
               pressed
                 ? 'android:bg-primary-green ios:bg-primary-green-ripple'
                 : 'bg-primary-green',
               'flex h-12 flex-1 flex-row items-center justify-center rounded-lg',
-            ])
+            )
           }
           android_ripple={{color: COLOR.PRIMARY_GREEN_RIPPLE}}
           onPress={() => handleSaveButtonClick()}>

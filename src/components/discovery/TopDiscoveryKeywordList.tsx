@@ -1,4 +1,5 @@
-import {tw} from '@src/shared/lib/utils/tailwind';
+import React from 'react';
+import {tw} from '@src/shared/lib/utils';
 import {useEffect, useRef} from 'react';
 import {Animated, Text, View} from 'react-native';
 
@@ -74,11 +75,7 @@ const TopDiscoveryKeywordList = () => {
 
   return (
     <View style={tw`flex w-full flex-col px-4`}>
-      <Text
-        style={[
-          tw`text-[1.5rem] font-extrabold text-custom-01`,
-          {letterSpacing: -0.32},
-        ]}>
+      <Text style={tw`text-[1.5rem] font-extrabold text-custom-01`}>
         TOP 5 KEYWORD
       </Text>
       <View style={tw`flex w-full flex-col gap-y-1 pt-[0.875rem]`}>
@@ -104,12 +101,7 @@ const TopDiscoveryKeywordList = () => {
                 </View>
                 <View style={tw`flex flex-row items-center gap-x-1`}>
                   {i.tags.map((j, tagIndex) => (
-                    <Text
-                      key={tagIndex}
-                      style={[
-                        tw`text-sm text-custom-03`,
-                        {letterSpacing: -0.16},
-                      ]}>
+                    <Text key={tagIndex} style={tw`text-sm text-custom-03`}>
                       #{j}
                     </Text>
                   ))}

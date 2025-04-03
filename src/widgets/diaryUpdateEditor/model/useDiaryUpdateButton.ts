@@ -1,13 +1,14 @@
-import {BACKEND_URL} from '@env';
 import {useNavigation} from '@react-navigation/native';
-import {FEELING_STATUS} from '@src/entities/diary/config/feelingStatus';
-import {getNewAccessToken} from '@src/shared/api/getNewAccessToken';
+import {
+  Diary,
+  DiaryUpdateRequest,
+  FEELING_STATUS,
+  updateDiary,
+} from '@src/entities/diary';
 import {SANITIZE_OPTION} from '@src/shared/config';
-import {Diary} from '@src/entities/diary/model/diary';
-import {NavigationProps} from '@src/shared/model/navigation';
+import {NavigationProps} from '@src/shared/model';
 import {useMutation, useQueryClient} from '@tanstack/react-query';
 import {UseFormReturn} from 'react-hook-form';
-import EncryptedStorage from 'react-native-encrypted-storage';
 import sanitizeHtml from 'sanitize-html';
 
 export const useDiaryUpdateButton = (
@@ -20,47 +21,28 @@ export const useDiaryUpdateButton = (
   const queryClient = useQueryClient();
   const mutation = useMutation({
     mutationFn: async () => {
-      const saveTitleImage = methods.getValues('image');
+      const saveTitleImage = methods.getValues('image')!;
       const deleteTitleImage =
         originalImage !== saveTitleImage ? originalImage : '';
 
-      const diaryData = {
+      const data: DiaryUpdateRequest = {
         title: methods.getValues('title'),
         deleteTitleImage: deleteTitleImage,
         saveTitleImage: saveTitleImage,
-        startDatetime: methods.getValues('startDate'),
-        endDatetime: methods.getValues('endDate'),
+        startDatetime: methods.getValues('startDate')!,
+        endDatetime: methods.getValues('endDate')!,
         diaryDayRequests: [
           {
             content: sanitizeHtml(content, SANITIZE_OPTION),
             feelingStatus: FEELING_STATUS[methods.getValues('feeling')!],
             deleteImagesUrl: '',
             saveImagesUrl: '',
-            place: methods.getValues('location'),
+            place: methods.getValues('location')!,
           },
         ],
       };
 
-      const accessToken = await EncryptedStorage.getItem('access_token');
-      const response = await fetch(`${BACKEND_URL}/api/diary/${diaryId}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          Cookie: `access_token=${accessToken}`,
-        },
-        body: JSON.stringify(diaryData),
-      });
-
-      if (response.status === 401) {
-        await getNewAccessToken();
-        throw new Error('Access token has expired.');
-      }
-
-      if (!response.ok) {
-        throw new Error('Failed to update.');
-      }
-
-      return await response.text();
+      return updateDiary(diaryId, data);
     },
     onSuccess: async () => {
       await queryClient.invalidateQueries({queryKey: ['diaryList']});

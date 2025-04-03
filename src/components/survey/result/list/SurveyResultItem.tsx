@@ -45,10 +45,10 @@ export const SurveyResultItem = ({index, plan}: SurveyResultItemProps) => {
       />
       <Pressable
         style={({pressed}) =>
-          tw.style([
+          tw.style(
             pressed ? 'android:bg-[#E9F0F9] ios:bg-blue-200' : 'bg-[#E9F0F9]',
             'flex h-[2.625rem] items-center justify-center rounded-lg',
-          ])
+          )
         }
         android_ripple={{color: '#bfdbfe'}}
         onPress={() =>
