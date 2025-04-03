@@ -13,7 +13,7 @@ export type NavigationList = {
   };
   Home: undefined;
   Diary: undefined;
-  DiaryEditor: undefined;
+  DiaryCreate: undefined;
   DiaryUpdate: {diary: DiaryDetail};
   Mypage: undefined;
   Auth: undefined;

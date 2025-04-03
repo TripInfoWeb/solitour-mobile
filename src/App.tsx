@@ -14,7 +14,7 @@ import {ErrorBoundaryScreen} from './pages/ErrorBoundaryScreen';
 import {AuthLoadingScreen} from './pages/auth/AuthLoadingScreen';
 import {AuthScreen} from './pages/auth/AuthScreen';
 import {AuthSignInScreen} from './pages/auth/AuthSignInScreen';
-import {DiaryEditorScreen} from './pages/diary/DiaryEditorScreen';
+import {DiaryCreateScreen} from './pages/diary/DiaryCreateScreen';
 import {DiaryUpdateScreen} from './pages/diary/DiaryUpdateScreen';
 import {SurveyActivityScreen} from './pages/survey/SurveyActivityScreen';
 import {SurveyContentScreen} from './pages/survey/SurveyContentScreen';
@@ -120,8 +120,8 @@ export const App = () => {
               options={{title: '테마 여행 추천'}}
             />
             <Stack.Screen
-              name="DiaryEditor"
-              component={DiaryEditorScreen}
+              name="DiaryCreate"
+              component={DiaryCreateScreen}
               options={{title: '여행일기'}}
             />
             <Stack.Screen

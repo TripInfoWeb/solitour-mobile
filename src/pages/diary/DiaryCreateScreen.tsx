@@ -1,6 +1,6 @@
 import {DiaryCreateEditor} from '@src/widgets/diaryCreateEditor';
 import React from 'react';
 
-export const DiaryEditorScreen = () => {
+export const DiaryCreateScreen = () => {
   return <DiaryCreateEditor />;
 };

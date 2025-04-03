@@ -5,11 +5,8 @@ import {
   useEditorContent,
 } from '@10play/tentap-editor';
 import {zodResolver} from '@hookform/resolvers/zod';
-import {useMutation} from '@tanstack/react-query';
 import {useEffect} from 'react';
 import {useForm} from 'react-hook-form';
-import {launchImageLibrary} from 'react-native-image-picker';
-import {uploadImage} from '@src/shared/api';
 import {Diary} from '@src/entities/diary';
 import {DiarySchema} from './DiarySchema';
 
@@ -47,28 +44,6 @@ export const useDiaryEditor = (placeholderData?: {
     mode: 'onChange',
   });
 
-  const imageMutation = useMutation({
-    mutationFn: uploadImage,
-    onSuccess: (data: {fileUrl: string}) => {
-      methods.setValue('image', data.fileUrl);
-      methods.trigger('image');
-    },
-    retry: 1,
-    throwOnError: true,
-  });
-
-  const handleImageUpload = () => {
-    launchImageLibrary({mediaType: 'photo'}, response => {
-      if (response.assets) {
-        imageMutation.mutate({
-          fileName: response.assets[0].fileName!,
-          type: response.assets[0].type!,
-          uri: response.assets[0].uri!,
-        });
-      }
-    });
-  };
-
   useEffect(() => {
     if (editor.getEditorState().isReady && placeholderData?.content) {
       editor.setContent(placeholderData?.content);
@@ -76,5 +51,5 @@ export const useDiaryEditor = (placeholderData?: {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [editor.getEditorState().isReady, placeholderData?.content]);
 
-  return {methods, content, editor, imageMutation, handleImageUpload};
+  return {methods, content, editor};
 };

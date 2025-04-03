@@ -1,10 +1,10 @@
-import {COLOR} from '@src/shared/config/color';
-import {useDiaryUpdate} from '@src/hooks/diary/update/useDiaryUpdate';
-import {tw} from '@src/shared/lib/utils/tailwind';
-import {Diary} from '@src/entities/diary/model/diary';
+import {Diary} from '@src/entities/diary';
 import React from 'react';
 import {UseFormReturn} from 'react-hook-form';
+import {useDiaryUpdateButton} from '../model/useDiaryUpdateButton';
 import {ActivityIndicator, Pressable, Text} from 'react-native';
+import {tw} from '@src/shared/lib/utils';
+import {COLOR} from '@src/shared/config';
 
 interface DiaryUpdateButtonProps {
   diaryId: number;
@@ -19,7 +19,7 @@ export const DiaryUpdateButton = ({
   methods,
   content,
 }: DiaryUpdateButtonProps) => {
-  const {isPending, handleSubmit} = useDiaryUpdate(
+  const {isPending, handleSubmit} = useDiaryUpdateButton(
     diaryId,
     originalImage,
     methods,

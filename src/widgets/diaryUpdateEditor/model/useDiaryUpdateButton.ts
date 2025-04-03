@@ -10,7 +10,7 @@ import {UseFormReturn} from 'react-hook-form';
 import EncryptedStorage from 'react-native-encrypted-storage';
 import sanitizeHtml from 'sanitize-html';
 
-export const useDiaryUpdate = (
+export const useDiaryUpdateButton = (
   diaryId: number,
   originalImage: string,
   methods: UseFormReturn<Diary, any, undefined>,

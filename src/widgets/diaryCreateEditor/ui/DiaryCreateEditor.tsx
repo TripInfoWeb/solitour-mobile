@@ -7,8 +7,7 @@ import {DiaryCreateButton} from './DiaryCreateButton';
 
 export const DiaryCreateEditor = () => {
   const navigation = useNavigation<NavigationProps>();
-  const {methods, content, editor, imageMutation, handleImageUpload} =
-    useDiaryEditor();
+  const {methods, content, editor} = useDiaryEditor();
 
   useEffect(() => {
     navigation.setOptions({
@@ -21,7 +20,7 @@ export const DiaryCreateEditor = () => {
 
   return (
     <FormProvider {...methods}>
-      <DiaryEditor />
+      <DiaryEditor editor={editor} />
     </FormProvider>
   );
 };
