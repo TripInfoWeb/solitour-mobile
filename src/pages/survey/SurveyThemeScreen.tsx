@@ -1,10 +1,9 @@
 import {useNavigation} from '@react-navigation/native';
 import {BottomNextButton, OptionButton} from '@src/shared/ui/button';
 import {ProgressBar} from '@src/shared/ui/progressBar';
-import {CONTENT_CATEGORY} from '@src/constants/contentCategory';
 import {tw} from '@src/shared/lib/utils';
-import {useSurveyStore} from '@src/entities/survey/model/surveyStore';
-import {NavigationProps} from '@src/types/navigation';
+import {CONTENT_CATEGORY, useSurveyStore} from '@src/entities/survey';
+import {NavigationProps} from '@src/shared/model/navigation';
 import React from 'react';
 import {FlatList, SafeAreaView, Text, View} from 'react-native';
 

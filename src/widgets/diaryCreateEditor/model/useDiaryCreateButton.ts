@@ -4,7 +4,7 @@ import {FEELING_STATUS} from '@src/entities/diary/config/feelingStatus';
 import {getNewAccessToken} from '@src/shared/api/getNewAccessToken';
 import {SANITIZE_OPTION} from '@src/shared/config';
 import {Diary} from '@src/entities/diary/model/diary';
-import {NavigationProps} from '@src/types/navigation';
+import {NavigationProps} from '@src/shared/model/navigation';
 import {useMutation, useQueryClient} from '@tanstack/react-query';
 import {UseFormReturn} from 'react-hook-form';
 import EncryptedStorage from 'react-native-encrypted-storage';

@@ -1,7 +1,7 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {SurveyResultItem} from '@src/components/survey/result/list/SurveyResultItem';
 import {tw} from '@src/shared/lib/utils/tailwind';
-import {NavigationList} from '@src/types/navigation';
+import {NavigationList} from '@src/shared/model/navigation';
 import React from 'react';
 import {FlatList, View} from 'react-native';
 

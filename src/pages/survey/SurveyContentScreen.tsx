@@ -1,13 +1,13 @@
 import {useNavigation} from '@react-navigation/native';
 import {BottomNextButton} from '@src/shared/ui/button';
 import {tw} from '@src/shared/lib/utils';
-import {NavigationProps} from '@src/types/navigation';
+import {NavigationProps} from '@src/shared/model/navigation';
 import React from 'react';
 import {Text, View} from 'react-native';
 import {ProgressBar} from '@src/shared/ui/progressBar';
 import {useSurveyStore} from '@src/entities/survey/model/surveyStore';
-import {CONTENT_CATEGORY} from '@src/constants/contentCategory';
 import {SurveyContentItemListWrapper} from '@src/widgets/surveyContentItemListWrapper';
+import {CONTENT_CATEGORY} from '@src/entities/survey';
 
 export const SurveyContentScreen = () => {
   const navigation = useNavigation<NavigationProps>();

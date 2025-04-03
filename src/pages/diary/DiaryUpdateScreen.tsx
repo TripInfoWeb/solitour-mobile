@@ -1,5 +1,5 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {NavigationList} from '@src/types/navigation';
+import {NavigationList} from '@src/shared/model/navigation';
 import {DiaryUpdateEditor} from '@src/widgets/diaryUpdateEditor';
 import React from 'react';
 

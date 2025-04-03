@@ -1,7 +1,7 @@
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {tw} from '@src/shared/lib/utils/tailwind';
-import {NavigationList} from '@src/types/navigation';
+import {NavigationList} from '@src/shared/model/navigation';
 import {useState} from 'react';
 import {Image, Pressable, ScrollView, Text, View} from 'react-native';
 

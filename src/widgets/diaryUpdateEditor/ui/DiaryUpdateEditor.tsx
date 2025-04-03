@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {FormProvider} from 'react-hook-form';
 import {useNavigation} from '@react-navigation/native';
-import {NavigationProps} from '@src/types/navigation';
+import {NavigationProps} from '@src/shared/model/navigation';
 import {useDiaryEditor} from '@src/features/diaryEditor/model/useDiaryEditor';
 import {DiaryDetail} from '@src/entities/diary/model/diary';
 import {FEELING_STATUS} from '@src/entities/diary/config/feelingStatus';

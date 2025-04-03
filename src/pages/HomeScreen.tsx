@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {useNavigation} from '@react-navigation/native';
-import {NavigationProps} from '@src/types/navigation';
+import {NavigationProps} from '@src/shared/model/navigation';
 import {tw} from '@src/shared/lib/utils/tailwind';
 import {PrimaryButton} from '@src/shared/ui/button/PrimaryButton';
 import {useUserInfo} from '@src/entities/user/api/useUserInfo';

@@ -1,7 +1,7 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {TourKakaoMap} from '@src/components/tour/TourKakaoMap';
 import {tw} from '@src/shared/lib/utils';
-import {NavigationList} from '@src/types/navigation';
+import {NavigationList} from '@src/shared/model/navigation';
 import React from 'react';
 import {View} from 'react-native';
 

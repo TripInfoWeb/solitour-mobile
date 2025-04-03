@@ -1,6 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import {DiaryEditor, useDiaryEditor} from '@src/features/diaryEditor';
-import {NavigationProps} from '@src/types/navigation';
+import {NavigationProps} from '@src/shared/model/navigation';
 import React, {useEffect} from 'react';
 import {FormProvider} from 'react-hook-form';
 import {DiaryCreateButton} from './DiaryCreateButton';

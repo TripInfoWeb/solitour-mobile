@@ -3,7 +3,7 @@ import {BottomNextButton, OptionButton} from '@src/shared/ui/button';
 import {ProgressBar} from '@src/shared/ui/progressBar';
 import {tw} from '@src/shared/lib/utils';
 import {useSurveyStore} from '@src/entities/survey/model/surveyStore';
-import {NavigationProps} from '@src/types/navigation';
+import {NavigationProps} from '@src/shared/model/navigation';
 import React from 'react';
 import {FlatList, Text, View} from 'react-native';
 

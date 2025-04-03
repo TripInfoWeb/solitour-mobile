@@ -3,7 +3,7 @@ import React from 'react';
 import {Image, Pressable} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {tw} from '@src/shared/lib/utils/tailwind';
-import {NavigationList, NavigationProps} from '@src/types/navigation';
+import {NavigationList, NavigationProps} from '@src/shared/model/navigation';
 import {COLOR} from '@src/shared/config/color';
 import {HomeScreen} from '@src/pages/HomeScreen';
 import {PlanScreen} from '@src/pages/plan/PlanScreen';

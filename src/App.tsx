@@ -24,7 +24,7 @@ import {SurveyResultDetailScreen} from './pages/survey/SurveyResultDetailScreen'
 import {SurveyResultListScreen} from './pages/survey/SurveyResultListScreen';
 import {SurveyThemeScreen} from './pages/survey/SurveyThemeScreen';
 import {PlanDetailScreen} from './pages/plan/PlanDetailScreen';
-import {NavigationList} from './types/navigation';
+import {NavigationList} from './shared/model/navigation';
 
 const queryClient = new QueryClient();
 const Stack = createNativeStackNavigator<NavigationList>();

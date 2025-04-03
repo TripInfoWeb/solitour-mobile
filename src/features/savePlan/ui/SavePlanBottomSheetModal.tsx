@@ -4,21 +4,21 @@ import {
   BottomSheetModal,
   BottomSheetView,
 } from '@gorhom/bottom-sheet';
-import {useBackHandler} from '@src/shared/lib/hooks/useBackHandler';
+import {useBackHandler} from '@src/shared/lib/hooks';
 import {forwardRef, useCallback} from 'react';
-import {tw} from '@src/shared/lib/utils/tailwind';
+import {tw} from '@src/shared/lib/utils';
 import {Pressable, Text} from 'react-native';
-import {COLOR} from '@src/shared/config/color';
+import {COLOR} from '@src/shared/config';
 import {useNavigation} from '@react-navigation/native';
-import {NavigationProps} from '@src/types/navigation';
+import {NavigationProps} from '@src/shared/model';
 
-interface SurveyBottomSheetModalProps {
+interface SavePlanBottomSheetModalProps {
   closeBottomSheetModal: () => void;
 }
 
-export const SurveyBottomSheetModal = forwardRef<
+export const SavePlanBottomSheetModal = forwardRef<
   BottomSheetModal,
-  SurveyBottomSheetModalProps
+  SavePlanBottomSheetModalProps
 >(({closeBottomSheetModal}, bottomSheetModalRef) => {
   const navigation = useNavigation<NavigationProps>();
   const {addBackPressEventListener, removeBackPressEventListener} =
