@@ -1,5 +1,5 @@
 import {COLOR} from '@src/shared/config/color';
-import {useTourItemTitleUpdate} from '@src/hooks/tour/useTourItemTitleUpdate';
+import {usePlanItemTitleUpdate} from '@src/features/planItemMenu/model/usePlanItemTitleModal';
 import {tw} from '@src/shared/lib/utils/tailwind';
 import React from 'react';
 import {Controller} from 'react-hook-form';
@@ -13,20 +13,20 @@ import {
   View,
 } from 'react-native';
 
-interface TourItemTitleModalProps {
+interface PlanItemTitleModalProps {
   planId: number;
   title: string;
   modalVisible: boolean;
   closeModal: () => void;
 }
 
-export const TourItemTitleModal = ({
+export const PlanItemTitleModal = ({
   planId,
   title,
   modalVisible,
   closeModal,
-}: TourItemTitleModalProps) => {
-  const {methods, isPending, handleSubmit} = useTourItemTitleUpdate(
+}: PlanItemTitleModalProps) => {
+  const {methods, isPending, handleSubmit} = usePlanItemTitleUpdate(
     planId,
     title,
     modalVisible,

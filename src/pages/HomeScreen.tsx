@@ -8,7 +8,6 @@ import {
   ToastAndroid,
   View,
 } from 'react-native';
-
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {useNavigation} from '@react-navigation/native';
 import {NavigationProps} from '@src/types/navigation';

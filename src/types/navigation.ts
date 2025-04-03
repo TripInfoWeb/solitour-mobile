@@ -4,8 +4,8 @@ import {Plan, SavedPlan} from '../entities/plan/model/plan';
 
 export type NavigationList = {
   BottomTabs: undefined;
-  Tour: undefined;
-  TourDetail: {savedPlan: SavedPlan};
+  Plan: undefined;
+  PlanDetail: {savedPlan: SavedPlan};
   Discovery: undefined;
   DiscoveryStack: {
     screen: string;

@@ -1,19 +1,19 @@
-import {COLOR} from '@src/shared/config/color';
-import {useTourItemDelete} from '@src/hooks/tour/useTourItemDelete';
-import {tw} from '@src/shared/lib/utils/tailwind';
+import {COLOR} from '@src/shared/config';
+import {tw} from '@src/shared/lib/utils';
 import React, {useState} from 'react';
 import {ActivityIndicator, Image, Pressable, Text, View} from 'react-native';
-import {TourItemTitleModal} from './TourItemTitleModal';
+import {PlanItemTitleModal} from './PlanItemTitleModal';
+import {usePlanItemMenu} from '../model/usePlanItemMenu';
 
-interface TourItemMenuProps {
+interface PlanItemMenuProps {
   planId: number;
   planTitle: string;
 }
 
-export const TourItemMenu = ({planId, planTitle}: TourItemMenuProps) => {
+export const PlanItemMenu = ({planId, planTitle}: PlanItemMenuProps) => {
   const [menuVisible, setMenuVisible] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
-  const {isPending, handleDeleteButtonClick} = useTourItemDelete(
+  const {isPending, handleDeleteButtonClick} = usePlanItemMenu(
     planId,
     planTitle,
   );
@@ -55,7 +55,7 @@ export const TourItemMenu = ({planId, planTitle}: TourItemMenuProps) => {
           </Pressable>
         </View>
       )}
-      <TourItemTitleModal
+      <PlanItemTitleModal
         planId={planId}
         title={planTitle}
         modalVisible={modalVisible}

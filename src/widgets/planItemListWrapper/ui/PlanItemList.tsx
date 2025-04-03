@@ -1,19 +1,19 @@
 import React from 'react';
 import {Image, ScrollView, Text, View} from 'react-native';
-import {tw} from '@src/shared/lib/utils/tailwind';
-import {TourItem} from '../../../components/tour/TourItem';
-import {useTourItemList} from '../model/useTourItemList';
+import {tw} from '@src/shared/lib/utils';
+import {usePlanItemList} from '../model/usePlanItemList';
+import {PlanItem} from '@src/entities/plan';
 
-export const TourItemList = () => {
-  const {tourItemList} = useTourItemList();
+export const PlanItemList = () => {
+  const {planItemList} = usePlanItemList();
 
   return (
     <ScrollView
       style={tw.style(
-        tourItemList.length === 0 ? 'bg-white' : 'bg-[#F3F3F3]',
+        planItemList.length === 0 ? 'bg-white' : 'bg-[#F3F3F3]',
         'flex h-full flex-col px-4',
       )}>
-      {tourItemList.length === 0 ? (
+      {planItemList.length === 0 ? (
         <View style={tw`flex flex-col items-center gap-[1.125rem]`}>
           <Image
             style={tw`h-16 w-16`}
@@ -22,8 +22,8 @@ export const TourItemList = () => {
           <Text>아직 저장된 여행이 없어요</Text>
         </View>
       ) : (
-        tourItemList.map(item => (
-          <TourItem key={item.plan.planId} data={item} />
+        planItemList.map(item => (
+          <PlanItem key={item.plan.planId} data={item} />
         ))
       )}
     </ScrollView>

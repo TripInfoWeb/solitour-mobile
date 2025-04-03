@@ -4,13 +4,13 @@ import {NavigationProps} from '@src/types/navigation';
 import {SavedPlan} from '@src/entities/plan';
 import React from 'react';
 import {Pressable, Text, View} from 'react-native';
-import {TourItemMenu} from './TourItemMenu';
+import {PlanItemMenu} from '../../../features/planItemMenu/ui/PlanItemMenu';
 
-interface TourItemProps {
+interface PlanItemProps {
   data: SavedPlan;
 }
 
-export const TourItem = ({data}: TourItemProps) => {
+export const PlanItem = ({data}: PlanItemProps) => {
   const navigation = useNavigation<NavigationProps>();
 
   return (
@@ -23,7 +23,7 @@ export const TourItem = ({data}: TourItemProps) => {
             numberOfLines={1}>
             {data.plan.title}
           </Text>
-          <TourItemMenu planId={data.plan.planId} planTitle={data.plan.title} />
+          <PlanItemMenu planId={data.plan.planId} planTitle={data.plan.title} />
         </View>
         <Text style={tw`text-sm text-custom-03`}>
           {data.plan.days.length === 1
@@ -54,7 +54,7 @@ export const TourItem = ({data}: TourItemProps) => {
           ])
         }
         android_ripple={{color: '#bfdbfe'}}
-        onPress={() => navigation.navigate('TourDetail', {savedPlan: data})}>
+        onPress={() => navigation.navigate('PlanDetail', {savedPlan: data})}>
         <Text style={tw`text-center text-custom-blue`}>자세히 보기</Text>
       </Pressable>
     </View>

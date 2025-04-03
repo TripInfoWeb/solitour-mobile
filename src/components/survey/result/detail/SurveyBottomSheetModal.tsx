@@ -65,7 +65,7 @@ export const SurveyBottomSheetModal = forwardRef<
           onPress={() =>
             navigation.reset({
               index: 0,
-              routes: [{name: 'BottomTabs', params: {screen: 'Tour'}}],
+              routes: [{name: 'BottomTabs', params: {screen: 'Plan'}}],
             })
           }>
           <Text style={tw`text-lg font-semibold text-white`}>확인</Text>

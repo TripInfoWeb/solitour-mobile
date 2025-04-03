@@ -23,7 +23,7 @@ import {SurveyLoadingScreen} from './pages/survey/SurveyLoadingScreen';
 import {SurveyResultDetailScreen} from './pages/survey/SurveyResultDetailScreen';
 import {SurveyResultListScreen} from './pages/survey/SurveyResultListScreen';
 import {SurveyThemeScreen} from './pages/survey/SurveyThemeScreen';
-import {TourDetailScreen} from './pages/tour/TourDetailScreen';
+import {PlanDetailScreen} from './pages/plan/PlanDetailScreen';
 import {NavigationList} from './types/navigation';
 
 const queryClient = new QueryClient();
@@ -130,8 +130,8 @@ export const App = () => {
               options={{title: '여행일기'}}
             />
             <Stack.Screen
-              name="TourDetail"
-              component={TourDetailScreen}
+              name="PlanDetail"
+              component={PlanDetailScreen}
               options={{title: '내 여행'}}
             />
             <Stack.Screen

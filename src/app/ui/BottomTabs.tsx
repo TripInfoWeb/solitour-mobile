@@ -6,7 +6,7 @@ import {tw} from '@src/shared/lib/utils/tailwind';
 import {NavigationList, NavigationProps} from '@src/types/navigation';
 import {COLOR} from '@src/shared/config/color';
 import {HomeScreen} from '@src/pages/HomeScreen';
-import {TourScreen} from '@src/pages/tour/TourScreen';
+import {PlanScreen} from '@src/pages/plan/PlanScreen';
 import {DiaryScreen} from '@src/pages/diary/DiaryScreen';
 import {MypageScreen} from '@src/pages/mypage/ui/MypageScreen';
 import {DiscoveryScreen} from '@src/pages/DiscoveryScreen';
@@ -137,8 +137,8 @@ export const BottomTabs = () => {
       }}
       backBehavior="initialRoute">
       <Tab.Screen
-        name="Tour"
-        component={TourScreen}
+        name="Plan"
+        component={PlanScreen}
         options={{
           title: '내 여행',
           tabBarIcon: TourIcon,

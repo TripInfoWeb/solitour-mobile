@@ -35,7 +35,7 @@ export const usePlanSave = (planId: number) => {
       return true;
     },
     onSuccess: async () => {
-      await queryClient.invalidateQueries({queryKey: ['tourItemList']});
+      await queryClient.invalidateQueries({queryKey: ['planItemList']});
       bottomSheetModalRef.current?.present();
     },
     retry: 1,
