@@ -20,7 +20,7 @@ export const useDiaryUpdateButton = (
   const navigation = useNavigation<NavigationProps>();
   const queryClient = useQueryClient();
   const mutation = useMutation({
-    mutationFn: async () => {
+    mutationFn: () => {
       const saveTitleImage = methods.getValues('image')!;
       const deleteTitleImage =
         originalImage !== saveTitleImage ? originalImage : '';

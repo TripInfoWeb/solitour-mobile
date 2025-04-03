@@ -18,7 +18,7 @@ export const useDiaryCreateButton = (
   const navigation = useNavigation<NavigationProps>();
   const queryClient = useQueryClient();
   const mutation = useMutation({
-    mutationFn: async () => {
+    mutationFn: () => {
       const data: DiaryCreateRequest = {
         title: methods.getValues('title'),
         titleImage: methods.getValues('image')!,
