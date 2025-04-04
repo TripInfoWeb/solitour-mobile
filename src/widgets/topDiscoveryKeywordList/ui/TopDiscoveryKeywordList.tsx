@@ -7,6 +7,7 @@ interface IData {
   title: string;
   tags: string[];
 }
+
 const _data = [
   {
     title: '기생충',
@@ -33,7 +34,7 @@ const _data = [
 const AnimatedView = Animated.createAnimatedComponent(View);
 const rotateAnims = _data.map(() => useRef(new Animated.Value(0)).current);
 
-const TopDiscoveryKeywordList = () => {
+export const TopDiscoveryKeywordList = () => {
   useEffect(() => {
     rotateAnims.forEach((anim, index) => {
       // 🎯 초기 애니메이션 (딱 1회 실행)
@@ -114,5 +115,3 @@ const TopDiscoveryKeywordList = () => {
     </View>
   );
 };
-
-export default TopDiscoveryKeywordList;

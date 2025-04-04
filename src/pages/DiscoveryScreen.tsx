@@ -1,16 +1,14 @@
-import RecommendationDiscovery from '@src/components/discovery/RecommendationDiscovery';
-import TopDiscoveryKeywordList from '@src/components/discovery/TopDiscoveryKeywordList';
-import {tw} from '@src/shared/lib/utils/tailwind';
+import {tw} from '@src/shared/lib/utils';
+import {RecommendationDiscovery} from '@src/widgets/recommendationDiscovery';
+import {TopDiscoveryKeywordList} from '@src/widgets/topDiscoveryKeywordList';
 import React from 'react';
-import {ScrollView, View} from 'react-native';
+import {ScrollView} from 'react-native';
 
 export const DiscoveryScreen = () => {
   return (
-    <View style={tw`bg-white pb-[3rem] pt-[1.125rem]`}>
-      <ScrollView>
-        <TopDiscoveryKeywordList />
-        <RecommendationDiscovery />
-      </ScrollView>
-    </View>
+    <ScrollView style={tw`bg-white pb-12 pt-[1.125rem]`}>
+      <TopDiscoveryKeywordList />
+      <RecommendationDiscovery />
+    </ScrollView>
   );
 };

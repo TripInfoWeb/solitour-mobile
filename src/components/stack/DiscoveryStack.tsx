@@ -1,7 +1,7 @@
-// navigation/DiscoveryDiscoveryStack.tsx
+import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {DiscoveryStackList} from '@src/shared/model/navigation';
-import DiscoveryDetail from '../discovery/DiscoveryDetail';
+import {DiscoveryStackList} from '@src/shared/model';
+import {DiscoveryDetailViewer} from '@src/widgets/discoveryDetailViewer';
 
 const Discovery = createNativeStackNavigator<DiscoveryStackList>();
 
@@ -10,7 +10,7 @@ export function DiscoveryStack() {
     <Discovery.Navigator>
       <Discovery.Screen
         name="DiscoveryDetail"
-        component={DiscoveryDetail}
+        component={DiscoveryDetailViewer}
         options={({route}) => ({
           title:
             (route.params as {recommendation: IDiscoveryRecommendationItem})

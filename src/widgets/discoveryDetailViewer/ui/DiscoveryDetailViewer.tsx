@@ -46,7 +46,7 @@ const _places: IDiscoveryItemPlaces[] = [
   },
 ];
 
-const DiscoveryDetail = () => {
+export const DiscoveryDetailViewer = () => {
   const route = useRoute();
   // TODO: 데이터를 API를 보내서 받아오는 작업 추가
   const {recommendation} = route.params as {recommendation: IDiscoveryItem};
@@ -59,10 +59,10 @@ const DiscoveryDetail = () => {
     <View style={tw`flex-1`}>
       <Image
         source={{uri: recommendation.imageUrl}}
-        style={tw.style('absolute w-full', {aspectRatio: 4 / 3, zIndex: -1})}
+        style={tw`absolute z-[-1] aspect-[4/3] w-full`}
         resizeMode="stretch"
       />
-      <ScrollView style={tw``}>
+      <ScrollView>
         <View
           style={tw.style('w-full opacity-0', {
             height: (Dimensions.get('window').width * 3) / 4 - 16,
@@ -117,5 +117,3 @@ const DiscoveryDetail = () => {
     </View>
   );
 };
-
-export default DiscoveryDetail;

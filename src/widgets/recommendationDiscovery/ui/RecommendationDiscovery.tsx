@@ -30,7 +30,7 @@ const _data: IDiscoveryRecommendationItem[] = [
   },
 ];
 
-const RecommendationDiscovery = () => {
+export const RecommendationDiscovery = () => {
   const [selectedRecommendation, setSelectedRecommendation] =
     useState<IDiscoveryRecommendationItem>(_data[0]);
   const navigation = useNavigation<NativeStackNavigationProp<NavigationList>>();
@@ -86,4 +86,3 @@ const RecommendationDiscovery = () => {
     </View>
   );
 };
-export default RecommendationDiscovery;
