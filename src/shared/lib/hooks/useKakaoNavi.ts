@@ -1,12 +1,5 @@
-import {KAKAO_REST_API_KEY} from '@env';
+import {getKakaoNaviInfo} from '@src/shared/api';
 import {useQuery} from '@tanstack/react-query';
-
-interface KakaoNaviInfo {
-  sections: {
-    distance: number; // 섹션 거리(미터)
-    duration: number; // 전체 검색 결과 이동 시간(초)
-  }[];
-}
 
 export const useKakaoNavi = (
   planId: number,
@@ -15,35 +8,13 @@ export const useKakaoNavi = (
   destination: [number, number],
   waypoints: [number, number][],
 ) => {
-  const {data, isLoading} = useQuery<KakaoNaviInfo>({
+  const {data, isLoading} = useQuery({
     // eslint-disable-next-line @tanstack/query/exhaustive-deps
     queryKey: ['kakaoNavi', planId, day],
-    queryFn: async () => {
-      const response = await fetch(
-        'https://apis-navi.kakaomobility.com/v1/directions' +
-          `?origin=${origin[0]},${origin[1]}` +
-          `&destination=${destination[0]},${destination[1]}` +
-          `&waypoints=${waypoints.map(waypoint => `${waypoint[0]},${waypoint[1]}`).join('|')}`,
-        {
-          method: 'GET',
-          headers: {
-            Authorization: `KakaoAK ${KAKAO_REST_API_KEY}`,
-            'Content-Type': 'application/json',
-          },
-        },
-      );
-
-      if (!response.ok) {
-        throw new Error('Failed to fetch data.');
-      }
-
-      const result = await response.json();
-      return result.routes[0];
-    },
+    queryFn: () => getKakaoNaviInfo(origin, destination, waypoints),
     staleTime: 1000 * 60 * 10,
     gcTime: 1000 * 60 * 30,
     retry: false,
-    // throwOnError: true, // TODO
   });
 
   return {kakaoNaviInfo: data, isLoading};

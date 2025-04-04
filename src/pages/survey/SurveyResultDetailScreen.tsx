@@ -1,7 +1,7 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {SurveyKakaoMap} from '@src/components/survey/result/detail/SurveyKakaoMap';
-import {tw} from '@src/shared/lib/utils/tailwind';
-import {NavigationList} from '@src/shared/model/navigation';
+import {tw} from '@src/shared/lib/utils';
+import {NavigationList} from '@src/shared/model';
+import {SurveyResultDetailViewer} from '@src/widgets/surveyResultDetailViewer';
 import React from 'react';
 import {View} from 'react-native';
 
@@ -12,7 +12,7 @@ export const SurveyResultDetailScreen = ({
 
   return (
     <View style={tw`bg-[#F3F3F3]`}>
-      <SurveyKakaoMap index={index} plan={plan} />
+      <SurveyResultDetailViewer index={index} plan={plan} />
     </View>
   );
 };

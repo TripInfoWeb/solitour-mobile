@@ -1,18 +1,16 @@
 import {KAKAO_API_KEY} from '@env';
 import {tw} from '@src/shared/lib/utils';
-import {Plan, PlanDayList, PlanPlaceItem} from '@src/entities/plan';
+import {PlanDayList, PlanPlaceItem, SavedPlan} from '@src/entities/plan';
 import React, {useRef, useState} from 'react';
 import {ScrollView, Text, View} from 'react-native';
 import WebView from 'react-native-webview';
 import {useKakaoNavi} from '@src/shared/lib/hooks';
-import {SavePlan} from '@src/features/savePlan';
 
-interface SurveyKakaoMapProps {
-  index: number;
-  plan: Plan;
+interface PlanDetailViewerProps {
+  savedPlan: SavedPlan;
 }
 
-export const SurveyKakaoMap = ({index, plan}: SurveyKakaoMapProps) => {
+export const PlanDetailViewer = ({savedPlan}: PlanDetailViewerProps) => {
   const [day, setDay] = useState(0);
   const webViewRef = useRef<WebView>(null);
   const html = `
@@ -29,14 +27,14 @@ export const SurveyKakaoMap = ({index, plan}: SurveyKakaoMapProps) => {
           const container = document.getElementById('map');
           const options = { 
             // 지도 좌표값 설정
-            center: new kakao.maps.LatLng(${plan.days[day][0].latitude}, ${plan.days[day][0].longitude}),
+            center: new kakao.maps.LatLng(${savedPlan.plan.days[day].daysDetailResponses[0].latitude}, ${savedPlan.plan.days[day].daysDetailResponses[0].longitude}),
 
             // 줌 레벨을 5으로 설정
             level: 5,
           };                
             
           const map = new kakao.maps.Map(container, options);
-          const positions = ${JSON.stringify(plan.days[day])}.map((position) => new kakao.maps.LatLng(position.latitude, position.longitude));
+          const positions = ${JSON.stringify(savedPlan.plan.days[day].daysDetailResponses)}.map((position) => new kakao.maps.LatLng(position.latitude, position.longitude));
           
           // 커스텀 오버레이 생성
           const overlays = positions.map((position, index) => new kakao.maps.CustomOverlay({
@@ -78,11 +76,19 @@ export const SurveyKakaoMap = ({index, plan}: SurveyKakaoMapProps) => {
   </html>`;
 
   const {kakaoNaviInfo, isLoading} = useKakaoNavi(
-    plan.id,
+    savedPlan.plan.planId,
     day,
-    [plan.days[day][0].longitude, plan.days[day][0].latitude],
-    [plan.days[day][5].longitude, plan.days[day][5].latitude],
-    plan.days[day].slice(1, 5).map(value => [value.longitude, value.latitude]),
+    [
+      savedPlan.plan.days[day].daysDetailResponses[0].longitude,
+      savedPlan.plan.days[day].daysDetailResponses[0].latitude,
+    ],
+    [
+      savedPlan.plan.days[day].daysDetailResponses[5].longitude,
+      savedPlan.plan.days[day].daysDetailResponses[5].latitude,
+    ],
+    savedPlan.plan.days[day].daysDetailResponses
+      .slice(1, 5)
+      .map(value => [value.longitude, value.latitude]),
   );
 
   const handlePanTo = (latitude: number, longitude: number) => {
@@ -95,21 +101,15 @@ export const SurveyKakaoMap = ({index, plan}: SurveyKakaoMapProps) => {
         <WebView ref={webViewRef} source={{html: html}} />
       </View>
       <ScrollView style={tw`mt-4 px-4`}>
-        <View style={tw`flex flex-row items-center gap-2`}>
-          <Text
-            style={tw`h-6 w-6 rounded-full border border-custom-blue text-center font-semibold text-custom-blue`}>
-            {index}
-          </Text>
-          <Text style={tw`text-xl font-semibold text-custom-01`}>
-            {plan.title}
-          </Text>
-        </View>
+        <Text style={tw`text-xl font-semibold text-custom-01`}>
+          {savedPlan.plan.title}
+        </Text>
         <PlanDayList
           currentDay={day}
-          totalDays={plan.days.length}
+          totalDays={savedPlan.plan.days.length}
           setDay={(value: number) => setDay(value)}
         />
-        {plan.days[day].map((item, idx) => (
+        {savedPlan.plan.days[day].daysDetailResponses.map((item, idx) => (
           <PlanPlaceItem
             key={item.id}
             index={idx}
@@ -121,7 +121,6 @@ export const SurveyKakaoMap = ({index, plan}: SurveyKakaoMapProps) => {
           />
         ))}
       </ScrollView>
-      <SavePlan planId={plan.id} />
     </View>
   );
 };
