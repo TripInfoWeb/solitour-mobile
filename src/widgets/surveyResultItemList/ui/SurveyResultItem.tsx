@@ -1,6 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
-import {tw} from '@src/shared/lib/utils/tailwind';
-import {NavigationProps} from '@src/shared/model/navigation';
+import {tw} from '@src/shared/lib/utils';
+import {NavigationProps} from '@src/shared/model';
 import {Plan} from '@src/entities/plan';
 import React from 'react';
 import {FlatList, Pressable, Text, View} from 'react-native';

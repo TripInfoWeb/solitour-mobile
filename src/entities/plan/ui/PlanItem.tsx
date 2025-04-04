@@ -1,10 +1,10 @@
 import {useNavigation} from '@react-navigation/native';
-import {tw} from '@src/shared/lib/utils/tailwind';
-import {NavigationProps} from '@src/shared/model/navigation';
+import {tw} from '@src/shared/lib/utils';
+import {NavigationProps} from '@src/shared/model';
 import {SavedPlan} from '@src/entities/plan';
 import React from 'react';
 import {Pressable, Text, View} from 'react-native';
-import {PlanItemMenu} from '../../../features/planItemMenu/ui/PlanItemMenu';
+import {PlanItemMenu} from '@src/features/planItemMenu';
 
 interface PlanItemProps {
   data: SavedPlan;
