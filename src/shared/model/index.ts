@@ -1,5 +1,1 @@
-export type {
-  NavigationList,
-  DiscoveryStackList,
-  NavigationProps,
-} from './navigation';
+export type {NavigationList, NavigationProps} from './navigation';

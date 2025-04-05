@@ -7,10 +7,7 @@ export type NavigationList = {
   Plan: undefined;
   PlanDetail: {savedPlan: SavedPlan};
   Discovery: undefined;
-  DiscoveryStack: {
-    screen: string;
-    params: unknown;
-  };
+  DiscoveryDetail: {name: string; recommendation: IDiscoveryRecommendationItem};
   Home: undefined;
   Diary: undefined;
   DiaryCreate: undefined;
@@ -26,10 +23,6 @@ export type NavigationList = {
   SurveyLoading: undefined;
   SurveyResultList: {plans: Plan[]};
   SurveyResultDetail: {index: number; plan: Plan};
-};
-
-export type DiscoveryStackList = {
-  DiscoveryDetail: {recommendation: IDiscoveryRecommendationItem}; // DiscoveryDetail 화면에 recommendation 파라미터
 };
 
 export type NavigationProps = NativeStackNavigationProp<NavigationList>;

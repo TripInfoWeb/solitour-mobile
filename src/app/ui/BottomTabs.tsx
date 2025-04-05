@@ -9,7 +9,7 @@ import {HomeScreen} from '@src/pages/HomeScreen';
 import {PlanScreen} from '@src/pages/plan/PlanScreen';
 import {DiaryScreen} from '@src/pages/diary/DiaryScreen';
 import {MypageScreen} from '@src/pages/mypage/ui/MypageScreen';
-import {DiscoveryScreen} from '@src/pages/DiscoveryScreen';
+import {DiscoveryScreen} from '@src/pages/discovery/DiscoveryScreen';
 
 interface IconProps {
   focused: boolean;

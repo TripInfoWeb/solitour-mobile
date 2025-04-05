@@ -10,11 +10,11 @@ import {
 } from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {useNavigation} from '@react-navigation/native';
-import {NavigationProps} from '@src/shared/model/navigation';
-import {tw} from '@src/shared/lib/utils/tailwind';
-import {PrimaryButton} from '@src/shared/ui/button/PrimaryButton';
-import {useUserInfo} from '@src/entities/user/api/useUserInfo';
-import {useSurveyStore} from '@src/entities/survey/model/surveyStore';
+import {NavigationProps} from '@src/shared/model';
+import {tw} from '@src/shared/lib/utils';
+import {PrimaryButton} from '@src/shared/ui/button';
+import {useUserInfo} from '@src/entities/user';
+import {useSurveyStore} from '@src/entities/survey';
 
 export const HomeScreen = () => {
   const navigation = useNavigation<NavigationProps>();

@@ -8,7 +8,7 @@ import {Image, Text, View} from 'react-native';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import SplashScreen from 'react-native-splash-screen';
 import {BottomTabs} from './app/ui/BottomTabs';
-import {DiscoveryStack} from './components/stack/DiscoveryStack';
+import {DiscoveryDetailScreen} from './pages/discovery/DiscoveryDetailScreen';
 import {tw} from './shared/lib/utils/tailwind';
 import {ErrorBoundaryScreen} from './pages/ErrorBoundaryScreen';
 import {AuthLoadingScreen} from './pages/auth/AuthLoadingScreen';
@@ -135,9 +135,12 @@ export const App = () => {
               options={{title: '내 여행'}}
             />
             <Stack.Screen
-              name="DiscoveryStack"
-              component={DiscoveryStack}
-              options={{headerShown: false}}
+              name="DiscoveryDetail"
+              component={DiscoveryDetailScreen}
+              options={({route}) => ({
+                title: route.params.name,
+                headerShown: false,
+              })}
             />
           </Stack.Navigator>
         </NavigationContainer>

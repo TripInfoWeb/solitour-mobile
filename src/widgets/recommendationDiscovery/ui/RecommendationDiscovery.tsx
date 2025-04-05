@@ -1,8 +1,7 @@
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {tw} from '@src/shared/lib/utils/tailwind';
-import {NavigationList} from '@src/shared/model/navigation';
+import {NavigationProps} from '@src/shared/model/navigation';
 import {useState} from 'react';
 import {Image, Pressable, ScrollView, Text, View} from 'react-native';
 
@@ -33,7 +32,7 @@ const _data: IDiscoveryRecommendationItem[] = [
 export const RecommendationDiscovery = () => {
   const [selectedRecommendation, setSelectedRecommendation] =
     useState<IDiscoveryRecommendationItem>(_data[0]);
-  const navigation = useNavigation<NativeStackNavigationProp<NavigationList>>();
+  const navigation = useNavigation<NavigationProps>();
 
   return (
     <View style={tw`mt-[3.25rem] flex w-full flex-col px-4`}>
@@ -68,9 +67,9 @@ export const RecommendationDiscovery = () => {
         </ScrollView>
         <Pressable
           onPress={() =>
-            navigation.navigate('DiscoveryStack', {
-              screen: 'DiscoveryDetail', // DiscoveryStack 내부의 화면 지정
-              params: {recommendation: selectedRecommendation}, // 전달할 파라미터
+            navigation.navigate('DiscoveryDetail', {
+              name: selectedRecommendation.title,
+              recommendation: selectedRecommendation,
             })
           }
           style={tw`mt-[1.25rem] w-full`}>

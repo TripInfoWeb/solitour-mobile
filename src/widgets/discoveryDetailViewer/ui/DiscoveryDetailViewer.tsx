@@ -1,5 +1,4 @@
 import React from 'react';
-import {useRoute} from '@react-navigation/native';
 import {tw} from '@src/shared/lib/utils';
 import {useState} from 'react';
 import {
@@ -46,10 +45,13 @@ const _places: IDiscoveryItemPlaces[] = [
   },
 ];
 
-export const DiscoveryDetailViewer = () => {
-  const route = useRoute();
-  // TODO: 데이터를 API를 보내서 받아오는 작업 추가
-  const {recommendation} = route.params as {recommendation: IDiscoveryItem};
+interface DiscoveryDetailViewerProps {
+  recommendation: IDiscoveryRecommendationItem;
+}
+
+export const DiscoveryDetailViewer = ({
+  recommendation,
+}: DiscoveryDetailViewerProps) => {
   const [selectedPlace, setSelectedPlace] = useState<IDiscoveryItemPlaces>(
     _places[0],
   );
@@ -72,9 +74,9 @@ export const DiscoveryDetailViewer = () => {
           <Text style={tw`mt-4 text-[1.25rem] font-semibold text-gray-800`}>
             {recommendation.articleTitle}
           </Text>
-          <Text style={tw`mt-5 text-[0.875rem] font-semibold text-gray-800`}>
+          {/* <Text style={tw`mt-5 text-[0.875rem] font-semibold text-gray-800`}>
             {recommendation.articleDescription}
-          </Text>
+          </Text> */}
           <View style={tw`flex gap-x-[0.375rem] pb-[1.25rem] pt-[1.5rem]`}>
             <ScrollView
               horizontal
