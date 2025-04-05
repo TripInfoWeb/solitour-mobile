@@ -9,6 +9,7 @@ import {
   Text,
   View,
 } from 'react-native';
+import {DiscoveryRecommendationItem} from '@src/entities/discovery';
 
 // NOTE: 나중에 데이터 타입하고 아래 임시 데이터 삭제 필요
 interface IDiscoveryItemPlaces {
@@ -46,7 +47,7 @@ const _places: IDiscoveryItemPlaces[] = [
 ];
 
 interface DiscoveryDetailViewerProps {
-  recommendation: IDiscoveryRecommendationItem;
+  recommendation: DiscoveryRecommendationItem;
 }
 
 export const DiscoveryDetailViewer = ({

@@ -1,4 +1,4 @@
-export {savePlan, updatePlan, deletePlan} from './api/plan';
+export {createPlan, savePlan, updatePlan, deletePlan} from './api/plan';
 export {getPlanList} from './api/planList';
 
 export type {Plan, SavedPlan} from './model/plan';

@@ -5,8 +5,8 @@ import LottieView from 'lottie-react-native';
 import React, {useEffect} from 'react';
 import {View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import {useSignIn} from '@src/entities/user/api/useSignIn';
-import {useUserInfo} from '@src/entities/user/api/useUserInfo';
+import {useSignIn} from '@src/entities/user/model/useSignIn';
+import {useUserInfo} from '@src/entities/user/model/useUserInfo';
 
 export const AuthLoadingScreen = ({
   route,

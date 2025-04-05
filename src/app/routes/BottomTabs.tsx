@@ -98,9 +98,9 @@ const WriteButton = () => {
 
   return (
     <Pressable
-      style={({pressed}) => {
-        return tw.style(pressed && 'bg-slate-100', 'mr-4 rounded-2xl p-2');
-      }}
+      style={({pressed}) =>
+        tw.style(pressed && 'bg-slate-100', 'mr-4 rounded-2xl p-2')
+      }
       onPress={() => navigation.navigate('DiaryCreate')}>
       <Image style={tw`h-5 w-5`} source={require('@assets/diary/pencil.png')} />
     </Pressable>

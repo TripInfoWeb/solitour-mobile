@@ -1,6 +1,43 @@
 import {BACKEND_URL} from '@env';
 import {getNewAccessToken} from '@src/shared/api';
 import EncryptedStorage from 'react-native-encrypted-storage';
+import {Plan} from '../model/plan';
+
+interface PlanCreateRequest {
+  days: number;
+  contentCategory: 'DRAMA' | 'ARTIST' | 'MOVIE' | 'ENTERTAINMENT';
+  contentTitles: string[];
+  preferredTrips: (
+    | 'CULTURAL_FACILITY'
+    | 'NOVELTY_EXPERIENCE'
+    | 'NATURAL_PLACE'
+    | 'HISTORICAL_PLACE'
+    | 'MARKET'
+  )[];
+}
+
+export async function createPlan(data: PlanCreateRequest) {
+  const accessToken = await EncryptedStorage.getItem('access_token');
+  const response = await fetch(`${BACKEND_URL}/api/travel/plan`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Cookie: `access_token=${accessToken}`,
+    },
+    body: JSON.stringify(data),
+  });
+
+  if (response.status === 401) {
+    await getNewAccessToken();
+    throw new Error('Access token has expired.');
+  }
+
+  if (!response.ok) {
+    throw new Error('Failed to create data.');
+  }
+
+  return response.json() as Promise<{plans: Plan[]}>;
+}
 
 export async function savePlan(planId: number) {
   const accessToken = await EncryptedStorage.getItem('access_token');

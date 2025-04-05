@@ -1,2 +1,2 @@
-export {useSignIn} from './api/useSignIn';
-export {useUserInfo} from './api/useUserInfo';
+export {useSignIn} from './model/useSignIn';
+export {useUserInfo} from './model/useUserInfo';
