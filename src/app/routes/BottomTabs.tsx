@@ -5,11 +5,11 @@ import {useNavigation} from '@react-navigation/native';
 import {tw} from '@src/shared/lib/utils/tailwind';
 import {NavigationList, NavigationProps} from '@src/shared/model/navigation';
 import {COLOR} from '@src/shared/config/color';
-import {HomeScreen} from '@src/pages/HomeScreen';
-import {PlanScreen} from '@src/pages/plan/PlanScreen';
-import {DiaryScreen} from '@src/pages/diary/DiaryScreen';
+import {HomeScreen} from '@src/pages/home/ui/HomeScreen';
+import {PlanScreen} from '@src/pages/plan/ui/PlanScreen';
+import {DiaryScreen} from '@src/pages/diary/ui/DiaryScreen';
 import {MypageScreen} from '@src/pages/mypage/ui/MypageScreen';
-import {DiscoveryScreen} from '@src/pages/discovery/DiscoveryScreen';
+import {DiscoveryScreen} from '@src/pages/discovery/ui/DiscoveryScreen';
 
 interface IconProps {
   focused: boolean;

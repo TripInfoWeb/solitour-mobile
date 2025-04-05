@@ -98,7 +98,7 @@ export const TopDiscoveryKeywordList = () => {
                   <Text style={tw`text-[1.25rem] font-bold`}>{index + 1}</Text>
                 </View>
                 <View style={tw`mr-[0.375rem] flex justify-center`}>
-                  <Text style={tw`text-md font-semibold`}>{i.title}</Text>
+                  <Text style={tw`text-lg font-semibold`}>{i.title}</Text>
                 </View>
                 <View style={tw`flex flex-row items-center gap-x-1`}>
                   {i.tags.map((j, tagIndex) => (

@@ -23,7 +23,7 @@ export const useUserInfo = (enabled?: boolean) => {
         await EncryptedStorage.clear();
       }
 
-      return await response.json();
+      return response.json();
     },
     staleTime: Infinity,
     gcTime: 0,

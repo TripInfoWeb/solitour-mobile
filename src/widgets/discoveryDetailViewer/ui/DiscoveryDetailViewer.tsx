@@ -61,7 +61,7 @@ export const DiscoveryDetailViewer = ({
     <View style={tw`flex-1`}>
       <Image
         source={{uri: recommendation.imageUrl}}
-        style={tw`absolute z-[-1] aspect-[4/3] w-full`}
+        style={tw.style('absolute w-full', {aspectRatio: 4 / 3, zIndex: -1})}
         resizeMode="stretch"
       />
       <ScrollView>

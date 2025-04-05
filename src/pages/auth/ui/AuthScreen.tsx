@@ -1,8 +1,8 @@
 import {useNavigation} from '@react-navigation/native';
-import {COLOR} from '@src/shared/config/color';
-import {useUserInfo} from '@src/entities/user/api/useUserInfo';
-import {tw} from '@src/shared/lib/utils/tailwind';
-import {NavigationProps} from '@src/shared/model/navigation';
+import {COLOR} from '@src/shared/config';
+import {useUserInfo} from '@src/entities/user';
+import {tw} from '@src/shared/lib/utils';
+import {NavigationProps} from '@src/shared/model';
 import {useQueryClient} from '@tanstack/react-query';
 import LottieView from 'lottie-react-native';
 import React, {useEffect} from 'react';

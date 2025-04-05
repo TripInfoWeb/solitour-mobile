@@ -1,24 +1,23 @@
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {ErrorBoundaryScreen} from '@src/pages/ErrorBoundaryScreen';
 import {NavigationList} from '@src/shared/model';
 import React from 'react';
 import {ErrorBoundary} from 'react-error-boundary';
 import {BottomTabs} from './BottomTabs';
-import {AuthScreen} from '@src/pages/auth/AuthScreen';
-import {AuthSignInScreen} from '@src/pages/auth/AuthSignInScreen';
-import {AuthLoadingScreen} from '@src/pages/auth/AuthLoadingScreen';
-import {SurveyDayScreen} from '@src/pages/survey/SurveyDayScreen';
-import {SurveyThemeScreen} from '@src/pages/survey/SurveyThemeScreen';
-import {SurveyContentScreen} from '@src/pages/survey/SurveyContentScreen';
-import {SurveyActivityScreen} from '@src/pages/survey/SurveyActivityScreen';
-import {SurveyLoadingScreen} from '@src/pages/survey/SurveyLoadingScreen';
-import {SurveyResultListScreen} from '@src/pages/survey/SurveyResultListScreen';
-import {SurveyResultDetailScreen} from '@src/pages/survey/SurveyResultDetailScreen';
-import {DiaryCreateScreen} from '@src/pages/diary/DiaryCreateScreen';
-import {DiaryUpdateScreen} from '@src/pages/diary/DiaryUpdateScreen';
-import {PlanDetailScreen} from '@src/pages/plan/PlanDetailScreen';
-import {DiscoveryDetailScreen} from '@src/pages/discovery/DiscoveryDetailScreen';
+import {ErrorBoundaryScreen} from '@src/pages/error';
+import {AuthLoadingScreen, AuthScreen, AuthSignInScreen} from '@src/pages/auth';
+import {
+  SurveyActivityScreen,
+  SurveyContentScreen,
+  SurveyDayScreen,
+  SurveyLoadingScreen,
+  SurveyResultDetailScreen,
+  SurveyResultListScreen,
+  SurveyThemeScreen,
+} from '@src/pages/survey';
+import {DiaryCreateScreen, DiaryUpdateScreen} from '@src/pages/diary';
+import {PlanDetailScreen} from '@src/pages/plan';
+import {DiscoveryDetailScreen} from '@src/pages/discovery';
 
 const Stack = createNativeStackNavigator<NavigationList>();
 
@@ -107,10 +106,7 @@ export const Navigation = () => {
         <Stack.Screen
           name="DiscoveryDetail"
           component={DiscoveryDetailScreen}
-          options={({route}) => ({
-            title: route.params.name,
-            headerShown: false,
-          })}
+          options={({route}) => ({title: route.params.name})}
         />
       </Stack.Navigator>
     </NavigationContainer>

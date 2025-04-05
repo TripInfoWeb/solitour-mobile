@@ -3,6 +3,7 @@ import EncryptedStorage from 'react-native-encrypted-storage';
 
 export const getNewAccessToken = async () => {
   const refreshToken = await EncryptedStorage.getItem('refresh_token');
+
   const response = await fetch(`${BACKEND_URL}/api/auth/oauth2/token/refresh`, {
     method: 'POST',
     headers: {Cookie: `refresh_token=${refreshToken}`},
