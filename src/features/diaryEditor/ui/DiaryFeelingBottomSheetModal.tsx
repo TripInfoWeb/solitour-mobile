@@ -13,11 +13,11 @@ import {useFormContext} from 'react-hook-form';
 import {Diary} from '@src/entities/diary/model/diary';
 
 const FEELINGLIST = [
-  {source: require('@src/assets/diary/feeling1.png'), label: '최고'},
-  {source: require('@src/assets/diary/feeling2.png'), label: '좋아'},
-  {source: require('@src/assets/diary/feeling3.png'), label: '무난'},
-  {source: require('@src/assets/diary/feeling4.png'), label: '슬퍼'},
-  {source: require('@src/assets/diary/feeling5.png'), label: '화나'},
+  {source: require('@assets/diary/feeling1.png'), label: '최고'},
+  {source: require('@assets/diary/feeling2.png'), label: '좋아'},
+  {source: require('@assets/diary/feeling3.png'), label: '무난'},
+  {source: require('@assets/diary/feeling4.png'), label: '슬퍼'},
+  {source: require('@assets/diary/feeling5.png'), label: '화나'},
 ] as const;
 
 interface DiaryFeelingBottomSheetModalProps {
@@ -64,7 +64,7 @@ export const DiaryFeelingBottomSheetModal = forwardRef<
             onPress={() => closeBottomSheetModal()}>
             <Image
               style={tw`h-4 w-4`}
-              source={require('@src/assets/common/close.png')}
+              source={require('@assets/common/close.png')}
             />
           </Pressable>
         </View>

@@ -16,7 +16,7 @@ export const SurveyContentSearchbar = () => {
         <View style={tw`relative`}>
           <Image
             style={tw`absolute left-4 top-[1.125rem] h-4 w-4`}
-            source={require('@src/assets/common/search-icon.png')}
+            source={require('@assets/common/search-icon.png')}
           />
           <TextInput
             style={tw.style(

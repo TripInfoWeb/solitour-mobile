@@ -30,7 +30,7 @@ export const PlanItemMenu = ({planId, planTitle}: PlanItemMenuProps) => {
           onPress={() => setMenuVisible(value => !value)}>
           <Image
             style={tw`h-6 w-6`}
-            source={require('@src/assets/common/menu-icon.png')}
+            source={require('@assets/common/menu-icon.png')}
           />
         </Pressable>
       )}

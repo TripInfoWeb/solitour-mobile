@@ -40,13 +40,13 @@ export const AuthScreen = () => {
       </Text>
       <LottieView
         style={tw`-mb-44 h-80 w-80`}
-        source={require('@src/assets/lottie/solitour-auth-intro-image.json')}
+        source={require('@assets/lottie/solitour-auth-intro-image.json')}
         autoPlay={true}
         loop={true}
       />
       <Image
         style={tw`h-[7.375rem] w-[11.375rem]`}
-        source={require('@src/assets/auth/solitour-auth-intro-image.png')}
+        source={require('@assets/auth/solitour-auth-intro-image.png')}
       />
       <Pressable
         style={({pressed}) =>
@@ -61,7 +61,7 @@ export const AuthScreen = () => {
         }}>
         <Image
           style={tw`absolute left-2 h-10 w-10`}
-          source={require('@src/assets/auth/kakao-logo.png')}
+          source={require('@assets/auth/kakao-logo.png')}
         />
         <Text style={tw`w-full text-center text-sm text-custom-01`}>
           카카오로 로그인

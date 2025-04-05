@@ -50,7 +50,7 @@ export const DiaryCardList = ({
             style={tw`flex flex-col items-center gap-[1.125rem] pt-[8.375rem]`}>
             <Image
               style={tw`ml-[0.3125rem] h-16 w-16`}
-              source={require('@src/assets/diary/diary-empty.png')}
+              source={require('@assets/diary/diary-empty.png')}
             />
             <Text>아직 저장된 일기가 없어요</Text>
           </View>

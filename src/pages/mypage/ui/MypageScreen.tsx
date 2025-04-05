@@ -33,7 +33,7 @@ export const MypageScreen = () => {
         <MypageItem title="로그아웃" onPress={() => handleSignOut()}>
           <Image
             style={tw`h-6 w-6`}
-            source={require('@src/assets/common/chevronRight.png')}
+            source={require('@assets/common/chevronRight.png')}
           />
         </MypageItem>
         <View style={tw`h-16 flex-row items-center`}>

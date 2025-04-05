@@ -17,7 +17,7 @@ export const PlanItemList = () => {
         <View style={tw`flex flex-col items-center gap-[1.125rem]`}>
           <Image
             style={tw`h-16 w-16`}
-            source={require('@src/assets/tour/tour-empty.png')}
+            source={require('@assets/tour/tour-empty.png')}
           />
           <Text>아직 저장된 여행이 없어요</Text>
         </View>

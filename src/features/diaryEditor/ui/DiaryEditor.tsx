@@ -90,7 +90,7 @@ export const DiaryEditor = ({editor}: DiaryEditorProps) => {
               onPress: () => () => handleImageUpload(),
               active: () => false,
               disabled: () => false,
-              image: () => require('@src/assets/common/image-icon-small.png'),
+              image: () => require('@assets/common/image-icon-small.png'),
             },
             ...DEFAULT_TOOLBAR_ITEMS.filter((_, index) =>
               [0, 1, 6, 7, 13, 14].includes(index),

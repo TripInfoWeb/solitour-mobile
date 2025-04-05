@@ -20,16 +20,13 @@ const TourIcon = ({focused}: IconProps) => {
     return (
       <Image
         style={tw`h-6 w-6`}
-        source={require('@src/assets/common/tour-active.png')}
+        source={require('@assets/common/tour-active.png')}
       />
     );
   }
 
   return (
-    <Image
-      style={tw`h-6 w-6`}
-      source={require('@src/assets/common/tour.png')}
-    />
+    <Image style={tw`h-6 w-6`} source={require('@assets/common/tour.png')} />
   );
 };
 
@@ -38,7 +35,7 @@ const DiscoveryIcon = ({focused}: IconProps) => {
     return (
       <Image
         style={tw`h-6 w-6`}
-        source={require('@src/assets/common/discovery-active.png')}
+        source={require('@assets/common/discovery-active.png')}
       />
     );
   }
@@ -46,7 +43,7 @@ const DiscoveryIcon = ({focused}: IconProps) => {
   return (
     <Image
       style={tw`h-6 w-6`}
-      source={require('@src/assets/common/discovery.png')}
+      source={require('@assets/common/discovery.png')}
     />
   );
 };
@@ -56,16 +53,13 @@ const HomeIcon = ({focused}: IconProps) => {
     return (
       <Image
         style={tw`h-6 w-6`}
-        source={require('@src/assets/common/home-active.png')}
+        source={require('@assets/common/home-active.png')}
       />
     );
   }
 
   return (
-    <Image
-      style={tw`h-6 w-6`}
-      source={require('@src/assets/common/home.png')}
-    />
+    <Image style={tw`h-6 w-6`} source={require('@assets/common/home.png')} />
   );
 };
 
@@ -74,16 +68,13 @@ const DiaryIcon = ({focused}: IconProps) => {
     return (
       <Image
         style={tw`h-6 w-6`}
-        source={require('@src/assets/common/diary-active.png')}
+        source={require('@assets/common/diary-active.png')}
       />
     );
   }
 
   return (
-    <Image
-      style={tw`h-6 w-6`}
-      source={require('@src/assets/common/diary.png')}
-    />
+    <Image style={tw`h-6 w-6`} source={require('@assets/common/diary.png')} />
   );
 };
 
@@ -92,16 +83,13 @@ const ProfileIcon = ({focused}: IconProps) => {
     return (
       <Image
         style={tw`h-6 w-6`}
-        source={require('@src/assets/common/profile-active.png')}
+        source={require('@assets/common/profile-active.png')}
       />
     );
   }
 
   return (
-    <Image
-      style={tw`h-6 w-6`}
-      source={require('@src/assets/common/profile.png')}
-    />
+    <Image style={tw`h-6 w-6`} source={require('@assets/common/profile.png')} />
   );
 };
 
@@ -114,10 +102,7 @@ const WriteButton = () => {
         return tw.style(pressed && 'bg-slate-100', 'mr-4 rounded-2xl p-2');
       }}
       onPress={() => navigation.navigate('DiaryCreate')}>
-      <Image
-        style={tw`h-5 w-5`}
-        source={require('@src/assets/diary/pencil.png')}
-      />
+      <Image style={tw`h-5 w-5`} source={require('@assets/diary/pencil.png')} />
     </Pressable>
   );
 };

@@ -27,7 +27,7 @@ export const DiaryEditorFeeling = () => {
         onPress={handlePresentModalPress}>
         <Image
           style={tw`h-4 w-4`}
-          source={require('@src/assets/diary/feeling.png')}
+          source={require('@assets/diary/feeling.png')}
         />
         <Text
           style={tw.style(

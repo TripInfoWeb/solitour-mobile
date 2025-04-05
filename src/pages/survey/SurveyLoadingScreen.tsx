@@ -63,7 +63,7 @@ export const SurveyLoadingScreen = () => {
       </Text>
       <LottieView
         style={tw`h-48 w-48`}
-        source={require('@src/assets/lottie/progress.json')}
+        source={require('@assets/lottie/progress.json')}
         autoPlay={true}
         loop={true}
       />

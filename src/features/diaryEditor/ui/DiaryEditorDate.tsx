@@ -27,10 +27,7 @@ export const DiaryEditorDate = () => {
         }
         android_ripple={{color: COLOR.GRAY_RIPPLE}}
         onPress={handlePresentModalPress}>
-        <Image
-          style={tw`h-4 w-4`}
-          source={require('@src/assets/diary/date.png')}
-        />
+        <Image style={tw`h-4 w-4`} source={require('@assets/diary/date.png')} />
         <Text
           style={tw.style(
             formContext.watch('endDate')

@@ -11,7 +11,7 @@ export const ErrorBoundaryScreen = () => {
     <View style={tw`flex h-full flex-col items-center justify-center bg-white`}>
       <Image
         style={tw`h-40 w-52`}
-        source={require('@src/assets/common/error-sign.png')}
+        source={require('@assets/common/error-sign.png')}
       />
       <Text style={tw`pb-1 pt-4 text-lg font-bold text-custom-01`}>
         시스템에 오류가 발생하였습니다.

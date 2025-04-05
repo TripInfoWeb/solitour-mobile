@@ -29,7 +29,7 @@ export const NicknameEditor = ({nickname}: NicknameEditorProps) => {
         <Text style={tw`text-2xl font-semibold`}>{`${nickname}님`}</Text>
         <Image
           style={tw`h-5 w-5`}
-          source={require('@src/assets/common/chevronRight.png')}
+          source={require('@assets/common/chevronRight.png')}
         />
       </Pressable>
     </View>

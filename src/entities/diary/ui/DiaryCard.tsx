@@ -48,7 +48,7 @@ export const DiaryCard = ({diary, children}: DiaryCardProps) => {
             <View style={tw`flex flex-row items-center gap-2`}>
               <Image
                 style={tw`h-[1.1875rem] w-4`}
-                source={require('@src/assets/diary/location-active.png')}
+                source={require('@assets/diary/location-active.png')}
               />
               <Text style={tw`text-gray-500`}>
                 {diary.diaryDayContentResponses.diaryDayContentDetail[0].place}

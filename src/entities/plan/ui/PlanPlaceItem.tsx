@@ -56,7 +56,7 @@ export const PlanPlaceItem = ({
         <View style={tw`flex flex-row items-center gap-3.5`}>
           <Image
             style={tw`ml-px h-3.5 w-4`}
-            source={require('@src/assets/common/car-icon.png')}
+            source={require('@assets/common/car-icon.png')}
           />
           <Text style={tw`py-4 text-sm font-semibold text-custom-03`}>
             계산 중...
@@ -66,7 +66,7 @@ export const PlanPlaceItem = ({
         <View style={tw`flex flex-row items-center gap-3.5`}>
           <Image
             style={tw`ml-px h-3.5 w-4`}
-            source={require('@src/assets/common/car-icon.png')}
+            source={require('@assets/common/car-icon.png')}
           />
           <Text style={tw`py-4 text-sm font-semibold text-custom-03`}>
             {convertDistance(distance)}

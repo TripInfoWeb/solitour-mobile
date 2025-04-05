@@ -27,7 +27,7 @@ export const DiaryEditorLocation = () => {
         onPress={handlePresentModalPress}>
         <Image
           style={tw`h-[1.15625rem] w-4`}
-          source={require('@src/assets/diary/location.png')}
+          source={require('@assets/diary/location.png')}
         />
         <Text
           style={tw.style(

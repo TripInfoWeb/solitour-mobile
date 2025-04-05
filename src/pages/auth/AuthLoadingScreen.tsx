@@ -29,7 +29,7 @@ export const AuthLoadingScreen = ({
     <View style={tw`flex h-full flex-col items-center justify-center`}>
       <LottieView
         style={tw`h-60 w-60`}
-        source={require('@src/assets/lottie/loading-airplane.json')}
+        source={require('@assets/lottie/loading-airplane.json')}
         autoPlay={true}
         loop={true}
       />

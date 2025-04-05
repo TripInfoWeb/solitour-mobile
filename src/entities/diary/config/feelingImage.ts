@@ -3,9 +3,9 @@ type FEELING_IMAGE_TYPE = {
 };
 
 export const FEELING_IMAGE: FEELING_IMAGE_TYPE = {
-  EXCITED: require('@src/assets/diary/feeling1.png'),
-  NICE: require('@src/assets/diary/feeling2.png'),
-  SOSO: require('@src/assets/diary/feeling3.png'),
-  SAD: require('@src/assets/diary/feeling4.png'),
-  ANGRY: require('@src/assets/diary/feeling5.png'),
+  EXCITED: require('@assets/diary/feeling1.png'),
+  NICE: require('@assets/diary/feeling2.png'),
+  SOSO: require('@assets/diary/feeling3.png'),
+  SAD: require('@assets/diary/feeling4.png'),
+  ANGRY: require('@assets/diary/feeling5.png'),
 } as const;

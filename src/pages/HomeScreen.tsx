@@ -27,11 +27,11 @@ export const HomeScreen = () => {
       <View style={tw`relative flex aspect-square flex-col items-center`}>
         <Image
           style={tw`h-full w-full`}
-          source={require('@src/assets/home/main.png')}
+          source={require('@assets/home/main.png')}
         />
         <Image
           style={tw`absolute top-0 h-1/2 w-full`}
-          source={require('@src/assets/home/filter.png')}
+          source={require('@assets/home/filter.png')}
         />
         <Text style={tw`absolute top-[23%] text-center text-2xl font-bold`}>
           {`${data?.nickname}님,\n오늘은 어디로 떠날까요?`}
@@ -99,7 +99,7 @@ export const HomeScreen = () => {
           </ScrollView>
           <Image
             style={tw`h-64 w-full rounded-xl`}
-            source={require('@src/assets/home/main.png')}
+            source={require('@assets/home/main.png')}
           />
         </View>
       </View>

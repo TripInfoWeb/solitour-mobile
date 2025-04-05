@@ -59,7 +59,7 @@ export const DiaryDateBottomSheetModal = forwardRef<
             onPress={() => closeBottomSheetModal()}>
             <Image
               style={tw`h-4 w-4`}
-              source={require('@src/assets/common/close.png')}
+              source={require('@assets/common/close.png')}
             />
           </Pressable>
         </View>
@@ -90,13 +90,13 @@ export const DiaryDateBottomSheetModal = forwardRef<
             previousComponent={
               <Image
                 style={tw`h-6 w-6`}
-                source={require('@src/assets/common/chevronLeft.png')}
+                source={require('@assets/common/chevronLeft.png')}
               />
             }
             nextComponent={
               <Image
                 style={tw`h-6 w-6`}
-                source={require('@src/assets/common/chevronRight.png')}
+                source={require('@assets/common/chevronRight.png')}
               />
             }
             onDateChange={(date, type) => {

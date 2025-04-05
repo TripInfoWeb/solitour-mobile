@@ -15,7 +15,7 @@ export const NetInfoProvider = ({children}: NetInfoProviderProps) => {
       <View style={tw`flex h-full flex-col items-center justify-center`}>
         <Image
           style={tw`h-40 w-40`}
-          source={require('@src/assets/common/disconnection.png')}
+          source={require('@assets/common/disconnection.png')}
         />
         <Text style={tw`pb-1 pt-4 text-lg font-bold text-custom-01`}>
           인터넷에 연결되어 있지 않습니다.

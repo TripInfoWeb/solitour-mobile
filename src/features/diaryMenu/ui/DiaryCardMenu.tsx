@@ -35,7 +35,7 @@ export const DiaryCardMenu = ({diary}: DiaryCardMenuProps) => {
           }}>
           <Image
             style={tw`h-6 w-6`}
-            source={require('@src/assets/common/menu-icon.png')}
+            source={require('@assets/common/menu-icon.png')}
           />
         </Pressable>
       )}

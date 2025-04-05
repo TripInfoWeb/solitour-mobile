@@ -53,7 +53,7 @@ export const PlanItemTitleModal = ({
               onPress={() => closeModal()}>
               <Image
                 style={tw`h-4 w-4`}
-                source={require('@src/assets/common/close.png')}
+                source={require('@assets/common/close.png')}
               />
             </Pressable>
           </View>

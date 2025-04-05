@@ -25,7 +25,7 @@ export const DiaryPageIndicator = ({
           onPress={() => goPreviousPage()}>
           <Image
             style={tw`h-6 w-6`}
-            source={require('@src/assets/common/chevronLeft.png')}
+            source={require('@assets/common/chevronLeft.png')}
           />
         </Pressable>
       ) : (
@@ -40,7 +40,7 @@ export const DiaryPageIndicator = ({
           onPress={() => goNextPage()}>
           <Image
             style={tw`h-6 w-6`}
-            source={require('@src/assets/common/chevronRight.png')}
+            source={require('@assets/common/chevronRight.png')}
           />
         </Pressable>
       ) : (
