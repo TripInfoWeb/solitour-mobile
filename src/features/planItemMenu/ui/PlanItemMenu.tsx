@@ -24,7 +24,7 @@ export const PlanItemMenu = ({planId, planTitle}: PlanItemMenuProps) => {
       <PlanItemTitleModal
         planId={planId}
         title={planTitle}
-        modalVisible={isOpen}
+        isOpen={isOpen}
         closeModal={closeModal}
       />
       {isPending ? (
