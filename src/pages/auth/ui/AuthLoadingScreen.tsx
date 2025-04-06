@@ -1,12 +1,11 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {tw} from '@src/shared/lib/utils';
-import {NavigationList, NavigationProps} from '@src/shared/model/navigation';
+import {NavigationList, NavigationProps} from '@src/shared/model';
 import LottieView from 'lottie-react-native';
 import React, {useEffect} from 'react';
 import {View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import {useSignIn} from '@src/entities/user/model/useSignIn';
-import {useUserInfo} from '@src/entities/user/model/useUserInfo';
+import {useSignIn, useUserInfo} from '@src/entities/user';
 
 export const AuthLoadingScreen = ({
   route,

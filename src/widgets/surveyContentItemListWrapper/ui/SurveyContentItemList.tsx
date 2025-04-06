@@ -1,8 +1,7 @@
 import {tw} from '@src/shared/lib/utils';
 import React from 'react';
 import {FlatList, Text} from 'react-native';
-import {SurveyContentItem} from './SurveyContentItem';
-import {useSurveyStore} from '@src/entities/survey';
+import {SurveyContentItem, useSurveyStore} from '@src/entities/survey';
 import {SurveyContentSearchbar} from './SurveyContentSearchbar';
 import {FormProvider} from 'react-hook-form';
 import {useSurveyContentItemList} from '../model/useSurveyContentItemList';

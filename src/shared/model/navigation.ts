@@ -1,13 +1,14 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {DiaryDetail} from '../../entities/diary/model/diary';
-import {Plan, SavedPlan} from '../../entities/plan/model/plan';
+import {DiaryDetail} from '@src/entities/diary';
+import {DiscoveryRecommendationItem} from '@src/entities/discovery';
+import {Plan, SavedPlan} from '@src/entities/plan';
 
 export type NavigationList = {
   BottomTabs: undefined;
   Plan: undefined;
   PlanDetail: {savedPlan: SavedPlan};
   Discovery: undefined;
-  DiscoveryDetail: {name: string; recommendation: IDiscoveryRecommendationItem};
+  DiscoveryDetail: {name: string; recommendation: DiscoveryRecommendationItem};
   Home: undefined;
   Diary: undefined;
   DiaryCreate: undefined;

@@ -1,6 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import {tw} from '@src/shared/lib/utils';
-import {NavigationProps} from '@src/shared/model/navigation';
+import {NavigationProps} from '@src/shared/model';
 import React from 'react';
 import {Image, Pressable, Text, View} from 'react-native';
 

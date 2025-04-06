@@ -1,11 +1,12 @@
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {tw} from '@src/shared/lib/utils';
-import {NavigationProps} from '@src/shared/model/navigation';
+import {NavigationProps} from '@src/shared/model';
 import {useState} from 'react';
 import {Image, Pressable, ScrollView, Text, View} from 'react-native';
+import {DiscoveryRecommendationItem} from '@src/entities/discovery';
 
-const _data: IDiscoveryRecommendationItem[] = [
+const _data: DiscoveryRecommendationItem[] = [
   {
     id: 1,
     title: '눈물의 여왕',
@@ -31,7 +32,7 @@ const _data: IDiscoveryRecommendationItem[] = [
 
 export const RecommendationDiscovery = () => {
   const [selectedRecommendation, setSelectedRecommendation] =
-    useState<IDiscoveryRecommendationItem>(_data[0]);
+    useState<DiscoveryRecommendationItem>(_data[0]);
   const navigation = useNavigation<NavigationProps>();
 
   return (
@@ -44,23 +45,23 @@ export const RecommendationDiscovery = () => {
           horizontal
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={tw`flex-row gap-x-[0.375rem]`}>
-          {_data.map((i: IDiscoveryRecommendationItem, index) => (
+          {_data.map((item, index) => (
             <Pressable
               key={index}
-              onPress={() => setSelectedRecommendation(i)}
+              onPress={() => setSelectedRecommendation(item)}
               style={tw.style(
-                selectedRecommendation.title === i.title
+                selectedRecommendation.title === item.title
                   ? 'border border-primary-green bg-primary-green' // active일 때 테두리 색상만 변경
                   : 'border border-outline-01 bg-white', // 기본 테두리
                 'h-[2.3125rem] rounded-[1.125rem] px-[1.125rem] py-[0.3125rem]',
               )}>
               <Text
                 style={tw`${
-                  selectedRecommendation.title === i.title
+                  selectedRecommendation.title === item.title
                     ? 'text-white'
                     : 'text-custom-01'
                 }`}>
-                #{i.title}
+                #{item.title}
               </Text>
             </Pressable>
           ))}

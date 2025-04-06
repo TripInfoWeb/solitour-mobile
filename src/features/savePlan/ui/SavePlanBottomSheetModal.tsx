@@ -1,16 +1,12 @@
 import React from 'react';
-import {
-  BottomSheetBackdrop,
-  BottomSheetModal,
-  BottomSheetView,
-} from '@gorhom/bottom-sheet';
-import {useBackHandler} from '@src/shared/lib/hooks';
-import {forwardRef, useCallback} from 'react';
+import {BottomSheetModal, BottomSheetView} from '@gorhom/bottom-sheet';
+import {forwardRef} from 'react';
 import {tw} from '@src/shared/lib/utils';
 import {Pressable, Text} from 'react-native';
 import {COLOR} from '@src/shared/config';
 import {useNavigation} from '@react-navigation/native';
 import {NavigationProps} from '@src/shared/model';
+import {BottomSheetModalTemplate} from '@src/shared/ui/bottomSheetModal';
 
 interface SavePlanBottomSheetModalProps {
   closeBottomSheetModal: () => void;
@@ -21,30 +17,12 @@ export const SavePlanBottomSheetModal = forwardRef<
   SavePlanBottomSheetModalProps
 >(({closeBottomSheetModal}, bottomSheetModalRef) => {
   const navigation = useNavigation<NavigationProps>();
-  const {addBackPressEventListener, removeBackPressEventListener} =
-    useBackHandler(closeBottomSheetModal);
-  const renderBackdrop = useCallback(
-    (props: any) => {
-      addBackPressEventListener();
-      return (
-        <BottomSheetBackdrop
-          {...props}
-          pressBehavior="none"
-          appearsOnIndex={0}
-          disappearsOnIndex={-1}
-        />
-      );
-    },
-    [addBackPressEventListener],
-  );
 
   return (
-    <BottomSheetModal
-      style={tw`rounded-2xl`}
+    <BottomSheetModalTemplate
       ref={bottomSheetModalRef}
       snapPoints={[260]}
-      backdropComponent={renderBackdrop}
-      onDismiss={removeBackPressEventListener}>
+      closeBottomSheetModal={closeBottomSheetModal}>
       <BottomSheetView style={tw`flex h-60 flex-col items-center p-4`}>
         <Text style={tw`text-center text-2xl font-bold text-custom-01`}>
           저장 완료!
@@ -84,6 +62,6 @@ export const SavePlanBottomSheetModal = forwardRef<
           <Text style={tw`text-lg font-semibold text-white`}>취소</Text>
         </Pressable>
       </BottomSheetView>
-    </BottomSheetModal>
+    </BottomSheetModalTemplate>
   );
 });

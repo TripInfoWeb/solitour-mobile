@@ -1,17 +1,13 @@
-import {
-  BottomSheetBackdrop,
-  BottomSheetModal,
-  BottomSheetView,
-} from '@gorhom/bottom-sheet';
-import React, {forwardRef, useCallback} from 'react';
+import {BottomSheetModal, BottomSheetView} from '@gorhom/bottom-sheet';
+import React, {forwardRef} from 'react';
 import {FlatList, Image, Pressable, Text, View} from 'react-native';
 import {tw} from '@src/shared/lib/utils';
 import {COLOR} from '@src/shared/config';
 import {PrimaryButton} from '@src/shared/ui/button';
-import {useBackHandler} from '@src/shared/lib/hooks';
 import {useFormContext} from 'react-hook-form';
 import {Diary} from '@src/entities/diary';
 import {FEELING_LIST} from '../config/feelingList';
+import {BottomSheetModalTemplate} from '@src/shared/ui/bottomSheetModal';
 
 interface DiaryFeelingBottomSheetModalProps {
   closeBottomSheetModal: () => void;
@@ -22,30 +18,12 @@ export const DiaryFeelingBottomSheetModal = forwardRef<
   DiaryFeelingBottomSheetModalProps
 >(({closeBottomSheetModal}, bottomSheetModalRef) => {
   const formContext = useFormContext<Diary>();
-  const {addBackPressEventListener, removeBackPressEventListener} =
-    useBackHandler(closeBottomSheetModal);
-  const renderBackdrop = useCallback(
-    (props: any) => {
-      addBackPressEventListener();
-      return (
-        <BottomSheetBackdrop
-          {...props}
-          pressBehavior="none"
-          appearsOnIndex={0}
-          disappearsOnIndex={-1}
-        />
-      );
-    },
-    [addBackPressEventListener],
-  );
 
   return (
-    <BottomSheetModal
-      style={tw`rounded-2xl`}
+    <BottomSheetModalTemplate
       ref={bottomSheetModalRef}
       snapPoints={[340]}
-      backdropComponent={renderBackdrop}
-      onDismiss={removeBackPressEventListener}>
+      closeBottomSheetModal={closeBottomSheetModal}>
       <BottomSheetView style={tw`h-80 px-5`}>
         <View style={tw`flex flex-row items-center justify-between`}>
           <Text style={tw`text-[1.375rem] font-semibold`}>기분</Text>
@@ -97,6 +75,6 @@ export const DiaryFeelingBottomSheetModal = forwardRef<
           onPress={() => closeBottomSheetModal()}
         />
       </BottomSheetView>
-    </BottomSheetModal>
+    </BottomSheetModalTemplate>
   );
 });

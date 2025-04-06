@@ -3,11 +3,6 @@ import {tw} from '@src/shared/lib/utils';
 import {useEffect, useRef} from 'react';
 import {Animated, Text, View} from 'react-native';
 
-interface IData {
-  title: string;
-  tags: string[];
-}
-
 const _data = [
   {
     title: '기생충',
@@ -80,7 +75,7 @@ export const TopDiscoveryKeywordList = () => {
         TOP 5 KEYWORD
       </Text>
       <View style={tw`flex w-full flex-col gap-y-1 pt-[0.875rem]`}>
-        {_data.map((i: IData, index) => {
+        {_data.map((item, index) => {
           const rotateX = rotateAnims[index].interpolate({
             inputRange: [0, 1],
             outputRange: ['90deg', '0deg'],
@@ -98,10 +93,10 @@ export const TopDiscoveryKeywordList = () => {
                   <Text style={tw`text-[1.25rem] font-bold`}>{index + 1}</Text>
                 </View>
                 <View style={tw`mr-[0.375rem] flex justify-center`}>
-                  <Text style={tw`text-lg font-semibold`}>{i.title}</Text>
+                  <Text style={tw`text-lg font-semibold`}>{item.title}</Text>
                 </View>
                 <View style={tw`flex flex-row items-center gap-x-1`}>
-                  {i.tags.map((j, tagIndex) => (
+                  {item.tags.map((j, tagIndex) => (
                     <Text key={tagIndex} style={tw`text-sm text-custom-03`}>
                       #{j}
                     </Text>

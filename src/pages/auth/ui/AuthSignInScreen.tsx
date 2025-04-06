@@ -5,7 +5,7 @@ import {ActivityIndicator, View} from 'react-native';
 import {tw} from '@src/shared/lib/utils';
 import {COLOR} from '@src/shared/config';
 import {useNavigation} from '@react-navigation/native';
-import {NavigationProps} from '@src/shared/model/navigation';
+import {NavigationProps} from '@src/shared/model';
 
 export const AuthSignInScreen = () => {
   const [loading, setLoading] = useState(true);

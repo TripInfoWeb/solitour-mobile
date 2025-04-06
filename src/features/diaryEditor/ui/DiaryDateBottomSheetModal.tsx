@@ -1,17 +1,13 @@
-import {
-  BottomSheetBackdrop,
-  BottomSheetModal,
-  BottomSheetView,
-} from '@gorhom/bottom-sheet';
-import React, {forwardRef, useCallback} from 'react';
+import {BottomSheetModal, BottomSheetView} from '@gorhom/bottom-sheet';
+import React, {forwardRef} from 'react';
 import {tw} from '@src/shared/lib/utils';
 import {Image, Pressable, Text, View} from 'react-native';
 import {COLOR} from '@src/shared/config';
 import CalendarPicker from 'react-native-calendar-picker';
 import {PrimaryButton} from '@src/shared/ui/button';
-import {useBackHandler} from '@src/shared/lib/hooks';
 import {useFormContext} from 'react-hook-form';
 import {Diary} from '@src/entities/diary';
+import {BottomSheetModalTemplate} from '@src/shared/ui/bottomSheetModal';
 
 const currentDate = new Date();
 
@@ -24,30 +20,12 @@ export const DiaryDateBottomSheetModal = forwardRef<
   DiaryDateBottomSheetModalProps
 >(({closeBottomSheetModal}, bottomSheetModalRef) => {
   const formContext = useFormContext<Diary>();
-  const {addBackPressEventListener, removeBackPressEventListener} =
-    useBackHandler(closeBottomSheetModal);
-  const renderBackdrop = useCallback(
-    (props: any) => {
-      addBackPressEventListener();
-      return (
-        <BottomSheetBackdrop
-          {...props}
-          pressBehavior="none"
-          appearsOnIndex={0}
-          disappearsOnIndex={-1}
-        />
-      );
-    },
-    [addBackPressEventListener],
-  );
 
   return (
-    <BottomSheetModal
-      style={tw`rounded-2xl`}
+    <BottomSheetModalTemplate
       ref={bottomSheetModalRef}
       snapPoints={[500]}
-      backdropComponent={renderBackdrop}
-      onDismiss={removeBackPressEventListener}>
+      closeBottomSheetModal={closeBottomSheetModal}>
       <BottomSheetView style={tw`h-[30rem] px-5`}>
         <View style={tw`flex flex-row items-center justify-between`}>
           <Text style={tw`text-[1.375rem] font-semibold`}>날짜</Text>
@@ -115,6 +93,6 @@ export const DiaryDateBottomSheetModal = forwardRef<
           onPress={() => closeBottomSheetModal()}
         />
       </BottomSheetView>
-    </BottomSheetModal>
+    </BottomSheetModalTemplate>
   );
 });

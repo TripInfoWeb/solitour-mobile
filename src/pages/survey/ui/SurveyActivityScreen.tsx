@@ -1,12 +1,11 @@
 import {useNavigation} from '@react-navigation/native';
 import {BottomNextButton, OptionButton} from '@src/shared/ui/button';
 import {ProgressBar} from '@src/shared/ui/progressBar';
-import {ACTIVITY} from '@src/entities/survey/config/activity';
 import {tw} from '@src/shared/lib/utils';
-import {useSurveyStore} from '@src/entities/survey/model/surveyStore';
-import {NavigationProps} from '@src/shared/model/navigation';
+import {NavigationProps} from '@src/shared/model';
 import React from 'react';
 import {FlatList, Text, View} from 'react-native';
+import {ACTIVITY, useSurveyStore} from '@src/entities/survey';
 
 export const SurveyActivityScreen = () => {
   const navigation = useNavigation<NavigationProps>();

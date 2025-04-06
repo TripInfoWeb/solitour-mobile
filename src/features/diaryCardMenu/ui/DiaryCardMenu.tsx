@@ -1,7 +1,7 @@
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {DiaryDetail} from '@src/entities/diary';
-import {NavigationProps} from '@src/shared/model/navigation';
+import {NavigationProps} from '@src/shared/model';
 import {useState} from 'react';
 import {useDiaryCardMenu} from '../model/useDiaryCardMenu';
 import {ActivityIndicator, Image, Pressable, Text, View} from 'react-native';
