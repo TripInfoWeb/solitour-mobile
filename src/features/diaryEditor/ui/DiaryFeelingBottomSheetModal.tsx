@@ -5,20 +5,13 @@ import {
 } from '@gorhom/bottom-sheet';
 import React, {forwardRef, useCallback} from 'react';
 import {FlatList, Image, Pressable, Text, View} from 'react-native';
-import {tw} from '@src/shared/lib/utils/tailwind';
-import {COLOR} from '@src/shared/config/color';
-import {PrimaryButton} from '@src/shared/ui/button/PrimaryButton';
-import {useBackHandler} from '@src/shared/lib/hooks/useBackHandler';
+import {tw} from '@src/shared/lib/utils';
+import {COLOR} from '@src/shared/config';
+import {PrimaryButton} from '@src/shared/ui/button';
+import {useBackHandler} from '@src/shared/lib/hooks';
 import {useFormContext} from 'react-hook-form';
-import {Diary} from '@src/entities/diary/model/diary';
-
-const FEELINGLIST = [
-  {source: require('@assets/diary/feeling1.png'), label: '최고'},
-  {source: require('@assets/diary/feeling2.png'), label: '좋아'},
-  {source: require('@assets/diary/feeling3.png'), label: '무난'},
-  {source: require('@assets/diary/feeling4.png'), label: '슬퍼'},
-  {source: require('@assets/diary/feeling5.png'), label: '화나'},
-] as const;
+import {Diary} from '@src/entities/diary';
+import {FEELING_LIST} from '../config/feelingList';
 
 interface DiaryFeelingBottomSheetModalProps {
   closeBottomSheetModal: () => void;
@@ -70,7 +63,7 @@ export const DiaryFeelingBottomSheetModal = forwardRef<
         </View>
         <FlatList
           style={tw`pt-3`}
-          data={FEELINGLIST}
+          data={FEELING_LIST}
           renderItem={({item}) => (
             <Pressable
               style={({pressed}) =>

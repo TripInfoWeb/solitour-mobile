@@ -3,7 +3,7 @@ import {FormProvider} from 'react-hook-form';
 import {useNavigation} from '@react-navigation/native';
 import {NavigationProps} from '@src/shared/model/navigation';
 import {useDiaryEditor} from '@src/features/diaryEditor/model/useDiaryEditor';
-import {DiaryDetail} from '@src/entities/diary/model/diary';
+import {DiaryDetail} from '@src/entities/diary';
 import {FEELING_STATUS} from '@src/entities/diary/config/feelingStatus';
 import {DiaryUpdateButton} from './DiaryUpdateButton';
 import {DiaryEditor} from '@src/features/diaryEditor';

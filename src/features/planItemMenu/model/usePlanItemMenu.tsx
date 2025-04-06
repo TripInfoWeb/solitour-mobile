@@ -7,7 +7,7 @@ export const usePlanItemMenu = (planId: number, planTitle: string) => {
   const mutation = useMutation({
     mutationFn: () => deletePlan(planId),
     onSuccess: () => {
-      queryClient.invalidateQueries({queryKey: ['planItemList']});
+      queryClient.invalidateQueries({queryKey: ['planList']});
     },
     retry: 1,
     throwOnError: true,

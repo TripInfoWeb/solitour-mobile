@@ -9,7 +9,7 @@ export const useSavePlan = (planId: number) => {
   const mutation = useMutation({
     mutationFn: () => savePlan(planId),
     onSuccess: async () => {
-      await queryClient.invalidateQueries({queryKey: ['planItemList']});
+      await queryClient.invalidateQueries({queryKey: ['planList']});
       bottomSheetModalRef.current?.present();
     },
     retry: 1,

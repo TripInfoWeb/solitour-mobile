@@ -1,5 +1,5 @@
-import {COLOR} from '@src/shared/config/color';
-import {tw} from '@src/shared/lib/utils/tailwind';
+import {COLOR} from '@src/shared/config';
+import {tw} from '@src/shared/lib/utils';
 import React from 'react';
 import {Controller} from 'react-hook-form';
 import {

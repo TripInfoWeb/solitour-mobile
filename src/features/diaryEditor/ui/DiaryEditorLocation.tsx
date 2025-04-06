@@ -1,15 +1,16 @@
 import React, {useCallback, useRef} from 'react';
 import {BottomSheetModal} from '@gorhom/bottom-sheet';
 import {Image, Pressable, Text, View} from 'react-native';
-import {tw} from '@src/shared/lib/utils/tailwind';
-import {COLOR} from '@src/shared/config/color';
+import {tw} from '@src/shared/lib/utils';
+import {COLOR} from '@src/shared/config';
 import {DiaryLocationBottomSheetModal} from './DiaryLocationBottomSheetModal';
-import {Diary} from '@src/entities/diary/model/diary';
+import {Diary} from '@src/entities/diary';
 import {useFormContext} from 'react-hook-form';
 
 export const DiaryEditorLocation = () => {
   const formContext = useFormContext<Diary>();
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
+
   const handlePresentModalPress = useCallback(() => {
     bottomSheetModalRef.current?.present();
   }, []);

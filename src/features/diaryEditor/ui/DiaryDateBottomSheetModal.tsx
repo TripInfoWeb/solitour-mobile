@@ -4,14 +4,14 @@ import {
   BottomSheetView,
 } from '@gorhom/bottom-sheet';
 import React, {forwardRef, useCallback} from 'react';
-import {tw} from '@src/shared/lib/utils/tailwind';
+import {tw} from '@src/shared/lib/utils';
 import {Image, Pressable, Text, View} from 'react-native';
-import {COLOR} from '@src/shared/config/color';
+import {COLOR} from '@src/shared/config';
 import CalendarPicker from 'react-native-calendar-picker';
-import {PrimaryButton} from '@src/shared/ui/button/PrimaryButton';
-import {useBackHandler} from '@src/shared/lib/hooks/useBackHandler';
+import {PrimaryButton} from '@src/shared/ui/button';
+import {useBackHandler} from '@src/shared/lib/hooks';
 import {useFormContext} from 'react-hook-form';
-import {Diary} from '@src/entities/diary/model/diary';
+import {Diary} from '@src/entities/diary';
 
 const currentDate = new Date();
 

@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import WebView from 'react-native-webview';
 import {KAKAO_REST_API_KEY, KAKAO_REDIRECT_URL} from '@env';
 import {ActivityIndicator, View} from 'react-native';
-import {tw} from '@src/shared/lib/utils/tailwind';
-import {COLOR} from '@src/shared/config/color';
+import {tw} from '@src/shared/lib/utils';
+import {COLOR} from '@src/shared/config';
 import {useNavigation} from '@react-navigation/native';
 import {NavigationProps} from '@src/shared/model/navigation';
 

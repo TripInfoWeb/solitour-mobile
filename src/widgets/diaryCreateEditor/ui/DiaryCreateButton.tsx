@@ -1,5 +1,5 @@
 import {Diary} from '@src/entities/diary';
-import {COLOR} from '@src/shared/config/color';
+import {COLOR} from '@src/shared/config';
 import React from 'react';
 import {UseFormReturn} from 'react-hook-form';
 import {ActivityIndicator, Pressable, Text} from 'react-native';

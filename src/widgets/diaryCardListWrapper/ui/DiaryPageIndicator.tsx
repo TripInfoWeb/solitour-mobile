@@ -1,4 +1,4 @@
-import {tw} from '@src/shared/lib/utils/tailwind';
+import {tw} from '@src/shared/lib/utils';
 import React from 'react';
 import {Image, Pressable, Text, View} from 'react-native';
 

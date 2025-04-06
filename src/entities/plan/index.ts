@@ -1,7 +1,7 @@
 export {createPlan, savePlan, updatePlan, deletePlan} from './api/plan';
-export {getPlanList} from './api/planList';
 
 export type {Plan, SavedPlan} from './model/plan';
+export {usePlanList} from './model/usePlanList';
 
 export {PlanDayList} from './ui/PlanDayList';
 export {PlanItem} from './ui/PlanItem';

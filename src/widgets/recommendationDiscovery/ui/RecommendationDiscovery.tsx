@@ -1,6 +1,6 @@
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
-import {tw} from '@src/shared/lib/utils/tailwind';
+import {tw} from '@src/shared/lib/utils';
 import {NavigationProps} from '@src/shared/model/navigation';
 import {useState} from 'react';
 import {Image, Pressable, ScrollView, Text, View} from 'react-native';

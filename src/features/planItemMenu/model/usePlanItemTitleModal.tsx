@@ -8,7 +8,7 @@ import {PlanItemTitleSchema} from './PlanItemTitleSchema';
 export const usePlanItemTitleUpdate = (
   planId: number,
   title: string,
-  modalVisible: boolean,
+  isOpen: boolean,
   closeModal: () => void,
 ) => {
   const methods = useForm<{title: string}>({
@@ -21,7 +21,7 @@ export const usePlanItemTitleUpdate = (
   const mutation = useMutation({
     mutationFn: () => updatePlan(planId, methods.getValues('title')),
     onSuccess: () => {
-      queryClient.invalidateQueries({queryKey: ['planItemList']});
+      queryClient.invalidateQueries({queryKey: ['planList']});
       closeModal();
     },
     retry: 1,
@@ -38,10 +38,10 @@ export const usePlanItemTitleUpdate = (
   };
 
   useEffect(() => {
-    if (modalVisible) {
+    if (isOpen) {
       methods.setValue('title', title);
     }
-  }, [methods, modalVisible, title]);
+  }, [methods, isOpen, title]);
 
   return {methods, isPending: mutation.isPending, handleSubmit};
 };

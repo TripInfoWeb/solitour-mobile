@@ -2,7 +2,7 @@ import {tw} from '@src/shared/lib/utils';
 import React from 'react';
 import {FlatList, Image, Text, useWindowDimensions, View} from 'react-native';
 import {DiaryPageIndicator} from './DiaryPageIndicator';
-import {DiaryCardMenu} from '@src/features/diaryMenu';
+import {DiaryCardMenu} from '@src/features/diaryCardMenu';
 import {DiaryCard, useDiaryList} from '@src/entities/diary';
 
 interface DiaryCardListProps {

@@ -1,5 +1,5 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {tw} from '@src/shared/lib/utils/tailwind';
+import {tw} from '@src/shared/lib/utils';
 import {NavigationList, NavigationProps} from '@src/shared/model/navigation';
 import LottieView from 'lottie-react-native';
 import React, {useEffect} from 'react';

@@ -5,30 +5,13 @@ import {
 } from '@gorhom/bottom-sheet';
 import React, {forwardRef, useCallback} from 'react';
 import {FlatList, Image, Pressable, Text, View} from 'react-native';
-import {tw} from '@src/shared/lib/utils/tailwind';
-import {COLOR} from '@src/shared/config/color';
-import {PrimaryButton} from '@src/shared/ui/button/PrimaryButton';
-import {useBackHandler} from '@src/shared/lib/hooks/useBackHandler';
+import {tw} from '@src/shared/lib/utils';
+import {COLOR} from '@src/shared/config';
+import {PrimaryButton} from '@src/shared/ui/button';
+import {useBackHandler} from '@src/shared/lib/hooks';
 import {useFormContext} from 'react-hook-form';
-import {Diary} from '@src/entities/diary/model/diary';
-
-const LOCATIONLIST = [
-  '서울',
-  '경기',
-  '제주',
-  '인천',
-  '부산',
-  '강원',
-  '울산',
-  '대구',
-  '광주',
-  '대전',
-  '경남',
-  '경북',
-  '세종',
-  '충청',
-  '전라',
-] as const;
+import {Diary} from '@src/entities/diary';
+import {LOCATION_LIST} from '../config/locationList';
 
 interface DiaryLocationBottomSheetModalProps {
   closeBottomSheetModal: () => void;
@@ -81,7 +64,7 @@ export const DiaryLocationBottomSheetModal = forwardRef<
         <FlatList
           style={tw`pt-3`}
           contentContainerStyle={tw`flex flex-col items-start gap-2.5`}
-          data={LOCATIONLIST}
+          data={LOCATION_LIST}
           renderItem={({item}) => (
             <Pressable
               style={({pressed}) =>

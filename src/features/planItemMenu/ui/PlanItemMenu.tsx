@@ -4,6 +4,7 @@ import React, {useState} from 'react';
 import {ActivityIndicator, Image, Pressable, Text, View} from 'react-native';
 import {PlanItemTitleModal} from './PlanItemTitleModal';
 import {usePlanItemMenu} from '../model/usePlanItemMenu';
+import {useModal} from '@src/shared/lib/hooks';
 
 interface PlanItemMenuProps {
   planId: number;
@@ -12,7 +13,7 @@ interface PlanItemMenuProps {
 
 export const PlanItemMenu = ({planId, planTitle}: PlanItemMenuProps) => {
   const [menuVisible, setMenuVisible] = useState(false);
-  const [modalVisible, setModalVisible] = useState(false);
+  const {isOpen, openModal, closeModal} = useModal();
   const {isPending, handleDeleteButtonClick} = usePlanItemMenu(
     planId,
     planTitle,
@@ -20,6 +21,12 @@ export const PlanItemMenu = ({planId, planTitle}: PlanItemMenuProps) => {
 
   return (
     <View style={tw`relative`}>
+      <PlanItemTitleModal
+        planId={planId}
+        title={planTitle}
+        modalVisible={isOpen}
+        closeModal={closeModal}
+      />
       {isPending ? (
         <ActivityIndicator style={tw`h-8 w-8`} color={COLOR.PRIMARY_GREEN} />
       ) : (
@@ -41,7 +48,7 @@ export const PlanItemMenu = ({planId, planTitle}: PlanItemMenuProps) => {
             style={({pressed}) => tw.style(pressed && 'bg-slate-100', 'w-full')}
             onPress={() => {
               setMenuVisible(false);
-              setModalVisible(true);
+              openModal();
             }}>
             <Text style={tw`py-2.5 text-center`}>수정</Text>
           </Pressable>
@@ -55,12 +62,6 @@ export const PlanItemMenu = ({planId, planTitle}: PlanItemMenuProps) => {
           </Pressable>
         </View>
       )}
-      <PlanItemTitleModal
-        planId={planId}
-        title={planTitle}
-        modalVisible={modalVisible}
-        closeModal={() => setModalVisible(false)}
-      />
     </View>
   );
 };
