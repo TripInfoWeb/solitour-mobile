@@ -1,6 +1,4 @@
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {tw} from '@src/shared/lib/utils';
-import {RootStackParamList} from '@src/shared/model';
 import LottieView from 'lottie-react-native';
 import React, {useEffect} from 'react';
 import {View} from 'react-native';
@@ -9,7 +7,7 @@ import {useSignIn, useUserInfo} from '@src/entities/user';
 
 export const AuthLoadingScreen = ({
   route,
-}: NativeStackScreenProps<RootStackParamList, 'AuthLoading'>) => {
+}: RootStackScreenProps<'AuthLoading'>) => {
   const navigation = useNavigation();
   const {isSuccess} = useSignIn(route.params.code);
   const {data, isError} = useUserInfo(isSuccess);

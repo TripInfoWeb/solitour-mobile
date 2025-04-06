@@ -1,3 +1,5 @@
+import {RouteProp} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {DiaryDetail} from '@src/entities/diary';
 import {DiscoveryRecommendationItem} from '@src/entities/discovery';
 import {Plan, SavedPlan} from '@src/entities/plan';
@@ -28,5 +30,10 @@ export type RootStackParamList = {
 declare global {
   namespace ReactNavigation {
     interface RootParamList extends RootStackParamList {}
+  }
+
+  interface RootStackScreenProps<T extends keyof RootStackParamList> {
+    navigation: NativeStackNavigationProp<RootStackParamList, T>;
+    route: RouteProp<RootStackParamList, T>;
   }
 }

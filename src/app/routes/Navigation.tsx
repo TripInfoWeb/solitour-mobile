@@ -1,6 +1,5 @@
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {RootStackParamList} from '@src/shared/model';
 import React from 'react';
 import {ErrorBoundary} from 'react-error-boundary';
 import {BottomTabs} from './BottomTabs';
@@ -18,6 +17,7 @@ import {
 import {DiaryCreateScreen, DiaryUpdateScreen} from '@src/pages/diary';
 import {PlanDetailScreen} from '@src/pages/plan';
 import {DiscoveryDetailScreen} from '@src/pages/discovery';
+import {RootStackParamList} from './navigationTypes';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 

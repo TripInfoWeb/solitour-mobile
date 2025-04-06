@@ -3,13 +3,13 @@ import React from 'react';
 import {Image, Pressable} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {tw} from '@src/shared/lib/utils';
-import {RootStackParamList} from '@src/shared/model';
 import {COLOR} from '@src/shared/config';
 import {HomeScreen} from '@src/pages/home';
 import {PlanScreen} from '@src/pages/plan';
 import {DiaryScreen} from '@src/pages/diary';
 import {MypageScreen} from '@src/pages/mypage';
 import {DiscoveryScreen} from '@src/pages/discovery';
+import {RootStackParamList} from './navigationTypes';
 
 interface IconProps {
   focused: boolean;
