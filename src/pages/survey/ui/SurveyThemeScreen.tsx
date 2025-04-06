@@ -3,12 +3,11 @@ import {BottomNextButton, OptionButton} from '@src/shared/ui/button';
 import {ProgressBar} from '@src/shared/ui/progressBar';
 import {tw} from '@src/shared/lib/utils';
 import {CONTENT_CATEGORY, useSurveyStore} from '@src/entities/survey';
-import {NavigationProps} from '@src/shared/model';
 import React from 'react';
 import {FlatList, SafeAreaView, Text, View} from 'react-native';
 
 export const SurveyThemeScreen = () => {
-  const navigation = useNavigation<NavigationProps>();
+  const navigation = useNavigation();
   const {contentCategory, setSurveyState} = useSurveyStore();
 
   return (

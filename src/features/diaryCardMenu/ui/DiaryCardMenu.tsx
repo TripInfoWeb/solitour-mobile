@@ -1,7 +1,6 @@
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {DiaryDetail} from '@src/entities/diary';
-import {NavigationProps} from '@src/shared/model';
 import {useState} from 'react';
 import {useDiaryCardMenu} from '../model/useDiaryCardMenu';
 import {ActivityIndicator, Image, Pressable, Text, View} from 'react-native';
@@ -13,7 +12,7 @@ interface DiaryCardMenuProps {
 }
 
 export const DiaryCardMenu = ({diary}: DiaryCardMenuProps) => {
-  const navigation = useNavigation<NavigationProps>();
+  const navigation = useNavigation();
   const [visible, setVisible] = useState(false);
   const {isPending, handleDeleteButtonClick} = useDiaryCardMenu(diary.diaryId);
 

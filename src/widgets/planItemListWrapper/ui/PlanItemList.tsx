@@ -2,6 +2,7 @@ import React from 'react';
 import {Image, ScrollView, Text, View} from 'react-native';
 import {tw} from '@src/shared/lib/utils';
 import {PlanItem, usePlanList} from '@src/entities/plan';
+import {PlanItemMenu} from '@src/features/planItemMenu';
 
 export const PlanItemList = () => {
   const {planList} = usePlanList();
@@ -21,7 +22,14 @@ export const PlanItemList = () => {
           <Text>아직 저장된 여행이 없어요</Text>
         </View>
       ) : (
-        planList.map(item => <PlanItem key={item.plan.planId} data={item} />)
+        planList.map(item => (
+          <PlanItem key={item.plan.planId} data={item}>
+            <PlanItemMenu
+              planId={item.plan.planId}
+              planTitle={item.plan.title}
+            />
+          </PlanItem>
+        ))
       )}
     </ScrollView>
   );

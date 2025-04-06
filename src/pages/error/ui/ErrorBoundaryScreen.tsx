@@ -1,11 +1,10 @@
 import {useNavigation} from '@react-navigation/native';
 import {tw} from '@src/shared/lib/utils';
-import {NavigationProps} from '@src/shared/model';
 import React from 'react';
 import {Image, Pressable, Text, View} from 'react-native';
 
 export const ErrorBoundaryScreen = () => {
-  const navigation = useNavigation<NavigationProps>();
+  const navigation = useNavigation();
 
   return (
     <View style={tw`flex h-full flex-col items-center justify-center bg-white`}>

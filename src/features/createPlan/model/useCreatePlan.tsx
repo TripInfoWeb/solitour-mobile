@@ -1,13 +1,12 @@
-import {useNavigation} from '@react-navigation/native';
+import {StackActions, useNavigation} from '@react-navigation/native';
 import {createPlan} from '@src/entities/plan';
 import {useSurveyStore} from '@src/entities/survey';
-import {NavigationProps} from '@src/shared/model';
 import {useMutation} from '@tanstack/react-query';
 import {useEffect} from 'react';
 import {Alert} from 'react-native';
 
 export const useCreatePlan = () => {
-  const navigation = useNavigation<NavigationProps>();
+  const navigation = useNavigation();
   const {days, contentCategory, contentTitles, preferredTrips} =
     useSurveyStore();
 
@@ -34,7 +33,7 @@ export const useCreatePlan = () => {
         '여행을 추천하기에 데이터가 부족합니다. 여러 콘텐츠를 선택해 주세요.',
         [{text: '확인'}],
       );
-      return navigation.pop(2);
+      return navigation.dispatch(StackActions.pop(2));
     },
     retry: 1,
   });

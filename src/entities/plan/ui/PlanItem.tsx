@@ -1,17 +1,16 @@
 import {useNavigation} from '@react-navigation/native';
 import {tw} from '@src/shared/lib/utils';
-import {NavigationProps} from '@src/shared/model';
-import {SavedPlan} from '@src/entities/plan';
 import React from 'react';
 import {Pressable, Text, View} from 'react-native';
-import {PlanItemMenu} from '@src/features/planItemMenu';
+import {SavedPlan} from '../model/plan';
 
 interface PlanItemProps {
+  children: React.ReactNode;
   data: SavedPlan;
 }
 
-export const PlanItem = ({data}: PlanItemProps) => {
-  const navigation = useNavigation<NavigationProps>();
+export const PlanItem = ({children, data}: PlanItemProps) => {
+  const navigation = useNavigation();
 
   return (
     <View
@@ -23,7 +22,7 @@ export const PlanItem = ({data}: PlanItemProps) => {
             numberOfLines={1}>
             {data.plan.title}
           </Text>
-          <PlanItemMenu planId={data.plan.planId} planTitle={data.plan.title} />
+          {children}
         </View>
         <Text style={tw`text-sm text-custom-03`}>
           {data.plan.days.length === 1

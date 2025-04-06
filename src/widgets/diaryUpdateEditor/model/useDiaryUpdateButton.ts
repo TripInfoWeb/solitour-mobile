@@ -6,7 +6,6 @@ import {
   updateDiary,
 } from '@src/entities/diary';
 import {SANITIZE_OPTION} from '@src/shared/config';
-import {NavigationProps} from '@src/shared/model';
 import {useMutation, useQueryClient} from '@tanstack/react-query';
 import {UseFormReturn} from 'react-hook-form';
 import sanitizeHtml from 'sanitize-html';
@@ -17,7 +16,7 @@ export const useDiaryUpdateButton = (
   methods: UseFormReturn<Diary, any, undefined>,
   content: string,
 ) => {
-  const navigation = useNavigation<NavigationProps>();
+  const navigation = useNavigation();
   const queryClient = useQueryClient();
   const mutation = useMutation({
     mutationFn: () => {

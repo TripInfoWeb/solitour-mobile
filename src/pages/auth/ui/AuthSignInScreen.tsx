@@ -4,14 +4,13 @@ import {KAKAO_REST_API_KEY, KAKAO_REDIRECT_URL} from '@env';
 import {ActivityIndicator, View} from 'react-native';
 import {tw} from '@src/shared/lib/utils';
 import {COLOR} from '@src/shared/config';
-import {useNavigation} from '@react-navigation/native';
-import {NavigationProps} from '@src/shared/model';
+import {StackActions, useNavigation} from '@react-navigation/native';
 
 export const AuthSignInScreen = () => {
   const [loading, setLoading] = useState(true);
   const [webViewVisible, setWebViewVisible] = useState(true);
   const timestamp = new Date().toISOString();
-  const navigation = useNavigation<NavigationProps>();
+  const navigation = useNavigation();
 
   return (
     <View style={tw`flex flex-1 flex-col`}>
@@ -40,7 +39,9 @@ export const AuthSignInScreen = () => {
             const code = params.get('code');
 
             if (code) {
-              navigation.replace('AuthLoading', {code: code});
+              navigation.dispatch(
+                StackActions.replace('AuthLoading', {code: code}),
+              );
             } else {
               navigation.goBack();
             }

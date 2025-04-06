@@ -1,9 +1,9 @@
 import {zodResolver} from '@hookform/resolvers/zod';
-import {NicknameSchema} from '@src/features/nicknameEditor/model/NicknameSchema';
 import {useMutation, useQueryClient} from '@tanstack/react-query';
 import {useEffect} from 'react';
 import {useForm} from 'react-hook-form';
 import {updateNickname} from '../api/nickname';
+import {NicknameSchema} from './NicknameSchema';
 
 export const useNicknameModal = (
   nickname: string,

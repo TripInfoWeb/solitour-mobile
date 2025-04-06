@@ -1,1 +1,1 @@
-export type {NavigationList, NavigationProps} from './navigation';
+export type {RootStackParamList} from './navigation';

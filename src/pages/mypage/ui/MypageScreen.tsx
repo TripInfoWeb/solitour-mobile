@@ -2,7 +2,6 @@ import React from 'react';
 import {Image, Text, View} from 'react-native';
 import EncryptedStorage from 'react-native-encrypted-storage';
 import {useNavigation} from '@react-navigation/native';
-import {NavigationProps} from '@src/shared/model';
 import {useQueryClient} from '@tanstack/react-query';
 import {MypageProfile} from '@src/widgets/myPageProfile';
 import {useUserInfo} from '@src/entities/user';
@@ -10,7 +9,7 @@ import {MypageItem} from './MypageItem';
 import {tw} from '@src/shared/lib/utils';
 
 export const MypageScreen = () => {
-  const navigation = useNavigation<NavigationProps>();
+  const navigation = useNavigation();
   const queryClient = useQueryClient();
   const {data} = useUserInfo();
 

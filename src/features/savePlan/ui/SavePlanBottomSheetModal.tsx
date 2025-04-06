@@ -5,7 +5,6 @@ import {tw} from '@src/shared/lib/utils';
 import {Pressable, Text} from 'react-native';
 import {COLOR} from '@src/shared/config';
 import {useNavigation} from '@react-navigation/native';
-import {NavigationProps} from '@src/shared/model';
 import {BottomSheetModalTemplate} from '@src/shared/ui/bottomSheetModal';
 
 interface SavePlanBottomSheetModalProps {
@@ -16,7 +15,7 @@ export const SavePlanBottomSheetModal = forwardRef<
   BottomSheetModal,
   SavePlanBottomSheetModalProps
 >(({closeBottomSheetModal}, bottomSheetModalRef) => {
-  const navigation = useNavigation<NavigationProps>();
+  const navigation = useNavigation();
 
   return (
     <BottomSheetModalTemplate

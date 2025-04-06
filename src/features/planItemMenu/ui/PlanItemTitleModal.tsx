@@ -1,5 +1,4 @@
 import {COLOR} from '@src/shared/config';
-import {usePlanItemTitleUpdate} from '@src/features/planItemMenu/model/usePlanItemTitleModal';
 import {tw} from '@src/shared/lib/utils';
 import React from 'react';
 import {Controller} from 'react-hook-form';
@@ -11,6 +10,7 @@ import {
   View,
 } from 'react-native';
 import {ModalTemplate} from '@src/shared/ui/modal';
+import {usePlanItemTitleUpdate} from '../model/usePlanItemTitleModal';
 
 interface PlanItemTitleModalProps {
   planId: number;

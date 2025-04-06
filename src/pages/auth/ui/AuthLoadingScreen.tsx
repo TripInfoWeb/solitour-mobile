@@ -1,22 +1,22 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {tw} from '@src/shared/lib/utils';
-import {NavigationList, NavigationProps} from '@src/shared/model';
+import {RootStackParamList} from '@src/shared/model';
 import LottieView from 'lottie-react-native';
 import React, {useEffect} from 'react';
 import {View} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import {StackActions, useNavigation} from '@react-navigation/native';
 import {useSignIn, useUserInfo} from '@src/entities/user';
 
 export const AuthLoadingScreen = ({
   route,
-}: NativeStackScreenProps<NavigationList, 'AuthLoading'>) => {
-  const navigation = useNavigation<NavigationProps>();
+}: NativeStackScreenProps<RootStackParamList, 'AuthLoading'>) => {
+  const navigation = useNavigation();
   const {isSuccess} = useSignIn(route.params.code);
   const {data, isError} = useUserInfo(isSuccess);
 
   useEffect(() => {
     if (isSuccess && isError) {
-      return navigation.popToTop();
+      return navigation.dispatch(StackActions.popToTop());
     }
 
     if (data?.id) {

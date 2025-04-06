@@ -3,7 +3,7 @@ import React from 'react';
 import {Image, Pressable} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {tw} from '@src/shared/lib/utils';
-import {NavigationList, NavigationProps} from '@src/shared/model';
+import {RootStackParamList} from '@src/shared/model';
 import {COLOR} from '@src/shared/config';
 import {HomeScreen} from '@src/pages/home';
 import {PlanScreen} from '@src/pages/plan';
@@ -94,7 +94,7 @@ const ProfileIcon = ({focused}: IconProps) => {
 };
 
 const WriteButton = () => {
-  const navigation = useNavigation<NavigationProps>();
+  const navigation = useNavigation();
 
   return (
     <Pressable
@@ -107,7 +107,7 @@ const WriteButton = () => {
   );
 };
 
-const Tab = createBottomTabNavigator<NavigationList>();
+const Tab = createBottomTabNavigator<RootStackParamList>();
 
 export const BottomTabs = () => {
   return (

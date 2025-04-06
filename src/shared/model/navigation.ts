@@ -1,9 +1,8 @@
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {DiaryDetail} from '@src/entities/diary';
 import {DiscoveryRecommendationItem} from '@src/entities/discovery';
 import {Plan, SavedPlan} from '@src/entities/plan';
 
-export type NavigationList = {
+export type RootStackParamList = {
   BottomTabs: undefined;
   Plan: undefined;
   PlanDetail: {savedPlan: SavedPlan};
@@ -26,4 +25,8 @@ export type NavigationList = {
   SurveyResultDetail: {index: number; plan: Plan};
 };
 
-export type NavigationProps = NativeStackNavigationProp<NavigationList>;
+declare global {
+  namespace ReactNavigation {
+    interface RootParamList extends RootStackParamList {}
+  }
+}

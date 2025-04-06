@@ -13,11 +13,11 @@ import {useCardFlipAnimation} from '../model/useCardFlipAnimation';
 import {tw} from '@src/shared/lib/utils';
 
 interface DiaryCardProps {
-  diary: DiaryDetail;
   children: React.ReactNode;
+  diary: DiaryDetail;
 }
 
-export const DiaryCard = ({diary, children}: DiaryCardProps) => {
+export const DiaryCard = ({children, diary}: DiaryCardProps) => {
   const {interpolate, isTail, flipCard} = useCardFlipAnimation();
   const editor = useEditorBridge({
     avoidIosKeyboard: true,

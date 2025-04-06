@@ -2,14 +2,13 @@ import {useNavigation} from '@react-navigation/native';
 import {COLOR} from '@src/shared/config';
 import {useUserInfo} from '@src/entities/user';
 import {tw} from '@src/shared/lib/utils';
-import {NavigationProps} from '@src/shared/model';
 import {useQueryClient} from '@tanstack/react-query';
 import LottieView from 'lottie-react-native';
 import React, {useEffect} from 'react';
 import {ActivityIndicator, Image, Pressable, Text, View} from 'react-native';
 
 export const AuthScreen = () => {
-  const navigation = useNavigation<NavigationProps>();
+  const navigation = useNavigation();
   const {data, isLoading} = useUserInfo();
   const queryClient = useQueryClient();
 

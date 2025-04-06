@@ -1,7 +1,6 @@
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {tw} from '@src/shared/lib/utils';
-import {NavigationProps} from '@src/shared/model';
 import {useState} from 'react';
 import {Image, Pressable, ScrollView, Text, View} from 'react-native';
 import {DiscoveryRecommendationItem} from '@src/entities/discovery';
@@ -33,7 +32,7 @@ const _data: DiscoveryRecommendationItem[] = [
 export const RecommendationDiscovery = () => {
   const [selectedRecommendation, setSelectedRecommendation] =
     useState<DiscoveryRecommendationItem>(_data[0]);
-  const navigation = useNavigation<NavigationProps>();
+  const navigation = useNavigation();
 
   return (
     <View style={tw`mt-[3.25rem] flex w-full flex-col px-4`}>
