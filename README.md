@@ -18,6 +18,17 @@
 
 - [✅ 서비스 소개](#-서비스-소개)
 - [💾 주요 기능](#-주요-기능)
+  - [테마 여행 추천 기능](#테마-여행-추천-기능)
+  - [여행 계획 목록 조회](#여행-계획-목록-조회)
+  - [여행 계획 상세 조회](#여행-계획-상세-조회)
+  - [여행 계획 제목 수정](#여행-계획-제목-수정)
+  - [여행 계획 삭제](#여행-계획-삭제)
+  - [여행일기 목록 조회](#여행일기-목록-조회)
+  - [여행일기 작성](#여행일기-작성)
+  - [여행일기 수정](#여행일기-수정)
+  - [여행일기 삭제](#여행일기-삭제)
+  - [로그인](#로그인)
+  - [마이페이지](#마이페이지)
 - [✏️ 개발 기록](#️-개발-기록)
 - [🔑 트러블슈팅 해결 경험](#-트러블슈팅-해결-경험)
 - [🏛️️ 아키텍처](#️️-아키텍처)
@@ -36,18 +47,86 @@
 
 ## 💾 주요 기능
 
-**1차 MVP 완성 후 작성 예정입니다.**
+### 테마 여행 추천 기능
+
+<br />
+
+### 여행 계획 목록 조회
+
+<br />
+
+### 여행 계획 상세 조회
+
+<br />
+
+### 여행 계획 제목 수정
+
+<br />
+
+### 여행 계획 삭제
+
+<br />
+
+### 여행일기 목록 조회
+
+![diary_read](https://private-user-images.githubusercontent.com/88878230/431752393-14052222-218e-40bf-898f-f85fa1929fe8.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDQxODgxMjUsIm5iZiI6MTc0NDE4NzgyNSwicGF0aCI6Ii84ODg3ODIzMC80MzE3NTIzOTMtMTQwNTIyMjItMjE4ZS00MGJmLTg5OGYtZjg1ZmExOTI5ZmU4LmdpZj9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA0MDklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNDA5VDA4MzcwNVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWEwNWVlN2I4NTQzN2YxMWVlODQxZDFhN2FjZjZlZDE0ZTY0NzM3OTk3NzQ0MDA1MTk5YTEzY2M3MTgzOTYxMTUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.mjkKlaTBpa5Dn3CssPbL1KenoN8WdLXB_tGESE2EaD0)
+
+- 자신이 작성한 여행일기 목록을 확인할 수 있습니다.
+- 여행일기를 카드 형식으로 표시합니다.
+
+<br />
+
+### 여행일기 작성
+
+![diary_create](https://private-user-images.githubusercontent.com/88878230/431750305-fe9369be-17ca-4d6c-8653-f803ed92289c.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDQxODc4MjEsIm5iZiI6MTc0NDE4NzUyMSwicGF0aCI6Ii84ODg3ODIzMC80MzE3NTAzMDUtZmU5MzY5YmUtMTdjYS00ZDZjLTg2NTMtZjgwM2VkOTIyODljLmdpZj9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA0MDklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNDA5VDA4MzIwMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTljZWNjNWU3OGI1MTJmMWMxMDc4ZjkyM2U0ZWY1MWRmNzQwYmI0ZjQ5YjFiMTBiYmI4NjlhZTg1MGMwODljNDEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.Caou93N2uYxpkRnyvyr2HWn1_3yRbp68JeO4aNdu7X4)
+
+- 제목, 날짜, 장소, 기분, 이미지를 입력하여 여행일기를 작성할 수 있습니다.
+- 이미지는 1개만 등록할 수 있습니다.
+
+<br />
+
+### 여행일기 수정
+
+![diary_update](https://private-user-images.githubusercontent.com/88878230/431747571-89de45f8-211e-413b-a773-b73d3f5247d8.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDQxODc0MjUsIm5iZiI6MTc0NDE4NzEyNSwicGF0aCI6Ii84ODg3ODIzMC80MzE3NDc1NzEtODlkZTQ1ZjgtMjExZS00MTNiLWE3NzMtYjczZDNmNTI0N2Q4LmdpZj9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA0MDklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNDA5VDA4MjUyNVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTc0MjI4ZTQxZTMyODk0MjQ3MzI2MTFmYjFkY2NjNzIyYjgzMDJhNmE5Y2RhYzMwNDU3ZDA1NDA4MDMyM2E5ZTcmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.PqZc5TpX5Tdsi3QKbpPSefcTnnPu2ymDCiqzWZM7LYo)
+
+- 자신이 작성한 여행일기를 수정할 수 있습니다.
+
+<br />
+
+### 여행일기 삭제
+
+![diary_delete](https://private-user-images.githubusercontent.com/88878230/431745383-f292e35a-8982-4b87-9135-fd9a52f78fd5.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDQxODcxMDIsIm5iZiI6MTc0NDE4NjgwMiwicGF0aCI6Ii84ODg3ODIzMC80MzE3NDUzODMtZjI5MmUzNWEtODk4Mi00Yjg3LTkxMzUtZmQ5YTUyZjc4ZmQ1LmdpZj9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA0MDklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNDA5VDA4MjAwMlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTFmZjAwMjA3OGU0YTZlNDYyYWNhZGE0OWU4ZjFkOGU3ZDRkN2Q1ZGQyYTU1MGY1NzgyZTY3YjcwNjUxZGJiZDUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.eOIWw7vQ8cViIMTh4uO8F7dyUPDNeSuhxvmqtFYn3dA)
+
+- 자신이 작성한 여행일기를 삭제할 수 있습니다.
+
+<br />
+
+### 로그인
+
+![signin](https://private-user-images.githubusercontent.com/88878230/431740240-2cffb0ea-4379-41bf-9091-c6f907ce6007.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDQxODY1MzksIm5iZiI6MTc0NDE4NjIzOSwicGF0aCI6Ii84ODg3ODIzMC80MzE3NDAyNDAtMmNmZmIwZWEtNDM3OS00MWJmLTkwOTEtYzZmOTA3Y2U2MDA3LmdpZj9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA0MDklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNDA5VDA4MTAzOVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTAzNzY3ZWM5MjVkYzVjMGE3YThjMjkyNjRiZWNiZTVmOWJlYTZhMmM4MmJhN2Q3NzRjMGYyM2Q3MjUxZGFkNTMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.31jmxahXZ9y7Tn3jUgCTouWLwL2SkdnSY9ydfg7_9ks)
+
+- 사용자가 서비스를 쉽게 이용할 수 있도록 Kakao OAuth 로그인을 지원합니다.
+
+<br />
+
+### 마이페이지
+
+![mypage](https://private-user-images.githubusercontent.com/88878230/431743390-e20240fb-8ca4-4308-89bb-07a44829e7af.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDQxODY4MDQsIm5iZiI6MTc0NDE4NjUwNCwicGF0aCI6Ii84ODg3ODIzMC80MzE3NDMzOTAtZTIwMjQwZmItOGNhNC00MzA4LTg5YmItMDdhNDQ4MjllN2FmLmdpZj9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA0MDklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNDA5VDA4MTUwNFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWMwYmIwN2ZlNGQwZjc4MDIzMDcwNmQ4ZjhmOTNkNWJiM2U4YjgyMmJiZjNlMGM5YmQ0Zjc1ZTIyYjYzZDIyZjMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.o4yjWQJiisQCmWIlHy49DL0Y1jazBDADP9pDiAfn0Fc)
+
+- 마이페이지에서 닉네임을 변경할 수 있습니다.
+- 로그아웃을 할 수 있습니다.
 
 <br />
 <br />
 
 ## ✏️ 개발 기록
 
-| 제목                                                                                                                                                                                                                                                                                                                        | 핵심 키워드     |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
-| [🪟React Native 프로젝트에 Tailwind CSS 적용하기](https://github.com/TripInfoWeb/solitour-mobile/wiki/%F0%9F%AA%9FReact-Native-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EC%97%90-Tailwind-CSS-%EC%A0%81%EC%9A%A9%ED%95%98%EA%B8%B0)                                                                                             | `Tailwind CSS`  |
-| [⚡Splash Screen 적용하기](https://github.com/TripInfoWeb/solitour-mobile/wiki/%E2%9A%A1Splash-Screen-%EC%A0%81%EC%9A%A9%ED%95%98%EA%B8%B0)                                                                                                                                                                                 | `Splash Screen` |
-| [🔍테마 여행 추천 기능에서 콘텐츠 검색 기능 구현하기](https://github.com/TripInfoWeb/solitour-mobile/wiki/%F0%9F%94%8D%ED%85%8C%EB%A7%88-%EC%97%AC%ED%96%89-%EC%B6%94%EC%B2%9C-%EA%B8%B0%EB%8A%A5%EC%97%90%EC%84%9C-%EC%BD%98%ED%85%90%EC%B8%A0-%EA%B2%80%EC%83%89-%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0) | `Debounce`      |
+| 제목                                                                                                                                                                                                                                                                                                                        | 핵심 키워드        |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ |
+| [🪟React Native 프로젝트에 Tailwind CSS 적용하기](https://github.com/TripInfoWeb/solitour-mobile/wiki/%F0%9F%AA%9FReact-Native-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EC%97%90-Tailwind-CSS-%EC%A0%81%EC%9A%A9%ED%95%98%EA%B8%B0)                                                                                             | `Tailwind CSS`     |
+| [⚡Splash Screen 적용하기](https://github.com/TripInfoWeb/solitour-mobile/wiki/%E2%9A%A1Splash-Screen-%EC%A0%81%EC%9A%A9%ED%95%98%EA%B8%B0)                                                                                                                                                                                 | `Splash Screen`    |
+| [🔍테마 여행 추천 기능에서 콘텐츠 검색 기능 구현하기](https://github.com/TripInfoWeb/solitour-mobile/wiki/%F0%9F%94%8D%ED%85%8C%EB%A7%88-%EC%97%AC%ED%96%89-%EC%B6%94%EC%B2%9C-%EA%B8%B0%EB%8A%A5%EC%97%90%EC%84%9C-%EC%BD%98%ED%85%90%EC%B8%A0-%EA%B2%80%EC%83%89-%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0) | `Debounce`         |
+| [📘React Native 프로젝트에 FSD 아키텍처 적용하기](https://hyunjinno.github.io/posts/fsd-example-react-native/)                                                                                                                                                                                                              | `FSD Architecture` |
 
 <br />
 <br />
