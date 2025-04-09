@@ -18,7 +18,7 @@
 
 - [✅ 서비스 소개](#-서비스-소개)
 - [💾 주요 기능](#-주요-기능)
-  - [테마 여행 추천 기능](#테마-여행-추천-기능)
+  - [테마 여행 추천](#테마-여행-추천)
   - [여행 계획 목록 조회](#여행-계획-목록-조회)
   - [여행 계획 상세 조회](#여행-계획-상세-조회)
   - [여행 계획 제목 수정](#여행-계획-제목-수정)
@@ -47,7 +47,7 @@
 
 ## 💾 주요 기능
 
-### 테마 여행 추천 기능
+### 테마 여행 추천
 
 ![plan_recommendation](https://private-user-images.githubusercontent.com/88878230/431795183-c2aad5af-ef1e-4f73-a0ae-2c1457d262a3.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDQxOTQ2MDMsIm5iZiI6MTc0NDE5NDMwMywicGF0aCI6Ii84ODg3ODIzMC80MzE3OTUxODMtYzJhYWQ1YWYtZWYxZS00ZjczLWEwYWUtMmMxNDU3ZDI2MmEzLmdpZj9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA0MDklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNDA5VDEwMjUwM1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTQ1ZTE4ZWMyNjg3ZjdhMjExODRjNmFhNDlhYjc5ZTkzM2Q0NDA4ZGYwMzUwY2Y2NjIzMGY4YjEzMDAwYjZjNmYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.JhTAULmPS4wpykwYdnF85td4xaeFaBriFI90fYdYQ8w)
 
@@ -148,6 +148,7 @@
 
 | 제목                                                                                                                                                                                                                                                                                                                        | 핵심 키워드        |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ |
+| [💿React Native CLI 시작하기](https://hyunjinno.github.io/posts/react-native-basic)                                                                                                                                                                                                                                         | `React Native`     |
 | [🪟React Native 프로젝트에 Tailwind CSS 적용하기](https://github.com/TripInfoWeb/solitour-mobile/wiki/%F0%9F%AA%9FReact-Native-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EC%97%90-Tailwind-CSS-%EC%A0%81%EC%9A%A9%ED%95%98%EA%B8%B0)                                                                                             | `Tailwind CSS`     |
 | [⚡Splash Screen 적용하기](https://github.com/TripInfoWeb/solitour-mobile/wiki/%E2%9A%A1Splash-Screen-%EC%A0%81%EC%9A%A9%ED%95%98%EA%B8%B0)                                                                                                                                                                                 | `Splash Screen`    |
 | [🔍테마 여행 추천 기능에서 콘텐츠 검색 기능 구현하기](https://github.com/TripInfoWeb/solitour-mobile/wiki/%F0%9F%94%8D%ED%85%8C%EB%A7%88-%EC%97%AC%ED%96%89-%EC%B6%94%EC%B2%9C-%EA%B8%B0%EB%8A%A5%EC%97%90%EC%84%9C-%EC%BD%98%ED%85%90%EC%B8%A0-%EA%B2%80%EC%83%89-%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0) | `Debounce`         |
