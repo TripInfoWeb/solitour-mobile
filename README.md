@@ -128,7 +128,7 @@
 
 ### 로그인
 
-![nickname](https://github.com/user-attachments/assets/fede1bde-9fb4-49d5-9d6c-6a59fb8aec72)
+![signin](https://github.com/user-attachments/assets/c7b396e9-a64f-480a-ac68-b54157020756)
 
 - 사용자가 서비스를 쉽게 이용할 수 있도록 Kakao OAuth 로그인을 지원합니다.
 
@@ -136,7 +136,7 @@
 
 ### 마이페이지
 
-![signin](https://github.com/user-attachments/assets/c7b396e9-a64f-480a-ac68-b54157020756)
+![nickname](https://github.com/user-attachments/assets/fede1bde-9fb4-49d5-9d6c-6a59fb8aec72)
 
 - 마이페이지에서 닉네임을 변경할 수 있습니다.
 - 로그아웃을 할 수 있습니다.
